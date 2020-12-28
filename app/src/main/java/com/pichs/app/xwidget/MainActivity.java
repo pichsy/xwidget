@@ -1,4 +1,4 @@
-package com.pichs.app.widgets;
+package com.pichs.app.xwidget;
 
 import androidx.appcompat.app.AppCompatActivity;
 
