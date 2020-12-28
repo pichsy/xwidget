@@ -5,7 +5,7 @@ Android 基础组件库封装。
 
 #### 使用方式
 
-        api 'com.gitee.pichs:xwidget:1.0'
+        api 'com.github.pichsy:xwidget:1.0'
 
 #### 特别好用的基础库
 1. 基础控件
