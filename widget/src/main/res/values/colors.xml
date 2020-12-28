@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="xp_config_color_blue">#1B88EE</color>
+    <color name="xp_config_color_50_blue">#801B88EE</color>
+    <color name="xp_config_color_red">#FA3A3A</color>
+    <color name="xp_config_color_separator">#DEE0E2</color>
+    <color name="xp_config_color_separator_darken">#D4D6D8</color>
+    <color name="xp_config_color_background">#F4F5F7</color>
+    <color name="xp_config_color_background_pressed">#EEEFF1</color>
+    <color name="xp_config_color_black">#212832</color>
+    <color name="xp_config_color_link">#547FB0</color>
+    <color name="xp_config_color_pressed">#EEEEF0</color>
+
+</resources>
