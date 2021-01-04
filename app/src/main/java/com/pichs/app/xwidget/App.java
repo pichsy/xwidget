@@ -14,12 +14,9 @@ import com.pichs.common.widget.utils.XTypefaceHelper;
  * @Version: 1.0
  */
 public class App extends Application {
-
-
     @Override
     public void onCreate() {
         super.onCreate();
         XTypefaceHelper.init(this);
-
     }
 }
