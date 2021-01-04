@@ -11,6 +11,7 @@ import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.cardview.XITextView;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
+import com.pichs.common.widget.utils.XTypefaceHelper;
 
 /**
  * TextView 自定义基类
@@ -33,6 +34,7 @@ public class XTextView extends AppCompatTextView implements XIBackground, XIText
     public XTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
+        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {

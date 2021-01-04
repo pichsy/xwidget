@@ -12,6 +12,7 @@ import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.cardview.XITextView;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
+import com.pichs.common.widget.utils.XTypefaceHelper;
 
 /**
  * TextView 自定义基类
@@ -29,6 +30,7 @@ public class XCheckedTextView extends AppCompatCheckedTextView implements XIBack
     public XCheckedTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0);
+        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     public XCheckedTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {

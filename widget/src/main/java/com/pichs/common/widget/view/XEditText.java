@@ -14,6 +14,7 @@ import com.pichs.common.widget.cardview.XITextView;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XEditTextHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
+import com.pichs.common.widget.utils.XTypefaceHelper;
 
 /**
  * @Description: $
@@ -41,6 +42,7 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
     public XEditText(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
+        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
 

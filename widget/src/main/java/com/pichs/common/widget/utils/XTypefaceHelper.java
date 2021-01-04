@@ -12,13 +12,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
- * @Description:
- * @Author: 吴波
- * @CreateDate: 2021/1/4 09:06
- * @UpdateUser: 吴波
- * @UpdateDate: 2021/1/4 09:06
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * 字体帮助类。
  */
 public class XTypefaceHelper {
 

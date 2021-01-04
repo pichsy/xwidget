@@ -2,6 +2,8 @@ package com.pichs.app.xwidget;
 
 import android.app.Application;
 
+import com.pichs.common.widget.utils.XTypefaceHelper;
+
 /**
  * @Description:
  * @Author: 吴波
@@ -17,5 +19,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        XTypefaceHelper.init(this);
+
     }
 }
