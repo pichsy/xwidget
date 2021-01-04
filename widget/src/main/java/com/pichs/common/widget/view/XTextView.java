@@ -34,12 +34,12 @@ public class XTextView extends AppCompatTextView implements XIBackground, XIText
     public XTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
-        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
+        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     @Override

@@ -42,7 +42,6 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
     public XEditText(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
-        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
 
@@ -55,6 +54,7 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
         if (disableCopyAndPaste) {
             XEditTextHelper.disableCopyAndPaste(this);
         }
+        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     public boolean isDisableCopyAndPaste() {

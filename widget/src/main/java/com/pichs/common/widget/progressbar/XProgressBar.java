@@ -23,13 +23,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.utils.XDisplayHelper;
+import com.pichs.common.widget.utils.XTypefaceHelper;
 import com.pichs.common.widget.view.XView;
 
 import java.lang.annotation.Retention;
@@ -115,6 +118,7 @@ public class XProgressBar extends XView {
     }
 
     public void setup(Context context, AttributeSet attrs) {
+        XTypefaceHelper.observer(this, typeface -> mTextPaint.setTypeface(typeface));
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XProgressBar);
         mType = array.getInt(R.styleable.XProgressBar_xp_progressType, TYPE_RECT);
         mProgressColor = array.getColor(R.styleable.XProgressBar_xp_progressColor, DEFAULT_PROGRESS_COLOR);

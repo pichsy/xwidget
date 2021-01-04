@@ -30,7 +30,6 @@ public class XCheckedTextView extends AppCompatCheckedTextView implements XIBack
     public XCheckedTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs, 0);
-        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     public XCheckedTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -41,6 +40,8 @@ public class XCheckedTextView extends AppCompatCheckedTextView implements XIBack
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
+        init(context, attrs, defStyleAttr);
+        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     @Override
