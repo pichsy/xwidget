@@ -18,7 +18,10 @@ package com.pichs.common.widget.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.util.TypedValue;
+
+import java.io.File;
 
 
 /**
@@ -48,6 +51,5 @@ public class XResHelper {
         context.getTheme().resolveAttribute(attrRes, sTmpValue, true);
         return TypedValue.complexToDimensionPixelSize(sTmpValue.data, XDisplayHelper.getDisplayMetrics(context));
     }
-
 
 }

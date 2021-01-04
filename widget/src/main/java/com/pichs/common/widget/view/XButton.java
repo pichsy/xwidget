@@ -1,17 +1,26 @@
 package com.pichs.common.widget.view;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.cardview.XITextView;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
+import com.pichs.common.widget.utils.XTypefaceHelper;
+
+import java.util.Objects;
 
 /**
  * XButton
@@ -39,6 +48,17 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
+        XTypefaceHelper.observer(this, this::setTypeface);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
     }
 
     @Override
