@@ -5,7 +5,7 @@
 
 
 ### 引入控件
-最新版本 [![](https://jitpack.io/v/pichsy/xwidget.svg)](https://jitpack.io/#pichsy/xwidget)
+最新版本:  [![](https://jitpack.io/v/pichsy/xwidget.svg)](https://jitpack.io/#pichsy/xwidget)
 
     
         
