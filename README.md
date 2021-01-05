@@ -1,13 +1,15 @@
 # xwidget
-牛逼的自定义控件
+最喜欢的自定义控件
 
 - 此次更新优化字体相关设置，用起来更随心，更舒服。
 
+
 ### 引入控件
+最新版本 [![](https://jitpack.io/v/pichsy/xwidget.svg)](https://jitpack.io/#pichsy/xwidget)
 
     
         
-       implementation 'com.github.pichsy:xwidget:1.3'
+       implementation 'com.github.pichsy:xwidget:1.4'
        
        
 
