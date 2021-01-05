@@ -135,6 +135,8 @@
     <attr name="xp_checkedTextColor" format="color|reference" />
     <attr name="xp_activatedTextColor" format="color|reference" />
     <attr name="xp_unEnabledTextColor" format="color|reference" />
+    <!--  是否忽略全局字体切换  -->
+    <attr name="xp_ignoreGlobalTypeface" format="boolean" />
 
     <!--  背景颜色选择器  -->
     <declare-styleable name="XIBackground">
@@ -179,6 +181,7 @@
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
         <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_ignoreGlobalTypeface" />
 
     </declare-styleable>
 
@@ -375,6 +378,7 @@
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
         <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -415,6 +419,7 @@
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
         <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -459,6 +464,7 @@
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
         <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -498,6 +504,7 @@
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
         <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -959,7 +966,6 @@
     <attr name="xp_radiusBottomLeft" format="dimension" />
     <!-- 指定右下方圆角的大小 -->
     <attr name="xp_radiusBottomRight" format="dimension" />
-
 
 
     <!--  XRoundImageView  -->

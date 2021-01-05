@@ -118,7 +118,6 @@ public class XProgressBar extends XView {
     }
 
     public void setup(Context context, AttributeSet attrs) {
-        XTypefaceHelper.observer(this, typeface -> mTextPaint.setTypeface(typeface));
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XProgressBar);
         mType = array.getInt(R.styleable.XProgressBar_xp_progressType, TYPE_RECT);
         mProgressColor = array.getColor(R.styleable.XProgressBar_xp_progressColor, DEFAULT_PROGRESS_COLOR);

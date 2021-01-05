@@ -26,30 +26,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
-                XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NORMAL);
+                XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
             }
         });
+        XButton normalBtn = findViewById(R.id.normalBtn);
 
+        normalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+//                XTypefaceHelper.clearObserver();
 
-//        tv.setTextColor(Color.BLACK);
-//
-//        tv.setTextSize(20);
-//
-//        Typeface tf = Typeface.create(Typeface.DEFAULT, Typeface.ITALIC);
-//
-//        tf = Typeface.createFromAsset(getAssets(), "leihong.ttf");
-
-
-//        tf = Typeface.SERIF;
-
-//        tf = Typeface.SANS_SERIF;
-
-
-//        tf = Typeface.create(tf, Typeface.BOLD_ITALIC);
-//
-//
-//        tv.setTypeface(tf);
-
+//                XTypefaceHelper.setGlobalTypeface(getApplicationContext(), XTypefaceHelper.TYPEFACE_BOLD);
+                XTypefaceHelper.resetTypeface(MainActivity.this);
+//                XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
+            }
+        });
 
     }
 }

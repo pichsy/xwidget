@@ -48,7 +48,6 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
-        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     @Override
@@ -145,6 +144,11 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     @Override
     public void clearTextStateColor() {
         textViewHelper.clearTextStateColor();
+    }
+
+    @Override
+    public void setIgnoreGlobalTypeface(boolean isIgnoreGlobalTypeface) {
+        textViewHelper.setIgnoreGlobalTypeface(isIgnoreGlobalTypeface);
     }
 }
 

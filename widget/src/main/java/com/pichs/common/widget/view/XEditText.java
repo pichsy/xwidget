@@ -2,6 +2,7 @@ package com.pichs.common.widget.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
@@ -54,7 +55,6 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
         if (disableCopyAndPaste) {
             XEditTextHelper.disableCopyAndPaste(this);
         }
-        XTypefaceHelper.observer(this, this::setTypeface);
     }
 
     public boolean isDisableCopyAndPaste() {
@@ -156,5 +156,10 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
     @Override
     public void clearTextStateColor() {
         textViewHelper.clearTextStateColor();
+    }
+
+    @Override
+    public void setIgnoreGlobalTypeface(boolean isIgnoreGlobalTypeface) {
+        textViewHelper.setIgnoreGlobalTypeface(isIgnoreGlobalTypeface);
     }
 }

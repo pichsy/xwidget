@@ -34,4 +34,9 @@ public interface XITextView {
      * 清除textView的状态颜色
      */
     void clearTextStateColor();
+
+    /**
+     * 是否忽略全局字体
+     */
+    void setIgnoreGlobalTypeface(boolean isIgnoreGlobalTypeface);
 }

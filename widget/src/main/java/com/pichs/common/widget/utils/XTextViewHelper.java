@@ -3,6 +3,7 @@ package com.pichs.common.widget.utils;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -17,11 +18,17 @@ import java.lang.ref.WeakReference;
 public class XTextViewHelper implements XITextView {
 
     private final WeakReference<TextView> mOwner;
-    private int normalColor;
-    private int pressedColor;
-    private int checkedColor;
-    private int unEnabledColor;
-    private int activatedColor;
+    private int normalColor = 0;
+    private int pressedColor = 0;
+    private int checkedColor = 0;
+    private int unEnabledColor = 0;
+    private int activatedColor = 0;
+    // 是否忽略全局字体更换
+    private boolean isIgnoreGlobalTypeface = false;
+    // 初始化时的字体类型。
+    private Typeface mInitTypeface = Typeface.DEFAULT;
+    // 初始化时的字体样式。
+    private int mInitTypefaceStyle = Typeface.NORMAL;
 
     public XTextViewHelper(Context context, AttributeSet attrs, int defAttr, TextView owner) {
         this(context, attrs, defAttr, 0, owner);
@@ -33,6 +40,10 @@ public class XTextViewHelper implements XITextView {
     }
 
     private void init(Context context, AttributeSet attrs, int defAttr, int defStyleRes) {
+        if (mOwner != null && mOwner.get() != null) {
+            mInitTypeface = mOwner.get().getTypeface() == null ? Typeface.DEFAULT : mOwner.get().getTypeface();
+            mInitTypefaceStyle = mInitTypeface.getStyle();
+        }
         if (null != attrs || defAttr != 0 || defStyleRes != 0) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XITextView, defAttr, defStyleRes);
             normalColor = ta.getColor(R.styleable.XITextView_android_textColor, Color.LTGRAY);
@@ -40,9 +51,39 @@ public class XTextViewHelper implements XITextView {
             checkedColor = ta.getColor(R.styleable.XITextView_xp_checkedTextColor, Color.LTGRAY);
             unEnabledColor = ta.getColor(R.styleable.XITextView_xp_unEnabledTextColor, Color.LTGRAY);
             activatedColor = ta.getColor(R.styleable.XITextView_xp_activatedTextColor, Color.LTGRAY);
+            isIgnoreGlobalTypeface = ta.getBoolean(R.styleable.XITextView_xp_ignoreGlobalTypeface, false);
             ta.recycle();
             setSelector();
         }
+        setTypeface();
+    }
+
+    private void setTypeface() {
+        if (mOwner.get() != null) {
+            if (isIgnoreGlobalTypeface) {
+                XTypefaceHelper.removeObserver(mOwner.get());
+                mOwner.get().setTypeface(mInitTypeface, mInitTypefaceStyle);
+                return;
+            }
+            XTypefaceHelper.observer(mOwner.get(), (typeface, typefaceStyle) -> {
+                int style = typefaceStyle;
+                if (typefaceStyle == XTypefaceHelper.NONE) {
+                    style = mInitTypefaceStyle;
+                }
+                mOwner.get().setTypeface(typeface, style);
+            });
+        }
+    }
+
+    /**
+     * 忽略移除或者添加
+     *
+     * @param isIgnoreGlobalTypeface 是否忽略全局的字体变化监听
+     */
+    @Override
+    public void setIgnoreGlobalTypeface(boolean isIgnoreGlobalTypeface) {
+        this.isIgnoreGlobalTypeface = isIgnoreGlobalTypeface;
+        setTypeface();
     }
 
     private void setSelector() {

@@ -24,11 +24,19 @@ public class XTypefaceHelper {
     public static final String TYPEFACE_MONOSPACE = "MONOSPACE"; // monospace字体
     public static final String TYPEFACE_SERIF = "SERIF"; // serif字体
 
+    // 恢复字体的原本样式
+    public static final int NONE = -1;
+    // 不加粗不斜体
     public static final int NORMAL = Typeface.NORMAL;
+    // 加粗
     public static final int BOLD = Typeface.BOLD;
+    // 斜体
     public static final int ITALIC = Typeface.ITALIC;
+    // 粗斜体
     public static final int BOLD_ITALIC = Typeface.BOLD_ITALIC;
 
+    // 字体的样式，粗，斜，常
+    private static int mGlobalTypefaceStyle = NONE;
 
     private static Typeface mGlobalTypeface = null;
     // 配合KEY_TYPEFACE_FROM使用，来决定此值的价值。0：null/"",  1：assets路径, 2：文件路径， 3：系统字体(DEFAULT, BOLD, ITALIC)
@@ -56,7 +64,7 @@ public class XTypefaceHelper {
     public static void init(Context context) {
         int typefaceFrom = XWidgetCache.getInstance(context).getInt(KEY_TYPEFACE_FROM, 0);
         String path = XWidgetCache.getInstance(context).getString(KEY_TYPEFACE_FILEPATH, null);
-        int style = XWidgetCache.getInstance(context).getInt(KEY_TYPEFACE_STYLE, 0);
+        int style = XWidgetCache.getInstance(context).getInt(KEY_TYPEFACE_STYLE, NONE);
         if (typefaceFrom > 0 && !TextUtils.isEmpty(path)) {
             if (typefaceFrom == 1) {
                 mGlobalTypeface = Typeface.createFromAsset(context.getAssets(), path);
@@ -80,8 +88,19 @@ public class XTypefaceHelper {
         if (view != null && observer != null) {
             mTypefaceMap.put(view, observer);
             if (mGlobalTypeface != null) {
-                observer.onChanged(mGlobalTypeface);
+                observer.onChanged(mGlobalTypeface, mGlobalTypefaceStyle);
             }
+        }
+    }
+
+    /**
+     * 移除监听器
+     *
+     * @param view View
+     */
+    public static void removeObserver(View view) {
+        if (view != null) {
+            mTypefaceMap.remove(view);
         }
     }
 
@@ -92,7 +111,7 @@ public class XTypefaceHelper {
         if (!mTypefaceMap.isEmpty()) {
             for (Map.Entry<View, GlobalTypefaceObserver> entry : mTypefaceMap.entrySet()) {
                 if (entry != null && entry.getValue() != null) {
-                    entry.getValue().onChanged(mGlobalTypeface);
+                    entry.getValue().onChanged(mGlobalTypeface, mGlobalTypefaceStyle);
                 }
             }
         }
@@ -204,10 +223,13 @@ public class XTypefaceHelper {
     public static void setGlobalTypefaceStyle(Context context, int style) {
         // 样式必须在规则内。
         if (style < NORMAL || style > BOLD_ITALIC) {
-            return;
+            style = NONE;
         }
-        XWidgetCache.getInstance(context).setInt(KEY_TYPEFACE_STYLE, style);
-        mGlobalTypeface = Typeface.create(mGlobalTypeface, style);
+        mGlobalTypefaceStyle = style;
+        XWidgetCache.getInstance(context).setInt(KEY_TYPEFACE_STYLE, mGlobalTypefaceStyle);
+        if (mGlobalTypefaceStyle != NONE) {
+            mGlobalTypeface = Typeface.create(mGlobalTypeface, style);
+        }
         post();
     }
 
@@ -219,10 +241,21 @@ public class XTypefaceHelper {
     }
 
     /**
+     * 由此来控制全局字体，获取全局字体的类型
+     */
+    private static int getGlobalTypefaceStyle() {
+        return mGlobalTypefaceStyle;
+    }
+
+    /**
      * 重新设置字体。
      */
-    public static void resetTypeface() {
+    public static void resetTypeface(Context context) {
         mGlobalTypeface = null;
+        mGlobalTypefaceStyle = NONE;
+        XWidgetCache.getInstance(context).setString(KEY_TYPEFACE_FILEPATH, "");
+        XWidgetCache.getInstance(context).setInt(KEY_TYPEFACE_FROM, 0);
+        XWidgetCache.getInstance(context).setInt(KEY_TYPEFACE_STYLE, NONE);
         post();
     }
 
@@ -237,6 +270,6 @@ public class XTypefaceHelper {
      * 全局的字体监听
      */
     public interface GlobalTypefaceObserver {
-        void onChanged(@Nullable Typeface typeface);
+        void onChanged(@Nullable Typeface typeface, int typefaceStyle);
     }
 }
