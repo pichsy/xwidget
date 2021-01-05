@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
 //                XTypefaceHelper.setGlobalTypeface(getApplicationContext(), XTypefaceHelper.TYPEFACE_BOLD);
                 XTypefaceHelper.resetTypeface(MainActivity.this);
-                normalBtn.setIgnoreGlobalTypeface(true);
 //                XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
             }
         });
