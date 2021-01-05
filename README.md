@@ -14,8 +14,7 @@
 - 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
 1. 在Application中初始化
 
-
-    ```
+    
       // 初始化，自动缓存。
       public class App extends Application {
           @Override
@@ -25,7 +24,7 @@
           }
       }
     
-    // 代码中设置
+      // 代码中设置
       btn.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
@@ -33,5 +32,14 @@
                    XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.BOLD_ITALIC);
                }
            });
+           
+       // 重置字体恢复默认样式 
+       XTypefaceHelper.resetTypeface(MainActivity.this);
     
-    ```
+       
+       // 增加属性忽略，不想受全局字体影响，使用下面的属性，或者代码也可以
+       // 默认是false
+       app:xp_ignoreGlobalTypeface="true"
+       
+       // 默认是false
+       normalBtn.setIgnoreGlobalTypeface(true);
