@@ -5,12 +5,12 @@
 
 ### 引入控件
 
-      ```
-      
-        implementation 'com.github.pichsy:xwidget:1.3'
+    
         
-        
-      ```
+       implementation 'com.github.pichsy:xwidget:1.3'
+       
+       
+
 
 ## 升级内容，新增字体全局设置。
 - 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
