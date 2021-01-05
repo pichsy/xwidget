@@ -17,6 +17,8 @@
 1. 在Application中初始化
 
     
+    
+    ```
       // 初始化，自动缓存。
       public class App extends Application {
           @Override
@@ -46,3 +48,4 @@
        // 默认是false
        normalBtn.setIgnoreGlobalTypeface(true);
         
+    ```
