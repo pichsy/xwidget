@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="#F7F7C2"
+        android:textColor="#d00"
         android:text="大河之剑天上来，飞流直下三千尺"
         android:textSize="20sp"
         android:textStyle="bold"

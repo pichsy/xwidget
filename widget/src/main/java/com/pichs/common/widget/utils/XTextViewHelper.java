@@ -18,7 +18,7 @@ import java.lang.ref.WeakReference;
 public class XTextViewHelper implements XITextView {
 
     private final WeakReference<TextView> mOwner;
-    private int normalColor = 0;
+    private int normalColor = Color.DKGRAY;
     private int pressedColor = 0;
     private int checkedColor = 0;
     private int unEnabledColor = 0;
@@ -46,11 +46,11 @@ public class XTextViewHelper implements XITextView {
         }
         if (null != attrs || defAttr != 0 || defStyleRes != 0) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XITextView, defAttr, defStyleRes);
-            normalColor = ta.getColor(R.styleable.XITextView_android_textColor, Color.LTGRAY);
-            pressedColor = ta.getColor(R.styleable.XITextView_xp_pressedTextColor, Color.LTGRAY);
-            checkedColor = ta.getColor(R.styleable.XITextView_xp_checkedTextColor, Color.LTGRAY);
-            unEnabledColor = ta.getColor(R.styleable.XITextView_xp_unEnabledTextColor, Color.LTGRAY);
-            activatedColor = ta.getColor(R.styleable.XITextView_xp_activatedTextColor, Color.LTGRAY);
+            normalColor = ta.getColor(R.styleable.XITextView_android_textColor, Color.DKGRAY);
+            pressedColor = ta.getColor(R.styleable.XITextView_xp_pressedTextColor, 0);
+            checkedColor = ta.getColor(R.styleable.XITextView_xp_checkedTextColor, 0);
+            unEnabledColor = ta.getColor(R.styleable.XITextView_xp_unEnabledTextColor, 0);
+            activatedColor = ta.getColor(R.styleable.XITextView_xp_activatedTextColor, 0);
             isIgnoreGlobalTypeface = ta.getBoolean(R.styleable.XITextView_xp_ignoreGlobalTypeface, false);
             ta.recycle();
             setSelector();
@@ -104,6 +104,7 @@ public class XTextViewHelper implements XITextView {
                 if (checkedColor != 0) {
                     builder.addPressedColor(checkedColor);
                 }
+                builder.setUnSateColor(normalColor);
                 mOwner.get().setTextColor(builder.build());
             }
         }
