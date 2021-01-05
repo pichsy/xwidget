@@ -1,11 +1,13 @@
 # xwidget
 牛逼的自定义控件
 
+- 此次更新优化字体相关设置，用起来更随心，更舒服。
+
 ### 引入控件
 
       ```
       
-        implementation 'com.github.pichsy:xwidget:1.1'
+        implementation 'com.github.pichsy:xwidget:1.3'
         
         
       ```
@@ -43,3 +45,4 @@
        
        // 默认是false
        normalBtn.setIgnoreGlobalTypeface(true);
+        
