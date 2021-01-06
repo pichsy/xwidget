@@ -51,3 +51,13 @@
        normalBtn.setIgnoreGlobalTypeface(true);
         
     ```
+## 升级日志
+
+### 1.5 版本
+#### 增加CircularProgressDrawable
+- 此类摘录自SwipeRefreshLayout官方框架，性能高，放心使用
+- 为啥单独搞下来，因为很多人都不用SwipeRefreshLayout官方框架，而是用三方的SmartRefreshLayout，<br>
+所以这么好用的CircularProgressDrawable就浪费了，故本人将此类摘了备用，可用作加载进度条。效果贼好。 !~机智.如我~！
+
+### 1.4, 1.3, 1.2, 1.1, 1.0 版本
+- 优化加修bug~
