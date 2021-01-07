@@ -48,13 +48,12 @@ import java.util.Locale;
  * @date 2016-03-17
  */
 public class XDisplayHelper {
+    private static final String TAG = "XDisplayHelper";
 
     /**
      * 屏幕密度,系统源码注释不推荐使用
      */
-    public static final float DENSITY = Resources.getSystem()
-            .getDisplayMetrics().density;
-    private static final String TAG = "XDisplayHelper";
+    public static final float DENSITY = Resources.getSystem().getDisplayMetrics().density;
 
     /**
      * 是否有摄像头
@@ -117,7 +116,7 @@ public class XDisplayHelper {
      */
     public static int getScreenHeight(Context context) {
         int screenHeight = getDisplayMetrics(context).heightPixels;
-        if(XDeviceHelper.isXiaomi() && xiaomiNavigationGestureEnabled(context)){
+        if (XDeviceHelper.isXiaomi() && xiaomiNavigationGestureEnabled(context)) {
             screenHeight += getResourceNavHeight(context);
         }
         return screenHeight;
@@ -265,9 +264,9 @@ public class XDisplayHelper {
             return result;
         }
 //        if (isPortrait) {
-            // TODO vivo 设置-系统导航-导航手势样式-显示手势操作区域 打开的情况下，应该减去手势操作区域的高度，但无API
-            // TODO vivo 设置-显示与亮度-第三方应用显示比例 选为安全区域显示时，整个 window 会移动，应该减去移动区域，但无API
-            // TODO oppo 设置-显示与亮度-应用全屏显示-凹形区域显示控制 关闭是，整个 window 会移动，应该减去移动区域，但无API
+        // TODO vivo 设置-系统导航-导航手势样式-显示手势操作区域 打开的情况下，应该减去手势操作区域的高度，但无API
+        // TODO vivo 设置-显示与亮度-第三方应用显示比例 选为安全区域显示时，整个 window 会移动，应该减去移动区域，但无API
+        // TODO oppo 设置-显示与亮度-应用全屏显示-凹形区域显示控制 关闭是，整个 window 会移动，应该减去移动区域，但无API
 //        }
         return result;
     }
@@ -290,7 +289,7 @@ public class XDisplayHelper {
      * @param dp
      * @return
      */
-    public static int dp2px(Context context, int dp) {
+    public static int dp2px(Context context, float dp) {
         return (int) (getDensity(context) * dp + 0.5);
     }
 
@@ -300,7 +299,7 @@ public class XDisplayHelper {
      * @param sp
      * @return
      */
-    public static int sp2px(Context context, int sp) {
+    public static int sp2px(Context context, float sp) {
         return (int) (getFontDensity(context) * sp + 0.5);
     }
 
@@ -310,8 +309,8 @@ public class XDisplayHelper {
      * @param px
      * @return
      */
-    public static int px2dp(Context context, int px) {
-        return (int) (px / getDensity(context) + 0.5);
+    public static float px2dp(Context context, int px) {
+        return (float) px / getDensity(context);
     }
 
     /**
@@ -320,8 +319,8 @@ public class XDisplayHelper {
      * @param px
      * @return
      */
-    public static int px2sp(Context context, int px) {
-        return (int) (px / getFontDensity(context) + 0.5);
+    public static float px2sp(Context context, int px) {
+        return (float) px / getFontDensity(context);
     }
 
     /**
@@ -362,7 +361,7 @@ public class XDisplayHelper {
      * @return
      */
     public static int getStatusBarHeight(Context context) {
-        if(XDeviceHelper.isXiaomi()){
+        if (XDeviceHelper.isXiaomi()) {
             int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
             if (resourceId > 0) {
                 return context.getResources().getDimensionPixelSize(resourceId);
@@ -374,7 +373,7 @@ public class XDisplayHelper {
             Object obj = c.newInstance();
             Field field = c.getField("status_bar_height");
             int x = Integer.parseInt(field.get(obj).toString());
-            if(x > 0){
+            if (x > 0) {
                 return context.getResources().getDimensionPixelSize(x);
             }
         } catch (Exception e) {
@@ -402,7 +401,7 @@ public class XDisplayHelper {
         return getRealScreenSize(context)[1] - getScreenHeight(context);
     }
 
-    private static int getResourceNavHeight(Context context){
+    private static int getResourceNavHeight(Context context) {
         // 小米4没有nav bar, 而 navigation_bar_height 有值
         int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
         if (resourceId > 0) {
