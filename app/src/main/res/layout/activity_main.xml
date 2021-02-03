@@ -8,15 +8,22 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+    <ImageView
+        android:id="@+id/iv111"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="#ff0000" />
+
     <com.pichs.common.widget.cardview.XCardButton
         android:id="@+id/btn1"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:gravity="center"
+        android:minHeight="10dp"
         android:text="原样"
         android:textColor="#fff"
         android:textSize="20sp"
-        android:minHeight="10dp"
         android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -51,8 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="#F7F7C2"
-        android:textColor="#d00"
         android:text="大河之剑天上来，飞流直下三千尺"
+        android:textColor="#d00"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,10 +87,10 @@
         android:background="#AFEFE0"
         android:text="忽略全局字体变化"
         android:textSize="20sp"
-        app:xp_ignoreGlobalTypeface="true"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+        app:layout_constraintTop_toBottomOf="@+id/btn1"
+        app:xp_ignoreGlobalTypeface="true" />
 
 </LinearLayout>

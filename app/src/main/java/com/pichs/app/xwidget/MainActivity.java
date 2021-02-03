@@ -3,10 +3,12 @@ package com.pichs.app.xwidget;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pichs.common.widget.cardview.XCardButton;
@@ -19,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView iv111 = findViewById(R.id.iv111);
+//        iv111.setColorFilter(Color.parseColor("#00000000"), PorterDuff.Mode.SRC);
+
 
         TextView tv = findViewById(R.id.tv1);
         XCardButton btn = findViewById(R.id.btn1);
