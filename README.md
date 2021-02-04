@@ -9,7 +9,7 @@
 
     
         
-       implementation 'com.github.pichsy:xwidget:1.7'
+       implementation 'com.github.pichsy:xwidget:1.8'
        
        
 

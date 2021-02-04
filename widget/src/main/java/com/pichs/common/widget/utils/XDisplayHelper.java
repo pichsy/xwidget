@@ -132,33 +132,6 @@ public class XDisplayHelper {
     public static int[] getRealScreenSize(Context context) {
         // 切换屏幕导致宽高变化时不能用 cache，先去掉 cache
         return doGetRealScreenSize(context);
-//        if (XDeviceHelper.isEssentialPhone() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            // Essential Phone 8.0版本后，Display size 会根据挖孔屏的设置而得到不同的结果，不能信任 cache
-//            return doGetRealScreenSize(context);
-//        }
-//        int orientation = context.getResources().getConfiguration().orientation;
-//        int[] result;
-//        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            result = sLandscapeRealSizeCache;
-//            if (result == null) {
-//                result = doGetRealScreenSize(context);
-//                if(result[0] > result[1]){
-//                    // the result may be wrong sometimes, do not cache !!!!
-//                    sLandscapeRealSizeCache = result;
-//                }
-//            }
-//            return result;
-//        } else {
-//            result = sPortraitRealSizeCache;
-//            if (result == null) {
-//                result = doGetRealScreenSize(context);
-//                if(result[0] < result[1]){
-//                    // the result may be wrong sometimes, do not cache !!!!
-//                    sPortraitRealSizeCache = result;
-//                }
-//            }
-//            return result;
-//        }
     }
 
     private static int[] doGetRealScreenSize(Context context) {
@@ -182,15 +155,12 @@ public class XDisplayHelper {
                 // used when SDK_INT >= 17; includes window decorations (statusbar bar/menu bar)
                 Point realSize = new Point();
                 d.getRealSize(realSize);
-
-
                 Display.class.getMethod("getRealSize", Point.class).invoke(d, realSize);
                 widthPixels = realSize.x;
                 heightPixels = realSize.y;
             } catch (Exception ignored) {
             }
         }
-
         size[0] = widthPixels;
         size[1] = heightPixels;
         return size;
@@ -228,7 +198,6 @@ public class XDisplayHelper {
             if (XDeviceHelper.isHuawei() && !XDisplayHelper.huaweiIsNotchSetToShowInSetting(context)) {
                 result -= XNotchHelper.getNotchSizeInHuawei(context)[1];
             }
-
             // TODO vivo 设置-系统导航-导航手势样式-显示手势操作区域 打开的情况下，应该减去手势操作区域的高度，但无API
             // TODO vivo 设置-显示与亮度-第三方应用显示比例 选为安全区域显示时，整个 window 会移动，应该减去移动区域，但无API
             // TODO oppo 设置-显示与亮度-应用全屏显示-凹形区域显示控制 关闭是，整个 window 会移动，应该减去移动区域，但无API
@@ -292,7 +261,15 @@ public class XDisplayHelper {
     public static int dp2px(Context context, float dp) {
         return (int) (getDensity(context) * dp + 0.5);
     }
-
+    /**
+     * 单位转换: dp -> px
+     *
+     * @param dp
+     * @return
+     */
+    public static int dp2px(Context context, int dp) {
+        return (int) (getDensity(context) * dp + 0.5);
+    }
     /**
      * 单位转换: sp -> px
      *
@@ -300,6 +277,16 @@ public class XDisplayHelper {
      * @return
      */
     public static int sp2px(Context context, float sp) {
+        return (int) (getFontDensity(context) * sp + 0.5);
+    }
+
+    /**
+     * 单位转换: sp -> px
+     *
+     * @param sp
+     * @return
+     */
+    public static int sp2px(Context context, int sp) {
         return (int) (getFontDensity(context) * sp + 0.5);
     }
 
