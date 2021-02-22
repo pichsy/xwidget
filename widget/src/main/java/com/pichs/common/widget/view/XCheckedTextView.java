@@ -1,25 +1,19 @@
 package com.pichs.common.widget.view;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatCheckedTextView;
-import androidx.appcompat.widget.AppCompatTextView;
-
 import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.cardview.XITextView;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
-import com.pichs.common.widget.utils.XTypefaceHelper;
 
 /**
  * TextView 自定义基类
  */
 public class XCheckedTextView extends AppCompatCheckedTextView implements XIBackground, XITextView {
-
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
 
