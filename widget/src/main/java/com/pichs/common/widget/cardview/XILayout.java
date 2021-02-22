@@ -56,9 +56,10 @@ public interface XILayout {
     @IntDef({
             HIDE_RADIUS_SIDE_NONE,
             HIDE_RADIUS_SIDE_TOP,
-            HIDE_RADIUS_SIDE_RIGHT,
             HIDE_RADIUS_SIDE_BOTTOM,
-            HIDE_RADIUS_SIDE_LEFT})
+            HIDE_RADIUS_SIDE_RIGHT,
+            HIDE_RADIUS_SIDE_LEFT,
+    })
     @Retention(RetentionPolicy.SOURCE)
     @interface HideRadiusSide {
     }

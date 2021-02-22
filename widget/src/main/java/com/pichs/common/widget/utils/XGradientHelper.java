@@ -417,6 +417,92 @@ public class XGradientHelper {
         );
     }
 
+    public static class GradientDrawableBuilder {
+        /**
+         * 数值必须都为正数才有效
+         * shape 只支持默认，rectangle
+         * <p>
+         * topLeftRadius     左上角圆角大小
+         * topRightRadius    右上角圆角大小
+         * bottomLeftRadius  左下角圆角大小
+         * bottomRightRadius 右下角圆角大小
+         * fillColor         背景填充色
+         * strokeWidth       边框宽
+         * strokeColor       边框颜色
+         */
+        int radius;
+        int topLeftRadius;
+        int topRightRadius;
+        int bottomLeftRadius;
+        int bottomRightRadius;
+
+        @ColorInt
+        int fillColor;
+        int strokeWidth;
+        @ColorInt
+        int strokeColor;
+        GradientDrawable.Orientation orientation;
+        int[] gradientColors;
+
+        public GradientDrawableBuilder setRadius(int radius) {
+            this.radius = radius;
+            return this;
+        }
+
+        public GradientDrawableBuilder setTopLeftRadius(int topLeftRadius) {
+            this.topLeftRadius = topLeftRadius;
+            return this;
+        }
+
+        public GradientDrawableBuilder setTopRightRadius(int topRightRadius) {
+            this.topRightRadius = topRightRadius;
+            return this;
+        }
+
+        public GradientDrawableBuilder setBottomLeftRadius(int bottomLeftRadius) {
+            this.bottomLeftRadius = bottomLeftRadius;
+            return this;
+        }
+
+        public GradientDrawableBuilder setBottomRightRadius(int bottomRightRadius) {
+            this.bottomRightRadius = bottomRightRadius;
+            return this;
+        }
+
+        public GradientDrawableBuilder setFillColor(int fillColor) {
+            this.fillColor = fillColor;
+            return this;
+        }
+
+        public GradientDrawableBuilder setStrokeWidth(int strokeWidth) {
+            this.strokeWidth = strokeWidth;
+            return this;
+        }
+
+        public GradientDrawableBuilder setStrokeColor(int strokeColor) {
+            this.strokeColor = strokeColor;
+            return this;
+        }
+
+        public GradientDrawableBuilder setOrientation(GradientDrawable.Orientation orientation) {
+            this.orientation = orientation;
+            return this;
+        }
+
+        public GradientDrawableBuilder setGradientColors(int[] gradientColors) {
+            this.gradientColors = gradientColors;
+            return this;
+        }
+
+        GradientDrawable build() {
+            return getDrawable(
+                    radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                    fillColor, strokeWidth, strokeColor, orientation, gradientColors
+            );
+        }
+
+    }
+
     /**
      * 获取Drawable
      * 数值必须都为正数才有效
@@ -510,37 +596,6 @@ public class XGradientHelper {
      */
     public static GradientDrawable getGradientDrawable(int radius, GradientDrawable.Orientation gradientOrientation, @ColorInt int[] gradientColors) {
         return getDrawable(radius, 0, 0, 0, 0, 0, 0, 0, gradientOrientation, gradientColors);
-    }
-
-    /**
-     * 设置渐变色，默认水平方向渐变
-     * 不带边框
-     *
-     * @param radius         圆角大小 px
-     * @param gradientColors 渐变数组，从左到右渐变
-     * @return GradientDrawable
-     */
-    public static GradientDrawable getGradientDrawable(int radius, @ColorInt int[] gradientColors) {
-        return getDrawable(radius, 0, 0, 0, 0, 0, 0, 0, GradientDrawable.Orientation.LEFT_RIGHT, gradientColors);
-    }
-
-    /**
-     * 设置渐变色，默认水平方向渐变
-     * 不带边框
-     *
-     * @param topLeftRadius     圆角大小 px
-     * @param topRightRadius    圆角大小 px
-     * @param topLeftRadius     圆角大小 px
-     * @param bottomRightRadius 圆角大小 px
-     * @param gradientColors    渐变数组，从左到右渐变
-     * @return GradientDrawable
-     */
-    public static GradientDrawable getGradientDrawable(int topLeftRadius,
-                                                       int topRightRadius,
-                                                       int bottomLeftRadius,
-                                                       int bottomRightRadius,
-                                                       @ColorInt int[] gradientColors) {
-        return getDrawable(0, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, 0, 0, 0, GradientDrawable.Orientation.LEFT_RIGHT, gradientColors);
     }
 
 }

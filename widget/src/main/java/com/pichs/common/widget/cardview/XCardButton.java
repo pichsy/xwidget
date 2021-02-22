@@ -278,7 +278,6 @@ public class XCardButton extends XButton implements XILayout {
 
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        super.dispatchDraw(canvas);
         mLayoutHelper.drawDividers(canvas, getWidth(), getHeight());
         mLayoutHelper.dispatchRoundBorderDraw(canvas);
     }

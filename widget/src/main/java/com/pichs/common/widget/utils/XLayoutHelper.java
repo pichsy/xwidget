@@ -36,6 +36,7 @@ import android.view.ViewOutlineProvider;
 
 import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
+
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XILayout;
@@ -501,7 +502,6 @@ public class XLayoutHelper implements XILayout {
             }
 
             setShadowColorInner(mShadowColor);
-
             owner.setOutlineProvider(new ViewOutlineProvider() {
                 @Override
                 @TargetApi(21)
@@ -890,7 +890,6 @@ public class XLayoutHelper implements XILayout {
         mPath.reset();
         mPath.addRoundRect(rect, radiusArray, Path.Direction.CW);
         canvas.drawPath(mPath, paint);
-
     }
 
     public static boolean useFeature() {
