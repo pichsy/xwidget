@@ -12,7 +12,6 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-
         <ImageView
             android:id="@+id/iv111"
             android:layout_width="80dp"
@@ -85,8 +84,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn1" />
-
-
 
         <com.pichs.common.widget.view.XTextView
             android:id="@+id/tv3"

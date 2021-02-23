@@ -9,12 +9,13 @@
 
     
         
-       implementation 'com.github.pichsy:xwidget:1.8'
+       implementation 'com.github.pichsy:xwidget:1.9'
        
        
 
 
 ## 升级内容，新增字体全局设置。
+## 升级内容，新增RoundView系列。
 - 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
 1. 在Application中初始化
 
