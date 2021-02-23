@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--**********************************************
+    *                  XRoundButton               *
+    ***********************************************-->
+    <!-- 圆角是否要自适应为 View 高度的一半 -->
+    <!-- 同时指定四个方向的圆角大小 -->
+    <!--    <attr name="xp_radius" format="dimension"/>-->
+    <!-- 指定左上方圆角的大小 -->
+    <attr name="xp_backgroundColor" format="color" />
+    <attr name="xp_radiusTopLeft" format="dimension" />
+    <!-- 指定右上方圆角的大小 -->
+    <attr name="xp_radiusTopRight" format="dimension" />
+    <!-- 指定左下方圆角的大小 -->
+    <attr name="xp_radiusBottomLeft" format="dimension" />
+    <!-- 指定右下方圆角的大小 -->
+    <attr name="xp_radiusBottomRight" format="dimension" />
+
+    <!--  背景颜色选择器  -->
+    <declare-styleable name="XIRoundBackground">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <!--  圆形图片  -->
+    <declare-styleable name="XCircleImageView">
+        <attr name="xp_borderWidth" />
+        <attr name="xp_borderColor" />
+        <attr name="xp_borderOverlay" format="boolean" />
+        <attr name="xp_colorFilter" />
+        <attr name="xp_colorFilterMode" />
+    </declare-styleable>
+    <!--  XRoundImageView 和XIRoundBackground 不共用，但功能一致  -->
+    <declare-styleable name="XRoundImageView">
+        <attr name="android:scaleType" />
+        <attr name="android:layout_width" />
+        <attr name="android:layout_height" />
+        <attr name="xp_borderColor" />
+        <attr name="xp_borderWidth" />
+        <attr name="xp_radius" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusBottomRight" />
+        <attr name="xp_oval" format="boolean" />
+        <attr name="xp_colorFilter" />
+        <attr name="xp_colorFilterMode" />
+    </declare-styleable>
+
+    <declare-styleable name="XRoundButton">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <declare-styleable name="XRoundTextView">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <declare-styleable name="XRoundLinearLayout">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <declare-styleable name="XRoundConstraintLayout">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <declare-styleable name="XRoundFrameLayout">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <declare-styleable name="XRoundView">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <declare-styleable name="XRoundViewGroup">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+    <declare-styleable name="XRoundRelativeLayout">
+        <!--   增加圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_isRadiusAdjustBounds" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomRight" />
+
+        <!--    常态边框    -->
+        <attr name="xp_borderWidth" />
+        <!--    常态边框色    -->
+        <attr name="xp_borderColor" />
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_unEnabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+</resources>

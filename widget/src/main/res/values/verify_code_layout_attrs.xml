@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="xp_textPassword" format="boolean" />
+    <declare-styleable name="VerificationCodeEditText">
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <!--   最大数决定了验证码最大输入的位数     -->
+        <attr name="android:maxLength" />
+        <!--   是否是密文显示     -->
+        <attr name="xp_textPassword" />
+        <!--   验证码的类型，下划线，实体，空心     -->
+        <attr name="xp_boxType" format="enum">
+            <enum name="underline" value="3" />
+            <enum name="solid" value="2" />
+            <enum name="hollow" value="1" />
+        </attr>
+        <!--   块状的圆角     -->
+        <attr name="xp_radius" />
+        <attr name="xp_blockColor" format="color|reference" />
+        <!--    横向的块状间隔    -->
+        <attr name="xp_horizontalSpacing" format="dimension|reference" />
+
+        <!--   是否显示游标     -->
+        <attr name="xp_showCursor" format="boolean" />
+        <!--    游标闪烁时长    -->
+        <attr name="xp_cursorDuration" format="integer" />
+        <!--    游标宽    -->
+        <attr name="xp_cursorWidth" format="dimension|reference" />
+        <!--    游标颜色    -->
+        <attr name="xp_cursorColor" format="color|reference" />
+
+        <attr name="xp_borderColor" />
+        <attr name="xp_borderNoTextColor" format="color|reference" />
+        <attr name="xp_borderLoadingColor" format="color|reference" />
+        <attr name="xp_borderErrorColor" format="color|reference" />
+        <attr name="xp_borderWidth" />
+    </declare-styleable>
+</resources>

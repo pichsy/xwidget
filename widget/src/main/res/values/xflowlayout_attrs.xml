@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- XFloatLayout start -->
+    <attr name="xp_childHorizontalSpacing" format="dimension" />
+    <attr name="xp_childVerticalSpacing" format="dimension" />
+    <attr name="xp_maxNumber" format="integer" />
+
+    <declare-styleable name="XFlowLayout">
+        <attr name="android:gravity" />
+        <attr name="xp_childHorizontalSpacing" />
+        <attr name="xp_childVerticalSpacing" />
+        <attr name="android:maxLines" />
+        <attr name="xp_maxNumber" />
+    </declare-styleable>
+    <!-- XFloatLayout end -->
+
+</resources>

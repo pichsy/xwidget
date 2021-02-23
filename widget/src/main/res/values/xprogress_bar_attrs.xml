@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- XProgressBar start -->
+    <declare-styleable name="XProgressBar">
+        <attr name="xp_progressType" format="enum">
+            <enum name="rect" value="0" />
+            <enum name="circle" value="1" />
+            <enum name="roundRect" value="2" />
+        </attr>
+        <attr name="xp_progressColor" format="color" />
+        <attr name="xp_backgroundColor" />
+        <attr name="xp_maxValue" format="integer" />
+        <attr name="xp_value" format="integer" />
+        <attr name="xp_strokeWidth" format="dimension" />
+        <attr name="xp_strokeRoundCap" format="boolean" />
+        <attr name="xp_textSize" format="dimension" />
+        <attr name="xp_textColor" format="color" />
+    </declare-styleable>
+    <!-- XProgressBar end -->
+</resources>

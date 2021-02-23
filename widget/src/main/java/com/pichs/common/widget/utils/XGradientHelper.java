@@ -348,7 +348,6 @@ public class XGradientHelper {
                 .build();
     }
 
-
     /**
      * 获取带圆角的 selector
      *
@@ -369,7 +368,6 @@ public class XGradientHelper {
                 getDrawable(radius, normalColor, 0, 0)
         );
     }
-
 
     /**
      * 获取带圆角的 selector
@@ -417,55 +415,60 @@ public class XGradientHelper {
         );
     }
 
+    /**
+     * 建造者创建GradientDrawable
+     * 数值必须都为正数才有效
+     * shape 只支持默认，rectangle
+     * <p>
+     * radius            圆角大小      （优先级低于单独设置圆角）
+     * topLeftRadius     左上角圆角大小 （优先级高） (0->radius)
+     * topRightRadius    右上角圆角大小 （优先级高） (0->radius)
+     * bottomLeftRadius  左下角圆角大小 （优先级高） (0->radius)
+     * bottomRightRadius 右下角圆角大小 （优先级高） (0->radius)
+     * strokeWidth       边框宽
+     * strokeColor       边框颜色
+     * fillColor         背景填充色      （优先使用gradientColors）没有会使用fillColor (优先级低)
+     * gradientColors    渐变色数组，仅支持2个色，3个及上不行，不会渐变，只会分割色  (优先级高)
+     */
     public static class GradientDrawableBuilder {
-        /**
-         * 数值必须都为正数才有效
-         * shape 只支持默认，rectangle
-         * <p>
-         * topLeftRadius     左上角圆角大小
-         * topRightRadius    右上角圆角大小
-         * bottomLeftRadius  左下角圆角大小
-         * bottomRightRadius 右下角圆角大小
-         * fillColor         背景填充色
-         * strokeWidth       边框宽
-         * strokeColor       边框颜色
-         */
-        int radius;
-        int topLeftRadius;
-        int topRightRadius;
-        int bottomLeftRadius;
-        int bottomRightRadius;
+
+        int radius = 0;
+        int topLeftRadius = 0;
+        int topRightRadius = 0;
+        int bottomLeftRadius = 0;
+        int bottomRightRadius = 0;
 
         @ColorInt
-        int fillColor;
-        int strokeWidth;
+        int fillColor = 0;
+        int strokeWidth = 0;
         @ColorInt
-        int strokeColor;
-        GradientDrawable.Orientation orientation;
+        int strokeColor = 0;
+        // 默认从左到右
+        GradientDrawable.Orientation orientation = GradientDrawable.Orientation.LEFT_RIGHT;
         int[] gradientColors;
 
         public GradientDrawableBuilder setRadius(int radius) {
-            this.radius = radius;
+            this.radius = Math.max(radius, 0);
             return this;
         }
 
         public GradientDrawableBuilder setTopLeftRadius(int topLeftRadius) {
-            this.topLeftRadius = topLeftRadius;
+            this.topLeftRadius = Math.max(topLeftRadius, 0);
             return this;
         }
 
         public GradientDrawableBuilder setTopRightRadius(int topRightRadius) {
-            this.topRightRadius = topRightRadius;
+            this.topRightRadius = Math.max(topRightRadius, 0);
             return this;
         }
 
         public GradientDrawableBuilder setBottomLeftRadius(int bottomLeftRadius) {
-            this.bottomLeftRadius = bottomLeftRadius;
+            this.bottomLeftRadius = Math.max(bottomLeftRadius, 0);
             return this;
         }
 
         public GradientDrawableBuilder setBottomRightRadius(int bottomRightRadius) {
-            this.bottomRightRadius = bottomRightRadius;
+            this.bottomRightRadius = Math.max(bottomRightRadius, 0);
             return this;
         }
 
@@ -494,7 +497,7 @@ public class XGradientHelper {
             return this;
         }
 
-        GradientDrawable build() {
+        public GradientDrawable build() {
             return getDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                     fillColor, strokeWidth, strokeColor, orientation, gradientColors
@@ -515,26 +518,14 @@ public class XGradientHelper {
      * @return GradientDrawable
      */
     public static GradientDrawable getDrawable(int radius, @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor) {
-        return getDrawable(radius, 0, 0, 0, 0, fillColor, strokeWidth, strokeColor, null);
+        return new GradientDrawableBuilder()
+                .setRadius(radius)
+                .setFillColor(fillColor)
+                .setStrokeWidth(strokeWidth)
+                .setStrokeColor(strokeColor)
+                .build();
     }
 
-    /**
-     * 数值必须都为正数才有效
-     * shape 只支持默认，rectangle
-     *
-     * @param topLeftRadius     左上角圆角大小
-     * @param topRightRadius    右上角圆角大小
-     * @param bottomLeftRadius  左下角圆角大小
-     * @param bottomRightRadius 右下角圆角大小
-     * @param fillColor         背景填充色
-     * @param strokeWidth       边框宽
-     * @param strokeColor       边框颜色
-     * @return GradientDrawable
-     */
-    public static GradientDrawable getDrawable(int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius,
-                                               @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor) {
-        return getDrawable(0, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, fillColor, strokeWidth, strokeColor, null);
-    }
 
     /**
      * shape 只支持默认，rectangle
@@ -573,9 +564,10 @@ public class XGradientHelper {
         }
         if (gradientColors != null && gradientColors.length >= 2) {
             gradientDrawable.setColors(gradientColors);
-            if (orientation != null) {
-                gradientDrawable.setOrientation(orientation);
+            if (orientation == null) {
+                orientation = GradientDrawable.Orientation.LEFT_RIGHT;
             }
+            gradientDrawable.setOrientation(orientation);
             gradientDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
         } else {
             gradientDrawable.setColor(fillColor);
@@ -595,7 +587,11 @@ public class XGradientHelper {
      * {@link GradientDrawable.Orientation#LEFT_RIGHT}
      */
     public static GradientDrawable getGradientDrawable(int radius, GradientDrawable.Orientation gradientOrientation, @ColorInt int[] gradientColors) {
-        return getDrawable(radius, 0, 0, 0, 0, 0, 0, 0, gradientOrientation, gradientColors);
+        return new GradientDrawableBuilder()
+                .setRadius(radius)
+                .setOrientation(gradientOrientation)
+                .setGradientColors(gradientColors)
+                .build();
     }
 
 }

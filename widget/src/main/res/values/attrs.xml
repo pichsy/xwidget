@@ -139,10 +139,35 @@
     <attr name="xp_unEnabledTextColor" format="color|reference" />
     <!--  是否忽略全局字体切换  -->
     <attr name="xp_ignoreGlobalTypeface" format="boolean" />
-
+    <!--  边框色  -->
+    <attr name="xp_pressedBorderColor" format="color" />
+    <attr name="xp_checkedBorderColor" format="color" />
+    <attr name="xp_activatedBorderColor" format="color" />
+    <attr name="xp_unEnabledBorderColor" format="color" />
+    <!--  颜色过滤器  -->
+    <attr name="xp_colorFilter" format="color" />
+    <attr name="xp_colorFilterMode" format="enum">
+        <enum name="src" value="0" />
+        <enum name="src_atop" value="1" />
+        <enum name="src_in" value="2" />
+        <enum name="src_out" value="3" />
+        <enum name="src_over" value="4" />
+        <enum name="multiply" value="5" />
+        <enum name="dst" value="6" />
+        <enum name="dst_atop" value="7" />
+        <enum name="dst_in" value="8" />
+        <enum name="dst_out" value="9" />
+        <enum name="dst_over" value="10" />
+        <enum name="clear" value="11" />
+        <enum name="xor" value="12" />
+        <enum name="screen" value="13" />
+        <enum name="darken" value="14" />
+        <enum name="lighten" value="15" />
+        <enum name="add" value="16" />
+        <enum name="overly" value="17" />
+    </attr>
     <!--  背景颜色选择器  -->
     <declare-styleable name="XIBackground">
-
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -177,7 +202,6 @@
 
     <!--  字体颜色选择器  -->
     <declare-styleable name="XITextView">
-
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
@@ -187,6 +211,7 @@
 
     </declare-styleable>
 
+    <!--  XCard 顶层接口  -->
     <declare-styleable name="XILayout">
         <attr name="android:maxWidth" />
         <attr name="android:maxHeight" />
@@ -231,7 +256,7 @@
         <attr name="xp_borderGradientOrientation" />
     </declare-styleable>
 
-    <!--  背景颜色选择器  -->
+    <!--  XLinearLayout  -->
     <declare-styleable name="XLinearLayout">
 
         <!--    背景色渐变色，正常时显示    -->
@@ -266,7 +291,7 @@
 
     </declare-styleable>
 
-    <!--  背景颜色选择器  -->
+    <!--  XRelativeLayout  -->
     <declare-styleable name="XRelativeLayout">
 
         <!--    背景色渐变色，正常时显示    -->
@@ -301,7 +326,7 @@
 
     </declare-styleable>
 
-    <!--  背景颜色选择器  -->
+    <!--  XFrameLayout  -->
     <declare-styleable name="XFrameLayout">
 
         <!--    背景色渐变色，正常时显示    -->
@@ -336,8 +361,7 @@
 
     </declare-styleable>
 
-
-    <!--  背景颜色选择器  -->
+    <!--  XConstraintLayout  -->
     <declare-styleable name="XConstraintLayout">
 
         <!--    背景色渐变色，正常时显示    -->
@@ -371,7 +395,6 @@
         <attr name="xp_unEnabledBackgroundOrientation" />
 
     </declare-styleable>
-
 
     <!--  背景颜色选择器  -->
     <declare-styleable name="XButton">
@@ -413,8 +436,7 @@
 
     </declare-styleable>
 
-
-    <!--  背景颜色选择器  -->
+    <!--  XTextView  -->
     <declare-styleable name="XTextView">
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
@@ -457,7 +479,7 @@
     <!--  禁用复制和粘贴  -->
     <attr name="xp_disableCopyAndPaste" format="boolean" />
 
-    <!--  背景颜色选择器  -->
+    <!--  XEditText  -->
     <declare-styleable name="XEditText">
         <attr name="xp_disableCopyAndPaste" />
 
@@ -499,7 +521,7 @@
 
     </declare-styleable>
 
-    <!--  背景颜色选择器  -->
+    <!--  XCheckedTextView  -->
     <declare-styleable name="XCheckedTextView">
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
@@ -539,7 +561,7 @@
 
     </declare-styleable>
 
-    <!--  背景颜色选择器  -->
+    <!--  XView  -->
     <declare-styleable name="XView">
 
         <!--    背景色渐变色，正常时显示    -->
@@ -574,8 +596,7 @@
 
     </declare-styleable>
 
-
-    <!--  背景颜色选择器  -->
+    <!--  XViewGroup  -->
     <declare-styleable name="XViewGroup">
 
         <!--    背景色渐变色，正常时显示    -->
@@ -610,7 +631,7 @@
 
     </declare-styleable>
 
-    <!--  背景颜色选择器  -->
+    <!--  XImageView  -->
     <declare-styleable name="XImageView">
 
         <!--    背景色渐变色，正常时显示    -->
@@ -645,459 +666,6 @@
 
         <attr name="xp_colorFilter" />
         <attr name="xp_colorFilterMode" />
-    </declare-styleable>
-
-    <declare-styleable name="XCardButton">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
-        <attr name="xp_bottomDividerHeight" />
-        <attr name="xp_bottomDividerColor" />
-        <attr name="xp_bottomDividerInsetLeft" />
-        <attr name="xp_bottomDividerInsetRight" />
-        <attr name="xp_topDividerHeight" />
-        <attr name="xp_topDividerColor" />
-        <attr name="xp_topDividerInsetLeft" />
-        <attr name="xp_topDividerInsetRight" />
-        <attr name="xp_leftDividerWidth" />
-        <attr name="xp_leftDividerColor" />
-        <attr name="xp_leftDividerInsetTop" />
-        <attr name="xp_leftDividerInsetBottom" />
-        <attr name="xp_rightDividerWidth" />
-        <attr name="xp_rightDividerColor" />
-        <attr name="xp_rightDividerInsetTop" />
-        <attr name="xp_rightDividerInsetBottom" />
-        <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_outerNormalColor" />
-        <attr name="xp_hideRadiusSide" />
-        <attr name="xp_shadowElevation" />
-        <attr name="xp_shadowAlpha" />
-        <attr name="xp_shadowColor" />
-        <attr name="xp_showBorderOnlyBeforeL" />
-        <attr name="xp_outlineInsetTop" />
-        <attr name="xp_outlineInsetLeft" />
-        <attr name="xp_outlineInsetRight" />
-        <attr name="xp_outlineInsetBottom" />
-        <attr name="xp_outlineExcludePadding" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_borderGradientOrientation" />
-        <attr name="xp_borderGradientEndColor" />
-        <attr name="xp_borderGradientStartColor" />
-    </declare-styleable>
-
-    <declare-styleable name="XCardTextView">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
-        <attr name="xp_bottomDividerHeight" />
-        <attr name="xp_bottomDividerColor" />
-        <attr name="xp_bottomDividerInsetLeft" />
-        <attr name="xp_bottomDividerInsetRight" />
-        <attr name="xp_topDividerHeight" />
-        <attr name="xp_topDividerColor" />
-        <attr name="xp_topDividerInsetLeft" />
-        <attr name="xp_topDividerInsetRight" />
-        <attr name="xp_leftDividerWidth" />
-        <attr name="xp_leftDividerColor" />
-        <attr name="xp_leftDividerInsetTop" />
-        <attr name="xp_leftDividerInsetBottom" />
-        <attr name="xp_rightDividerWidth" />
-        <attr name="xp_rightDividerColor" />
-        <attr name="xp_rightDividerInsetTop" />
-        <attr name="xp_rightDividerInsetBottom" />
-        <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_outerNormalColor" />
-        <attr name="xp_hideRadiusSide" />
-        <attr name="xp_shadowElevation" />
-        <attr name="xp_shadowAlpha" />
-        <attr name="xp_shadowColor" />
-        <attr name="xp_showBorderOnlyBeforeL" />
-        <attr name="xp_outlineInsetTop" />
-        <attr name="xp_outlineInsetLeft" />
-        <attr name="xp_outlineInsetRight" />
-        <attr name="xp_outlineInsetBottom" />
-        <attr name="xp_outlineExcludePadding" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_borderGradientOrientation" />
-        <attr name="xp_borderGradientEndColor" />
-        <attr name="xp_borderGradientStartColor" />
-    </declare-styleable>
-
-    <declare-styleable name="XCardConstraintLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
-        <attr name="xp_bottomDividerHeight" />
-        <attr name="xp_bottomDividerColor" />
-        <attr name="xp_bottomDividerInsetLeft" />
-        <attr name="xp_bottomDividerInsetRight" />
-        <attr name="xp_topDividerHeight" />
-        <attr name="xp_topDividerColor" />
-        <attr name="xp_topDividerInsetLeft" />
-        <attr name="xp_topDividerInsetRight" />
-        <attr name="xp_leftDividerWidth" />
-        <attr name="xp_leftDividerColor" />
-        <attr name="xp_leftDividerInsetTop" />
-        <attr name="xp_leftDividerInsetBottom" />
-        <attr name="xp_rightDividerWidth" />
-        <attr name="xp_rightDividerColor" />
-        <attr name="xp_rightDividerInsetTop" />
-        <attr name="xp_rightDividerInsetBottom" />
-        <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_outerNormalColor" />
-        <attr name="xp_hideRadiusSide" />
-        <attr name="xp_shadowElevation" />
-        <attr name="xp_shadowAlpha" />
-        <attr name="xp_shadowColor" />
-        <attr name="xp_showBorderOnlyBeforeL" />
-        <attr name="xp_outlineInsetTop" />
-        <attr name="xp_outlineInsetLeft" />
-        <attr name="xp_outlineInsetRight" />
-        <attr name="xp_outlineInsetBottom" />
-        <attr name="xp_outlineExcludePadding" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_borderGradientEndColor" />
-        <attr name="xp_borderGradientStartColor" />
-        <attr name="xp_borderGradientOrientation" />
-    </declare-styleable>
-
-    <declare-styleable name="XCardFrameLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
-        <attr name="xp_bottomDividerHeight" />
-        <attr name="xp_bottomDividerColor" />
-        <attr name="xp_bottomDividerInsetLeft" />
-        <attr name="xp_bottomDividerInsetRight" />
-        <attr name="xp_topDividerHeight" />
-        <attr name="xp_topDividerColor" />
-        <attr name="xp_topDividerInsetLeft" />
-        <attr name="xp_topDividerInsetRight" />
-        <attr name="xp_leftDividerWidth" />
-        <attr name="xp_leftDividerColor" />
-        <attr name="xp_leftDividerInsetTop" />
-        <attr name="xp_leftDividerInsetBottom" />
-        <attr name="xp_rightDividerWidth" />
-        <attr name="xp_rightDividerColor" />
-        <attr name="xp_rightDividerInsetTop" />
-        <attr name="xp_rightDividerInsetBottom" />
-        <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_outerNormalColor" />
-        <attr name="xp_hideRadiusSide" />
-        <attr name="xp_shadowElevation" />
-        <attr name="xp_shadowAlpha" />
-        <attr name="xp_shadowColor" />
-        <attr name="xp_showBorderOnlyBeforeL" />
-        <attr name="xp_outlineInsetTop" />
-        <attr name="xp_outlineInsetLeft" />
-        <attr name="xp_outlineInsetRight" />
-        <attr name="xp_outlineInsetBottom" />
-        <attr name="xp_outlineExcludePadding" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_borderGradientEndColor" />
-        <attr name="xp_borderGradientStartColor" />
-        <attr name="xp_borderGradientOrientation" />
-    </declare-styleable>
-
-    <declare-styleable name="XCardLinearLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
-        <attr name="xp_bottomDividerHeight" />
-        <attr name="xp_bottomDividerColor" />
-        <attr name="xp_bottomDividerInsetLeft" />
-        <attr name="xp_bottomDividerInsetRight" />
-        <attr name="xp_topDividerHeight" />
-        <attr name="xp_topDividerColor" />
-        <attr name="xp_topDividerInsetLeft" />
-        <attr name="xp_topDividerInsetRight" />
-        <attr name="xp_leftDividerWidth" />
-        <attr name="xp_leftDividerColor" />
-        <attr name="xp_leftDividerInsetTop" />
-        <attr name="xp_leftDividerInsetBottom" />
-        <attr name="xp_rightDividerWidth" />
-        <attr name="xp_rightDividerColor" />
-        <attr name="xp_rightDividerInsetTop" />
-        <attr name="xp_rightDividerInsetBottom" />
-        <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_outerNormalColor" />
-        <attr name="xp_hideRadiusSide" />
-        <attr name="xp_shadowElevation" />
-        <attr name="xp_shadowAlpha" />
-        <attr name="xp_shadowColor" />
-        <attr name="xp_showBorderOnlyBeforeL" />
-        <attr name="xp_outlineInsetTop" />
-        <attr name="xp_outlineInsetLeft" />
-        <attr name="xp_outlineInsetRight" />
-        <attr name="xp_outlineInsetBottom" />
-        <attr name="xp_outlineExcludePadding" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_borderGradientEndColor" />
-        <attr name="xp_borderGradientStartColor" />
-        <attr name="xp_borderGradientOrientation" />
-    </declare-styleable>
-    <declare-styleable name="XCardRelativeLayout">
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
-        <attr name="xp_bottomDividerHeight" />
-        <attr name="xp_bottomDividerColor" />
-        <attr name="xp_bottomDividerInsetLeft" />
-        <attr name="xp_bottomDividerInsetRight" />
-        <attr name="xp_topDividerHeight" />
-        <attr name="xp_topDividerColor" />
-        <attr name="xp_topDividerInsetLeft" />
-        <attr name="xp_topDividerInsetRight" />
-        <attr name="xp_leftDividerWidth" />
-        <attr name="xp_leftDividerColor" />
-        <attr name="xp_leftDividerInsetTop" />
-        <attr name="xp_leftDividerInsetBottom" />
-        <attr name="xp_rightDividerWidth" />
-        <attr name="xp_rightDividerColor" />
-        <attr name="xp_rightDividerInsetTop" />
-        <attr name="xp_rightDividerInsetBottom" />
-        <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_outerNormalColor" />
-        <attr name="xp_hideRadiusSide" />
-        <attr name="xp_shadowElevation" />
-        <attr name="xp_shadowAlpha" />
-        <attr name="xp_shadowColor" />
-        <attr name="xp_showBorderOnlyBeforeL" />
-        <attr name="xp_outlineInsetTop" />
-        <attr name="xp_outlineInsetLeft" />
-        <attr name="xp_outlineInsetRight" />
-        <attr name="xp_outlineInsetBottom" />
-        <attr name="xp_outlineExcludePadding" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_borderGradientEndColor" />
-        <attr name="xp_borderGradientStartColor" />
-        <attr name="xp_borderGradientOrientation" />
-    </declare-styleable>
-
-    <!--**********************************************
-    *           XCardImageView                  *
-    ***********************************************-->
-    <declare-styleable name="XCardImageView">
-        <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_isCircle" format="boolean" />
-        <attr name="xp_selectedBorderWidth" format="dimension" />
-        <attr name="xp_selectedMaskColor" format="color|reference" />
-        <attr name="xp_selectedBorderColor" format="color|reference" />
-        <attr name="xp_isTouchSelectModEnabled" format="boolean" />
-        <attr name="android:maxWidth" />
-        <attr name="android:maxHeight" />
-        <attr name="android:minWidth" />
-        <attr name="android:minHeight" />
-        <attr name="xp_bottomDividerHeight" />
-        <attr name="xp_bottomDividerColor" />
-        <attr name="xp_bottomDividerInsetLeft" />
-        <attr name="xp_bottomDividerInsetRight" />
-        <attr name="xp_topDividerHeight" />
-        <attr name="xp_topDividerColor" />
-        <attr name="xp_topDividerInsetLeft" />
-        <attr name="xp_topDividerInsetRight" />
-        <attr name="xp_leftDividerWidth" />
-        <attr name="xp_leftDividerColor" />
-        <attr name="xp_leftDividerInsetTop" />
-        <attr name="xp_leftDividerInsetBottom" />
-        <attr name="xp_rightDividerWidth" />
-        <attr name="xp_rightDividerColor" />
-        <attr name="xp_rightDividerInsetTop" />
-        <attr name="xp_rightDividerInsetBottom" />
-        <attr name="xp_outerNormalColor" />
-        <attr name="xp_hideRadiusSide" />
-        <attr name="xp_shadowElevation" />
-        <attr name="xp_shadowAlpha" />
-        <attr name="xp_shadowColor" />
-        <attr name="xp_showBorderOnlyBeforeL" />
-        <attr name="xp_outlineInsetTop" />
-        <attr name="xp_outlineInsetLeft" />
-        <attr name="xp_outlineInsetRight" />
-        <attr name="xp_outlineInsetBottom" />
-        <attr name="xp_outlineExcludePadding" />
-        <attr name="xp_colorFilter" />
-        <attr name="xp_colorFilterMode" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_borderGradientEndColor" />
-        <attr name="xp_borderGradientStartColor" />
-        <attr name="xp_borderGradientOrientation" />
-    </declare-styleable>
-
-    <attr name="xp_colorFilter" format="color" />
-    <attr name="xp_colorFilterMode" format="enum">
-        <enum name="src" value="0" />
-        <enum name="src_atop" value="1" />
-        <enum name="src_in" value="2" />
-        <enum name="src_out" value="3" />
-        <enum name="src_over" value="4" />
-        <enum name="multiply" value="5" />
-        <enum name="dst" value="6" />
-        <enum name="dst_atop" value="7" />
-        <enum name="dst_in" value="8" />
-        <enum name="dst_out" value="9" />
-        <enum name="dst_over" value="10" />
-        <enum name="clear" value="11" />
-        <enum name="xor" value="12" />
-        <enum name="screen" value="13" />
-        <enum name="darken" value="14" />
-        <enum name="lighten" value="15" />
-        <enum name="add" value="16" />
-        <enum name="overly" value="17" />
-    </attr>
-
-    <!--**********************************************
-     *                  XCircleImageView             *
-     ***********************************************-->
-    <declare-styleable name="XCircleImageView">
-        <attr name="xp_borderWidth" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderOverlay" format="boolean" />
-        <attr name="xp_colorFilter" />
-        <attr name="xp_colorFilterMode" />
-    </declare-styleable>
-
-    <!--**********************************************
-    *                  XRoundButton               *
-    ***********************************************-->
-    <!-- 圆角是否要自适应为 View 高度的一半 -->
-    <!-- 同时指定四个方向的圆角大小 -->
-    <!--    <attr name="xp_radius" format="dimension"/>-->
-    <!-- 指定左上方圆角的大小 -->
-    <attr name="xp_backgroundColor" format="color" />
-    <attr name="xp_radiusTopLeft" format="dimension" />
-    <!-- 指定右上方圆角的大小 -->
-    <attr name="xp_radiusTopRight" format="dimension" />
-    <!-- 指定左下方圆角的大小 -->
-    <attr name="xp_radiusBottomLeft" format="dimension" />
-    <!-- 指定右下方圆角的大小 -->
-    <attr name="xp_radiusBottomRight" format="dimension" />
-
-
-    <!--  XRoundImageView  -->
-    <declare-styleable name="XRoundImageView">
-        <attr name="android:scaleType" />
-        <attr name="android:layout_width" />
-        <attr name="android:layout_height" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_radius" />
-        <attr name="xp_radiusTopLeft" />
-        <attr name="xp_radiusTopRight" />
-        <attr name="xp_radiusBottomLeft" />
-        <attr name="xp_radiusBottomRight" />
-        <attr name="xp_oval" format="boolean" />
-        <attr name="xp_colorFilter" />
-        <attr name="xp_colorFilterMode" />
-    </declare-styleable>
-
-
-    <!-- XProgressBar start -->
-    <declare-styleable name="XProgressBar">
-        <attr name="xp_progressType" format="enum">
-            <enum name="rect" value="0" />
-            <enum name="circle" value="1" />
-            <enum name="roundRect" value="2" />
-        </attr>
-        <attr name="xp_progressColor" format="color" />
-        <attr name="xp_backgroundColor" />
-        <attr name="xp_maxValue" format="integer" />
-        <attr name="xp_value" format="integer" />
-        <attr name="xp_strokeWidth" format="dimension" />
-        <attr name="xp_strokeRoundCap" format="boolean" />
-        <attr name="xp_textSize" format="dimension" />
-        <attr name="xp_textColor" format="color" />
-    </declare-styleable>
-    <!-- XProgressBar end -->
-
-    <!-- XFloatLayout start -->
-    <attr name="xp_childHorizontalSpacing" format="dimension" />
-    <attr name="xp_childVerticalSpacing" format="dimension" />
-    <attr name="xp_maxNumber" format="integer" />
-    <declare-styleable name="XFlowLayout">
-        <attr name="android:gravity" />
-        <attr name="xp_childHorizontalSpacing" />
-        <attr name="xp_childVerticalSpacing" />
-        <attr name="android:maxLines" />
-        <attr name="xp_maxNumber" />
-    </declare-styleable>
-    <!-- XFloatLayout end -->
-
-    <attr name="xp_textPassword" format="boolean" />
-
-    <declare-styleable name="VerificationCodeEditText">
-        <attr name="android:textColor" />
-        <attr name="android:textSize" />
-        <!--   最大数决定了验证码最大输入的位数     -->
-        <attr name="android:maxLength" />
-        <!--   是否是密文显示     -->
-        <attr name="xp_textPassword" />
-        <!--   验证码的类型，下划线，实体，空心     -->
-        <attr name="xp_boxType" format="enum">
-            <enum name="underline" value="3" />
-            <enum name="solid" value="2" />
-            <enum name="hollow" value="1" />
-        </attr>
-        <!--   块状的圆角     -->
-        <attr name="xp_radius" />
-        <attr name="xp_blockColor" format="color|reference" />
-        <!--    横向的块状间隔    -->
-        <attr name="xp_horizontalSpacing" format="dimension|reference" />
-
-        <!--   是否显示游标     -->
-        <attr name="xp_showCursor" format="boolean" />
-        <!--    游标闪烁时长    -->
-        <attr name="xp_cursorDuration" format="integer" />
-        <!--    游标宽    -->
-        <attr name="xp_cursorWidth" format="dimension|reference" />
-        <!--    游标颜色    -->
-        <attr name="xp_cursorColor" format="color|reference" />
-
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderNoTextColor" format="color|reference" />
-        <attr name="xp_borderLoadingColor" format="color|reference" />
-        <attr name="xp_borderErrorColor" format="color|reference" />
-        <attr name="xp_borderWidth" />
     </declare-styleable>
 
 </resources>

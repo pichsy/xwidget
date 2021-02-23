@@ -5,10 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -21,6 +18,22 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="#ff0000" />
+
+        <com.pichs.common.widget.roundview.XRoundTextView
+            android:text="你好"
+            android:gravity="center_vertical"
+            android:background="#60f"
+            android:layout_marginTop="20dp"
+            app:xp_radius="30dp"
+            app:xp_borderColor="#F11010"
+            android:clickable="true"
+            app:xp_borderWidth="5dp"
+            app:xp_backgroundGradientStartColor="#0f7"
+            app:xp_backgroundGradientEndColor="#323DD6"
+            app:xp_pressedBorderColor="#0ff"
+            app:xp_pressedBackground="#07f"
+            android:layout_width="100dp"
+            android:layout_height="60dp"/>
 
         <com.pichs.common.widget.cardview.XCardButton
             android:id="@+id/btn1"
@@ -74,21 +87,6 @@
             app:layout_constraintTop_toBottomOf="@+id/btn1" />
 
 
-        <com.pichs.common.widget.cardview.XCardTextView
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_margin="30dp"
-            android:background="@color/black"
-            android:gravity="center"
-            android:text="就撒第六届法拉第是就废了"
-            android:textColor="@color/white"
-            app:xp_radius="20dp" />
-
-        <com.pichs.app.xwidget.TestView
-            android:background="#0ff"
-            android:layout_width="200dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="20dp" />
 
         <com.pichs.common.widget.view.XTextView
             android:id="@+id/tv3"
@@ -113,6 +111,10 @@
             app:xp_backgroundGradientEndColor="#00f"
             app:xp_backgroundGradientStartColor="#f00"
             app:xp_disableCopyAndPaste="false" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
 
     </LinearLayout>
 </com.pichs.common.widget.view.XScrollView>
