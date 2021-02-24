@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView iv111 = findViewById(R.id.iv111);
-//        iv111.setColorFilter(Color.parseColor("#00000000"), PorterDuff.Mode.SRC);
-
-
-
         TextView tv = findViewById(R.id.tv1);
         XCardButton btn = findViewById(R.id.btn1);
         btn.setOnClickListener(new View.OnClickListener() {

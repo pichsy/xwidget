@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="xp_checked" format="boolean" />
+
+    <!--  SmoothCheckBox  -->
+    <declare-styleable name="XSmoothCheckBox">
+        <!-- 切换动画的持续时间，默认是300ms-->
+        <attr name="xp_checked" />
+        <attr name="xp_cbox_duration" format="integer" />
+        <!-- 未选中时边框宽度，默认是宽度的10分之一-->
+        <attr name="xp_cbox_stroke_width" format="dimension" />
+        <!-- 对勾颜色，默认是Color.WHITE-->
+        <attr name="xp_cbox_color_tick" format="color" />
+        <!-- 选中时的填充颜色，默认是R.attr.colorAccent-->
+        <attr name="xp_cbox_color_checked" format="color" />
+        <!-- 未选中时的填充颜色，默认是Color.WHITE-->
+        <attr name="xp_cbox_color_unchecked" format="color" />
+        <!-- 未选中时边框颜色，默认是#DFDFDF-->
+        <attr name="xp_cbox_color_unchecked_stroke" format="color" />
+    </declare-styleable>
+    <attr name="SmoothCheckBoxStyle" format="reference" />
+
+</resources>
