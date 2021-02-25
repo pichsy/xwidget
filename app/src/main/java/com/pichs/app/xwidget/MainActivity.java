@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView tv = findViewById(R.id.tv1);
         XCardButton btn = findViewById(R.id.btn1);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

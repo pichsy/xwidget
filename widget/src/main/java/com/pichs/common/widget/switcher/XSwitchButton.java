@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -32,7 +31,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CompoundButton;
 
 import com.pichs.common.widget.R;
-import com.pichs.common.widget.utils.XColorUtils;
+import com.pichs.common.widget.utils.XGradientHelper;
 
 /**
  * switch切换按钮
@@ -46,30 +45,13 @@ public class XSwitchButton extends CompoundButton {
     public static final int DEFAULT_THUMB_MARGIN_DP = 2;
     public static final int DEFAULT_ANIMATION_DURATION = 250;
     public static final int DEFAULT_TINT_COLOR = 0x327FC2;
-
-    private static int[] CHECKED_PRESSED_STATE = new int[]{android.R.attr.state_checked, android.R.attr.state_enabled, android.R.attr.state_pressed};
-    private static int[] UNCHECKED_PRESSED_STATE = new int[]{-android.R.attr.state_checked, android.R.attr.state_enabled, android.R.attr.state_pressed};
-
-    private Drawable mThumbDrawable, mBackDrawable;
-    private ColorStateList mBackColor, mThumbColor;
-    private float mThumbRadius, mBackRadius;
-    private RectF mThumbMargin;
-    private float mThumbRangeRatio;
-    private long mAnimationDuration;
-    // fade back drawable or color when dragging or animating
-    private boolean mFadeBack;
-    private int mTintColor;
-    private int mThumbWidth;
-    private int mThumbHeight;
-    private int mBackWidth;
-    private int mBackHeight;
-
+    private static final int[] CHECKED_PRESSED_STATE = new int[]{android.R.attr.state_checked, android.R.attr.state_enabled, android.R.attr.state_pressed};
+    private static final int[] UNCHECKED_PRESSED_STATE = new int[]{-android.R.attr.state_checked, android.R.attr.state_enabled, android.R.attr.state_pressed};
     private int mCurrThumbColor, mCurrBackColor, mNextBackColor, mOnTextColor, mOffTextColor;
     private Drawable mCurrentBackDrawable, mNextBackDrawable;
     private RectF mThumbRectF, mBackRectF, mSafeRectF, mTextOnRectF, mTextOffRectF;
+    private RectF mThumbMargin;
     private Paint mPaint;
-    // whether using Drawable for thumb or back
-    private boolean mIsThumbUseDrawable, mIsBackUseDrawable;
     private boolean mDrawDebugRect = false;
     private ObjectAnimator mProgressAnimator;
     // animation control
@@ -80,16 +62,11 @@ public class XSwitchButton extends CompoundButton {
     private int mTouchSlop;
     private int mClickTimeout;
     private Paint mRectPaint;
-    private CharSequence mTextOn;
-    private CharSequence mTextOff;
     private TextPaint mTextPaint;
     private Layout mOnLayout;
     private Layout mOffLayout;
-    private float mTextWidth;
-    private float mTextHeight;
-    private int mTextThumbInset;
-    private int mTextExtra;
-    private int mTextAdjust;
+    private int mTextWidth;
+    private int mTextHeight;
     // FIX #78,#85 : When restoring saved states, setChecked() called by super. So disable
     // animation and event listening when restoring.
     private boolean mRestoring = false;
@@ -97,6 +74,37 @@ public class XSwitchButton extends CompoundButton {
     private boolean mCatch = false;
 
     private CompoundButton.OnCheckedChangeListener mChildOnCheckedChangeListener;
+
+    private int thumbColor = Color.WHITE;
+    private int thumbCheckedColor = thumbColor;
+    private int thumbPressedColor = thumbColor;
+    private int thumbUnEnabledColor = Color.LTGRAY;
+    private int switchOnBackgroundColor = Color.BLUE;
+    private int switchOffBackgroundColor = Color.BLUE;
+
+    private float margin = 5;
+    private float marginLeft = 0;
+    private float marginRight = 0;
+    private float marginTop = 0;
+    private float marginBottom = 0;
+    private int thumbWidth = 0;
+    private int thumbHeight = 0;
+    private float thumbRadius = -1;
+    private float backgroundRadius = -1f;
+    private float thumbRangeRatio = DEFAULT_THUMB_RANGE_RATIO;
+    private int animationDuration = DEFAULT_ANIMATION_DURATION;
+    private boolean isFadeBackground = true;
+    private CharSequence switchOnText = "";
+    private CharSequence switchOffText = "";
+    private int textThumbInset = 0;
+    private int textExtra = 0;
+    private int textAdjust = 0;
+    private Drawable backgroundDrawable;
+    private Drawable thumbDrawable;
+    private ColorStateList thumbColorStateList;
+    // 背景宽度
+    private int mBackWidth;
+    private int mBackHeight;
 
     public XSwitchButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -116,73 +124,45 @@ public class XSwitchButton extends CompoundButton {
     private void init(AttributeSet attrs) {
         mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
         mClickTimeout = ViewConfiguration.getPressedStateDuration() + ViewConfiguration.getTapTimeout();
-
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mRectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mRectPaint.setStyle(Paint.Style.STROKE);
         mRectPaint.setStrokeWidth(getResources().getDisplayMetrics().density);
-
         mTextPaint = getPaint();
-
         mThumbRectF = new RectF();
         mBackRectF = new RectF();
         mSafeRectF = new RectF();
         mThumbMargin = new RectF();
         mTextOnRectF = new RectF();
         mTextOffRectF = new RectF();
-
         mProgressAnimator = ObjectAnimator.ofFloat(this, "progress", 0, 0).setDuration(DEFAULT_ANIMATION_DURATION);
         mProgressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-
         mPresentThumbRectF = new RectF();
-
-        Resources res = getResources();
-        float density = res.getDisplayMetrics().density;
-
-        Drawable thumbDrawable = null;
-        ColorStateList thumbColor = null;
-        float margin = density * DEFAULT_THUMB_MARGIN_DP;
-        float marginLeft = 0;
-        float marginRight = 0;
-        float marginTop = 0;
-        float marginBottom = 0;
-        float thumbWidth = 0;
-        float thumbHeight = 0;
-        float thumbRadius = -1;
-        float backRadius = -1;
-        Drawable backDrawable = null;
-        ColorStateList backColor = null;
-        float thumbRangeRatio = DEFAULT_THUMB_RANGE_RATIO;
-        int animationDuration = DEFAULT_ANIMATION_DURATION;
-        boolean fadeBack = true;
-        int tintColor = 0;
-        String textOn = null;
-        String textOff = null;
-        int textThumbInset = 0;
-        int textExtra = 0;
-        int textAdjust = 0;
-
         TypedArray ta = attrs == null ? null : getContext().obtainStyledAttributes(attrs, R.styleable.XSwitchButton);
         if (ta != null) {
             thumbDrawable = ta.getDrawable(R.styleable.XSwitchButton_xp_swb_thumbDrawable);
-            thumbColor = ta.getColorStateList(R.styleable.XSwitchButton_xp_swb_thumbColor);
+            thumbColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbColor, Color.WHITE);
+            thumbCheckedColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbCheckedColor, thumbColor);
+            thumbPressedColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbPressedColor, thumbColor);
+            thumbCheckedColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbCheckedColor, thumbColor);
+            thumbUnEnabledColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbUnEnabledColor, thumbColor);
             margin = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMargin, margin);
             marginLeft = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMarginLeft, margin);
             marginRight = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMarginRight, margin);
             marginTop = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMarginTop, margin);
             marginBottom = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMarginBottom, margin);
-            thumbWidth = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbWidth, thumbWidth);
-            thumbHeight = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbHeight, thumbHeight);
+            thumbWidth = ta.getDimensionPixelSize(R.styleable.XSwitchButton_xp_swb_thumbWidth, thumbWidth);
+            thumbHeight = ta.getDimensionPixelSize(R.styleable.XSwitchButton_xp_swb_thumbHeight, thumbHeight);
             thumbRadius = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbRadius, thumbRadius);
-            backRadius = ta.getDimension(R.styleable.XSwitchButton_xp_swb_backRadius, backRadius);
-            backDrawable = ta.getDrawable(R.styleable.XSwitchButton_xp_swb_backDrawable);
-            backColor = ta.getColorStateList(R.styleable.XSwitchButton_xp_swb_backColor);
+            backgroundRadius = ta.getDimension(R.styleable.XSwitchButton_xp_swb_backgroundRadius, backgroundRadius);
+            backgroundDrawable = ta.getDrawable(R.styleable.XSwitchButton_xp_swb_backgroundDrawable);
+            switchOnBackgroundColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_backgroundColor_switchOn, switchOnBackgroundColor);
+            switchOffBackgroundColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_backgroundColor_switchOff, switchOnBackgroundColor);
             thumbRangeRatio = ta.getFloat(R.styleable.XSwitchButton_xp_swb_thumbRangeRatio, thumbRangeRatio);
             animationDuration = ta.getInteger(R.styleable.XSwitchButton_xp_swb_animationDuration, animationDuration);
-            fadeBack = ta.getBoolean(R.styleable.XSwitchButton_xp_swb_fadeBack, true);
-            tintColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_tintColor, tintColor);
-            textOn = ta.getString(R.styleable.XSwitchButton_xp_swb_textOn);
-            textOff = ta.getString(R.styleable.XSwitchButton_xp_swb_textOff);
+            isFadeBackground = ta.getBoolean(R.styleable.XSwitchButton_xp_swb_fadeBackground, true);
+            switchOnText = ta.getString(R.styleable.XSwitchButton_xp_swb_text_switchOn);
+            switchOffText = ta.getString(R.styleable.XSwitchButton_xp_swb_text_switchOff);
             textThumbInset = ta.getDimensionPixelSize(R.styleable.XSwitchButton_xp_swb_textThumbInset, 0);
             textExtra = ta.getDimensionPixelSize(R.styleable.XSwitchButton_xp_swb_textExtra, 0);
             textAdjust = ta.getDimensionPixelSize(R.styleable.XSwitchButton_xp_swb_textAdjust, 0);
@@ -203,60 +183,35 @@ public class XSwitchButton extends CompoundButton {
             setFocusable(true);
             setClickable(true);
         }
-
-        // text
-        mTextOn = textOn;
-        mTextOff = textOff;
-        mTextThumbInset = textThumbInset;
-        mTextExtra = textExtra;
-        mTextAdjust = textAdjust;
-
-        // thumb drawable and color
-        mThumbDrawable = thumbDrawable;
-        mThumbColor = thumbColor;
-        mIsThumbUseDrawable = mThumbDrawable != null;
-        mTintColor = tintColor;
-        if (mTintColor == 0) {
-            TypedValue typedValue = new TypedValue();
-            boolean found = getContext().getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true);
-            if (found) {
-                mTintColor = typedValue.data;
-            } else {
-                mTintColor = DEFAULT_TINT_COLOR;
-            }
-        }
-        if (!mIsThumbUseDrawable && mThumbColor == null) {
-            mThumbColor = XColorUtils.generateThumbColorWithTintColor(mTintColor);
-            mCurrThumbColor = mThumbColor.getDefaultColor();
+        if (thumbDrawable == null) {
+            thumbColorStateList = new XGradientHelper.ColorStateListBuilder()
+                    .setUnSateColor(thumbColor)
+                    .addPressedColor(thumbPressedColor)
+                    .addCheckedColor(thumbCheckedColor)
+                    .addUnEnabledColor(thumbUnEnabledColor)
+                    .build();
+            mCurrThumbColor = thumbColorStateList.getDefaultColor();
         }
 
         // thumbSize
-        mThumbWidth = ceil(thumbWidth);
-        mThumbHeight = ceil(thumbHeight);
+        thumbWidth = ceil(thumbWidth);
+        thumbHeight = ceil(thumbHeight);
 
         // back drawable and color
-        mBackDrawable = backDrawable;
-        mBackColor = backColor;
-        mIsBackUseDrawable = mBackDrawable != null;
-        if (!mIsBackUseDrawable && mBackColor == null) {
-            mBackColor = XColorUtils.generateBackColorWithTintColor(mTintColor);
-            mCurrBackColor = mBackColor.getDefaultColor();
-            mNextBackColor = mBackColor.getColorForState(CHECKED_PRESSED_STATE, mCurrBackColor);
+        if (backgroundDrawable == null) {
+            thumbColorStateList = new XGradientHelper.ColorStateListBuilder()
+                    .setUnSateColor(switchOffBackgroundColor)
+                    .addCheckedColor(switchOnBackgroundColor)
+                    .build();
+            mCurrBackColor = thumbColorStateList.getDefaultColor();
+            mNextBackColor = thumbColorStateList.getColorForState(CHECKED_PRESSED_STATE, mCurrBackColor);
         }
 
         // margin
         mThumbMargin.set(marginLeft, marginTop, marginRight, marginBottom);
-
         // size & measure params must larger than 1
-        mThumbRangeRatio = mThumbMargin.width() >= 0 ? Math.max(thumbRangeRatio, 1) : thumbRangeRatio;
-
-        mThumbRadius = thumbRadius;
-        mBackRadius = backRadius;
-        mAnimationDuration = animationDuration;
-        mFadeBack = fadeBack;
-
-        mProgressAnimator.setDuration(mAnimationDuration);
-
+        thumbRangeRatio = mThumbMargin.width() >= 0 ? Math.max(thumbRangeRatio, 1) : thumbRangeRatio;
+        mProgressAnimator.setDuration(animationDuration);
         // sync checked status
         if (isChecked()) {
             setProgress(1);
@@ -273,23 +228,23 @@ public class XSwitchButton extends CompoundButton {
         /*
          * ensure textLayout
          */
-        if (mOnLayout == null && !TextUtils.isEmpty(mTextOn)) {
-            mOnLayout = makeLayout(mTextOn);
+        if (mOnLayout == null && !TextUtils.isEmpty(switchOnText)) {
+            mOnLayout = makeLayout(switchOnText);
         }
-        if (mOffLayout == null && !TextUtils.isEmpty(mTextOff)) {
-            mOffLayout = makeLayout(mTextOff);
+        if (mOffLayout == null && !TextUtils.isEmpty(switchOffText)) {
+            mOffLayout = makeLayout(switchOffText);
         }
 
-        float onWidth = mOnLayout != null ? mOnLayout.getWidth() : 0;
-        float offWidth = mOffLayout != null ? mOffLayout.getWidth() : 0;
+        int onWidth = mOnLayout != null ? mOnLayout.getWidth() : 0;
+        int offWidth = mOffLayout != null ? mOffLayout.getWidth() : 0;
         if (onWidth != 0 || offWidth != 0) {
             mTextWidth = Math.max(onWidth, offWidth);
         } else {
             mTextWidth = 0;
         }
 
-        float onHeight = mOnLayout != null ? mOnLayout.getHeight() : 0;
-        float offHeight = mOffLayout != null ? mOffLayout.getHeight() : 0;
+        int onHeight = mOnLayout != null ? mOnLayout.getHeight() : 0;
+        int offHeight = mOffLayout != null ? mOffLayout.getHeight() : 0;
         if (onHeight != 0 || offHeight != 0) {
             mTextHeight = Math.max(onHeight, offHeight);
         } else {
@@ -316,8 +271,8 @@ public class XSwitchButton extends CompoundButton {
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int measuredWidth = widthSize;
 
-        if (mThumbWidth == 0 && mIsThumbUseDrawable) {
-            mThumbWidth = mThumbDrawable.getIntrinsicWidth();
+        if (thumbWidth == 0 && thumbDrawable != null) {
+            thumbWidth = thumbDrawable.getIntrinsicWidth();
         }
 
         int moveRange;
@@ -326,47 +281,47 @@ public class XSwitchButton extends CompoundButton {
         int textExtraSpace;
         int contentSize;
 
-        if (mThumbRangeRatio == 0) {
-            mThumbRangeRatio = DEFAULT_THUMB_RANGE_RATIO;
+        if (thumbRangeRatio == 0) {
+            thumbRangeRatio = DEFAULT_THUMB_RANGE_RATIO;
         }
 
         if (widthMode == MeasureSpec.EXACTLY) {
             contentSize = widthSize - getPaddingLeft() - getPaddingRight();
 
-            if (mThumbWidth != 0) {
-                moveRange = ceil(mThumbWidth * mThumbRangeRatio);
-                textExtraSpace = textWidth + mTextExtra - (moveRange - mThumbWidth + ceil(Math.max(mThumbMargin.left, mThumbMargin.right)));
+            if (thumbWidth != 0) {
+                moveRange = ceil(thumbWidth * thumbRangeRatio);
+                textExtraSpace = (int) (textWidth + textExtra - (moveRange - thumbWidth + ceil(Math.max(mThumbMargin.left, mThumbMargin.right))));
                 mBackWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right + Math.max(textExtraSpace, 0));
                 if (mBackWidth < 0) {
-                    mThumbWidth = 0;
+                    thumbWidth = 0;
                 }
                 if (moveRange + Math.max(mThumbMargin.left, 0) + Math.max(mThumbMargin.right, 0) + Math.max(textExtraSpace, 0) > contentSize) {
-                    mThumbWidth = 0;
+                    thumbWidth = 0;
                 }
             }
 
-            if (mThumbWidth == 0) {
+            if (thumbWidth == 0) {
                 contentSize = widthSize - getPaddingLeft() - getPaddingRight();
                 moveRange = ceil(contentSize - Math.max(mThumbMargin.left, 0) - Math.max(mThumbMargin.right, 0));
                 if (moveRange < 0) {
-                    mThumbWidth = 0;
+                    thumbWidth = 0;
                     mBackWidth = 0;
                     return measuredWidth;
                 }
-                mThumbWidth = ceil(moveRange / mThumbRangeRatio);
+                thumbWidth = ceil(moveRange / thumbRangeRatio);
                 mBackWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right);
                 if (mBackWidth < 0) {
-                    mThumbWidth = 0;
+                    thumbWidth = 0;
                     mBackWidth = 0;
                     return measuredWidth;
                 }
-                textExtraSpace = textWidth + mTextExtra - (moveRange - mThumbWidth + ceil(Math.max(mThumbMargin.left, mThumbMargin.right)));
+                textExtraSpace = (int) (textWidth + textExtra - (moveRange - thumbWidth + ceil(Math.max(mThumbMargin.left, mThumbMargin.right))));
                 if (textExtraSpace > 0) {
                     // since backWidth is determined by view width, so we can only reduce thumbSize.
-                    mThumbWidth = mThumbWidth - textExtraSpace;
+                    thumbWidth = thumbWidth - textExtraSpace;
                 }
-                if (mThumbWidth < 0) {
-                    mThumbWidth = 0;
+                if (thumbWidth < 0) {
+                    thumbWidth = 0;
                     mBackWidth = 0;
                     return measuredWidth;
                 }
@@ -377,21 +332,21 @@ public class XSwitchButton extends CompoundButton {
             size of it's content. Further more, we ignore the limitation of widthSize since we want
             to display SwitchButton in its actual size rather than compress the shape.
              */
-            if (mThumbWidth == 0) {
+            if (this.thumbWidth == 0) {
                 /*
                 If thumbWidth is not set, use the default one.
                  */
-                mThumbWidth = ceil(getResources().getDisplayMetrics().density * DEFAULT_THUMB_SIZE_DP);
+                this.thumbWidth = ceil(getResources().getDisplayMetrics().density * DEFAULT_THUMB_SIZE_DP);
             }
-            if (mThumbRangeRatio == 0) {
-                mThumbRangeRatio = DEFAULT_THUMB_RANGE_RATIO;
+            if (thumbRangeRatio == 0) {
+                thumbRangeRatio = DEFAULT_THUMB_RANGE_RATIO;
             }
 
-            moveRange = ceil(mThumbWidth * mThumbRangeRatio);
-            textExtraSpace = ceil(textWidth + mTextExtra - (moveRange - mThumbWidth + Math.max(mThumbMargin.left, mThumbMargin.right) + mTextThumbInset));
+            moveRange = ceil(this.thumbWidth * thumbRangeRatio);
+            textExtraSpace = ceil(textWidth + textExtra - (moveRange - this.thumbWidth + Math.max(mThumbMargin.left, mThumbMargin.right) + textThumbInset));
             mBackWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right + Math.max(0, textExtraSpace));
             if (mBackWidth < 0) {
-                mThumbWidth = 0;
+                this.thumbWidth = 0;
                 mBackWidth = 0;
                 return measuredWidth;
             }
@@ -407,54 +362,54 @@ public class XSwitchButton extends CompoundButton {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int measuredHeight = heightSize;
 
-        if (mThumbHeight == 0 && mIsThumbUseDrawable) {
-            mThumbHeight = mThumbDrawable.getIntrinsicHeight();
+        if (this.thumbHeight == 0 && thumbDrawable != null) {
+            this.thumbHeight = thumbDrawable.getIntrinsicHeight();
         }
         int contentSize;
         int textExtraSpace;
         if (heightMode == MeasureSpec.EXACTLY) {
-            if (mThumbHeight != 0) {
+            if (this.thumbHeight != 0) {
                 /*
                 If thumbHeight has been set, we calculate backHeight and check if there is enough room.
                  */
-                mBackHeight = ceil(mThumbHeight + mThumbMargin.top + mThumbMargin.bottom);
+                mBackHeight = ceil(this.thumbHeight + mThumbMargin.top + mThumbMargin.bottom);
                 mBackHeight = ceil(Math.max(mBackHeight, mTextHeight));
                 if (mBackHeight + getPaddingTop() + getPaddingBottom() - Math.min(0, mThumbMargin.top) - Math.min(0, mThumbMargin.bottom) > heightSize) {
                     // No enough room, we set thumbHeight to zero to calculate these value again.
-                    mThumbHeight = 0;
+                    this.thumbHeight = 0;
                 }
             }
 
-            if (mThumbHeight == 0) {
+            if (this.thumbHeight == 0) {
                 mBackHeight = ceil(heightSize - getPaddingTop() - getPaddingBottom() + Math.min(0, mThumbMargin.top) + Math.min(0, mThumbMargin.bottom));
                 if (mBackHeight < 0) {
                     mBackHeight = 0;
-                    mThumbHeight = 0;
+                    this.thumbHeight = 0;
                     return measuredHeight;
                 }
-                mThumbHeight = ceil(mBackHeight - mThumbMargin.top - mThumbMargin.bottom);
+                this.thumbHeight = ceil(mBackHeight - mThumbMargin.top - mThumbMargin.bottom);
             }
-            if (mThumbHeight < 0) {
+            if (this.thumbHeight < 0) {
                 mBackHeight = 0;
-                mThumbHeight = 0;
+                this.thumbHeight = 0;
                 return measuredHeight;
             }
         } else {
-            if (mThumbHeight == 0) {
-                mThumbHeight = ceil(getResources().getDisplayMetrics().density * DEFAULT_THUMB_SIZE_DP);
+            if (this.thumbHeight == 0) {
+                this.thumbHeight = ceil(getResources().getDisplayMetrics().density * DEFAULT_THUMB_SIZE_DP);
             }
-            mBackHeight = ceil(mThumbHeight + mThumbMargin.top + mThumbMargin.bottom);
+            mBackHeight = ceil(this.thumbHeight + mThumbMargin.top + mThumbMargin.bottom);
             if (mBackHeight < 0) {
                 mBackHeight = 0;
-                mThumbHeight = 0;
+                this.thumbHeight = 0;
                 return measuredHeight;
             }
             textExtraSpace = ceil(mTextHeight - mBackHeight);
             if (textExtraSpace > 0) {
                 mBackHeight += textExtraSpace;
-                mThumbHeight += textExtraSpace;
+                this.thumbHeight += textExtraSpace;
             }
-            contentSize = Math.max(mThumbHeight, mBackHeight);
+            contentSize = (int) Math.max(this.thumbHeight, mBackHeight);
 
             measuredHeight = Math.max(contentSize, contentSize + getPaddingTop() + getPaddingBottom());
             measuredHeight = Math.max(measuredHeight, getSuggestedMinimumHeight());
@@ -479,15 +434,15 @@ public class XSwitchButton extends CompoundButton {
      * set up the rect of back and thumb
      */
     private void setup() {
-        if (mThumbWidth == 0 || mThumbHeight == 0 || mBackWidth == 0 || mBackHeight == 0) {
+        if (this.thumbWidth == 0 || this.thumbHeight == 0 || mBackWidth == 0 || mBackHeight == 0) {
             return;
         }
 
-        if (mThumbRadius == -1) {
-            mThumbRadius = Math.min(mThumbWidth, mThumbHeight) / 2F;
+        if (this.thumbRadius == -1) {
+            this.thumbRadius = Math.min(this.thumbWidth, this.thumbHeight) / 2F;
         }
-        if (mBackRadius == -1) {
-            mBackRadius = Math.min(mBackWidth, mBackHeight) / 2F;
+        if (backgroundRadius == -1) {
+            backgroundRadius = Math.min(mBackWidth, mBackHeight) / 2F;
         }
 
         int contentWidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
@@ -512,7 +467,7 @@ public class XSwitchButton extends CompoundButton {
             thumbLeft = getPaddingLeft() + Math.max(0, mThumbMargin.left) + (contentWidth - drawingWidth + 1) / 2F;
         }
 
-        mThumbRectF.set(thumbLeft, thumbTop, thumbLeft + mThumbWidth, thumbTop + mThumbHeight);
+        mThumbRectF.set(thumbLeft, thumbTop, thumbLeft + this.thumbWidth, thumbTop + this.thumbHeight);
 
         float backLeft = mThumbRectF.left - mThumbMargin.left;
         mBackRectF.set(backLeft,
@@ -523,20 +478,20 @@ public class XSwitchButton extends CompoundButton {
         mSafeRectF.set(mThumbRectF.left, 0, mBackRectF.right - mThumbMargin.right - mThumbRectF.width(), 0);
 
         float minBackRadius = Math.min(mBackRectF.width(), mBackRectF.height()) / 2.f;
-        mBackRadius = Math.min(minBackRadius, mBackRadius);
+        backgroundRadius = Math.min(minBackRadius, backgroundRadius);
 
-        if (mBackDrawable != null) {
-            mBackDrawable.setBounds((int) mBackRectF.left, (int) mBackRectF.top, ceil(mBackRectF.right), ceil(mBackRectF.bottom));
+        if (backgroundDrawable != null) {
+            backgroundDrawable.setBounds((int) mBackRectF.left, (int) mBackRectF.top, ceil(mBackRectF.right), ceil(mBackRectF.bottom));
         }
 
         if (mOnLayout != null) {
-            float onLeft = mBackRectF.left + (mBackRectF.width() + mTextThumbInset - mThumbWidth - mThumbMargin.right - mOnLayout.getWidth()) / 2f - mTextAdjust;
+            float onLeft = mBackRectF.left + (mBackRectF.width() + this.textThumbInset - this.thumbWidth - mThumbMargin.right - mOnLayout.getWidth()) / 2f - textAdjust;
             float onTop = mBackRectF.top + (mBackRectF.height() - mOnLayout.getHeight()) / 2;
             mTextOnRectF.set(onLeft, onTop, onLeft + mOnLayout.getWidth(), onTop + mOnLayout.getHeight());
         }
 
         if (mOffLayout != null) {
-            float offLeft = mBackRectF.right - (mBackRectF.width() + mTextThumbInset - mThumbWidth - mThumbMargin.left - mOffLayout.getWidth()) / 2f - mOffLayout.getWidth() + mTextAdjust;
+            float offLeft = mBackRectF.right - (mBackRectF.width() + textThumbInset - this.thumbWidth - mThumbMargin.left - mOffLayout.getWidth()) / 2f - mOffLayout.getWidth() + textAdjust;
             float offTop = mBackRectF.top + (mBackRectF.height() - mOffLayout.getHeight()) / 2;
             mTextOffRectF.set(offLeft, offTop, offLeft + mOffLayout.getWidth(), offTop + mOffLayout.getHeight());
         }
@@ -556,8 +511,8 @@ public class XSwitchButton extends CompoundButton {
         }
 
         // fade back
-        if (mIsBackUseDrawable) {
-            if (mFadeBack && mCurrentBackDrawable != null && mNextBackDrawable != null) {
+        if (backgroundDrawable != null) {
+            if (isFadeBackground && mCurrentBackDrawable != null && mNextBackDrawable != null) {
                 // fix #75, 70%A + 30%B != 30%B + 70%A, order matters when mix two layer of different alpha.
                 // So make sure the order of on/off layers never change during slide from one endpoint to another.
                 Drawable below = isChecked() ? mCurrentBackDrawable : mNextBackDrawable;
@@ -570,11 +525,11 @@ public class XSwitchButton extends CompoundButton {
                 above.setAlpha(alpha);
                 above.draw(canvas);
             } else {
-                mBackDrawable.setAlpha(255);
-                mBackDrawable.draw(canvas);
+                backgroundDrawable.setAlpha(255);
+                backgroundDrawable.draw(canvas);
             }
         } else {
-            if (mFadeBack) {
+            if (isFadeBackground) {
                 int alpha;
                 int colorAlpha;
 
@@ -587,19 +542,19 @@ public class XSwitchButton extends CompoundButton {
                 colorAlpha = Color.alpha(belowColor);
                 colorAlpha = colorAlpha * alpha / 255;
                 mPaint.setARGB(colorAlpha, Color.red(belowColor), Color.green(belowColor), Color.blue(belowColor));
-                canvas.drawRoundRect(mBackRectF, mBackRadius, mBackRadius, mPaint);
+                canvas.drawRoundRect(mBackRectF, backgroundRadius, backgroundRadius, mPaint);
 
                 // next back
                 alpha = 255 - alpha;
                 colorAlpha = Color.alpha(aboveColor);
                 colorAlpha = colorAlpha * alpha / 255;
                 mPaint.setARGB(colorAlpha, Color.red(aboveColor), Color.green(aboveColor), Color.blue(aboveColor));
-                canvas.drawRoundRect(mBackRectF, mBackRadius, mBackRadius, mPaint);
+                canvas.drawRoundRect(mBackRectF, backgroundRadius, backgroundRadius, mPaint);
 
                 mPaint.setAlpha(255);
             } else {
                 mPaint.setColor(mCurrBackColor);
-                canvas.drawRoundRect(mBackRectF, mBackRadius, mBackRadius, mPaint);
+                canvas.drawRoundRect(mBackRectF, backgroundRadius, backgroundRadius, mPaint);
             }
         }
 
@@ -621,12 +576,12 @@ public class XSwitchButton extends CompoundButton {
         // thumb
         mPresentThumbRectF.set(mThumbRectF);
         mPresentThumbRectF.offset(mProgress * mSafeRectF.width(), 0);
-        if (mIsThumbUseDrawable) {
-            mThumbDrawable.setBounds((int) mPresentThumbRectF.left, (int) mPresentThumbRectF.top, ceil(mPresentThumbRectF.right), ceil(mPresentThumbRectF.bottom));
-            mThumbDrawable.draw(canvas);
+        if (thumbDrawable != null) {
+            this.thumbDrawable.setBounds((int) mPresentThumbRectF.left, (int) mPresentThumbRectF.top, ceil(mPresentThumbRectF.right), ceil(mPresentThumbRectF.bottom));
+            this.thumbDrawable.draw(canvas);
         } else {
             mPaint.setColor(mCurrThumbColor);
-            canvas.drawRoundRect(mPresentThumbRectF, mThumbRadius, mThumbRadius, mPaint);
+            canvas.drawRoundRect(mPresentThumbRectF, this.thumbRadius, this.thumbRadius, mPaint);
         }
 
         if (mDrawDebugRect) {
@@ -645,10 +600,16 @@ public class XSwitchButton extends CompoundButton {
     protected void drawableStateChanged() {
         super.drawableStateChanged();
 
-        if (!mIsThumbUseDrawable && mThumbColor != null) {
-            mCurrThumbColor = mThumbColor.getColorForState(getDrawableState(), mCurrThumbColor);
+        if (thumbDrawable == null) {
+            thumbColorStateList = new XGradientHelper.ColorStateListBuilder()
+                    .setUnSateColor(thumbColor)
+                    .addPressedColor(thumbPressedColor)
+                    .addCheckedColor(thumbCheckedColor)
+                    .addUnEnabledColor(thumbUnEnabledColor)
+                    .build();
+            mCurrThumbColor = thumbColorStateList.getColorForState(getDrawableState(), mCurrThumbColor);
         } else {
-            setDrawableState(mThumbDrawable);
+            setDrawableState(this.thumbDrawable);
         }
 
         int[] nextState = isChecked() ? UNCHECKED_PRESSED_STATE : CHECKED_PRESSED_STATE;
@@ -658,19 +619,23 @@ public class XSwitchButton extends CompoundButton {
             mOnTextColor = textColors.getColorForState(CHECKED_PRESSED_STATE, defaultTextColor);
             mOffTextColor = textColors.getColorForState(UNCHECKED_PRESSED_STATE, defaultTextColor);
         }
-        if (!mIsBackUseDrawable && mBackColor != null) {
-            mCurrBackColor = mBackColor.getColorForState(getDrawableState(), mCurrBackColor);
-            mNextBackColor = mBackColor.getColorForState(nextState, mCurrBackColor);
+        if (backgroundDrawable == null) {
+            thumbColorStateList = new XGradientHelper.ColorStateListBuilder()
+                    .setUnSateColor(switchOffBackgroundColor)
+                    .addCheckedColor(switchOnBackgroundColor)
+                    .build();
+            mCurrBackColor = thumbColorStateList.getColorForState(getDrawableState(), mCurrBackColor);
+            mNextBackColor = thumbColorStateList.getColorForState(nextState, mCurrBackColor);
         } else {
-            if (mBackDrawable instanceof StateListDrawable && mFadeBack) {
-                mBackDrawable.setState(nextState);
-                mNextBackDrawable = mBackDrawable.getCurrent().mutate();
+            if (backgroundDrawable instanceof StateListDrawable && isFadeBackground) {
+                backgroundDrawable.setState(nextState);
+                mNextBackDrawable = backgroundDrawable.getCurrent().mutate();
             } else {
                 mNextBackDrawable = null;
             }
-            setDrawableState(mBackDrawable);
-            if (mBackDrawable != null) {
-                mCurrentBackDrawable = mBackDrawable.getCurrent().mutate();
+            setDrawableState(backgroundDrawable);
+            if (backgroundDrawable != null) {
+                mCurrentBackDrawable = backgroundDrawable.getCurrent().mutate();
             }
         }
     }
@@ -774,7 +739,7 @@ public class XSwitchButton extends CompoundButton {
         if (mProgressAnimator.isRunning()) {
             mProgressAnimator.cancel();
         }
-        mProgressAnimator.setDuration(mAnimationDuration);
+        mProgressAnimator.setDuration(animationDuration);
         if (checked) {
             mProgressAnimator.setFloatValues(mProgress, 1f);
         } else {
@@ -881,20 +846,19 @@ public class XSwitchButton extends CompoundButton {
     }
 
     public long getAnimationDuration() {
-        return mAnimationDuration;
+        return animationDuration;
     }
 
-    public void setAnimationDuration(long animationDuration) {
-        mAnimationDuration = animationDuration;
+    public void setAnimationDuration(int animationDuration) {
+        this.animationDuration = animationDuration;
     }
 
     public Drawable getThumbDrawable() {
-        return mThumbDrawable;
+        return this.thumbDrawable;
     }
 
     public void setThumbDrawable(Drawable thumbDrawable) {
-        mThumbDrawable = thumbDrawable;
-        mIsThumbUseDrawable = mThumbDrawable != null;
+        this.thumbDrawable = thumbDrawable;
         refreshDrawableState();
         mReady = false;
         requestLayout();
@@ -906,12 +870,11 @@ public class XSwitchButton extends CompoundButton {
     }
 
     public Drawable getBackDrawable() {
-        return mBackDrawable;
+        return backgroundDrawable;
     }
 
     public void setBackDrawable(Drawable backDrawable) {
-        mBackDrawable = backDrawable;
-        mIsBackUseDrawable = mBackDrawable != null;
+        backgroundDrawable = backDrawable;
         refreshDrawableState();
         mReady = false;
         requestLayout();
@@ -922,44 +885,12 @@ public class XSwitchButton extends CompoundButton {
         setBackDrawable(ContextCompat.getDrawable(getContext(), backDrawableRes));
     }
 
-    public ColorStateList getBackColor() {
-        return mBackColor;
-    }
-
-    public void setBackColor(ColorStateList backColor) {
-        mBackColor = backColor;
-        if (mBackColor != null) {
-            setBackDrawable(null);
-        }
-        invalidate();
-    }
-
-    public void setBackColorRes(int backColorRes) {
-        setBackColor(ContextCompat.getColorStateList(getContext(), backColorRes));
-    }
-
-    public ColorStateList getThumbColor() {
-        return mThumbColor;
-    }
-
-    public void setThumbColor(ColorStateList thumbColor) {
-        mThumbColor = thumbColor;
-        if (mThumbColor != null) {
-            setThumbDrawable(null);
-        }
-        invalidate();
-    }
-
-    public void setThumbColorRes(int thumbColorRes) {
-        setThumbColor(ContextCompat.getColorStateList(getContext(), thumbColorRes));
-    }
-
     public float getThumbRangeRatio() {
-        return mThumbRangeRatio;
+        return thumbRangeRatio;
     }
 
     public void setThumbRangeRatio(float thumbRangeRatio) {
-        mThumbRangeRatio = thumbRangeRatio;
+        this.thumbRangeRatio = thumbRangeRatio;
         // We need to mark "ready" to false since requestLayout may not cause size changed.
         mReady = false;
         requestLayout();
@@ -984,27 +915,27 @@ public class XSwitchButton extends CompoundButton {
     }
 
     public void setThumbSize(int width, int height) {
-        mThumbWidth = width;
-        mThumbHeight = height;
+        this.thumbWidth = width;
+        this.thumbHeight = height;
         mReady = false;
         requestLayout();
     }
 
     public float getThumbWidth() {
-        return mThumbWidth;
+        return this.thumbWidth;
     }
 
     public float getThumbHeight() {
-        return mThumbHeight;
+        return this.thumbHeight;
     }
 
     public float getThumbRadius() {
-        return mThumbRadius;
+        return this.thumbRadius;
     }
 
     public void setThumbRadius(float thumbRadius) {
-        mThumbRadius = thumbRadius;
-        if (!mIsThumbUseDrawable) {
+        this.thumbRadius = thumbRadius;
+        if (thumbDrawable == null) {
             invalidate();
         }
     }
@@ -1014,75 +945,59 @@ public class XSwitchButton extends CompoundButton {
     }
 
     public float getBackRadius() {
-        return mBackRadius;
+        return backgroundRadius;
     }
 
     public void setBackRadius(float backRadius) {
-        mBackRadius = backRadius;
-        if (!mIsBackUseDrawable) {
+        backgroundRadius = backRadius;
+        if (backgroundDrawable == null) {
             invalidate();
         }
     }
 
-    public boolean isFadeBack() {
-        return mFadeBack;
+    public boolean isFadeBackground() {
+        return isFadeBackground;
     }
 
-    public void setFadeBack(boolean fadeBack) {
-        mFadeBack = fadeBack;
+    public void setFadeBackground(boolean isFadeBackground) {
+       this. isFadeBackground = isFadeBackground;
     }
 
-    public int getTintColor() {
-        return mTintColor;
-    }
-
-    public void setTintColor(@SuppressWarnings("SameParameterValue") int tintColor) {
-        mTintColor = tintColor;
-        mThumbColor = XColorUtils.generateThumbColorWithTintColor(mTintColor);
-        mBackColor = XColorUtils.generateBackColorWithTintColor(mTintColor);
-        mIsBackUseDrawable = false;
-        mIsThumbUseDrawable = false;
-        // call this method to refresh color states
-        refreshDrawableState();
-        invalidate();
-    }
 
     public void setText(CharSequence onText, CharSequence offText) {
-        mTextOn = onText;
-        mTextOff = offText;
-
+        switchOnText = onText;
+        switchOffText = offText;
         mOnLayout = null;
         mOffLayout = null;
-
         mReady = false;
         requestLayout();
         invalidate();
     }
 
     public CharSequence getTextOn() {
-        return mTextOn;
+        return switchOnText;
     }
 
     public CharSequence getTextOff() {
-        return mTextOff;
+        return switchOffText;
     }
 
     public void setTextThumbInset(int textThumbInset) {
-        mTextThumbInset = textThumbInset;
+        this.textThumbInset = textThumbInset;
         mReady = false;
         requestLayout();
         invalidate();
     }
 
     public void setTextExtra(int textExtra) {
-        mTextExtra = textExtra;
+        this.textExtra = textExtra;
         mReady = false;
         requestLayout();
         invalidate();
     }
 
     public void setTextAdjust(int textAdjust) {
-        mTextAdjust = textAdjust;
+        this.textAdjust = textAdjust;
         mReady = false;
         requestLayout();
         invalidate();
@@ -1092,8 +1007,8 @@ public class XSwitchButton extends CompoundButton {
     public Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
         SavedState ss = new SavedState(superState);
-        ss.onText = mTextOn;
-        ss.offText = mTextOff;
+        ss.onText = switchOnText;
+        ss.offText = switchOffText;
         return ss;
     }
 

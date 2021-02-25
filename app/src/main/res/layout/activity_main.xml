@@ -40,29 +40,6 @@
             android:padding="10dp"
             android:text="普通粗细" />
 
-        <com.pichs.common.widget.view.XButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="#F49595"
-            android:minHeight="10dp"
-            android:padding="10dp"
-            android:text="我是个混子，瑶瑶" />
-
-        <com.pichs.common.widget.view.XTextView
-            android:id="@+id/tv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="#F7F7C2"
-            android:text="大河之剑天上来，飞流直下三千尺"
-            android:textColor="#d00"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn1" />
-
         <com.pichs.common.widget.view.XTextView
             android:id="@+id/tv3"
             android:layout_width="wrap_content"
@@ -77,18 +54,36 @@
             app:layout_constraintTop_toBottomOf="@+id/btn1"
             app:xp_ignoreGlobalTypeface="true" />
 
-
-
         <com.pichs.common.widget.switcher.XSwitchButton
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:textColor="@color/white"
+            app:xp_swb_backgroundColor_switchOff="#A60EDD"
+            app:xp_swb_backgroundColor_switchOn="#4ee"
+            app:xp_swb_backgroundRadius="20dp"
+            app:xp_swb_text_switchOff="开"
+            app:xp_swb_text_switchOn="关"
+            app:xp_swb_thumbCheckedColor="#F43F0E"
             app:xp_swb_thumbColor="#fff"
-            app:xp_swb_backColor="#00f"
-            android:layout_height="30dp"/>
+            app:xp_swb_thumbMargin="3dp"
+            app:xp_swb_thumbPressedColor="#000" />
 
+        <com.pichs.common.widget.shinebutton.ShineButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            app:xp_shine_big_shine_color="#F10C0C"
+            app:xp_shine_small_shine_color="#3CC63C"
+            app:xp_shine_count="10"
+            app:xp_shine_enable_flashing="true"
+            app:xp_shine_checked_color="#0195EB"
+            app:xp_shine_icon_image="@drawable/ic_start"
+            app:xp_shine_normal_color="#C71FEA" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="300dp"/>
+            android:layout_height="300dp" />
 
     </LinearLayout>
 </com.pichs.common.widget.view.XScrollView>
