@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pichs.common.widget.cardview.XCardButton;
+import com.pichs.common.widget.switcher.XSwitchButton;
 import com.pichs.common.widget.utils.XTypefaceHelper;
 import com.pichs.common.widget.view.XButton;
 
@@ -24,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         XCardButton btn = findViewById(R.id.btn1);
+        XSwitchButton swb = findViewById(R.id.swb);
+
+        swb.setThumbColor(Color.BLACK, Color.BLACK,  Color.BLACK, Color.BLACK );
+        swb.setBackgroundColor(Color.GREEN, Color.CYAN);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

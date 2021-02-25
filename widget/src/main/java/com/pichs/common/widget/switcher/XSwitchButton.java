@@ -1059,7 +1059,7 @@ public class XSwitchButton extends CompoundButton {
         invalidate();
     }
 
-    public void setThumbColor(int thumbColor, int thumbPressedColor, int thumbCheckedColor, int thumbUnEnabledColor) {
+    public void setThumbColor(int thumbColor, int thumbCheckedColor, int thumbPressedColor, int thumbUnEnabledColor) {
         this.thumbColor = thumbColor;
         this.thumbPressedColor = thumbPressedColor;
         this.thumbCheckedColor = thumbCheckedColor;
@@ -1070,7 +1070,7 @@ public class XSwitchButton extends CompoundButton {
                 .addCheckedColor(thumbCheckedColor)
                 .addUnEnabledColor(thumbUnEnabledColor)
                 .build();
-        mCurrThumbColor = thumbColorStateList.getColorForState(getDrawableState(), mCurrThumbColor);
+//        mCurrThumbColor = thumbColorStateList.getDefaultColor();
         invalidate();
     }
 }
