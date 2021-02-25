@@ -55,13 +55,12 @@
             app:xp_ignoreGlobalTypeface="true" />
 
         <com.pichs.common.widget.switcher.XSwitchButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
             android:checked="false"
             android:textColor="@color/white"
             app:xp_swb_backgroundColor_switchOff="#A60EDD"
             app:xp_swb_backgroundColor_switchOn="#4ee"
-            app:xp_swb_backgroundRadius="20dp"
             app:xp_swb_text_switchOff="开"
             app:xp_swb_text_switchOn="关"
             app:xp_swb_thumbCheckedColor="#F43F0E"
@@ -70,8 +69,8 @@
             app:xp_swb_thumbPressedColor="#000" />
 
         <com.pichs.common.widget.shinebutton.ShineButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginTop="20dp"
             app:xp_shine_big_shine_color="#F10C0C"
             app:xp_shine_small_shine_color="#3CC63C"

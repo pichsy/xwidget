@@ -22,7 +22,6 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.SoundEffectConstants;
 import android.view.ViewConfiguration;
@@ -103,8 +102,8 @@ public class XSwitchButton extends CompoundButton {
     private Drawable thumbDrawable;
     private ColorStateList thumbColorStateList;
     // 背景宽度
-    private int mBackWidth;
-    private int mBackHeight;
+    private int mBackgroundWidth;
+    private int mBackgroundHeight;
 
     public XSwitchButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -218,7 +217,6 @@ public class XSwitchButton extends CompoundButton {
         }
     }
 
-
     private Layout makeLayout(CharSequence text) {
         return new StaticLayout(text, mTextPaint, (int) Math.ceil(Layout.getDesiredWidth(text, mTextPaint)), Layout.Alignment.ALIGN_CENTER, 1.f, 0, false);
     }
@@ -291,8 +289,8 @@ public class XSwitchButton extends CompoundButton {
             if (thumbWidth != 0) {
                 moveRange = ceil(thumbWidth * thumbRangeRatio);
                 textExtraSpace = (int) (textWidth + textExtra - (moveRange - thumbWidth + ceil(Math.max(mThumbMargin.left, mThumbMargin.right))));
-                mBackWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right + Math.max(textExtraSpace, 0));
-                if (mBackWidth < 0) {
+                mBackgroundWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right + Math.max(textExtraSpace, 0));
+                if (mBackgroundWidth < 0) {
                     thumbWidth = 0;
                 }
                 if (moveRange + Math.max(mThumbMargin.left, 0) + Math.max(mThumbMargin.right, 0) + Math.max(textExtraSpace, 0) > contentSize) {
@@ -305,14 +303,14 @@ public class XSwitchButton extends CompoundButton {
                 moveRange = ceil(contentSize - Math.max(mThumbMargin.left, 0) - Math.max(mThumbMargin.right, 0));
                 if (moveRange < 0) {
                     thumbWidth = 0;
-                    mBackWidth = 0;
+                    mBackgroundWidth = 0;
                     return measuredWidth;
                 }
                 thumbWidth = ceil(moveRange / thumbRangeRatio);
-                mBackWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right);
-                if (mBackWidth < 0) {
+                mBackgroundWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right);
+                if (mBackgroundWidth < 0) {
                     thumbWidth = 0;
-                    mBackWidth = 0;
+                    mBackgroundWidth = 0;
                     return measuredWidth;
                 }
                 textExtraSpace = (int) (textWidth + textExtra - (moveRange - thumbWidth + ceil(Math.max(mThumbMargin.left, mThumbMargin.right))));
@@ -322,7 +320,7 @@ public class XSwitchButton extends CompoundButton {
                 }
                 if (thumbWidth < 0) {
                     thumbWidth = 0;
-                    mBackWidth = 0;
+                    mBackgroundWidth = 0;
                     return measuredWidth;
                 }
             }
@@ -344,10 +342,10 @@ public class XSwitchButton extends CompoundButton {
 
             moveRange = ceil(this.thumbWidth * thumbRangeRatio);
             textExtraSpace = ceil(textWidth + textExtra - (moveRange - this.thumbWidth + Math.max(mThumbMargin.left, mThumbMargin.right) + textThumbInset));
-            mBackWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right + Math.max(0, textExtraSpace));
-            if (mBackWidth < 0) {
+            mBackgroundWidth = ceil(moveRange + mThumbMargin.left + mThumbMargin.right + Math.max(0, textExtraSpace));
+            if (mBackgroundWidth < 0) {
                 this.thumbWidth = 0;
-                mBackWidth = 0;
+                mBackgroundWidth = 0;
                 return measuredWidth;
             }
             contentSize = ceil(moveRange + Math.max(0, mThumbMargin.left) + Math.max(0, mThumbMargin.right) + Math.max(0, textExtraSpace));
@@ -372,25 +370,25 @@ public class XSwitchButton extends CompoundButton {
                 /*
                 If thumbHeight has been set, we calculate backHeight and check if there is enough room.
                  */
-                mBackHeight = ceil(this.thumbHeight + mThumbMargin.top + mThumbMargin.bottom);
-                mBackHeight = ceil(Math.max(mBackHeight, mTextHeight));
-                if (mBackHeight + getPaddingTop() + getPaddingBottom() - Math.min(0, mThumbMargin.top) - Math.min(0, mThumbMargin.bottom) > heightSize) {
+                mBackgroundHeight = ceil(this.thumbHeight + mThumbMargin.top + mThumbMargin.bottom);
+                mBackgroundHeight = ceil(Math.max(mBackgroundHeight, mTextHeight));
+                if (mBackgroundHeight + getPaddingTop() + getPaddingBottom() - Math.min(0, mThumbMargin.top) - Math.min(0, mThumbMargin.bottom) > heightSize) {
                     // No enough room, we set thumbHeight to zero to calculate these value again.
                     this.thumbHeight = 0;
                 }
             }
 
             if (this.thumbHeight == 0) {
-                mBackHeight = ceil(heightSize - getPaddingTop() - getPaddingBottom() + Math.min(0, mThumbMargin.top) + Math.min(0, mThumbMargin.bottom));
-                if (mBackHeight < 0) {
-                    mBackHeight = 0;
+                mBackgroundHeight = ceil(heightSize - getPaddingTop() - getPaddingBottom() + Math.min(0, mThumbMargin.top) + Math.min(0, mThumbMargin.bottom));
+                if (mBackgroundHeight < 0) {
+                    mBackgroundHeight = 0;
                     this.thumbHeight = 0;
                     return measuredHeight;
                 }
-                this.thumbHeight = ceil(mBackHeight - mThumbMargin.top - mThumbMargin.bottom);
+                this.thumbHeight = ceil(mBackgroundHeight - mThumbMargin.top - mThumbMargin.bottom);
             }
             if (this.thumbHeight < 0) {
-                mBackHeight = 0;
+                mBackgroundHeight = 0;
                 this.thumbHeight = 0;
                 return measuredHeight;
             }
@@ -398,18 +396,18 @@ public class XSwitchButton extends CompoundButton {
             if (this.thumbHeight == 0) {
                 this.thumbHeight = ceil(getResources().getDisplayMetrics().density * DEFAULT_THUMB_SIZE_DP);
             }
-            mBackHeight = ceil(this.thumbHeight + mThumbMargin.top + mThumbMargin.bottom);
-            if (mBackHeight < 0) {
-                mBackHeight = 0;
+            mBackgroundHeight = ceil(this.thumbHeight + mThumbMargin.top + mThumbMargin.bottom);
+            if (mBackgroundHeight < 0) {
+                mBackgroundHeight = 0;
                 this.thumbHeight = 0;
                 return measuredHeight;
             }
-            textExtraSpace = ceil(mTextHeight - mBackHeight);
+            textExtraSpace = ceil(mTextHeight - mBackgroundHeight);
             if (textExtraSpace > 0) {
-                mBackHeight += textExtraSpace;
+                mBackgroundHeight += textExtraSpace;
                 this.thumbHeight += textExtraSpace;
             }
-            contentSize = (int) Math.max(this.thumbHeight, mBackHeight);
+            contentSize = (int) Math.max(this.thumbHeight, mBackgroundHeight);
 
             measuredHeight = Math.max(contentSize, contentSize + getPaddingTop() + getPaddingBottom());
             measuredHeight = Math.max(measuredHeight, getSuggestedMinimumHeight());
@@ -434,7 +432,7 @@ public class XSwitchButton extends CompoundButton {
      * set up the rect of back and thumb
      */
     private void setup() {
-        if (this.thumbWidth == 0 || this.thumbHeight == 0 || mBackWidth == 0 || mBackHeight == 0) {
+        if (this.thumbWidth == 0 || this.thumbHeight == 0 || mBackgroundWidth == 0 || mBackgroundHeight == 0) {
             return;
         }
 
@@ -442,15 +440,15 @@ public class XSwitchButton extends CompoundButton {
             this.thumbRadius = Math.min(this.thumbWidth, this.thumbHeight) / 2F;
         }
         if (backgroundRadius == -1) {
-            backgroundRadius = Math.min(mBackWidth, mBackHeight) / 2F;
+            backgroundRadius = Math.min(mBackgroundWidth, mBackgroundHeight) / 2F;
         }
 
         int contentWidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
         int contentHeight = getMeasuredHeight() - getPaddingTop() - getPaddingBottom();
 
         // max range of drawing content, when thumbMargin is negative, drawing range is larger than backWidth
-        int drawingWidth = ceil(mBackWidth - Math.min(0, mThumbMargin.left) - Math.min(0, mThumbMargin.right));
-        int drawingHeight = ceil(mBackHeight - Math.min(0, mThumbMargin.top) - Math.min(0, mThumbMargin.bottom));
+        int drawingWidth = ceil(mBackgroundWidth - Math.min(0, mThumbMargin.left) - Math.min(0, mThumbMargin.right));
+        int drawingHeight = ceil(mBackgroundHeight - Math.min(0, mThumbMargin.top) - Math.min(0, mThumbMargin.bottom));
 
         float thumbTop;
         if (contentHeight <= drawingHeight) {
@@ -461,7 +459,7 @@ public class XSwitchButton extends CompoundButton {
         }
 
         float thumbLeft;
-        if (contentWidth <= mBackWidth) {
+        if (contentWidth <= mBackgroundWidth) {
             thumbLeft = getPaddingLeft() + Math.max(0, mThumbMargin.left);
         } else {
             thumbLeft = getPaddingLeft() + Math.max(0, mThumbMargin.left) + (contentWidth - drawingWidth + 1) / 2F;
@@ -472,8 +470,8 @@ public class XSwitchButton extends CompoundButton {
         float backLeft = mThumbRectF.left - mThumbMargin.left;
         mBackRectF.set(backLeft,
                 mThumbRectF.top - mThumbMargin.top,
-                backLeft + mBackWidth,
-                mThumbRectF.top - mThumbMargin.top + mBackHeight);
+                backLeft + mBackgroundWidth,
+                mThumbRectF.top - mThumbMargin.top + mBackgroundHeight);
 
         mSafeRectF.set(mThumbRectF.left, 0, mBackRectF.right - mThumbMargin.right - mThumbRectF.width(), 0);
 
@@ -696,7 +694,6 @@ public class XSwitchButton extends CompoundButton {
         }
         return true;
     }
-
 
     /**
      * return the status based on position of thumb
@@ -960,9 +957,8 @@ public class XSwitchButton extends CompoundButton {
     }
 
     public void setFadeBackground(boolean isFadeBackground) {
-       this. isFadeBackground = isFadeBackground;
+        this.isFadeBackground = isFadeBackground;
     }
-
 
     public void setText(CharSequence onText, CharSequence offText) {
         switchOnText = onText;
@@ -1054,5 +1050,27 @@ public class XSwitchButton extends CompoundButton {
                 return new SavedState[size];
             }
         };
+    }
+
+
+    public void setBackgroundColor(int offColor, int onColor) {
+        this.switchOnBackgroundColor = onColor;
+        this.switchOffBackgroundColor = offColor;
+        invalidate();
+    }
+
+    public void setThumbColor(int thumbColor, int thumbPressedColor, int thumbCheckedColor, int thumbUnEnabledColor) {
+        this.thumbColor = thumbColor;
+        this.thumbPressedColor = thumbPressedColor;
+        this.thumbCheckedColor = thumbCheckedColor;
+        this.thumbUnEnabledColor = thumbUnEnabledColor;
+        thumbColorStateList = new XGradientHelper.ColorStateListBuilder()
+                .setUnSateColor(thumbColor)
+                .addPressedColor(thumbPressedColor)
+                .addCheckedColor(thumbCheckedColor)
+                .addUnEnabledColor(thumbUnEnabledColor)
+                .build();
+        mCurrThumbColor = thumbColorStateList.getColorForState(getDrawableState(), mCurrThumbColor);
+        invalidate();
     }
 }
