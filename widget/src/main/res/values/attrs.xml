@@ -596,6 +596,41 @@
 
     </declare-styleable>
 
+    <!--  XStatusBarView  -->
+    <declare-styleable name="XStatusBarView">
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_unEnabledBackground" />
+        <attr name="xp_unEnabledBackgroundStartColor" />
+        <attr name="xp_unEnabledBackgroundEndColor" />
+        <attr name="xp_unEnabledBackgroundOrientation" />
+
+    </declare-styleable>
+
     <!--  XViewGroup  -->
     <declare-styleable name="XViewGroup">
 

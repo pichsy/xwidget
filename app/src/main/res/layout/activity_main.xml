@@ -5,12 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
         tools:context=".MainActivity">
+
+
+        <com.pichs.common.widget.view.XStatusBarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f00" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="#0ff"
+            android:layout_height="wrap_content">
+
+            <com.pichs.common.widget.space.XStatusBarSpace
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#f00" />
+
+        </LinearLayout>
 
         <com.pichs.common.widget.cardview.XCardButton
             android:id="@+id/btn1"
@@ -55,8 +75,8 @@
             app:xp_ignoreGlobalTypeface="true" />
 
         <com.pichs.common.widget.switcher.XSwitchButton
-            android:layout_width="180dp"
             android:id="@+id/swb"
+            android:layout_width="180dp"
             android:layout_height="60dp"
             android:checked="false"
             android:textColor="@color/white"
@@ -74,12 +94,12 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             app:xp_shine_big_shine_color="#F10C0C"
-            app:xp_shine_small_shine_color="#3CC63C"
+            app:xp_shine_checked_color="#0195EB"
             app:xp_shine_count="10"
             app:xp_shine_enable_flashing="true"
-            app:xp_shine_checked_color="#0195EB"
             app:xp_shine_icon_image="@drawable/ic_start"
-            app:xp_shine_normal_color="#C71FEA" />
+            app:xp_shine_normal_color="#C71FEA"
+            app:xp_shine_small_shine_color="#3CC63C" />
 
         <Space
             android:layout_width="match_parent"

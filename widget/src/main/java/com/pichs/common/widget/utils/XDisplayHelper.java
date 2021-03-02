@@ -60,9 +60,6 @@ public class XDisplayHelper {
      */
     private static Boolean sHasCamera = null;
 
-//    private static int[] sPortraitRealSizeCache = null;
-//    private static int[] sLandscapeRealSizeCache = null;
-
     /**
      * 获取 DisplayMetrics
      *
