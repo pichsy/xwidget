@@ -76,6 +76,17 @@
         <attr name="xp_bottomDividerColor" />
         <attr name="xp_clearIconVisible" format="boolean" />
         <attr name="xp_eyeIconVisible" format="boolean" />
+        <attr name="xp_eyeIconColorFilter" format="color" />
+        <attr name="xp_clearIconColorFilter" format="color" />
+        <!--   清除图标的尺寸   -->
+        <attr name="xp_clearIcon_padding" format="dimension" />
+        <attr name="xp_clearIcon_width" format="dimension" />
+        <attr name="xp_clearIcon_height" format="dimension" />
+        <!--    眼睛图标的尺寸   -->
+        <attr name="xp_eyeIcon_padding" format="dimension" />
+        <attr name="xp_eyeIcon_width" format="dimension" />
+        <attr name="xp_eyeIcon_height" format="dimension" />
+
         <attr name="xp_textPassword" />
         <attr name="xp_eyeOpenDrawable" format="color|reference" />
         <attr name="xp_eyeCloseDrawable" format="color|reference" />
@@ -85,10 +96,11 @@
         <attr name="android:text" />
         <attr name="android:textColor" />
         <attr name="android:textSize" />
+        <attr name="android:textStyle" />
         <attr name="xp_inputType_password" />
         <attr name="xp_inputType_normal" />
+        <attr name="android:maxLines" />
         <attr name="android:maxLength" />
-        <attr name="bindText" format="string" />
         <attr name="xp_disableCopyAndPaste" />
     </declare-styleable>
 

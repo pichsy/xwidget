@@ -76,8 +76,8 @@
 
         <com.pichs.common.widget.switcher.XSwitchButton
             android:id="@+id/swb"
-            android:layout_width="180dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
             android:checked="false"
             android:textColor="@color/white"
             app:xp_swb_backgroundColor_switchOff="#A60EDD"
@@ -100,6 +100,28 @@
             app:xp_shine_icon_image="@drawable/ic_start"
             app:xp_shine_normal_color="#C71FEA"
             app:xp_shine_small_shine_color="#3CC63C" />
+
+
+        <com.pichs.common.widget.input.InputLayout
+            android:text="十大发牢骚"
+            android:textColor="#f00"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:hint="卫生间"
+            android:textColorHint="#999"
+            android:textSize="18sp"
+            app:xp_clearIconVisible="true"
+            app:xp_eyeOpenDrawable="#99f"
+            app:xp_eyeCloseDrawable="#0f8"
+            app:xp_eyeIconVisible="true"
+            app:xp_clearDrawable="#BD0CE8"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="师范生克拉夫"
+            android:layout_height="wrap_content"/>
 
         <Space
             android:layout_width="match_parent"
