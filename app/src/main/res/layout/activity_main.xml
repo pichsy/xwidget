@@ -137,10 +137,9 @@
                 android:layout_height="30dp"
                 android:id="@+id/checkbox"
                 android:layout_gravity="center"
-                android:src="#DDD7E0"
+                android:src="@drawable/ic_agree_unckecked"
                 app:xp_checked="true"
-                app:xp_radius="15dp"
-                app:xp_src_checked="#EF0ADC" />
+                app:xp_src_checked="@drawable/ic_agree_checked" />
 
         </LinearLayout>
 
