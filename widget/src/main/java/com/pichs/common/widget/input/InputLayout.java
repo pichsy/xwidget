@@ -63,6 +63,7 @@ public class InputLayout extends XCardLinearLayout {
     // 图标大小
     private int clearIconWidth, clearIconHeight;
     private int eyeIconWidth, eyeIconHeight;
+
     private CharSequence text = "";
     private CharSequence hintText = "";
     private int eyeIconColorFilter, clearIconColorFilter;
@@ -85,6 +86,10 @@ public class InputLayout extends XCardLinearLayout {
         mEditText = findViewById(R.id.et_content);
         mClearImageView = findViewById(R.id.iv_clear);
         mEyeImageView = findViewById(R.id.iv_eye);
+        eyeIconWidth = XDisplayHelper.dp2px(context, 30);
+        eyeIconHeight = eyeIconWidth;
+        clearIconWidth = XDisplayHelper.dp2px(context, 26);
+        clearIconHeight = clearIconWidth;
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.InputLayout, defStyleAttr, 0);
         int indexCount = ta.getIndexCount();
@@ -106,13 +111,13 @@ public class InputLayout extends XCardLinearLayout {
             } else if (index == R.styleable.InputLayout_xp_eyeIcon_padding) {
                 eyeIconPadding = ta.getDimensionPixelSize(index, eyeIconPadding);
             } else if (index == R.styleable.InputLayout_xp_eyeIcon_width) {
-                eyeIconWidth = ta.getDimensionPixelSize(index, XDisplayHelper.dp2px(context, 30));
+                eyeIconWidth = ta.getDimensionPixelSize(index, eyeIconWidth);
             } else if (index == R.styleable.InputLayout_xp_eyeIcon_height) {
-                eyeIconHeight = ta.getDimensionPixelSize(index, XDisplayHelper.dp2px(context, 30));
+                eyeIconHeight = ta.getDimensionPixelSize(index, eyeIconHeight);
             } else if (index == R.styleable.InputLayout_xp_clearIcon_height) {
-                clearIconHeight = ta.getDimensionPixelSize(index, XDisplayHelper.dp2px(context, 28));
+                clearIconHeight = ta.getDimensionPixelSize(index, clearIconHeight);
             } else if (index == R.styleable.InputLayout_xp_clearIcon_width) {
-                clearIconWidth = ta.getDimensionPixelSize(index, XDisplayHelper.dp2px(context, 28));
+                clearIconWidth = ta.getDimensionPixelSize(index, clearIconWidth);
             } else if (index == R.styleable.InputLayout_xp_clearIcon_padding) {
                 clearIconPadding = ta.getDimensionPixelSize(index, clearIconPadding);
             } else if (index == R.styleable.InputLayout_android_text) {
@@ -157,15 +162,13 @@ public class InputLayout extends XCardLinearLayout {
         setEyeIconVisible(isEyeIconShow);
         setEyeCloseDrawable(mEyeCloseDrawable);
         setEyeOpenDrawable(mEyeOpenDrawable);
-        setEyeIconHeight(eyeIconHeight);
-        setEyeIconWidth(eyeIconWidth);
+        setEyeIconSize(eyeIconWidth,eyeIconHeight);
         setEyeIconPadding(eyeIconPadding);
         setEyeIconColorFilter(eyeIconColorFilter);
 
         setClearDrawable(mClearDrawable);
         setClearIconVisible(isClearIconShow);
-        setClearIconHeight(clearIconHeight);
-        setClearIconWidth(clearIconWidth);
+        setClearIconSize(clearIconWidth,clearIconHeight);
         setClearIconPadding(clearIconPadding);
         setCleaIconColorFilter(clearIconColorFilter);
         handleViewData();
@@ -257,17 +260,6 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setClearIconHeight(int clearIconHeight) {
-        this.clearIconHeight = clearIconHeight;
-        if (mClearImageView != null) {
-            ViewGroup.LayoutParams layoutParams = mClearImageView.getLayoutParams();
-            if (layoutParams != null) {
-                layoutParams.height = clearIconHeight;
-                mClearImageView.setLayoutParams(layoutParams);
-            }
-        }
-        return this;
-    }
 
     public InputLayout setClearIconPadding(int clearIconPadding) {
         this.clearIconPadding = clearIconPadding;
@@ -277,11 +269,13 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setClearIconWidth(int clearIconWidth) {
-        this.clearIconWidth = clearIconWidth;
+    public InputLayout setClearIconSize(int width,int height) {
+        this.clearIconHeight = height;
+        this.clearIconWidth = width;
         if (mClearImageView != null) {
             ViewGroup.LayoutParams layoutParams = mClearImageView.getLayoutParams();
             if (layoutParams != null) {
+                layoutParams.height = clearIconHeight;
                 layoutParams.width = clearIconWidth;
                 mClearImageView.setLayoutParams(layoutParams);
             }
@@ -295,23 +289,14 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setEyeIconWidth(int eyeIconWidth) {
-        this.eyeIconWidth = eyeIconWidth;
+
+    public InputLayout setEyeIconSize(int width, int height) {
+        this.eyeIconWidth = width;
+        this.eyeIconHeight = height;
         if (mEyeImageView != null) {
             ViewGroup.LayoutParams layoutParams = mEyeImageView.getLayoutParams();
             if (layoutParams != null) {
                 layoutParams.width = eyeIconWidth;
-                mEyeImageView.setLayoutParams(layoutParams);
-            }
-        }
-        return this;
-    }
-
-    public InputLayout setEyeIconHeight(int eyeIconHeight) {
-        this.eyeIconHeight = eyeIconHeight;
-        if (mEyeImageView != null) {
-            ViewGroup.LayoutParams layoutParams = mEyeImageView.getLayoutParams();
-            if (layoutParams != null) {
                 layoutParams.height = eyeIconHeight;
                 mEyeImageView.setLayoutParams(layoutParams);
             }

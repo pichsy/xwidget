@@ -22,8 +22,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:background="#0ff"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#0ff">
 
             <com.pichs.common.widget.space.XStatusBarSpace
                 android:layout_width="match_parent"
@@ -103,25 +103,58 @@
 
 
         <com.pichs.common.widget.input.InputLayout
-            android:text="十大发牢骚"
-            android:textColor="#f00"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="卫生间"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:hint="卫生间"
+            android:text="十大发牢骚"
+            android:textColor="#f00"
             android:textColorHint="#999"
             android:textSize="18sp"
-            app:xp_clearIconVisible="true"
-            app:xp_eyeOpenDrawable="#99f"
+            android:textStyle="bold"
+            app:xp_clearDrawable="#BD0CE8"
+            app:xp_clearIconVisible="false"
             app:xp_eyeCloseDrawable="#0f8"
             app:xp_eyeIconVisible="true"
-            app:xp_clearDrawable="#BD0CE8"
+            app:xp_eyeOpenDrawable="#99f" />
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"/>
+            android:layout_height="80dp"
+            android:background="#D1EFE3"
+            android:orientation="vertical">
+
+            <com.pichs.common.widget.checkbox.XSmoothCheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                app:xp_cbox_color_unchecked_stroke="#0ff" />
+
+            <com.pichs.common.widget.checkbox.XCheckBox
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/checkbox"
+                android:layout_gravity="center"
+                android:src="#DDD7E0"
+                app:xp_checked="true"
+                app:xp_radius="15dp"
+                app:xp_src_checked="#EF0ADC" />
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
 
         <EditText
             android:layout_width="match_parent"
-            android:hint="师范生克拉夫"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="师范生克拉夫" />
 
         <Space
             android:layout_width="match_parent"

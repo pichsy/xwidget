@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pichs.common.widget.cardview.XCardButton;
+import com.pichs.common.widget.checkbox.XCheckBox;
 import com.pichs.common.widget.switcher.XSwitchButton;
 import com.pichs.common.widget.utils.XStatusBarHelper;
 import com.pichs.common.widget.utils.XTypefaceHelper;
@@ -28,8 +32,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         XCardButton btn = findViewById(R.id.btn1);
-        XSwitchButton swb = findViewById(R.id.swb);
+        XCheckBox checkbox = findViewById(R.id.checkbox);
+        checkbox.setOnCheckedChangeListener(new XCheckBox.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(boolean isChecked) {
+                Toast.makeText(getApplicationContext(), "ischecked:" + isChecked, Toast.LENGTH_LONG).show();
+            }
+        });
 
+
+        XSwitchButton swb = findViewById(R.id.swb);
+        swb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    checkbox.setImageDrawable(new ColorDrawable(Color.BLACK));
+                    checkbox.setCheckedDrawable(new ColorDrawable(Color.RED));
+
+                } else {
+                    checkbox.setImageDrawable(new ColorDrawable(Color.GREEN));
+                    checkbox.setCheckedDrawable(new ColorDrawable(Color.BLUE));
+
+                }
+
+            }
+        });
         swb.setThumbColor(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK);
         swb.setBackgroundColor(Color.GREEN, Color.CYAN);
         btn.setOnClickListener(new View.OnClickListener() {

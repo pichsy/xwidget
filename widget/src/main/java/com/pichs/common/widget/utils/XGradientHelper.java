@@ -43,69 +43,6 @@ public class XGradientHelper {
     }
 
     /**
-     * 获取字体颜色选择器
-     *
-     * @param pressedColor   按压时颜色
-     * @param unEnabledColor enabled=false时颜色
-     * @param checkedColor   选中时颜色
-     * @param activatedColor activated=true时颜色
-     * @param normalColor    反状态是的颜色（也就是正常的颜色）
-     * @return
-     */
-    public static ColorStateList getTextColorSelector(@ColorInt int pressedColor, @ColorInt int unEnabledColor, @ColorInt int checkedColor, @ColorInt int activatedColor, @ColorInt int normalColor) {
-        return new ColorStateListBuilder()
-                .addPressedColor(pressedColor)
-                .addUnEnabledColor(unEnabledColor)
-                .addActivatedColor(activatedColor)
-                .addCheckedColor(checkedColor)
-                .setUnSateColor(normalColor)
-                .build();
-    }
-
-
-    /**
-     * 获取字体颜色选择器
-     *
-     * @param pressedColor   按压时颜色
-     * @param unEnabledColor enabled=false时颜色
-     * @return
-     */
-    public static ColorStateList getTextColorSelector(@ColorInt int pressedColor, @ColorInt int unEnabledColor, @ColorInt int normalColor) {
-        return new ColorStateListBuilder()
-                .addPressedColor(pressedColor)
-                .addUnEnabledColor(unEnabledColor)
-                .setUnSateColor(normalColor)
-                .build();
-    }
-
-    /**
-     * 获取字体颜色选择器
-     *
-     * @param pressedColor 按压时颜色
-     * @return
-     */
-    public static ColorStateList getTextColorPressedSelector(@ColorInt int pressedColor, @ColorInt int unPressedColor) {
-        return new ColorStateListBuilder()
-                .addPressedColor(pressedColor)
-                .setUnSateColor(unPressedColor)
-                .build();
-    }
-
-    /**
-     * 获取字体颜色选择器
-     *
-     * @param unEnabledColor 按压时颜色
-     * @return
-     */
-    public static ColorStateList getTextColorUnEnabledSelector(@ColorInt int unEnabledColor, @ColorInt int enabledColor) {
-        return new ColorStateListBuilder()
-                .addUnEnabledColor(unEnabledColor)
-                .setUnSateColor(enabledColor)
-                .build();
-    }
-
-
-    /**
      * * 字体颜色选择器
      * * 添加顺序可能会影响使用效果。
      * * 建议使用顺:
@@ -122,7 +59,7 @@ public class XGradientHelper {
         /**
          * 添加顺序可能会影响使用效果。
          * 建议使用顺:
-         * pressed, enabled, checked, activated , enabled
+         * pressed, enabled, checked, activated , selected
          */
         public ColorStateListBuilder() {
         }
@@ -231,7 +168,6 @@ public class XGradientHelper {
             return addUnEnabledState(new ColorDrawable(color));
         }
 
-
         public StateListDrawableBuilder addState(int state, Drawable drawable) {
             if (drawable != null) {
                 stateList.add(state);
@@ -271,148 +207,6 @@ public class XGradientHelper {
             return drawable;
         }
 
-    }
-
-    /**
-     * 获取背景选择器
-     *
-     * @param pressedDrawable   按压Drawable
-     * @param unEnabledDrawable enabled=false Drawable
-     * @param checkedDrawable   选中 Drawable
-     * @param activatedDrawable activated Drawable
-     * @param normalDrawable    正常状态的Drawable
-     * @return
-     */
-    public static StateListDrawable getSelector(Drawable pressedDrawable, Drawable unEnabledDrawable, Drawable checkedDrawable, Drawable activatedDrawable, Drawable normalDrawable) {
-        return new StateListDrawableBuilder()
-                .addPressedState(pressedDrawable)
-                .addUnEnabledState(unEnabledDrawable)
-                .addCheckedState(checkedDrawable)
-                .addActivatedState(activatedDrawable)
-                .setUnState(normalDrawable)
-                .build();
-    }
-
-    public static StateListDrawable getSelector(int pressedColor, int unEnabledColor, int checkedColor, int activatedColor, int normalColor) {
-        return new StateListDrawableBuilder()
-                .addPressedState(pressedColor)
-                .addUnEnabledState(unEnabledColor)
-                .addCheckedState(checkedColor)
-                .addActivatedState(activatedColor)
-                .setUnState(normalColor)
-                .build();
-    }
-
-    public static StateListDrawable getSelector(Drawable pressedDrawable, Drawable unEnabledDrawable, Drawable unStateDrawable) {
-        return new StateListDrawableBuilder()
-                .addPressedState(pressedDrawable)
-                .addUnEnabledState(unEnabledDrawable)
-                .setUnState(unStateDrawable)
-                .build();
-    }
-
-    public static StateListDrawable getSelector(int pressedColor, int unEnabledColor, int unStateColor) {
-        return new StateListDrawableBuilder()
-                .addPressedState(pressedColor)
-                .addUnEnabledState(unEnabledColor)
-                .setUnState(unStateColor)
-                .build();
-    }
-
-
-    public static StateListDrawable getPressedSelector(Drawable pressedDrawable, Drawable unStateDrawable) {
-        return new StateListDrawableBuilder()
-                .addPressedState(pressedDrawable)
-                .setUnState(unStateDrawable)
-                .build();
-    }
-
-    public static StateListDrawable getPressedSelector(int pressedColor, int unPressedColor) {
-        return new StateListDrawableBuilder()
-                .addPressedState(pressedColor)
-                .setUnState(unPressedColor)
-                .build();
-    }
-
-    public static StateListDrawable getUnEnabledSelector(Drawable unEnabledDrawable, Drawable enabledDrawable) {
-        return new StateListDrawableBuilder()
-                .addPressedState(unEnabledDrawable)
-                .setUnState(enabledDrawable)
-                .build();
-    }
-
-    public static StateListDrawable getUnEnabledSelector(int unEnabledColor, int enabledColor) {
-        return new StateListDrawableBuilder()
-                .addPressedState(unEnabledColor)
-                .setUnState(enabledColor)
-                .build();
-    }
-
-    /**
-     * 获取带圆角的 selector
-     *
-     * @param radius         圆角
-     * @param pressedColor   按压
-     * @param checkedColor   选中
-     * @param activatedColor 活跃
-     * @param unEnabledColor 不可操作
-     * @param normalColor    普通色
-     * @return StateListDrawable
-     */
-    public static StateListDrawable getRoundSelector(int radius, int pressedColor, int unEnabledColor, int checkedColor, int activatedColor, int normalColor) {
-        return getSelector(
-                getDrawable(radius, pressedColor, 0, 0),
-                getDrawable(radius, unEnabledColor, 0, 0),
-                getDrawable(radius, checkedColor, 0, 0),
-                getDrawable(radius, activatedColor, 0, 0),
-                getDrawable(radius, normalColor, 0, 0)
-        );
-    }
-
-    /**
-     * 获取带圆角的 selector
-     *
-     * @param radius         圆角
-     * @param pressedColor   按压
-     * @param unEnabledColor 不可操作
-     * @param normalColor    普通色
-     * @return StateListDrawable
-     */
-    public static StateListDrawable getRoundSelector(int radius, int pressedColor, int unEnabledColor, int normalColor) {
-        return getSelector(
-                getDrawable(radius, pressedColor, 0, 0),
-                getDrawable(radius, unEnabledColor, 0, 0),
-                getDrawable(radius, normalColor, 0, 0)
-        );
-    }
-
-
-    /**
-     * 有角度，点击效果
-     *
-     * @param normalColor  无点击效果
-     * @param pressedColor 点击效果
-     * @return StateListDrawable
-     */
-    public static StateListDrawable getPressedRoundSelector(int radius, int pressedColor, int normalColor) {
-        return getPressedSelector(
-                getDrawable(radius, pressedColor, 0, 0),
-                getDrawable(radius, normalColor, 0, 0)
-        );
-    }
-
-    /**
-     * 有角度，点击效果
-     *
-     * @param normalColor    无点击效果
-     * @param unEnabledColor 点击效果
-     * @return StateListDrawable
-     */
-    public static StateListDrawable getUnEnabledRoundSelector(int radius, int unEnabledColor, int normalColor) {
-        return getUnEnabledSelector(
-                getDrawable(radius, unEnabledColor, 0, 0),
-                getDrawable(radius, normalColor, 0, 0)
-        );
     }
 
     /**
@@ -528,6 +322,24 @@ public class XGradientHelper {
 
 
     /**
+     * 设置渐变色，默认水平方向渐变
+     * 不带边框
+     *
+     * @param radius         圆角大小 px
+     * @param gradientColors 渐变数组，从左到右渐变
+     * @return GradientDrawable
+     * GradientDrawable.Orientation.LEFT_RIGHT
+     * {@link GradientDrawable.Orientation#LEFT_RIGHT}
+     */
+    public static GradientDrawable getGradientDrawable(int radius, GradientDrawable.Orientation gradientOrientation, @ColorInt int[] gradientColors) {
+        return new GradientDrawableBuilder()
+                .setRadius(radius)
+                .setOrientation(gradientOrientation)
+                .setGradientColors(gradientColors)
+                .build();
+    }
+
+    /**
      * shape 只支持默认，rectangle
      * 渐变只支持线性渐变，其他的用xml定义更舒服
      *
@@ -573,25 +385,6 @@ public class XGradientHelper {
             gradientDrawable.setColor(fillColor);
         }
         return gradientDrawable;
-    }
-
-
-    /**
-     * 设置渐变色，默认水平方向渐变
-     * 不带边框
-     *
-     * @param radius         圆角大小 px
-     * @param gradientColors 渐变数组，从左到右渐变
-     * @return GradientDrawable
-     * GradientDrawable.Orientation.LEFT_RIGHT
-     * {@link GradientDrawable.Orientation#LEFT_RIGHT}
-     */
-    public static GradientDrawable getGradientDrawable(int radius, GradientDrawable.Orientation gradientOrientation, @ColorInt int[] gradientColors) {
-        return new GradientDrawableBuilder()
-                .setRadius(radius)
-                .setOrientation(gradientOrientation)
-                .setGradientColors(gradientColors)
-                .build();
     }
 
 }
