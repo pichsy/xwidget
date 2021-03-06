@@ -2,6 +2,7 @@ package com.pichs.common.widget.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -217,7 +218,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             builder.setFillColor(endColor);
             return builder.build();
         }
-        return null;
+        builder.setFillColor(Color.TRANSPARENT);
+        return builder.build();
     }
 
 

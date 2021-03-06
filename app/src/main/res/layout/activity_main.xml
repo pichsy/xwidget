@@ -74,20 +74,20 @@
             app:layout_constraintTop_toBottomOf="@+id/btn1"
             app:xp_ignoreGlobalTypeface="true" />
 
-        <com.pichs.common.widget.switcher.XSwitchButton
-            android:id="@+id/swb"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:checked="false"
-            android:textColor="@color/white"
-            app:xp_swb_backgroundColor_switchOff="#A60EDD"
-            app:xp_swb_backgroundColor_switchOn="#4ee"
-            app:xp_swb_text_switchOff="开"
-            app:xp_swb_text_switchOn="关"
-            app:xp_swb_thumbCheckedColor="#F43F0E"
-            app:xp_swb_thumbColor="#fff"
-            app:xp_swb_thumbMargin="3dp"
-            app:xp_swb_thumbPressedColor="#000" />
+        <!--        <com.pichs.common.widget.switcher.XSwitchButton-->
+        <!--            android:id="@+id/swb"-->
+        <!--            android:layout_width="80dp"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:checked="false"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            app:xp_swb_backgroundColor_switchOff="#A60EDD"-->
+        <!--            app:xp_swb_backgroundColor_switchOn="#4ee"-->
+        <!--            app:xp_swb_text_switchOff="开"-->
+        <!--            app:xp_swb_text_switchOn="关"-->
+        <!--            app:xp_swb_thumbCheckedColor="#F43F0E"-->
+        <!--            app:xp_swb_thumbColor="#fff"-->
+        <!--            app:xp_swb_thumbMargin="3dp"-->
+        <!--            app:xp_swb_thumbPressedColor="#000" />-->
 
         <com.pichs.common.widget.shinebutton.ShineButton
             android:layout_width="40dp"
@@ -102,58 +102,72 @@
             app:xp_shine_small_shine_color="#3CC63C" />
 
 
-        <com.pichs.common.widget.input.InputLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="卫生间"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:text="十大发牢骚"
-            android:textColor="#f00"
-            android:textColorHint="#999"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:xp_clearDrawable="#BD0CE8"
-            app:xp_clearIconVisible="false"
-            app:xp_eyeCloseDrawable="#0f8"
-            app:xp_eyeIconVisible="true"
-            app:xp_eyeOpenDrawable="#99f" />
+        <!--        <com.pichs.common.widget.input.InputLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="48dp"-->
+        <!--            android:hint="卫生间"-->
+        <!--            android:paddingStart="16dp"-->
+        <!--            android:paddingEnd="16dp"-->
+        <!--            android:text="十大发牢骚"-->
+        <!--            android:textColor="#f00"-->
+        <!--            android:textColorHint="#999"-->
+        <!--            android:textSize="18sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:xp_clearDrawable="#BD0CE8"-->
+        <!--            app:xp_clearIconVisible="false"-->
+        <!--            app:xp_eyeCloseDrawable="#0f8"-->
+        <!--            app:xp_eyeIconVisible="true"-->
+        <!--            app:xp_eyeOpenDrawable="#99f" />-->
+
+        <com.pichs.common.widget.roundview.XRoundTextView
+            android:layout_marginTop="10dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="我就是深"
+            app:xp_pressedBorderColor="#f00"
+            app:xp_pressedTextColor="#f00"
+            android:clickable="true"
+            android:textColor="#000"
+            app:xp_borderColor="#000"
+            app:xp_borderWidth="2dp"
+            app:xp_radius="20dp" />
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#D1EFE3"
-            android:orientation="vertical">
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="80dp"-->
+        <!--            android:background="#D1EFE3"-->
+        <!--            android:orientation="vertical">-->
 
-            <com.pichs.common.widget.checkbox.XSmoothCheckBox
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                app:xp_cbox_color_unchecked_stroke="#0ff" />
+        <!--            <com.pichs.common.widget.checkbox.XSmoothCheckBox-->
+        <!--                android:layout_width="30dp"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                app:xp_cbox_color_unchecked_stroke="#0ff" />-->
 
-            <com.pichs.common.widget.checkbox.XCheckBox
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/checkbox"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_agree_unckecked"
-                app:xp_checked="true"
-                app:xp_src_checked="@drawable/ic_agree_checked" />
+        <!--            <com.pichs.common.widget.checkbox.XCheckBox-->
+        <!--                android:layout_width="30dp"-->
+        <!--                android:layout_height="30dp"-->
+        <!--                android:id="@+id/checkbox"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:src="@drawable/ic_agree_unckecked"-->
+        <!--                app:xp_checked="true"-->
+        <!--                app:xp_src_checked="@drawable/ic_agree_checked" />-->
 
-        </LinearLayout>
+        <!--        </LinearLayout>-->
 
 
-        <androidx.appcompat.widget.AppCompatCheckBox
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp" />
+        <!--        <androidx.appcompat.widget.AppCompatCheckBox-->
+        <!--            android:layout_width="100dp"-->
+        <!--            android:layout_height="100dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginTop="10dp" />-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="师范生克拉夫" />
+        <!--        <EditText-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="师范生克拉夫" />-->
 
         <Space
             android:layout_width="match_parent"
