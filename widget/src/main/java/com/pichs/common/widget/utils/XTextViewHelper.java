@@ -96,13 +96,13 @@ public class XTextViewHelper implements XITextView {
                     builder.addPressedColor(pressedColor);
                 }
                 if (unEnabledColor != 0) {
-                    builder.addPressedColor(unEnabledColor);
+                    builder.addUnEnabledColor(unEnabledColor);
                 }
                 if (activatedColor != 0) {
-                    builder.addPressedColor(activatedColor);
+                    builder.addActivatedColor(activatedColor);
                 }
                 if (checkedColor != 0) {
-                    builder.addPressedColor(checkedColor);
+                    builder.addCheckedColor(checkedColor);
                 }
                 builder.setUnSateColor(normalColor);
                 mOwner.get().setTextColor(builder.build());
