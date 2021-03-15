@@ -703,9 +703,11 @@
         <attr name="xp_colorFilterMode" />
     </declare-styleable>
 
+
     <declare-styleable name="XCheckBox">
         <attr name="android:src" />
         <attr name="xp_checked" />
+        <attr name="xp_clickable" />
         <attr name="xp_src_checked" format="reference|color" />
         <attr name="xp_radius" />
     </declare-styleable>

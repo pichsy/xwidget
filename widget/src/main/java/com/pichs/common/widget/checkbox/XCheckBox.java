@@ -18,6 +18,7 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
     private Drawable checkedDrawable;
     private Drawable normalDrawable;
     private boolean isChecked = false;
+    private boolean isClickable = true;
 
     public XCheckBox(@NonNull Context context) {
         this(context, null);
@@ -38,6 +39,7 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
             checkedDrawable = ta.getDrawable(R.styleable.XCheckBox_xp_src_checked);
             normalDrawable = ta.getDrawable(R.styleable.XCheckBox_android_src);
             isChecked = ta.getBoolean(R.styleable.XCheckBox_xp_checked, false);
+            isClickable = ta.getBoolean(R.styleable.XCheckBox_xp_clickable, true);
             ta.recycle();
             setChecked(isChecked);
         }
@@ -49,6 +51,16 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
         if (isChecked) {
             super.setImageDrawable(this.checkedDrawable);
         }
+    }
+
+    @Override
+    public void setClickable(boolean clickable) {
+        isClickable = clickable;
+    }
+
+    @Override
+    public boolean isClickable() {
+        return isClickable;
     }
 
     @Override
@@ -98,7 +110,9 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
 
     @Override
     public void onClick(View v) {
-        toggle();
+        if (isClickable) {
+            toggle();
+        }
     }
 
 

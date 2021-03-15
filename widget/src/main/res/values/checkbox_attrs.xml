@@ -2,6 +2,7 @@
 <resources>
 
     <attr name="xp_checked" format="boolean" />
+    <attr name="xp_clickable" format="boolean"/>
 
     <!--  SmoothCheckBox  -->
     <declare-styleable name="XSmoothCheckBox">
