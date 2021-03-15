@@ -52,9 +52,15 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
         backgroundHelper.setRadius(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
     }
 
+
     @Override
-    public void setBorder(int borderColor, int borderWidth) {
-        backgroundHelper.setBorder(borderColor, borderWidth);
+    public void setBorderColor(int borderColor) {
+        backgroundHelper.setBorderColor(borderColor);
+    }
+
+    @Override
+    public void setBorderWidth(int borderWidth) {
+        backgroundHelper.setBorderWidth(borderWidth);
     }
 
     @Override

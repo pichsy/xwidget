@@ -17,12 +17,15 @@ import android.widget.Toast;
 
 import com.pichs.common.widget.cardview.XCardButton;
 import com.pichs.common.widget.checkbox.XCheckBox;
+import com.pichs.common.widget.roundview.XRoundTextView;
 import com.pichs.common.widget.switcher.XSwitchButton;
+import com.pichs.common.widget.utils.XDisplayHelper;
 import com.pichs.common.widget.utils.XStatusBarHelper;
 import com.pichs.common.widget.utils.XTypefaceHelper;
 import com.pichs.common.widget.view.XButton;
 
 public class MainActivity extends AppCompatActivity {
+    XRoundTextView xrv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         XStatusBarHelper.translucent(this);
         XStatusBarHelper.setStatusBarDarkMode(this);
         setContentView(R.layout.activity_main);
+        xrv = findViewById(R.id.tv_round);
+
 
 //        XCardButton btn = findViewById(R.id.btn1);
 //        XCheckBox checkbox = findViewById(R.id.checkbox);
@@ -81,5 +86,17 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+    }
+
+    public void changeRadius(View view) {
+        xrv.setRadius(XDisplayHelper.dp2px(this, 38));
+//        xrv.setBorderWidth(XDisplayHelper.dp2px(this, 3));
+//        xrv.setBorderColor(Color.RED);
+//        xrv.setPressedBorderColor(Color.BLACK);
+    }
+
+    public void changeRadiusBg(View view) {
+        xrv.setPressedBackground(new ColorDrawable(Color.BLUE));
+        xrv.setNormalBackground(new ColorDrawable(Color.YELLOW));
     }
 }

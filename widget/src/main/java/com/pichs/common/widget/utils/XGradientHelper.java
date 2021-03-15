@@ -362,7 +362,8 @@ public class XGradientHelper {
         GradientDrawable gradientDrawable = new GradientDrawable();
         // 有先使用单独设置圆角
         if (topLeftRadius > 0 || topRightRadius > 0 || bottomLeftRadius > 0 || bottomRightRadius > 0) {
-            float[] radii = {topLeftRadius, topLeftRadius,
+            float[] radii = {
+                    topLeftRadius, topLeftRadius,
                     topRightRadius, topRightRadius,
                     bottomRightRadius, bottomRightRadius,
                     bottomLeftRadius, bottomLeftRadius

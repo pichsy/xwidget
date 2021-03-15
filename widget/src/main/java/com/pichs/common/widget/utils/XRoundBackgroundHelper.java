@@ -2,7 +2,6 @@ package com.pichs.common.widget.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -10,7 +9,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.ColorInt;
-import androidx.annotation.IdRes;
 
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.GradientOrientation;
@@ -94,10 +92,10 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XIRoundBackground, defAttr, defStyleRes);
             // 圆角和边框
             radius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radius, 0);
-            topLeftRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusTopLeft, radius);
-            topRightRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusTopRight, radius);
-            bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusBottomLeft, radius);
-            bottomRightRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusBottomRight, radius);
+            topLeftRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusTopLeft, 0);
+            topRightRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusTopRight, 0);
+            bottomLeftRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusBottomLeft, 0);
+            bottomRightRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusBottomRight, 0);
             borderWidth = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_borderWidth, 0);
             // 边框颜色
             borderColor = ta.getColor(R.styleable.XIRoundBackground_xp_borderColor, 0);
@@ -178,7 +176,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     private Drawable getFinalDrawable(int radius, int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius, int borderColor, int borderWidth, Drawable bg, int startColor, int endColor, int orientation) {
-        if (bg != null && !(bg instanceof ColorDrawable)) {
+        if (bg != null && !(bg instanceof ColorDrawable) && !(bg instanceof GradientDrawable)) {
             return bg;
         }
         XGradientHelper.GradientDrawableBuilder builder = new XGradientHelper.GradientDrawableBuilder();
@@ -204,7 +202,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             builder.setGradientColors(new int[]{startColor, endColor});
             return builder.build();
         }
-        if (bg != null) {
+
+        if (bg instanceof ColorDrawable) {
             // 如果背景色是颜色，则提出颜色，使用builder
             int color = ((ColorDrawable) bg).getColor();
             builder.setFillColor(color);
@@ -218,8 +217,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             builder.setFillColor(endColor);
             return builder.build();
         }
-        builder.setFillColor(Color.TRANSPARENT);
-        return builder.build();
+        return null;
     }
 
 
@@ -254,7 +252,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     public void setRadius(int radius) {
         this.radius = radius;
         background = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 borderColor, borderWidth,
                 backgroundTmp,
                 bgStartColor,
@@ -263,7 +261,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         );
 
         pressedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
                 pressedBackgroundTmp,
                 pressedBgStartColor,
@@ -272,7 +270,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         );
 
         checkedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
                 checkedBackgroundTmp,
                 checkedBgStartColor,
@@ -281,7 +279,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         );
 
         unEnabledBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
                 unEnabledBackgroundTmp,
                 unEnabledBgStartColor,
@@ -290,7 +288,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         );
 
         activatedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
                 activatedBackgroundTmp,
                 activatedBgStartColor,
@@ -306,7 +304,6 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         this.topRightRadius = topRightRadius;
         this.bottomLeftRadius = bottomLeftRadius;
         this.bottomRightRadius = bottomRightRadius;
-
         background = getFinalDrawable(
                 radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 borderColor, borderWidth,
@@ -355,8 +352,21 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     @Override
-    public void setBorder(int borderColor, int borderWidth) {
+    public void setBorderColor(int borderColor) {
         this.borderColor = borderColor;
+        background = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                borderColor, borderWidth,
+                backgroundTmp,
+                bgStartColor,
+                bgEndColor,
+                bgColorOrientation
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setBorderWidth(int borderWidth) {
         this.borderWidth = borderWidth;
         background = getFinalDrawable(
                 radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
@@ -409,7 +419,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     public void setPressedBorderColor(int pressedBorderColor) {
         this.pressedBorderColor = pressedBorderColor;
         pressedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
                 pressedBackgroundTmp,
                 pressedBgStartColor,
@@ -464,61 +474,151 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
     @Override
     public void setNormalBackground(Drawable drawable) {
-        this.background = drawable;
+        this.backgroundTmp = drawable;
+        background = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                borderColor, borderWidth,
+                backgroundTmp,
+                bgStartColor,
+                bgEndColor,
+                bgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
     public void setBackgroundGradient(int starColor, int endColor, int orientation) {
-        this.background = getFinalDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, borderColor, borderWidth, background, starColor, endColor, orientation);
+        this.bgStartColor = starColor;
+        this.bgEndColor = endColor;
+        this.bgColorOrientation = orientation;
+        background = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                borderColor, borderWidth,
+                backgroundTmp,
+                bgStartColor,
+                bgEndColor,
+                bgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
-    public void setPressedBackground(Drawable pressedBackground) {
-        this.pressedBackground = pressedBackground;
+    public void setPressedBackground(Drawable drawable) {
+        this.pressedBackgroundTmp = drawable;
+        pressedBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                pressedBackgroundTmp,
+                pressedBgStartColor,
+                pressedBgEndColor,
+                pressedBgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
     public void setPressedBackgroundGradient(int startColor, int endColor, int orientation) {
-        this.pressedBackground = getFinalDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, borderColor, borderWidth, pressedBackground, startColor, endColor, orientation);
+        this.pressedBgStartColor = startColor;
+        this.pressedBgEndColor = endColor;
+        this.pressedBgColorOrientation = orientation;
+        pressedBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                pressedBackgroundTmp,
+                pressedBgStartColor,
+                pressedBgEndColor,
+                pressedBgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBackground(Drawable unEnabledBackground) {
-        this.unEnabledBackground = unEnabledBackground;
+    public void setUnEnabledBackground(Drawable drawable) {
+        this.unEnabledBackgroundTmp = drawable;
+        this.unEnabledBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
+                unEnabledBackgroundTmp,
+                unEnabledBgStartColor,
+                unEnabledBgEndColor,
+                unEnabledBgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
     public void setUnEnabledBackgroundGradient(int startColor, int endColor, int orientation) {
-        this.unEnabledBackground = getFinalDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth, unEnabledBackground, startColor, endColor, orientation);
+        this.unEnabledBgStartColor = startColor;
+        this.unEnabledBgEndColor = endColor;
+        this.unEnabledBgColorOrientation = orientation;
+        this.unEnabledBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
+                unEnabledBackgroundTmp,
+                unEnabledBgStartColor,
+                unEnabledBgEndColor,
+                unEnabledBgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
-    public void setCheckedBackground(Drawable checkedBackground) {
-        this.checkedBackground = checkedBackground;
+    public void setCheckedBackground(Drawable drawable) {
+        this.checkedBackgroundTmp = drawable;
+        this.checkedBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                checkedBackgroundTmp,
+                checkedBgStartColor,
+                checkedBgEndColor,
+                checkedBgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
     public void setCheckedBackgroundGradient(int startColor, int endColor, int orientation) {
-        this.checkedBackground = getFinalDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth, checkedBackground, startColor, endColor, orientation);
+        this.checkedBgEndColor = endColor;
+        this.checkedBgStartColor = startColor;
+        this.checkedBgColorOrientation = orientation;
+        this.checkedBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                checkedBackgroundTmp,
+                checkedBgStartColor,
+                checkedBgEndColor,
+                checkedBgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
-    public void setActivatedBackground(Drawable activatedBackground) {
-        this.activatedBackground = activatedBackground;
+    public void setActivatedBackground(Drawable drawable) {
+        this.activatedBackgroundTmp = drawable;
+        this.activatedBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                activatedBackgroundTmp,
+                activatedBgStartColor,
+                activatedBgEndColor,
+                activatedBgColorOrientation
+        );
         setBackgroundSelector();
     }
 
     @Override
     public void setActivatedBackgroundGradient(int startColor, int endColor, int orientation) {
-        this.activatedBackground = getFinalDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth, activatedBackground, startColor, endColor, orientation);
+        this.activatedBgStartColor = startColor;
+        this.activatedBgEndColor = endColor;
+        this.activatedBgColorOrientation = orientation;
+        this.activatedBackground = getFinalDrawable(
+                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                activatedBackgroundTmp,
+                activatedBgStartColor,
+                activatedBgEndColor,
+                activatedBgColorOrientation
+        );
         setBackgroundSelector();
     }
 

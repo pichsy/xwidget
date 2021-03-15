@@ -26,10 +26,18 @@ public interface XIRoundBackground {
     void setRadius(int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius);
 
     /**
-     * @param borderWidth borderWidth 边框宽度
-     * @param borderColor borderColor 边框颜色
+     * 边框颜色
+     *
+     * @param borderColor 颜色 borderColor
      */
-    void setBorder(@ColorInt int borderColor, int borderWidth);
+    void setBorderColor(@ColorInt int borderColor);
+
+    /**
+     * 边框宽度
+     *
+     * @param borderWidth borderWidth
+     */
+    void setBorderWidth(int borderWidth);
 
     /**
      * 按压时边框颜色
@@ -67,6 +75,7 @@ public interface XIRoundBackground {
      */
     void setNormalBackground(Drawable drawable);
 
+
     /**
      * 设置背景正常渐变色背景
      *
@@ -75,7 +84,6 @@ public interface XIRoundBackground {
      * @param orientation 0 横向（默认）， 1 竖向
      */
     void setBackgroundGradient(int starColor, int endColor, @GradientOrientation int orientation);
-
 
     /**
      * 按压背景效果
@@ -109,6 +117,21 @@ public interface XIRoundBackground {
     // 渐变色
     void setActivatedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
+//    /**
+//     * 动态改变背景系列颜色值
+//     *
+//     * @param color
+//     */
+//    void setNormalBackgroundColor(@ColorInt int color);
+//
+//    void setPressedBackgroundColor(@ColorInt int color);
+//
+//    void setActivatedBackgroundColor(@ColorInt int color);
+//
+//    void setCheckedBackgroundColor(@ColorInt int color);
+//
+//    void setUnEnabledBackgroundColor(@ColorInt int color);
+//
 
     XRoundBackgroundHelper clearBackgrounds();
 }
