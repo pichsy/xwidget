@@ -44,6 +44,7 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
             setChecked(isChecked);
         }
         super.setOnClickListener(this);
+        super.setClickable(true);
     }
 
     public void setCheckedDrawable(Drawable checkedDrawable) {

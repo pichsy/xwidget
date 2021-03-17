@@ -101,6 +101,15 @@
             app:xp_shine_normal_color="#C71FEA"
             app:xp_shine_small_shine_color="#3CC63C" />
 
+
+        <com.pichs.common.widget.checkbox.XCheckBox
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="#00f"
+            app:xp_checked="true"
+            app:xp_clickable="false"
+            app:xp_src_checked="#f00" />
+
         <!--        <com.pichs.common.widget.input.InputLayout-->
         <!--            android:layout_width="match_parent"-->
         <!--            android:layout_height="48dp"-->
@@ -120,31 +129,32 @@
 
         <com.pichs.common.widget.roundview.XRoundTextView
             android:id="@+id/tv_round"
-            android:layout_marginTop="10dp"
             android:layout_width="180dp"
             android:layout_height="80dp"
-            android:gravity="center"
-            android:text="我就是深"
-            app:xp_pressedBorderColor="#26A69A"
-            app:xp_pressedBackground="#0f0"
-            app:xp_pressedTextColor="#f00"
+            android:layout_marginTop="10dp"
             android:background="#09f"
             android:clickable="true"
+            android:gravity="center"
+            android:text="我就是深"
             android:textColor="#F4F4F4"
             app:xp_borderColor="#FFD146"
             app:xp_borderWidth="15dp"
+            app:xp_pressedBackground="#0f0"
+            app:xp_pressedBorderColor="#26A69A"
+            app:xp_pressedTextColor="#f00"
             app:xp_radius="1dp" />
 
         <Button
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:onClick="changeRadius"
-            android:text="改变角度"
-            android:layout_height="wrap_content"/>
+            android:text="改变角度" />
+
         <Button
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:onClick="changeRadiusBg"
-            android:text="改变背景"
-            android:layout_height="wrap_content"/>
+            android:text="改变背景" />
 
         <Space
             android:layout_width="match_parent"
