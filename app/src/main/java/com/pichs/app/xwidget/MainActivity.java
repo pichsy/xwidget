@@ -26,13 +26,16 @@ import com.pichs.common.widget.view.XButton;
 
 public class MainActivity extends AppCompatActivity {
     XRoundTextView xrv;
-
+    XCheckBox xchekbox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XStatusBarHelper.translucent(this);
         XStatusBarHelper.setStatusBarDarkMode(this);
         setContentView(R.layout.activity_main);
+        xchekbox = findViewById(R.id.xchekbox);
+
+
         xrv = findViewById(R.id.tv_round);
 
 
@@ -89,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeRadius(View view) {
+        xchekbox.setCanClick(!xchekbox.isCanClick());
+
         xrv.setRadius(XDisplayHelper.dp2px(this, 38));
 //        xrv.setBorderWidth(XDisplayHelper.dp2px(this, 3));
 //        xrv.setBorderColor(Color.RED);

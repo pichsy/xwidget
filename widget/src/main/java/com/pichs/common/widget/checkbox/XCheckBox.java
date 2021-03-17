@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Checkable;
 
@@ -18,7 +19,7 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
     private Drawable checkedDrawable;
     private Drawable normalDrawable;
     private boolean isChecked = false;
-    private boolean isClickable = true;
+    private boolean mCanClick = true;
 
     public XCheckBox(@NonNull Context context) {
         this(context, null);
@@ -36,38 +37,70 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
     private void initThis(Context context, AttributeSet attrs, int defStyleAttr) {
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XCheckBox);
-            checkedDrawable = ta.getDrawable(R.styleable.XCheckBox_xp_src_checked);
-            normalDrawable = ta.getDrawable(R.styleable.XCheckBox_android_src);
-            isChecked = ta.getBoolean(R.styleable.XCheckBox_xp_checked, false);
-            isClickable = ta.getBoolean(R.styleable.XCheckBox_xp_clickable, true);
+            this.checkedDrawable = ta.getDrawable(R.styleable.XCheckBox_xp_src_checked);
+            this.normalDrawable = ta.getDrawable(R.styleable.XCheckBox_android_src);
+            this.isChecked = ta.getBoolean(R.styleable.XCheckBox_xp_checked, false);
+            this.mCanClick = ta.getBoolean(R.styleable.XCheckBox_xp_clickable, true);
             ta.recycle();
-            setChecked(isChecked);
         }
-        super.setOnClickListener(this);
+        Log.d("XCheckBox", "mClickable: " + mCanClick);
+        setChecked(this.isChecked);
         super.setClickable(true);
+        super.setOnClickListener(this);
     }
 
     public void setCheckedDrawable(Drawable checkedDrawable) {
         this.checkedDrawable = checkedDrawable;
-        if (isChecked) {
+        if (this.isChecked) {
             super.setImageDrawable(this.checkedDrawable);
         }
     }
 
-    @Override
-    public void setClickable(boolean clickable) {
-        isClickable = clickable;
+    /**
+     * 是否开启可点击
+     *
+     * @param canClick canClick
+     */
+    public final void setCanClick(boolean canClick) {
+        this.mCanClick = canClick;
     }
 
+    /**
+     * isCanClick
+     *
+     * @return isCanClick
+     */
+    public final boolean isCanClick() {
+        return this.mCanClick;
+    }
+
+    /**
+     * 请使用 {@link #setCanClick(boolean)}
+     *
+     * @param clickable clickable
+     * @hide {@link #setClickable(boolean)}
+     */
+    @Deprecated
     @Override
-    public boolean isClickable() {
-        return isClickable;
+    public final void setClickable(boolean clickable) {
+        super.setClickable(clickable);
+    }
+
+    /**
+     * 请使用 {@link #isCanClick()}
+     *
+     * @hide {@link #isClickable()}
+     */
+    @Deprecated
+    @Override
+    public final boolean isClickable() {
+        return super.isClickable();
     }
 
     @Override
     public void setImageDrawable(@Nullable Drawable drawable) {
         this.normalDrawable = drawable;
-        if (!isChecked) {
+        if (!this.isChecked) {
             super.setImageDrawable(drawable);
         }
     }
@@ -81,44 +114,50 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
      */
     @Deprecated
     @Override
-    public void setOnClickListener(@Nullable OnClickListener l) {
-        // 禁止设置点击事件
-        // super.setOnClickListener(l);
+    public final void setOnClickListener(@Nullable OnClickListener l) {
     }
 
     @Override
     public void setChecked(boolean checked) {
-        isChecked = checked;
-        if (isChecked) {
-            super.setImageDrawable(checkedDrawable);
-        } else {
-            super.setImageDrawable(normalDrawable);
+        if (this.isChecked == checked) {
+            return;
         }
-        if (mChangeListener != null) {
-            mChangeListener.onCheckedChanged(isChecked);
+        this.isChecked = checked;
+        if (this.isChecked) {
+            super.setImageDrawable(this.checkedDrawable);
+        } else {
+            super.setImageDrawable(this.normalDrawable);
+        }
+        if (this.mChangeListener != null) {
+            this.mChangeListener.onCheckedChanged(this.isChecked);
         }
     }
 
     @Override
     public boolean isChecked() {
-        return isChecked;
+        return this.isChecked;
     }
 
     @Override
     public void toggle() {
-        setChecked(!isChecked);
+        setChecked(!this.isChecked);
     }
 
     @Override
     public void onClick(View v) {
-        if (isClickable) {
+        Log.d("XCheckBox", "mCanClick: " + mCanClick);
+        if (this.mCanClick) {
             toggle();
         }
     }
 
-
     private OnCheckedChangeListener mChangeListener;
 
+    /**
+     * 选中时间监听
+     *
+     * @param listener
+     */
     public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
         this.mChangeListener = listener;
     }
