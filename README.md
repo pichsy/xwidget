@@ -5,11 +5,10 @@
 
 
 ### 引入控件
-最新版本:  [![](https://jitpack.io/v/pichsy/xwidget.svg)](https://jitpack.io/#pichsy/xwidget)
+最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-    
         
-       implementation 'com.github.pichsy:xwidget:1.13'
+        implementation 'com.gitee.pichs:xwidget:1.13'
        
        
 
