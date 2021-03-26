@@ -57,6 +57,27 @@
             android:padding="10dp"
             android:text="普通粗细" />
 
+        <com.pichs.common.widget.view.XButton
+            android:id="@+id/closeFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#F49595"
+            android:minHeight="10dp"
+            android:padding="10dp"
+            android:text="关闭字体变化" />
+
+
+        <com.pichs.common.widget.view.XButton
+            android:id="@+id/openFont"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#F49595"
+            android:minHeight="10dp"
+            android:padding="10dp"
+            android:text="打开字体变化" />
+
         <com.pichs.common.widget.view.XTextView
             android:id="@+id/tv3"
             android:layout_width="wrap_content"

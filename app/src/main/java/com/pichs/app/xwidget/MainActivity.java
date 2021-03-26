@@ -24,9 +24,12 @@ import com.pichs.common.widget.utils.XStatusBarHelper;
 import com.pichs.common.widget.utils.XTypefaceHelper;
 import com.pichs.common.widget.view.XButton;
 
+import javax.crypto.Mac;
+
 public class MainActivity extends AppCompatActivity {
     XRoundTextView xrv;
     XCheckBox xchekbox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,70 +37,28 @@ public class MainActivity extends AppCompatActivity {
         XStatusBarHelper.setStatusBarDarkMode(this);
         setContentView(R.layout.activity_main);
         xchekbox = findViewById(R.id.xchekbox);
-
-
         xrv = findViewById(R.id.tv_round);
+        changeTypeface();
+    }
 
+    private void changeTypeface() {
+        XCardButton btn = findViewById(R.id.btn1);
+        btn.setOnClickListener(v -> {
+            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+            XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
+        });
+        XButton normalBtn = findViewById(R.id.normalBtn);
+        normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
+        XButton closeFont = findViewById(R.id.closeFont);
+        XButton openFont = findViewById(R.id.openFont);
 
-//        XCardButton btn = findViewById(R.id.btn1);
-//        XCheckBox checkbox = findViewById(R.id.checkbox);
-//        checkbox.setOnCheckedChangeListener(new XCheckBox.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(boolean isChecked) {
-//                Toast.makeText(getApplicationContext(), "ischecked:" + isChecked, Toast.LENGTH_LONG).show();
-//            }
-//        });
-
-
-//        XSwitchButton swb = findViewById(R.id.swb);
-//        swb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//
-//                if (isChecked) {
-//                    checkbox.setImageDrawable(new ColorDrawable(Color.BLACK));
-//                    checkbox.setCheckedDrawable(new ColorDrawable(Color.RED));
-//
-//                } else {
-//                    checkbox.setImageDrawable(new ColorDrawable(Color.GREEN));
-//                    checkbox.setCheckedDrawable(new ColorDrawable(Color.BLUE));
-//
-//                }
-//
-//            }
-//        });
-//        swb.setThumbColor(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK);
-//        swb.setBackgroundColor(Color.GREEN, Color.CYAN);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
-//                XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
-//            }
-//        });
-//        XButton normalBtn = findViewById(R.id.normalBtn);
-
-//        normalBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
-////                XTypefaceHelper.clearObserver();
-//
-////                XTypefaceHelper.setGlobalTypeface(getApplicationContext(), XTypefaceHelper.TYPEFACE_BOLD);
-//                XTypefaceHelper.resetTypeface(MainActivity.this);
-////                XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
-//            }
-//        });
-
+        closeFont.setOnClickListener(v -> XTypefaceHelper.closeTypeface(this));
+        openFont.setOnClickListener(v -> XTypefaceHelper.openTypeface(this));
     }
 
     public void changeRadius(View view) {
         xchekbox.setCanClick(!xchekbox.isCanClick());
-
         xrv.setRadius(XDisplayHelper.dp2px(this, 38));
-//        xrv.setBorderWidth(XDisplayHelper.dp2px(this, 3));
-//        xrv.setBorderColor(Color.RED);
-//        xrv.setPressedBorderColor(Color.BLACK);
     }
 
     public void changeRadiusBg(View view) {

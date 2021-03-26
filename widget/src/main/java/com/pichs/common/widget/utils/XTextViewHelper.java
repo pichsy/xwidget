@@ -60,6 +60,11 @@ public class XTextViewHelper implements XITextView {
 
     private void setTypeface() {
         if (mOwner.get() != null) {
+            if (!XTypefaceHelper.isOpenTypeface) {
+                XTypefaceHelper.removeObserver(mOwner.get());
+                mOwner.get().setTypeface(mInitTypeface, mInitTypefaceStyle);
+                return;
+            }
             if (isIgnoreGlobalTypeface) {
                 XTypefaceHelper.removeObserver(mOwner.get());
                 mOwner.get().setTypeface(mInitTypeface, mInitTypefaceStyle);
