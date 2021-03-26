@@ -8,8 +8,7 @@
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
         
-        implementation 'com.gitee.pichs:xwidget:1.13'
-       
+        implementation 'com.gitee.pichs:xwidget:1.21'
        
 
 
@@ -26,29 +25,22 @@
           @Override
           public void onCreate() {
               super.onCreate();
-              XTypefaceHelper.init(this);
+              XTypefaceHelper.init(this, true);
           }
       }
     
-      // 代码中设置
-      btn.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                   XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
-                   XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.BOLD_ITALIC);
-               }
-           });
-           
-       // 重置字体恢复默认样式 
-       XTypefaceHelper.resetTypeface(MainActivity.this);
-    
-       
-       // 增加属性忽略，不想受全局字体影响，使用下面的属性，或者代码也可以
-       // 默认是false
-       app:xp_ignoreGlobalTypeface="true"
-       
-       // 默认是false
-       normalBtn.setIgnoreGlobalTypeface(true);
+      XCardButton btn = findViewById(R.id.btn1);
+      btn.setOnClickListener(v -> {
+          XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+          XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
+      });
+      XButton normalBtn = findViewById(R.id.normalBtn);
+      normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
+      XButton closeFont = findViewById(R.id.closeFont);
+      XButton openFont = findViewById(R.id.openFont);
+
+      closeFont.setOnClickListener(v -> XTypefaceHelper.closeTypeface(this));
+      openFont.setOnClickListener(v -> XTypefaceHelper.openTypeface(this));
         
     ```
 ## 升级日志
