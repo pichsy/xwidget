@@ -703,12 +703,21 @@
         <attr name="xp_colorFilterMode" />
     </declare-styleable>
 
+    <!--  ImageView 选中时候的资源、颜色 -->
+    <attr name="xp_checked_src" format="reference|color" />
 
     <declare-styleable name="XCheckBox">
         <attr name="android:src" />
         <attr name="xp_checked" />
         <attr name="xp_clickable" />
-        <attr name="xp_src_checked" format="reference|color" />
+        <attr name="xp_checked_src" />
+        <attr name="xp_radius" />
+    </declare-styleable>
+
+    <declare-styleable name="XCheckedImageView">
+        <attr name="android:src" />
+        <attr name="xp_checked" />
+        <attr name="xp_checked_src" />
         <attr name="xp_radius" />
     </declare-styleable>
 

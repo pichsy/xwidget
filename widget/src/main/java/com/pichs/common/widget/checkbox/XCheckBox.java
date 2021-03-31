@@ -37,7 +37,7 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
     private void initThis(Context context, AttributeSet attrs, int defStyleAttr) {
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XCheckBox);
-            this.checkedDrawable = ta.getDrawable(R.styleable.XCheckBox_xp_src_checked);
+            this.checkedDrawable = ta.getDrawable(R.styleable.XCheckBox_xp_checked_src);
             this.normalDrawable = ta.getDrawable(R.styleable.XCheckBox_android_src);
             this.isChecked = ta.getBoolean(R.styleable.XCheckBox_xp_checked, false);
             this.mCanClick = ta.getBoolean(R.styleable.XCheckBox_xp_clickable, true);
