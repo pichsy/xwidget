@@ -97,7 +97,7 @@ public class XImageView extends AppCompatImageView implements XIBackground {
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XImageView);
             int colorFilter = ta.getColor(R.styleable.XImageView_xp_colorFilter, -1);
-            int colorFilterMode = ta.getColor(R.styleable.XImageView_xp_colorFilterMode, 1);
+            int colorFilterMode = ta.getInt(R.styleable.XImageView_xp_colorFilterMode, 1);
             if (colorFilter == -1) {
                 clearColorFilter();
             } else {

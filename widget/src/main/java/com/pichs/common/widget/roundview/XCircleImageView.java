@@ -11,6 +11,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
@@ -72,6 +73,8 @@ public class XCircleImageView extends AppCompatImageView {
     private boolean mSetupPending;
     private boolean mBorderOverlay;
     private boolean mDisableCircularTransformation;
+    private PorterDuff.Mode mMode;
+
 
     public XCircleImageView(Context context) {
         super(context);
@@ -91,8 +94,16 @@ public class XCircleImageView extends AppCompatImageView {
         mBorderWidth = a.getDimensionPixelSize(R.styleable.XCircleImageView_xp_borderWidth, DEFAULT_BORDER_WIDTH);
         mBorderColor = a.getColor(R.styleable.XCircleImageView_xp_borderColor, DEFAULT_BORDER_COLOR);
         mBorderOverlay = a.getBoolean(R.styleable.XCircleImageView_xp_borderOverlay, DEFAULT_BORDER_OVERLAY);
-        a.recycle();
+        int colorFilter = a.getColor(R.styleable.XCircleImageView_xp_colorFilter, -1);
+        int colorFilterMode = a.getInt(R.styleable.XCircleImageView_xp_colorFilterMode, 1);
+        if (colorFilter == -1) {
+            clearColorFilter();
+        } else {
+            mMode = getColorFilterMode(colorFilterMode);
+            setColorFilter(colorFilter, mMode);
+        }
 
+        a.recycle();
         init();
     }
 
@@ -108,6 +119,60 @@ public class XCircleImageView extends AppCompatImageView {
             setup();
             mSetupPending = false;
         }
+    }
+
+    public void setColorFilterOverride(int color) {
+        if (getCurrentMode() != null) {
+            setColorFilter(color, getCurrentMode());
+        } else {
+            setColorFilter(color);
+        }
+    }
+
+    public PorterDuff.Mode getCurrentMode() {
+        return mMode;
+    }
+
+    private PorterDuff.Mode getColorFilterMode(int mode) {
+        switch (mode) {
+            case 0:
+                return PorterDuff.Mode.SRC;
+            case 1:
+                return PorterDuff.Mode.SRC_ATOP;
+            case 2:
+                return PorterDuff.Mode.SRC_IN;
+            case 3:
+                return PorterDuff.Mode.SRC_OUT;
+            case 4:
+                return PorterDuff.Mode.SRC_OVER;
+            case 5:
+                return PorterDuff.Mode.MULTIPLY;
+            case 6:
+                return PorterDuff.Mode.DST;
+            case 7:
+                return PorterDuff.Mode.DST_ATOP;
+            case 8:
+                return PorterDuff.Mode.DST_IN;
+            case 9:
+                return PorterDuff.Mode.DST_OUT;
+            case 10:
+                return PorterDuff.Mode.DST_OVER;
+            case 11:
+                return PorterDuff.Mode.CLEAR;
+            case 12:
+                return PorterDuff.Mode.XOR;
+            case 13:
+                return PorterDuff.Mode.SCREEN;
+            case 14:
+                return PorterDuff.Mode.DARKEN;
+            case 15:
+                return PorterDuff.Mode.LIGHTEN;
+            case 16:
+                return PorterDuff.Mode.ADD;
+            case 17:
+                return PorterDuff.Mode.OVERLAY;
+        }
+        return PorterDuff.Mode.SRC_ATOP;
     }
 
     @Override
