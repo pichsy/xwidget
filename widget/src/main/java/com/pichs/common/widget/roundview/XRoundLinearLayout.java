@@ -46,7 +46,6 @@ public class XRoundLinearLayout extends LinearLayout implements XIRoundBackgroun
         backgroundHelper.setRadius(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius);
     }
 
-
     @Override
     public void setBorderColor(int borderColor) {
         backgroundHelper.setBorderColor(borderColor);
@@ -60,7 +59,6 @@ public class XRoundLinearLayout extends LinearLayout implements XIRoundBackgroun
     @Override
     public void setPressedBorderColor(int pressedBorderColor) {
         backgroundHelper.setPressedBorderColor(pressedBorderColor);
-
     }
 
     @Override
@@ -131,5 +129,80 @@ public class XRoundLinearLayout extends LinearLayout implements XIRoundBackgroun
     @Override
     public XRoundBackgroundHelper clearBackgrounds() {
         return backgroundHelper.clearBackgrounds();
+    }
+
+    @Override
+    public void setBackgroundGradientStartColor(int startColor) {
+        backgroundHelper.setBackgroundGradientStartColor(startColor);
+    }
+
+    @Override
+    public void setBackgroundGradientEndColor(int endColor) {
+        backgroundHelper.setBackgroundGradientEndColor(endColor);
+    }
+
+    @Override
+    public void setPressedBackgroundGradientStartColor(int startColor) {
+        backgroundHelper.setPressedBackgroundGradientStartColor(startColor);
+    }
+
+    @Override
+    public void setPressedBackgroundGradientEndColor(int endColor) {
+        backgroundHelper.setPressedBackgroundGradientEndColor(endColor);
+    }
+
+    @Override
+    public void setUnEnabledBackgroundGradientStartColor(int startColor) {
+        backgroundHelper.setUnEnabledBackgroundGradientStartColor(startColor);
+    }
+
+    @Override
+    public void setUnEnabledBackgroundGradientEndColor(int endColor) {
+        backgroundHelper.setUnEnabledBackgroundGradientEndColor(endColor);
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientStartColor(int startColor) {
+        backgroundHelper.setCheckedBackgroundGradientStartColor(startColor);
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientEndColor(int endColor) {
+        backgroundHelper.setCheckedBackgroundGradientEndColor(endColor);
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientStartColor(int startColor) {
+        backgroundHelper.setActivatedBackgroundGradientStartColor(startColor);
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientEndColor(int endColor) {
+        backgroundHelper.setActivatedBackgroundGradientEndColor(endColor);
+    }
+
+    @Override
+    public void setNormalBackgroundColor(int color) {
+        backgroundHelper.setNormalBackgroundColor(color);
+    }
+
+    @Override
+    public void setPressedBackgroundColor(int color) {
+        backgroundHelper.setPressedBackgroundColor(color);
+    }
+
+    @Override
+    public void setActivatedBackgroundColor(int color) {
+        backgroundHelper.setActivatedBackgroundColor(color);
+    }
+
+    @Override
+    public void setCheckedBackgroundColor(int color) {
+        backgroundHelper.setCheckedBackgroundColor(color);
+    }
+
+    @Override
+    public void setUnEnabledBackgroundColor(int color) {
+        backgroundHelper.setUnEnabledBackgroundColor(color);
     }
 }

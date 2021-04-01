@@ -503,6 +503,16 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     @Override
+    public void setBackgroundGradientStartColor(int startColor) {
+        setBackgroundGradient(startColor, bgEndColor, bgColorOrientation);
+    }
+
+    @Override
+    public void setBackgroundGradientEndColor(int endColor) {
+        setBackgroundGradient(bgStartColor, endColor, bgColorOrientation);
+    }
+
+    @Override
     public void setPressedBackground(Drawable drawable) {
         this.pressedBackgroundTmp = drawable;
         pressedBackground = getFinalDrawable(
@@ -530,6 +540,16 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 pressedBgColorOrientation
         );
         setBackgroundSelector();
+    }
+
+    @Override
+    public void setPressedBackgroundGradientStartColor(int startColor) {
+        setPressedBackgroundGradient(startColor, pressedBgEndColor, pressedBgColorOrientation);
+    }
+
+    @Override
+    public void setPressedBackgroundGradientEndColor(int endColor) {
+        setPressedBackgroundGradient(pressedBgStartColor, endColor, pressedBgColorOrientation);
     }
 
     @Override
@@ -563,6 +583,16 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     @Override
+    public void setUnEnabledBackgroundGradientStartColor(int startColor) {
+        setUnEnabledBackgroundGradient(startColor, unEnabledBgEndColor, unEnabledBgColorOrientation);
+    }
+
+    @Override
+    public void setUnEnabledBackgroundGradientEndColor(int endColor) {
+        setUnEnabledBackgroundGradient(unEnabledBgStartColor, endColor, unEnabledBgColorOrientation);
+    }
+
+    @Override
     public void setCheckedBackground(Drawable drawable) {
         this.checkedBackgroundTmp = drawable;
         this.checkedBackground = getFinalDrawable(
@@ -593,6 +623,16 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     @Override
+    public void setCheckedBackgroundGradientStartColor(int startColor) {
+        setCheckedBackgroundGradient(startColor, checkedBgEndColor, checkedBgColorOrientation);
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientEndColor(int endColor) {
+        setCheckedBackgroundGradient(checkedBgStartColor, endColor, checkedBgColorOrientation);
+    }
+
+    @Override
     public void setActivatedBackground(Drawable drawable) {
         this.activatedBackgroundTmp = drawable;
         this.activatedBackground = getFinalDrawable(
@@ -620,6 +660,41 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 activatedBgColorOrientation
         );
         setBackgroundSelector();
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientStartColor(int startColor) {
+        setActivatedBackgroundGradient(startColor, this.activatedBgEndColor, this.activatedBgColorOrientation);
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientEndColor(int endColor) {
+        setActivatedBackgroundGradient(activatedBgStartColor, endColor, this.activatedBgColorOrientation);
+    }
+
+    @Override
+    public void setNormalBackgroundColor(int color) {
+        setNormalBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setPressedBackgroundColor(int color) {
+        setPressedBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setActivatedBackgroundColor(int color) {
+        setActivatedBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setCheckedBackgroundColor(int color) {
+        setCheckedBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setUnEnabledBackgroundColor(int color) {
+        setUnEnabledBackground(new ColorDrawable(color));
     }
 
     @Override

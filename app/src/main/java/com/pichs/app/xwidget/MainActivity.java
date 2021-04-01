@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -41,13 +42,19 @@ public class MainActivity extends AppCompatActivity {
         changeTypeface();
     }
 
+    int color =-0xFFFFFF1;
+
     private void changeTypeface() {
         XCardButton btn = findViewById(R.id.btn1);
-        btn.setOnClickListener(v -> {
-            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
-            XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
-        });
+
         XButton normalBtn = findViewById(R.id.normalBtn);
+        btn.setOnClickListener(v -> {
+            Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
+//            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+//            XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
+            normalBtn.setBackgroundColor(color);
+        });
+
         normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
         XButton closeFont = findViewById(R.id.closeFont);
         XButton openFont = findViewById(R.id.openFont);

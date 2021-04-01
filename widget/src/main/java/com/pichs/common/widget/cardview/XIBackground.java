@@ -2,6 +2,8 @@ package com.pichs.common.widget.cardview;
 
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.ColorInt;
+
 import com.pichs.common.widget.utils.XBackgroundHelper;
 
 /**
@@ -25,6 +27,17 @@ public interface XIBackground {
      */
     void setBackgroundGradient(int starColor, int endColor, @GradientOrientation int orientation);
 
+    /**
+     * 设置正常背景渐变色开始颜色
+     * @param startColor startColor
+     */
+    void setBackgroundGradientStartColor(int startColor);
+
+    /**
+     * 设置正常背景渐变色结束颜色
+     * @param endColor endColor
+     */
+    void setBackgroundGradientEndColor(int endColor);
 
     /**
      * 按压背景效果
@@ -35,12 +48,36 @@ public interface XIBackground {
     void setPressedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
     /**
+     * 设置按压背景渐变色开始颜色
+     * @param startColor startColor
+     */
+    void setPressedBackgroundGradientStartColor(int startColor);
+
+    /**
+     * 设置按压背景渐变色结束颜色
+     * @param endColor endColor
+     */
+    void setPressedBackgroundGradientEndColor(int endColor);
+
+    /**
      * 不可用背景效果
      */
     void setUnEnabledBackground(Drawable unEnabledBackground);
 
     // 渐变色
     void setUnEnabledBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
+
+    /**
+     * 设置不可用背景渐变色开始颜色
+     * @param startColor startColor
+     */
+    void setUnEnabledBackgroundGradientStartColor(int startColor);
+
+    /**
+     * 设置不可用背景渐变色结束颜色
+     * @param endColor endColor
+     */
+    void setUnEnabledBackgroundGradientEndColor(int endColor);
 
     /**
      * 选中背景效果
@@ -51,6 +88,18 @@ public interface XIBackground {
     void setCheckedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
     /**
+     * 设置选中用背景渐变色开始颜色
+     * @param startColor startColor
+     */
+    void setCheckedBackgroundGradientStartColor(int startColor);
+
+    /**
+     * 设置选中用背景渐变色结束颜色
+     * @param endColor endColor
+     */
+    void setCheckedBackgroundGradientEndColor(int endColor);
+
+    /**
      * activated=true效果
      */
     void setActivatedBackground(Drawable activateBackground);
@@ -58,6 +107,32 @@ public interface XIBackground {
     // 渐变色
     void setActivatedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
+    /**
+     * 设置选中用背景渐变色开始颜色
+     * @param startColor startColor
+     */
+    void setActivatedBackgroundGradientStartColor(int startColor);
+
+    /**
+     * 设置选中用背景渐变色结束颜色
+     * @param endColor endColor
+     */
+    void setActivatedBackgroundGradientEndColor(int endColor);
+
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param color
+     */
+    void setNormalBackgroundColor(@ColorInt int color);
+
+    void setPressedBackgroundColor(@ColorInt int color);
+
+    void setActivatedBackgroundColor(@ColorInt int color);
+
+    void setCheckedBackgroundColor(@ColorInt int color);
+
+    void setUnEnabledBackgroundColor(@ColorInt int color);
 
     XBackgroundHelper clearBackgrounds();
 }
