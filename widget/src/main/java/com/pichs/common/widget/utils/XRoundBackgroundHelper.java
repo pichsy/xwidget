@@ -103,13 +103,13 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             checkedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBorderColor, 0);
             unEnabledBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_unEnabledBorderColor, 0);
             activatedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBorderColor, 0);
-
+            // 常色
             backgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_android_background);
             pressedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_pressedBackground);
             checkedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_checkedBackground);
             unEnabledBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_unEnabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_activatedBackground);
-
+            // 渐变
             bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, 0);
             bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientEndColor, 0);
             bgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_backgroundGradientOrientation, GradientOrientation.HORIZONTAL);
