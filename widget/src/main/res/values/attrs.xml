@@ -16,8 +16,6 @@
         <enum name="right" value="2" />
         <enum name="bottom" value="3" />
         <enum name="left" value="4" />
-        <enum name="lt_rb" value="5" />
-        <enum name="lb_rt" value="6" />
     </attr>
     <!--  layout  -->
     <attr name="xp_bottomDividerHeight" format="dimension" />

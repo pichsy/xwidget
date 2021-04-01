@@ -225,7 +225,7 @@ public class XLayoutHelper implements XILayout {
             }
             ta.recycle();
         }
-//        setRadiusAndShadow(radius, mHideRadiusSide, shadow, mShadowColor, mShadowAlpha);
+//        setRadiusAndShadow(mRadius, mHideRadiusSide, mShadowElevation, mShadowColor, mShadowAlpha);
     }
 
     @Override
