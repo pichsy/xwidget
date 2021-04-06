@@ -6,13 +6,7 @@ import android.content.SharedPreferences;
 import java.lang.ref.WeakReference;
 
 /**
- * @Description:
- * @Author: 吴波
- * @CreateDate: 2021/1/4 10:03
- * @UpdateUser: 吴波
- * @UpdateDate: 2021/1/4 10:03
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * 缓存帮助类，用于全局字体缓存
  */
 public class XWidgetCache {
 

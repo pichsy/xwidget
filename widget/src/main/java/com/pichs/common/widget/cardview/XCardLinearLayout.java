@@ -27,7 +27,8 @@ import com.pichs.common.widget.utils.XLayoutHelper;
 import com.pichs.common.widget.view.XLinearLayout;
 
 /**
- * @author pichs
+ * 卡片系列
+ * XCardLinearLayout
  */
 public class XCardLinearLayout extends XLinearLayout implements XILayout {
     private XLayoutHelper mLayoutHelper;

@@ -12,7 +12,7 @@ import com.pichs.common.widget.cardview.XIRoundBackground;
 import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 
 /**
- * 设置
+ * XRoundViewGroup
  */
 public abstract class XRoundViewGroup extends ViewGroup implements XIRoundBackground {
 

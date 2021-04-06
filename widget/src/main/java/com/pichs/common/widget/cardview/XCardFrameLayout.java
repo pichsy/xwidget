@@ -27,7 +27,8 @@ import com.pichs.common.widget.utils.XLayoutHelper;
 import com.pichs.common.widget.view.XFrameLayout;
 
 /**
- * @author pichs
+ * 卡片系列
+ * XCardFrameLayout
  */
 public class XCardFrameLayout extends XFrameLayout implements XILayout {
     private XLayoutHelper mLayoutHelper;

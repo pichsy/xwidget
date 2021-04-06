@@ -7,7 +7,7 @@ import androidx.annotation.ColorInt;
 import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 
 /**
- *
+ * Round系列背景接口
  */
 public interface XIRoundBackground {
 

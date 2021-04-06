@@ -22,8 +22,7 @@ import androidx.annotation.ColorInt;
 
 
 /**
- * @author cginechen
- * @date 2016-03-17
+ * 颜色帮助类
  */
 public class XColorHelper {
 

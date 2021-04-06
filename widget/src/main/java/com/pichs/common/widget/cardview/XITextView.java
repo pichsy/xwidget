@@ -1,7 +1,7 @@
 package com.pichs.common.widget.cardview;
 
 /**
- * 字体颜色选择器
+ * 字体颜色选择器 接口
  */
 public interface XITextView {
 

@@ -25,8 +25,7 @@ import java.io.File;
 
 
 /**
- * @author cginechen
- * @date 2016-09-22
+ * 资源帮助类
  */
 public class XResHelper {
 

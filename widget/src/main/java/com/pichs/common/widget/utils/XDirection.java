@@ -18,7 +18,6 @@ package com.pichs.common.widget.utils;
 
 /**
  * 定义了从左到右，从上到下，从右到左，从下到上四个方向的类
- * Created by Kayo on 2017/2/7.
  */
 
 public enum XDirection {

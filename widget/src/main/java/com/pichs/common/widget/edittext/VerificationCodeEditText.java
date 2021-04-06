@@ -26,7 +26,6 @@ import java.util.TimerTask;
 /**
  * Created pichs
  * 验证码输入框，可带加载动画，只限线性有动画
- *
  */
 public class VerificationCodeEditText extends XEditText {
 

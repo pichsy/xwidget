@@ -12,13 +12,7 @@ import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 
 /**
- * @Description: $
- * @Author: WuBo
- * @CreateDate: 2020/11/6$ 10:58$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/6$ 10:58$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * XFrameLayout
  */
 public class XFrameLayout extends FrameLayout  implements XIBackground {
 

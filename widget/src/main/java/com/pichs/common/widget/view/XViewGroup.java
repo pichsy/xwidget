@@ -11,13 +11,7 @@ import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 
 /**
- * @Description: $
- * @Author: WuBo
- * @CreateDate: 2020/11/6$ 11:03$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/6$ 11:03$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * XViewGroup
  */
 public abstract class XViewGroup extends ViewGroup  implements XIBackground {
 

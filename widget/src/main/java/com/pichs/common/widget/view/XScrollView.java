@@ -7,6 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.widget.NestedScrollView;
 
+/**
+ * XScrollView
+ */
 public class XScrollView extends NestedScrollView {
 
     public XScrollView(@NonNull Context context) {

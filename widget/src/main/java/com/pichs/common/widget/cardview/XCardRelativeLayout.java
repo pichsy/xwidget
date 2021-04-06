@@ -28,7 +28,8 @@ import com.pichs.common.widget.view.XRelativeLayout;
 
 
 /**
- *  @author pichs
+ * 卡片系列
+ * XCardRelativeLayout
  */
 public class XCardRelativeLayout extends XRelativeLayout implements XILayout {
     private XLayoutHelper mLayoutHelper;

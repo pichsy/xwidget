@@ -44,8 +44,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 
 
 /**
- * @author cginechen
- * @date 2016-03-17
+ * Drawable帮助类
  */
 public class XDrawableHelper {
     private static final String TAG = XDrawableHelper.class.getSimpleName();

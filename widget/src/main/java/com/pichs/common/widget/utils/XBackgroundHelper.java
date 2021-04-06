@@ -17,13 +17,7 @@ import com.pichs.common.widget.cardview.XIBackground;
 import java.lang.ref.WeakReference;
 
 /**
- * @Description: $
- * @Author: WuBo
- * @CreateDate: 2020/11/25$ 18:36$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/25$ 18:36$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * 背景帮助类
  */
 public class XBackgroundHelper implements XIBackground {
 

@@ -35,8 +35,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * @author cginechen
- * @date 2016-03-27
+ * 状态栏帮助类
  */
 public class XStatusBarHelper {
 

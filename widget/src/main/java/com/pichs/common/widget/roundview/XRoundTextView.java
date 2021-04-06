@@ -15,7 +15,7 @@ import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
 
 /**
- * TextView 自定义基类
+ * XRoundTextView
  */
 public class XRoundTextView extends AppCompatTextView implements XIRoundBackground, XITextView {
 

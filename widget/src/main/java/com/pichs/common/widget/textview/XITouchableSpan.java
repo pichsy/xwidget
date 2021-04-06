@@ -19,8 +19,7 @@ package com.pichs.common.widget.textview;
 import android.view.View;
 
 /**
- * @author cginechen
- * @date 2017-03-20
+ * XITouchableSpan
  */
 
 public interface XITouchableSpan {

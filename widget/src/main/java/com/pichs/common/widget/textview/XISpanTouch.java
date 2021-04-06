@@ -17,10 +17,8 @@
 package com.pichs.common.widget.textview;
 
 /**
- * @author cginechen
- * @date 2017-08-07
+ *  XISpanTouch
  */
-
 public interface XISpanTouch {
     /**
      * 记录当前 Touch 事件对应的点是不是点在了 span 上面

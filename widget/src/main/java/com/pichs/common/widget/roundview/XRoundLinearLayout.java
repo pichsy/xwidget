@@ -11,7 +11,7 @@ import com.pichs.common.widget.cardview.XIRoundBackground;
 import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 
 /**
- * 设置
+ * XRoundLinearLayout
  */
 public class XRoundLinearLayout extends LinearLayout implements XIRoundBackground {
 

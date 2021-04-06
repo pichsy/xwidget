@@ -32,8 +32,7 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatImageView;
 
 /**
- * @author xuexiang
- * @since 2020-01-06 11:36
+ * PorterImageView
  */
 public abstract class PorterImageView extends AppCompatImageView {
 

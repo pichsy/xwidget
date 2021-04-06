@@ -33,6 +33,10 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.view.XImageView;
 
+/**
+ * 圆形图片，高性能版
+ * 只支持圆形图片
+ */
 public class XCircleImageView extends AppCompatImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;

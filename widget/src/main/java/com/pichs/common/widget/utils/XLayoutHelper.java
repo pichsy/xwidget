@@ -44,8 +44,7 @@ import com.pichs.common.widget.cardview.XILayout;
 import java.lang.ref.WeakReference;
 
 /**
- * @author cginechen
- * @date 2017-03-10
+ * 布局帮助类
  */
 
 public class XLayoutHelper implements XILayout {

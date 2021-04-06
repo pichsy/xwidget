@@ -17,6 +17,9 @@ import com.pichs.common.widget.shinebutton.interpolator.EasingInterpolator;
 import java.lang.ref.WeakReference;
 import java.util.Random;
 
+/**
+ * ShineView
+ */
 public class ShineView extends View {
     /**
      * default 10ms ,change to 25ms for saving cpu

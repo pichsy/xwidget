@@ -1,13 +1,8 @@
 package com.pichs.common.widget.interpolator;
 
 /**
- * @Description: 属性动画的属性
- * @Author: WuBo
- * @CreateDate: 2020/11/10$ 09:08$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/10$ 09:08$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * 属性动画的属性
+ * AnimationProperty
  */
 public class AnimationProperty {
     /**

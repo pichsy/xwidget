@@ -23,8 +23,7 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 
 /**
- * @author cginechen
- * @date 2017-03-20
+ * XLinkTouchDecorHelper
  */
 
 public class XLinkTouchDecorHelper {

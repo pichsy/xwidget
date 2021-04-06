@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 渐变背景帮助类
+ */
 public class XGradientHelper {
     /**
      * 定义状态

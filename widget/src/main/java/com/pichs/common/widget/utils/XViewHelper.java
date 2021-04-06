@@ -54,8 +54,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author cginechen
- * @date 2016-03-17
+ * view帮助类
  */
 public class XViewHelper {
 

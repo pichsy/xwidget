@@ -27,7 +27,8 @@ import com.pichs.common.widget.utils.XLayoutHelper;
 import com.pichs.common.widget.view.XConstraintLayout;
 
 /**
- * @author pichs
+ * 卡片系列
+ * XCardConstraintLayout
  */
 public class XCardConstraintLayout extends XConstraintLayout implements XILayout {
     private XLayoutHelper mLayoutHelper;

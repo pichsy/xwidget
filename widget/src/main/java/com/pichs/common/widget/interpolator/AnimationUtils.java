@@ -5,13 +5,8 @@ import android.animation.ObjectAnimator;
 import android.view.View;
 
 /**
- * @Description: 动画工具类
- * @Author: WuBo
- * @CreateDate: 2020/11/20$ 18:19$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/20$ 18:19$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * 动画工具类
+ * AnimationUtils
  */
 public class AnimationUtils {
 

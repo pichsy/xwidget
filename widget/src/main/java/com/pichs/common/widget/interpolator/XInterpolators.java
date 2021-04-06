@@ -30,7 +30,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator;
 
 /**
- * @author cginechen
+ * XInterpolators
  */
 public class XInterpolators {
 

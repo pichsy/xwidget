@@ -27,7 +27,8 @@ import com.pichs.common.widget.utils.XLayoutHelper;
 import com.pichs.common.widget.view.XButton;
 
 /**
- *  @author pichs
+ * 卡片系列
+ * XCardButton
  */
 public class XCardButton extends XButton implements XILayout {
     private XLayoutHelper mLayoutHelper;

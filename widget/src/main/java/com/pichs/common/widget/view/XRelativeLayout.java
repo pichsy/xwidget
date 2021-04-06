@@ -11,13 +11,7 @@ import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 
 /**
- * @Description: $
- * @Author: WuBo
- * @CreateDate: 2020/11/6$ 10:56$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/6$ 10:56$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * XRelativeLayout
  */
 public class XRelativeLayout  extends RelativeLayout  implements XIBackground {
 

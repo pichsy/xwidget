@@ -14,6 +14,9 @@ import androidx.annotation.Nullable;
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.XCardImageView;
 
+/**
+ * 自定义CheckBox，使用更舒适
+ */
 public class XCheckBox extends XCardImageView implements Checkable, View.OnClickListener {
 
     private Drawable checkedDrawable;

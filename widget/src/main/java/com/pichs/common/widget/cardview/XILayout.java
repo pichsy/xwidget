@@ -27,9 +27,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Created by cgspine on 2018/3/23.
+ * card系列接口
  */
-
 public interface XILayout {
     /**
      * 都不隐藏

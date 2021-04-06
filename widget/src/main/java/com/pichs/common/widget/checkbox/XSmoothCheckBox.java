@@ -38,7 +38,7 @@ import com.pichs.common.widget.utils.XDisplayHelper;
 /**
  * 自带动画的checkbox
  *
- * @author xuexiang
+ * XSmoothCheckBox
  * @since 2020-01-06 9:55
  */
 public class XSmoothCheckBox extends View implements Checkable {

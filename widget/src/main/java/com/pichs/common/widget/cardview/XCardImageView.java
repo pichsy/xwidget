@@ -37,7 +37,7 @@ import com.pichs.common.widget.utils.XLayoutHelper;
  * 提供为图片添加圆角、边框、剪裁到圆形。
  * shown image in radius view,
  * the oval is not supported
- * @author pichs
+ * XCardImageView
  */
 public class XCardImageView extends XImageView implements XILayout {
     private static final int DEFAULT_BORDER_COLOR = Color.GRAY;

@@ -52,8 +52,7 @@ import com.pichs.common.widget.view.XTextView;
  * 然后传递给 {@link XTouchableSpan}, 实现点击态的变化和点击事件的响应。
  * </p>
  *
- * @author cginechen
- * @date 2017-03-20
+ * XSpanTouchTextView
  * @see XTouchableSpan
  * @see XLinkTouchMovementMethod
  */

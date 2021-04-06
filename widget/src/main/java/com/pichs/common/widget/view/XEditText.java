@@ -18,13 +18,7 @@ import com.pichs.common.widget.utils.XTextViewHelper;
 import com.pichs.common.widget.utils.XTypefaceHelper;
 
 /**
- * @Description: $
- * @Author: WuBo
- * @CreateDate: 2020/11/6$ 10:55$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/6$ 10:55$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * XEditText
  */
 public class XEditText extends AppCompatEditText implements XIBackground, XITextView {
     private XBackgroundHelper backgroundHelper;

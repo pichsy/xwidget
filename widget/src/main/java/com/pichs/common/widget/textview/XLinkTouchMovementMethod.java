@@ -26,8 +26,7 @@ import android.widget.TextView;
 /**
  * 配合 {@link XLinkTouchDecorHelper} 使用
  *
- * @author cginechen
- * @date 2017-03-20
+ * XLinkTouchMovementMethod
  */
 
 public class XLinkTouchMovementMethod extends LinkMovementMethod {

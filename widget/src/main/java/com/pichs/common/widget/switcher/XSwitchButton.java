@@ -35,8 +35,7 @@ import com.pichs.common.widget.utils.XGradientHelper;
 /**
  * switch切换按钮
  *
- * @author xuexiang
- * @since 2019/1/14 上午11:23
+ * XSwitchButton
  */
 public class XSwitchButton extends CompoundButton {
     public static final float DEFAULT_THUMB_RANGE_RATIO = 1.8f;

@@ -12,9 +12,6 @@ import com.google.android.material.appbar.AppBarLayout;
 /*
  * -----------------------------------------------------------------
  * desc:解决AppBarLayout滑动时抖动问题
- * Author: WangZhiHua
- * Create: 2019/4/2 10:00
- * Version: 2.0.1
  * -----------------------------------------------------------------
  */
 public class FixAppBarLayoutBehavior extends AppBarLayout.Behavior {

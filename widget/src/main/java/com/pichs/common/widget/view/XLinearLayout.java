@@ -11,7 +11,7 @@ import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 
 /**
- * 设置
+ * XLinearLayout
  */
 public class XLinearLayout extends LinearLayout implements XIBackground {
 
