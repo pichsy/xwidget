@@ -1,3 +1,7 @@
+
+# 最新地址, 该项目已移到gitee
+# [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
+
 # xwidget
 最喜欢的自定义控件
 
