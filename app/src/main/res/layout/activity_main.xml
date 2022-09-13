@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/purple_200"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/teal_200">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,14 +40,14 @@
             android:textColor="#fff"
             android:textSize="20sp"
             android:typeface="serif"
-            app:xp_shadowElevation="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:xp_backgroundGradientEndColor="#f8e"
             app:xp_backgroundGradientStartColor="#d94"
-            app:xp_radius="10dp" />
+            app:xp_radius="10dp"
+            app:xp_shadowElevation="6dp" />
 
         <com.pichs.common.widget.view.XButton
             android:id="@+id/normalBtn"
@@ -107,16 +107,16 @@
             app:xp_shine_small_shine_color="#3CC63C" />
 
         <com.pichs.common.widget.checkbox.XCheckBox
+            android:id="@+id/xchekbox"
             android:layout_width="44dp"
             android:layout_height="44dp"
-            android:id="@+id/xchekbox"
-            app:xp_radius="22dp"
             android:layout_marginTop="30dp"
-            android:src="#9D9DC4"
             android:layout_marginBottom="30dp"
+            android:src="#9D9DC4"
             app:xp_checked="true"
+            app:xp_checked_src="#6532E6"
             app:xp_clickable="false"
-            app:xp_checked_src="#6532E6" />
+            app:xp_radius="22dp" />
 
         <com.pichs.common.widget.roundview.XRoundTextView
             android:id="@+id/tv_round"
@@ -141,11 +141,22 @@
             android:onClick="changeRadius"
             android:text="改变角度" />
 
-        <Button
+        <com.pichs.common.widget.view.XImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="changeRadiusBg"
-            android:text="改变背景" />
+            android:clickable="true"
+            android:src="@mipmap/ic_launcher"
+            android:alpha="1"
+            app:xp_pressedAlpha="0.5" />
+
+        <com.pichs.common.widget.cardview.XCardConstraintLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:xp_radius="16dp"
+            android:alpha="1"
+            app:xp_pressedAlpha="0.5"
+            android:background="#f09"
+            android:onClick="changeRadiusBg" />
 
         <Space
             android:layout_width="match_parent"

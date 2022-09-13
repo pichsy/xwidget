@@ -130,6 +130,12 @@
     </attr>
     <!--  多状态，背景色效果 end  -->
 
+    <!--  控件按压透明度变化效果 start  -->
+    <attr name="xp_pressedAlpha" format="float" />
+    <attr name="xp_disabledAlpha" format="float" />
+    <!--  控件按压透明度变化效果 end  -->
+
+
     <!--  多状态，文字颜色效果，只针对XCardTextView效  -->
     <attr name="xp_pressedTextColor" format="color|reference" />
     <attr name="xp_checkedTextColor" format="color|reference" />
@@ -207,6 +213,12 @@
         <attr name="xp_unEnabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
 
+    </declare-styleable>
+
+    <declare-styleable name="XIAlpha">
+        <attr name="xp_pressedAlpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="android:alpha" />
     </declare-styleable>
 
     <!--  XCard 顶层接口  -->
@@ -592,6 +604,10 @@
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
 
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  XStatusBarView  -->
@@ -662,6 +678,10 @@
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
 
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  XImageView  -->
@@ -699,6 +719,11 @@
 
         <attr name="xp_colorFilter" />
         <attr name="xp_colorFilterMode" />
+
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  ImageView 选中时候的资源、颜色 -->

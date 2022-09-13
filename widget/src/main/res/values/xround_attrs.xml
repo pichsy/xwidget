@@ -75,6 +75,10 @@
         <attr name="xp_borderOverlay" format="boolean" />
         <attr name="xp_colorFilter" />
         <attr name="xp_colorFilterMode" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
     <!--  XRoundImageView 和XIRoundBackground 不共用，但功能一致  -->
     <declare-styleable name="XRoundImageView">
@@ -91,10 +95,17 @@
         <attr name="xp_oval" format="boolean" />
         <attr name="xp_colorFilter" />
         <attr name="xp_colorFilterMode" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <declare-styleable name="XRoundButton">
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
@@ -207,7 +218,10 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
     <declare-styleable name="XRoundLinearLayout">
         <!--   增加圆角     -->
@@ -257,7 +271,10 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
     <declare-styleable name="XRoundConstraintLayout">
         <!--   增加圆角     -->
@@ -307,7 +324,10 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
     <declare-styleable name="XRoundFrameLayout">
         <!--   增加圆角     -->
@@ -357,7 +377,10 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
     <declare-styleable name="XRoundView">
         <!--   增加圆角     -->
@@ -407,7 +430,10 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
     <declare-styleable name="XRoundViewGroup">
         <!--   增加圆角     -->
@@ -457,7 +483,10 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
     <declare-styleable name="XRoundRelativeLayout">
         <!--   增加圆角     -->
@@ -507,6 +536,9 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 </resources>

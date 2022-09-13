@@ -24,6 +24,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
@@ -31,13 +32,16 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.pichs.common.widget.R;
+import com.pichs.common.widget.cardview.XIAlpha;
+import com.pichs.common.widget.utils.XAlphaHelper;
+import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 import com.pichs.common.widget.view.XImageView;
 
 /**
  * 圆形图片，高性能版
  * 只支持圆形图片
  */
-public class XCircleImageView extends AppCompatImageView {
+public class XCircleImageView extends AppCompatImageView implements XIAlpha {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -78,6 +82,7 @@ public class XCircleImageView extends AppCompatImageView {
     private boolean mBorderOverlay;
     private boolean mDisableCircularTransformation;
     private PorterDuff.Mode mMode;
+    private XAlphaHelper xAlphaHelper;
 
 
     public XCircleImageView(Context context) {
@@ -92,7 +97,7 @@ public class XCircleImageView extends AppCompatImageView {
 
     public XCircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
+        xAlphaHelper = new XAlphaHelper(context, attrs, 0, this);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XCircleImageView, defStyle, 0);
 
         mBorderWidth = a.getDimensionPixelSize(R.styleable.XCircleImageView_xp_borderWidth, DEFAULT_BORDER_WIDTH);
@@ -109,6 +114,29 @@ public class XCircleImageView extends AppCompatImageView {
 
         a.recycle();
         init();
+    }
+
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     private void init() {
@@ -470,7 +498,7 @@ public class XCircleImageView extends AppCompatImageView {
     }
 
     private RectF calculateBounds() {
-        int availableWidth  = getWidth() - getPaddingLeft() - getPaddingRight();
+        int availableWidth = getWidth() - getPaddingLeft() - getPaddingRight();
         int availableHeight = getHeight() - getPaddingTop() - getPaddingBottom();
 
         int sideLength = Math.min(availableWidth, availableHeight);
@@ -519,7 +547,7 @@ public class XCircleImageView extends AppCompatImageView {
 
         return Math.pow(x - mBorderRect.centerX(), 2) + Math.pow(y - mBorderRect.centerY(), 2) <= Math.pow(mBorderRadius, 2);
     }
-    
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private class OutlineProvider extends ViewOutlineProvider {
 

@@ -8,8 +8,10 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.cardview.XITextView;
+import com.pichs.common.widget.utils.XAlphaHelper;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
 import com.pichs.common.widget.utils.XTypefaceHelper;
@@ -17,10 +19,11 @@ import com.pichs.common.widget.utils.XTypefaceHelper;
 /**
  * TextView 自定义基类
  */
-public class XTextView extends AppCompatTextView implements XIBackground, XITextView {
+public class XTextView extends AppCompatTextView implements XIBackground, XITextView, XIAlpha {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
+    private XAlphaHelper xAlphaHelper;
 
     public XTextView(Context context) {
         super(context);
@@ -40,6 +43,8 @@ public class XTextView extends AppCompatTextView implements XIBackground, XIText
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+
     }
 
     @Override
@@ -206,4 +211,27 @@ public class XTextView extends AppCompatTextView implements XIBackground, XIText
     public void setUnEnabledBackgroundColor(int color) {
         backgroundHelper.setUnEnabledBackgroundColor(color);
     }
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
+    }
+
 }

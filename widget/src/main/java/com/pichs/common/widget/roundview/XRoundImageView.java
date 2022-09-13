@@ -24,6 +24,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.pichs.common.widget.R;
+import com.pichs.common.widget.cardview.XIAlpha;
+import com.pichs.common.widget.utils.XAlphaHelper;
+import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 
 import java.util.TreeSet;
 
@@ -33,10 +36,11 @@ import java.util.TreeSet;
  * the oval is supported
  */
 @SuppressLint("AppCompatCustomView")
-public class XRoundImageView extends AppCompatImageView {
+public class XRoundImageView extends AppCompatImageView implements XIAlpha {
 
     public static final String TAG = "RoundedImageView";
     private static final String ANDROID_NAMESPACE = "http://schemas.android.com/apk/res/android";
+    private XAlphaHelper xAlphaHelper;
 
     public static final float DEFAULT_RADIUS = 0f;
     public static final float DEFAULT_BORDER_WIDTH = 0f;
@@ -69,6 +73,7 @@ public class XRoundImageView extends AppCompatImageView {
     private Shader.TileMode mTileModeX = Shader.TileMode.CLAMP;
     private Shader.TileMode mTileModeY = Shader.TileMode.CLAMP;
     private PorterDuff.Mode mMode;
+
 
     public XRoundImageView(Context context) {
         super(context);
@@ -164,6 +169,31 @@ public class XRoundImageView extends AppCompatImageView {
         updateBackgroundDrawableAttrs(true);
         super.setBackgroundDrawable(mBackgroundDrawable);
         a.recycle();
+
+        xAlphaHelper = new XAlphaHelper(context, attrs, 0, this);
+
+    }
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
     }
 
     public void setColorFilterOverride(int color) {

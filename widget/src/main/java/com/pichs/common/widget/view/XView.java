@@ -7,15 +7,18 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIBackground;
+import com.pichs.common.widget.utils.XAlphaHelper;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 
 /**
  * XView
  */
-public class XView extends View  implements XIBackground {
+public class XView extends View implements XIBackground, XIAlpha {
 
     private XBackgroundHelper backgroundHelper;
+    private XAlphaHelper xAlphaHelper;
 
     public XView(Context context) {
         super(context);
@@ -34,6 +37,7 @@ public class XView extends View  implements XIBackground {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
     }
 
     @Override
@@ -165,6 +169,30 @@ public class XView extends View  implements XIBackground {
     public void setUnEnabledBackgroundColor(int color) {
         backgroundHelper.setUnEnabledBackgroundColor(color);
     }
+
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
+    }
+
 }
 
 

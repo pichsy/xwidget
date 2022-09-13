@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeRadiusBg(View view) {
-        xrv.setPressedBackground(new ColorDrawable(Color.BLUE));
-        xrv.setNormalBackground(new ColorDrawable(Color.YELLOW));
+        Toast.makeText(this, "变透明了吗", Toast.LENGTH_SHORT).show();
     }
 }

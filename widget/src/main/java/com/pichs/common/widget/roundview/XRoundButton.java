@@ -8,18 +8,23 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIRoundBackground;
 import com.pichs.common.widget.cardview.XITextView;
+import com.pichs.common.widget.utils.XAlphaHelper;
+import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
 
 /**
  * XRoundButton 自定义基类
  */
-public class XRoundButton extends AppCompatButton implements XIRoundBackground, XITextView {
+public class XRoundButton extends AppCompatButton implements XIRoundBackground, XITextView , XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
+    private XAlphaHelper xAlphaHelper;
+
 
     public XRoundButton(Context context) {
         super(context);
@@ -39,6 +44,29 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XRoundBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+    }
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
     }
 
     @Override

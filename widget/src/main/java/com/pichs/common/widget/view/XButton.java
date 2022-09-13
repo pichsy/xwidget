@@ -14,8 +14,10 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.cardview.XITextView;
+import com.pichs.common.widget.utils.XAlphaHelper;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
 import com.pichs.common.widget.utils.XTypefaceHelper;
@@ -25,10 +27,11 @@ import java.util.Objects;
 /**
  * XButton
  */
-public class XButton extends AppCompatButton implements XIBackground, XITextView {
+public class XButton extends AppCompatButton implements XIBackground, XITextView, XIAlpha {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
+    private XAlphaHelper xAlphaHelper;
 
     public XButton(Context context) {
         super(context);
@@ -48,8 +51,30 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
     }
 
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
+    }
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();

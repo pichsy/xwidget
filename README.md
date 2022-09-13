@@ -8,7 +8,7 @@
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
         
-        implementation 'com.gitee.pichs:xwidget:1.21'
+        implementation 'com.gitee.pichs:xwidget:1.26'
        
 
 

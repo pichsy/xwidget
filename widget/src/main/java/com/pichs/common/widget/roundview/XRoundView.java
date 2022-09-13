@@ -8,15 +8,19 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIRoundBackground;
+import com.pichs.common.widget.utils.XAlphaHelper;
 import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 
 /**
  * XRoundView
  */
-public class XRoundView extends View implements XIRoundBackground {
+public class XRoundView extends View implements XIRoundBackground, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
+    private XAlphaHelper xAlphaHelper;
+
 
     public XRoundView(Context context) {
         super(context);
@@ -35,6 +39,29 @@ public class XRoundView extends View implements XIRoundBackground {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XRoundBackgroundHelper(context, attrs, defStyleAttr, this);
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+    }
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
     }
 
     @Override

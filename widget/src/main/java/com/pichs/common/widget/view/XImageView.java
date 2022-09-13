@@ -9,15 +9,18 @@ import android.util.AttributeSet;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.pichs.common.widget.R;
+import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIBackground;
+import com.pichs.common.widget.utils.XAlphaHelper;
 import com.pichs.common.widget.utils.XBackgroundHelper;
 
 /**
  * 可以属性自定义的ColorFilter的ImageView
  * 方便换肤，节省切图，降低apk体积
  */
-public class XImageView extends AppCompatImageView implements XIBackground {
+public class XImageView extends AppCompatImageView implements XIBackground, XIAlpha {
     private XBackgroundHelper backgroundHelper;
+    private XAlphaHelper xAlphaHelper;
 
     private PorterDuff.Mode mMode;
 
@@ -94,6 +97,8 @@ public class XImageView extends AppCompatImageView implements XIBackground {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XImageView);
             int colorFilter = ta.getColor(R.styleable.XImageView_xp_colorFilter, -1);
@@ -106,6 +111,28 @@ public class XImageView extends AppCompatImageView implements XIBackground {
             }
             ta.recycle();
         }
+    }
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
     }
 
     @Override

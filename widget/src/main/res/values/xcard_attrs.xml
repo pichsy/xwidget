@@ -43,6 +43,10 @@
         <attr name="xp_borderGradientOrientation" />
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <declare-styleable name="XCardTextView">
@@ -87,6 +91,10 @@
         <attr name="xp_borderGradientOrientation" />
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <declare-styleable name="XCardConstraintLayout">
@@ -131,6 +139,10 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <declare-styleable name="XCardFrameLayout">
@@ -175,6 +187,10 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <declare-styleable name="XCardLinearLayout">
@@ -219,6 +235,10 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <declare-styleable name="XCardRelativeLayout">
@@ -263,6 +283,10 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--**********************************************
@@ -317,6 +341,10 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
 </resources>
