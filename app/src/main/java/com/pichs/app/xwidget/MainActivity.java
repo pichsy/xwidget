@@ -4,6 +4,7 @@ import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
@@ -45,17 +46,18 @@ public class MainActivity extends AppCompatActivity {
         changeTypeface();
     }
 
-    int color =-0xFFFFFF1;
+    int color = -0xFFFFFF1;
 
     private void changeTypeface() {
         XCardButton btn = findViewById(R.id.btn1);
 
         XButton normalBtn = findViewById(R.id.normalBtn);
         btn.setOnClickListener(v -> {
-            Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
 //            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
 //            XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
-            normalBtn.setBackgroundColor(color);
+//            normalBtn.setBackgroundColor(color);
+            startActivity(new Intent(this, TowActivity.class ));
         });
 
         normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
