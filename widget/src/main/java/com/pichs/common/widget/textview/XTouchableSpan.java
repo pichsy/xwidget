@@ -1,19 +1,3 @@
-/*
- * Tencent is pleased to support the open source community by making QMUI_Android available.
- *
- * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.
- *
- * Licensed under the MIT License (the "License"); you may not use this file except in
- * compliance with the License. You may obtain a copy of the License at
- *
- * http://opensource.org/licenses/MIT
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
- * either express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.pichs.common.widget.textview;
 
 import android.text.TextPaint;
@@ -25,21 +9,16 @@ import androidx.core.view.ViewCompat;
 
 /**
  * 可 Touch 的 Span，在 {@link #setPressed(boolean)} 后根据是否 pressed 来触发不同的UI状态
- * <p>
  * 提供设置 span 的文字颜色和背景颜色的功能, 在构造时传入
- * </p>
  */
-public abstract class XTouchableSpan extends ClickableSpan implements XITouchableSpan {
-    private static final String TAG = "XTouchableSpan";
-    private boolean mIsPressed = true;
-    @ColorInt
-    private int mNormalBackgroundColor;
-    @ColorInt
-    private int mPressedBackgroundColor;
-    @ColorInt
-    private int mNormalTextColor;
-    @ColorInt
-    private int mPressedTextColor;
+public abstract class XTouchableSpan extends ClickableSpan implements IXTouchableSpan {
+    private static final String TAG = "QMUITouchableSpan";
+    private boolean mIsPressed;
+    @ColorInt private int mNormalBackgroundColor;
+    @ColorInt private int mPressedBackgroundColor;
+    @ColorInt private int mNormalTextColor;
+    @ColorInt private int mPressedTextColor;
+
     private boolean mIsNeedUnderline = false;
 
     public abstract void onSpanClick(View widget);
@@ -61,6 +40,20 @@ public abstract class XTouchableSpan extends ClickableSpan implements XITouchabl
         mNormalBackgroundColor = normalBackgroundColor;
         mPressedBackgroundColor = pressedBackgroundColor;
     }
+
+    public XTouchableSpan(
+            boolean isNeedUnderline,
+            @ColorInt int normalTextColor,
+                             @ColorInt int pressedTextColor,
+                             @ColorInt int normalBackgroundColor,
+                             @ColorInt int pressedBackgroundColor) {
+        mIsNeedUnderline = isNeedUnderline;
+        mNormalTextColor = normalTextColor;
+        mPressedTextColor = pressedTextColor;
+        mNormalBackgroundColor = normalBackgroundColor;
+        mPressedBackgroundColor = pressedBackgroundColor;
+    }
+
 
     public int getNormalBackgroundColor() {
         return mNormalBackgroundColor;

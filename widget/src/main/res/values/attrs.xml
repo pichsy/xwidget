@@ -299,6 +299,9 @@
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
 
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  XRelativeLayout  -->
@@ -333,7 +336,9 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  XFrameLayout  -->
@@ -368,7 +373,9 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  XConstraintLayout  -->
@@ -403,7 +410,9 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  背景颜色选择器  -->
@@ -443,7 +452,9 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  XTextView  -->
@@ -483,7 +494,9 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  禁用复制和粘贴  -->
@@ -568,7 +581,9 @@
         <attr name="xp_unEnabledBackgroundStartColor" />
         <attr name="xp_unEnabledBackgroundEndColor" />
         <attr name="xp_unEnabledBackgroundOrientation" />
-
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <!--  XView  -->
@@ -735,6 +750,9 @@
         <attr name="xp_clickable" />
         <attr name="xp_checked_src" />
         <attr name="xp_radius" />
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
     <declare-styleable name="XCheckedImageView">
@@ -742,6 +760,9 @@
         <attr name="xp_checked" />
         <attr name="xp_checked_src" />
         <attr name="xp_radius" />
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
     </declare-styleable>
 
 </resources>

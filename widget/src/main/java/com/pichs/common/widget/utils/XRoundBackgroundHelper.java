@@ -214,7 +214,6 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         return null;
     }
 
-
     private void setBackgroundSelector() {
         if (pressedBackground == null && unEnabledBackground == null && checkedBackground == null && activatedBackground == null) {
             if (mOwner.get() != null) {
@@ -240,7 +239,6 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             }
         }
     }
-
 
     @Override
     public void setRadius(int radius) {

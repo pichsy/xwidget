@@ -21,7 +21,6 @@
     <declare-styleable name="XIRoundBackground">
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -115,7 +114,6 @@
 
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -173,7 +171,6 @@
 
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -226,7 +223,6 @@
     <declare-styleable name="XRoundLinearLayout">
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -279,7 +275,6 @@
     <declare-styleable name="XRoundConstraintLayout">
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -332,7 +327,6 @@
     <declare-styleable name="XRoundFrameLayout">
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -385,7 +379,6 @@
     <declare-styleable name="XRoundView">
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -438,7 +431,6 @@
     <declare-styleable name="XRoundViewGroup">
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />
@@ -491,7 +483,6 @@
     <declare-styleable name="XRoundRelativeLayout">
         <!--   增加圆角     -->
         <attr name="xp_radius" />
-        <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_radiusTopLeft" />
         <attr name="xp_radiusBottomLeft" />
         <attr name="xp_radiusTopRight" />

@@ -27,7 +27,9 @@ import android.view.WindowManager;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -48,7 +50,8 @@ public class XStatusBarHelper {
     public static float sVirtualDensity = -1;
     public static float sVirtualDensityDpi = -1;
     private static int sStatusbarHeight = -1;
-    private static @StatusBarType int mStatuBarType = STATUSBAR_TYPE_DEFAULT;
+    private static @StatusBarType
+    int mStatuBarType = STATUSBAR_TYPE_DEFAULT;
     private static Integer sTransparentValue;
 
     public static void translucent(Activity activity) {
@@ -479,4 +482,48 @@ public class XStatusBarHelper {
     private @interface StatusBarType {
     }
 
+
+    /**
+     * @param activity FragmentActivity
+     *                 此方法必须配合 {@link #onWindowFocusChanged} 一起使用。
+     *                 在onCreate中setContentView之前调用此方法
+     */
+    public static void setFullScreen(FragmentActivity activity) {
+        if (activity == null) return;
+        Window window = activity.getWindow();
+        if (window != null) {
+            WindowManager.LayoutParams attributes = window.getAttributes();
+            attributes.flags = attributes.flags | WindowManager.LayoutParams.FLAG_FULLSCREEN;
+            window.setAttributes(attributes);
+            window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+    }
+
+    /**
+     * 配合 setFullScreen 方法使用
+     * 在 activit 的 onWindowFocusChanged中 调用此方法
+     *
+     * @param activity FragmentActivity
+     * @param hasFocus hasFocus
+     */
+    public static void onWindowFocusChanged(FragmentActivity activity, boolean hasFocus) {
+        if (activity == null) return;
+        if (hasFocus) {
+            Window window = activity.getWindow();
+            if (window != null) {
+                View decorView = window.getDecorView();
+                if (decorView != null) {
+                    decorView.setSystemUiVisibility(
+                            View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                    | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+                                    | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                    );
+                }
+            }
+        }
+
+    }
 }

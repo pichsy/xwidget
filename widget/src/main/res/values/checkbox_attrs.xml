@@ -2,7 +2,7 @@
 <resources>
 
     <attr name="xp_checked" format="boolean" />
-    <attr name="xp_clickable" format="boolean"/>
+    <attr name="xp_clickable" format="boolean" />
 
     <!--  SmoothCheckBox  -->
     <declare-styleable name="XSmoothCheckBox">
@@ -19,6 +19,10 @@
         <attr name="xp_cbox_color_unchecked" format="color" />
         <!-- 未选中时边框颜色，默认是#DFDFDF-->
         <attr name="xp_cbox_color_unchecked_stroke" format="color" />
+
+        <attr name="xp_pressedAlpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="android:alpha" />
     </declare-styleable>
     <attr name="SmoothCheckBoxStyle" format="reference" />
 

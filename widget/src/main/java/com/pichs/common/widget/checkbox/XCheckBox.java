@@ -47,7 +47,7 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
             ta.recycle();
         }
         Log.d("XCheckBox", "mClickable: " + mCanClick);
-        setChecked(this.isChecked);
+        super.setImageDrawable(isChecked ? this.checkedDrawable : normalDrawable);
         super.setClickable(true);
         super.setOnClickListener(this);
     }

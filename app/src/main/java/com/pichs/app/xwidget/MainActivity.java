@@ -1,5 +1,7 @@
 package com.pichs.app.xwidget;
 
+import static android.view.View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
@@ -34,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        XStatusBarHelper.translucent(this);
-        XStatusBarHelper.setStatusBarDarkMode(this);
+        XStatusBarHelper.setFullScreen(this);
+//        XStatusBarHelper.translucent(this);
+//        XStatusBarHelper.setStatusBarDarkMode(this);
         setContentView(R.layout.activity_main);
         xchekbox = findViewById(R.id.xchekbox);
         xrv = findViewById(R.id.tv_round);
@@ -71,4 +74,23 @@ public class MainActivity extends AppCompatActivity {
     public void changeRadiusBg(View view) {
         Toast.makeText(this, "变透明了吗", Toast.LENGTH_SHORT).show();
     }
+
+
+//    @Override
+//    public void  onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        if (isFullScreen && hasFocus) {
+//            getWindow().getDecorView().setSystemUiVisibility((
+//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                    || View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//            || View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN || View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//            || View.SYSTEM_UI_FLAG_FULLSCREEN || View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY));
+//        }
+//    }
+//
+//
+//    public void setFullScreen(){
+//
+//    }
+
 }

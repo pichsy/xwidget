@@ -35,6 +35,8 @@ import android.widget.Checkable;
 import androidx.core.content.ContextCompat;
 
 import com.pichs.common.widget.R;
+import com.pichs.common.widget.cardview.XIAlpha;
+import com.pichs.common.widget.utils.XAlphaHelper;
 import com.pichs.common.widget.utils.XDisplayHelper;
 
 /**
@@ -44,10 +46,11 @@ import com.pichs.common.widget.utils.XDisplayHelper;
  *
  * @since 2020-01-06 9:55
  */
-public class XSmoothCheckBox extends View implements Checkable {
+public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
     private static final String KEY_INSTANCE_STATE = "InstanceState";
 
     private static final int COLOR_FLOOR_UNCHECKED = Color.parseColor("#DFDFDF");
+    private XAlphaHelper xAlphaHelper;
 
     private static final int DEF_DRAW_SIZE = 25;
     private static final int DEF_ANIM_DURATION = 300;
@@ -125,6 +128,7 @@ public class XSmoothCheckBox extends View implements Checkable {
                 }
             }
         });
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
     }
 
     @Override
@@ -448,6 +452,28 @@ public class XSmoothCheckBox extends View implements Checkable {
 
     public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
         mOnCheckedChangeListener = onCheckedChangeListener;
+    }
+
+    @Override
+    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
+        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
+        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
     }
 
     public interface OnCheckedChangeListener {
