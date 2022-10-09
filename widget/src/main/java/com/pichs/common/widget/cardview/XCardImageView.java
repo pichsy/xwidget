@@ -78,11 +78,9 @@ public class XCardImageView extends XImageView implements XILayout {
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         mAttrs = attrs;
         mDefStyleAttr = defStyleAttr;
-        setScaleType(ScaleType.CENTER_CROP);
         mLayoutHelper = new XLayoutHelper(context, attrs, defStyleAttr, this);
         TypedArray array = context.obtainStyledAttributes(
                 attrs, R.styleable.XCardImageView, defStyleAttr, 0);
-
         mBorderWidth = array.getDimensionPixelSize(R.styleable.XCardImageView_xp_borderWidth, 0);
         mBorderColor = array.getColor(R.styleable.XCardImageView_xp_borderColor, DEFAULT_BORDER_COLOR);
         mSelectedBorderWidth = array.getDimensionPixelSize(

@@ -297,6 +297,7 @@
         <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_borderColor" />
         <attr name="xp_borderWidth" />
+        <attr name="android:scaleType" />
         <attr name="xp_isCircle" format="boolean" />
         <attr name="xp_selectedBorderWidth" format="dimension" />
         <attr name="xp_selectedMaskColor" format="color|reference" />
