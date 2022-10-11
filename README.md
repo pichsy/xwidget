@@ -7,7 +7,7 @@
 ### 引入控件
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:2.0.0'
+        implementation 'com.gitee.pichs:xwidget:2.0.2'
        
 ## 走过路过不要错过。 最强基础组件库，超级轻量级。
 ### 特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
@@ -48,6 +48,9 @@
         
     ```
 ## 升级日志
+### 2.0.2版本
+- 修复XCheckBox属性显示问题，修复XCheckImageView属性显示问题
+- 修改XCardImageView不默认CENTER_CROP属性
 
 ### 2.0.0版本
  - 最新版本，新增nested系列，丝滑嵌套，炫酷布局，简单实现。

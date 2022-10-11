@@ -42,7 +42,7 @@ public class XCheckedImageView extends XCardImageView implements Checkable {
             this.isChecked = ta.getBoolean(R.styleable.XCheckedImageView_xp_checked, false);
             ta.recycle();
         }
-        setChecked(this.isChecked);
+        super.setImageDrawable(this.isChecked ? this.checkedDrawable : this.normalDrawable);
     }
 
     public void setCheckedDrawable(Drawable checkedDrawable) {
@@ -74,11 +74,7 @@ public class XCheckedImageView extends XCardImageView implements Checkable {
             return;
         }
         this.isChecked = checked;
-        if (this.isChecked) {
-            super.setImageDrawable(this.checkedDrawable);
-        } else {
-            super.setImageDrawable(this.normalDrawable);
-        }
+        super.setImageDrawable(this.isChecked ? this.checkedDrawable : this.normalDrawable);
     }
 
     @Override
