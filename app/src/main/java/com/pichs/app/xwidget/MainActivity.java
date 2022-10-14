@@ -37,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        XStatusBarHelper.setFullScreen(this);
-//        XStatusBarHelper.translucent(this);
-//        XStatusBarHelper.setStatusBarDarkMode(this);
+        XStatusBarHelper.translucent(this);
+        XStatusBarHelper.setStatusBarDarkMode(this);
         setContentView(R.layout.activity_main);
         xchekbox = findViewById(R.id.xchekbox);
         xrv = findViewById(R.id.tv_round);
@@ -53,11 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         XButton normalBtn = findViewById(R.id.normalBtn);
         btn.setOnClickListener(v -> {
-//            Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
-//            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
-//            XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
-//            normalBtn.setBackgroundColor(color);
-            startActivity(new Intent(this, TowActivity.class ));
+            Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
+            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+            XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
+            normalBtn.setBackgroundColor(color);
         });
 
         normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
@@ -76,23 +74,5 @@ public class MainActivity extends AppCompatActivity {
     public void changeRadiusBg(View view) {
         Toast.makeText(this, "变透明了吗", Toast.LENGTH_SHORT).show();
     }
-
-
-//    @Override
-//    public void  onWindowFocusChanged(boolean hasFocus) {
-//        super.onWindowFocusChanged(hasFocus);
-//        if (isFullScreen && hasFocus) {
-//            getWindow().getDecorView().setSystemUiVisibility((
-//                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                    || View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//            || View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN || View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//            || View.SYSTEM_UI_FLAG_FULLSCREEN || View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY));
-//        }
-//    }
-//
-//
-//    public void setFullScreen(){
-//
-//    }
 
 }

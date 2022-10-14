@@ -136,9 +136,9 @@
 
         <com.pichs.common.widget.roundview.XRoundButton
             android:layout_width="80dp"
+            android:layout_height="30dp"
             android:background="#f09"
-            app:xp_isRadiusAdjustBounds="true"
-            android:layout_height="30dp"/>
+            app:xp_isRadiusAdjustBounds="true" />
 
 
         <com.pichs.common.widget.roundview.XRoundTextView
@@ -176,10 +176,23 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:alpha="1"
-            android:background="#f09"
             android:onClick="changeRadiusBg"
+            app:xp_backgroundGradientEndColor="#3B58F5"
+            app:xp_backgroundGradientOrientation="TL_BR"
+            app:xp_backgroundGradientStartColor="#E18181"
             app:xp_pressedAlpha="0.5"
-            app:xp_radius="16dp" />
+            app:xp_radius="16dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Card系列具有圆角剪裁效果"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.pichs.common.widget.cardview.XCardConstraintLayout>
 
         <Space
             android:layout_width="match_parent"

@@ -7,7 +7,7 @@
 ### 引入控件
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:2.0.2'
+        implementation 'com.gitee.pichs:xwidget:2.0.5'
        
 ## 走过路过不要错过。 最强基础组件库，超级轻量级。
 ### 特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
@@ -20,6 +20,9 @@
 ### 升级内容，新增XRoundView系列。RoundView系列动态生成的渐变Drawable，可单独设置四个角的圆角大小。渐变背景，按压效果等。
 
 ### XNested系列，滑动组件，粘性头部，更方便，处理滑动冲突，丝滑体验。企业级---放心使用。
+
+### 使用示例去 demo中的xml中探索吧。
+
 - 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
 1. 在Application中初始化
 
