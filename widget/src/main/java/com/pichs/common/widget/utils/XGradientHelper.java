@@ -13,7 +13,6 @@ import androidx.annotation.IntDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -75,7 +74,7 @@ public class XGradientHelper {
             return addState(State.state_checked, color);
         }
 
-        public ColorStateListBuilder addUnEnabledColor(@ColorInt int color) {
+        public ColorStateListBuilder addDisabledColor(@ColorInt int color) {
             return addState(-State.state_enabled, color);
         }
 
@@ -163,12 +162,12 @@ public class XGradientHelper {
             return addSelectedState(new ColorDrawable(color));
         }
 
-        public StateListDrawableBuilder addUnEnabledState(Drawable drawable) {
+        public StateListDrawableBuilder addDisabledState(Drawable drawable) {
             return addState(-State.state_enabled, drawable);
         }
 
-        public StateListDrawableBuilder addUnEnabledState(int color) {
-            return addUnEnabledState(new ColorDrawable(color));
+        public StateListDrawableBuilder addDisabledState(int color) {
+            return addDisabledState(new ColorDrawable(color));
         }
 
         public StateListDrawableBuilder addState(int state, Drawable drawable) {

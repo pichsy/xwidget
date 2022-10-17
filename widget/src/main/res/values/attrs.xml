@@ -115,10 +115,10 @@
         <enum name="BL_TR" value="3" />
     </attr>
 
-    <attr name="xp_unEnabledBackground" format="color|reference" />
-    <attr name="xp_unEnabledBackgroundStartColor" format="color|reference" />
-    <attr name="xp_unEnabledBackgroundEndColor" format="color|reference" />
-    <attr name="xp_unEnabledBackgroundOrientation" format="enum">
+    <attr name="xp_disabledBackground" format="color|reference" />
+    <attr name="xp_disabledBackgroundStartColor" format="color|reference" />
+    <attr name="xp_disabledBackgroundEndColor" format="color|reference" />
+    <attr name="xp_disabledBackgroundOrientation" format="enum">
         <!--    从左到右    -->
         <enum name="horizontal" value="0" />
         <!--    从上到下    -->
@@ -140,14 +140,14 @@
     <attr name="xp_pressedTextColor" format="color|reference" />
     <attr name="xp_checkedTextColor" format="color|reference" />
     <attr name="xp_activatedTextColor" format="color|reference" />
-    <attr name="xp_unEnabledTextColor" format="color|reference" />
+    <attr name="xp_disabledTextColor" format="color|reference" />
     <!--  是否忽略全局字体切换  -->
     <attr name="xp_ignoreGlobalTypeface" format="boolean" />
     <!--  边框色  -->
     <attr name="xp_pressedBorderColor" format="color" />
     <attr name="xp_checkedBorderColor" format="color" />
     <attr name="xp_activatedBorderColor" format="color" />
-    <attr name="xp_unEnabledBorderColor" format="color" />
+    <attr name="xp_disabledBorderColor" format="color" />
     <!--  颜色过滤器  -->
     <attr name="xp_colorFilter" format="color" />
     <attr name="xp_colorFilterMode" format="enum">
@@ -197,10 +197,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
 
     </declare-styleable>
 
@@ -210,7 +210,7 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
 
     </declare-styleable>
@@ -294,10 +294,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
 
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
@@ -332,10 +332,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
@@ -369,10 +369,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
@@ -406,10 +406,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
@@ -421,7 +421,7 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
@@ -448,10 +448,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
@@ -463,7 +463,7 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
@@ -490,10 +490,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
@@ -510,7 +510,7 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
@@ -537,10 +537,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
 
     </declare-styleable>
 
@@ -550,7 +550,7 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
@@ -577,10 +577,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
@@ -614,10 +614,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -653,10 +653,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
 
     </declare-styleable>
 
@@ -688,10 +688,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -727,10 +727,10 @@
         <attr name="xp_activatedBackgroundOrientation" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
 
         <attr name="xp_colorFilter" />
         <attr name="xp_colorFilterMode" />

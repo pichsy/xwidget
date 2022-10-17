@@ -49,9 +49,9 @@ public interface XIRoundBackground {
     /**
      * 不可用边框颜色
      *
-     * @param unEnabledBorderColor unEnabledBorderColor
+     * @param disabledBorderColor disabledBorderColor
      */
-    void setUnEnabledBorderColor(@ColorInt int unEnabledBorderColor);
+    void setDisabledBorderColor(@ColorInt int disabledBorderColor);
 
     /**
      * 活跃边框颜色
@@ -120,22 +120,22 @@ public interface XIRoundBackground {
     /**
      * 不可用背景效果
      */
-    void setUnEnabledBackground(Drawable unEnabledBackground);
+    void setDisabledBackground(Drawable disabledBackground);
 
     // 渐变色
-    void setUnEnabledBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
+    void setDisabledBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
     /**
      * 设置不可用背景渐变色开始颜色
      * @param startColor startColor
      */
-    void setUnEnabledBackgroundGradientStartColor(int startColor);
+    void setDisabledBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置不可用背景渐变色结束颜色
      * @param endColor endColor
      */
-    void setUnEnabledBackgroundGradientEndColor(int endColor);
+    void setDisabledBackgroundGradientEndColor(int endColor);
 
     /**
      * 选中背景效果
@@ -190,7 +190,7 @@ public interface XIRoundBackground {
 
     void setCheckedBackgroundColor(@ColorInt int color);
 
-    void setUnEnabledBackgroundColor(@ColorInt int color);
+    void setDisabledBackgroundColor(@ColorInt int color);
 
     XRoundBackgroundHelper clearBackgrounds();
 }

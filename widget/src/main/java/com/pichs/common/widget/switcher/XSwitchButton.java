@@ -76,7 +76,7 @@ public class XSwitchButton extends CompoundButton {
     private int thumbColor = Color.WHITE;
     private int thumbCheckedColor = thumbColor;
     private int thumbPressedColor = thumbColor;
-    private int thumbUnEnabledColor = Color.LTGRAY;
+    private int thumbDisabledColor = Color.LTGRAY;
     private int switchOnBackgroundColor = Color.BLUE;
     private int switchOffBackgroundColor = Color.BLUE;
 
@@ -143,7 +143,7 @@ public class XSwitchButton extends CompoundButton {
             thumbCheckedColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbCheckedColor, thumbColor);
             thumbPressedColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbPressedColor, thumbColor);
             thumbCheckedColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbCheckedColor, thumbColor);
-            thumbUnEnabledColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbUnEnabledColor, thumbColor);
+            thumbDisabledColor = ta.getColor(R.styleable.XSwitchButton_xp_swb_thumbDisabledColor, thumbColor);
             margin = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMargin, margin);
             marginLeft = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMarginLeft, margin);
             marginRight = ta.getDimension(R.styleable.XSwitchButton_xp_swb_thumbMarginRight, margin);
@@ -186,7 +186,7 @@ public class XSwitchButton extends CompoundButton {
                     .setUnSateColor(thumbColor)
                     .addPressedColor(thumbPressedColor)
                     .addCheckedColor(thumbCheckedColor)
-                    .addUnEnabledColor(thumbUnEnabledColor)
+                    .addDisabledColor(thumbDisabledColor)
                     .build();
             mCurrThumbColor = thumbColorStateList.getDefaultColor();
         }
@@ -602,7 +602,7 @@ public class XSwitchButton extends CompoundButton {
                     .setUnSateColor(thumbColor)
                     .addPressedColor(thumbPressedColor)
                     .addCheckedColor(thumbCheckedColor)
-                    .addUnEnabledColor(thumbUnEnabledColor)
+                    .addDisabledColor(thumbDisabledColor)
                     .build();
             mCurrThumbColor = thumbColorStateList.getColorForState(getDrawableState(), mCurrThumbColor);
         } else {
@@ -1072,7 +1072,7 @@ public class XSwitchButton extends CompoundButton {
         thumbColorStateList = new XGradientHelper.ColorStateListBuilder().setUnSateColor(thumbColor)
                 .addPressedColor(thumbPressedColor)
                 .addCheckedColor(thumbCheckedColor)
-                .addUnEnabledColor(thumbUnEnabledColor)
+                .addDisabledColor(thumbDisabledColor)
                 .build();
         invalidate();
     }
@@ -1082,7 +1082,7 @@ public class XSwitchButton extends CompoundButton {
         thumbColorStateList = new XGradientHelper.ColorStateListBuilder().setUnSateColor(thumbColor)
                 .addPressedColor(thumbPressedColor)
                 .addCheckedColor(thumbCheckedColor)
-                .addUnEnabledColor(thumbUnEnabledColor)
+                .addDisabledColor(thumbDisabledColor)
                 .build();
         invalidate();
     }
@@ -1092,30 +1092,30 @@ public class XSwitchButton extends CompoundButton {
         thumbColorStateList = new XGradientHelper.ColorStateListBuilder().setUnSateColor(thumbColor)
                 .addPressedColor(thumbPressedColor)
                 .addCheckedColor(thumbCheckedColor)
-                .addUnEnabledColor(thumbUnEnabledColor)
+                .addDisabledColor(thumbDisabledColor)
                 .build();
         invalidate();
     }
 
-    public void setThumbUnEnabledColor(int thumbUnEnabledColor) {
-        this.thumbUnEnabledColor = thumbUnEnabledColor;
+    public void setThumbDisabledColor(int thumbDisabledColor) {
+        this.thumbDisabledColor = thumbDisabledColor;
         thumbColorStateList = new XGradientHelper.ColorStateListBuilder().setUnSateColor(thumbColor)
                 .addPressedColor(thumbPressedColor)
                 .addCheckedColor(thumbCheckedColor)
-                .addUnEnabledColor(thumbUnEnabledColor)
+                .addDisabledColor(thumbDisabledColor)
                 .build();
         invalidate();
     }
 
-    public void setThumbColor(int thumbColor, int thumbCheckedColor, int thumbPressedColor, int thumbUnEnabledColor) {
+    public void setThumbColor(int thumbColor, int thumbCheckedColor, int thumbPressedColor, int thumbDisabledColor) {
         this.thumbColor = thumbColor;
         this.thumbPressedColor = thumbPressedColor;
         this.thumbCheckedColor = thumbCheckedColor;
-        this.thumbUnEnabledColor = thumbUnEnabledColor;
+        this.thumbDisabledColor = thumbDisabledColor;
         thumbColorStateList = new XGradientHelper.ColorStateListBuilder().setUnSateColor(thumbColor)
                 .addPressedColor(thumbPressedColor)
                 .addCheckedColor(thumbCheckedColor)
-                .addUnEnabledColor(thumbUnEnabledColor)
+                .addDisabledColor(thumbDisabledColor)
                 .build();
         invalidate();
     }

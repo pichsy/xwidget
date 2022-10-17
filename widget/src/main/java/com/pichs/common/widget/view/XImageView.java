@@ -156,13 +156,13 @@ public class XImageView extends AppCompatImageView implements XIBackground, XIAl
     }
 
     @Override
-    public void setUnEnabledBackground(Drawable unEnabledBackground) {
-        backgroundHelper.setUnEnabledBackground(unEnabledBackground);
+    public void setDisabledBackground(Drawable disabledBackground) {
+        backgroundHelper.setDisabledBackground(disabledBackground);
     }
 
     @Override
-    public void setUnEnabledBackgroundGradient(int startColor, int endColor, int orientation) {
-        backgroundHelper.setUnEnabledBackgroundGradient(startColor, endColor, orientation);
+    public void setDisabledBackgroundGradient(int startColor, int endColor, int orientation) {
+        backgroundHelper.setDisabledBackgroundGradient(startColor, endColor, orientation);
     }
 
     @Override
@@ -212,13 +212,13 @@ public class XImageView extends AppCompatImageView implements XIBackground, XIAl
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientStartColor(int startColor) {
-        backgroundHelper.setUnEnabledBackgroundGradientStartColor(startColor);
+    public void setDisabledBackgroundGradientStartColor(int startColor) {
+        backgroundHelper.setDisabledBackgroundGradientStartColor(startColor);
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientEndColor(int endColor) {
-        backgroundHelper.setUnEnabledBackgroundGradientEndColor(endColor);
+    public void setDisabledBackgroundGradientEndColor(int endColor) {
+        backgroundHelper.setDisabledBackgroundGradientEndColor(endColor);
     }
 
     @Override
@@ -262,7 +262,7 @@ public class XImageView extends AppCompatImageView implements XIBackground, XIAl
     }
 
     @Override
-    public void setUnEnabledBackgroundColor(int color) {
-        backgroundHelper.setUnEnabledBackgroundColor(color);
+    public void setDisabledBackgroundColor(int color) {
+        backgroundHelper.setDisabledBackgroundColor(color);
     }
 }

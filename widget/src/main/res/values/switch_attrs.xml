@@ -10,7 +10,7 @@
         <!--    增加状态系列    -->
         <attr name="xp_swb_thumbPressedColor" format="color|reference" />
         <attr name="xp_swb_thumbCheckedColor" format="color|reference" />
-        <attr name="xp_swb_thumbUnEnabledColor" format="color|reference" />
+        <attr name="xp_swb_thumbDisabledColor" format="color|reference" />
 
         <!--滑动块的Margin, 默认2dp-->
         <attr name="xp_swb_thumbMargin" format="dimension|reference" />

@@ -8,8 +8,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 
-import androidx.annotation.ColorInt;
-
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XIBackground;
@@ -25,14 +23,14 @@ public class XBackgroundHelper implements XIBackground {
     private Drawable background;
     private Drawable pressedBackground;
     private Drawable checkedBackground;
-    private Drawable unEnabledBackground;
+    private Drawable disabledBackground;
     private Drawable activatedBackground;
 
     // 原始设置的background drawable
     private Drawable backgroundTmp;
     private Drawable pressedBackgroundTmp;
     private Drawable checkedBackgroundTmp;
-    private Drawable unEnabledBackgroundTmp;
+    private Drawable disabledBackgroundTmp;
     private Drawable activatedBackgroundTmp;
 
     private int bgStartColor;
@@ -44,9 +42,9 @@ public class XBackgroundHelper implements XIBackground {
     private int checkedBgStartColor;
     private int checkedBgEndColor;
     private int checkedBgColorOrientation;
-    private int unEnabledBgStartColor;
-    private int unEnabledBgEndColor;
-    private int unEnabledBgColorOrientation;
+    private int disabledBgStartColor;
+    private int disabledBgEndColor;
+    private int disabledBgColorOrientation;
     private int activatedBgStartColor;
     private int activatedBgEndColor;
     private int activatedBgColorOrientation;
@@ -67,7 +65,7 @@ public class XBackgroundHelper implements XIBackground {
             backgroundTmp = ta.getDrawable(R.styleable.XIBackground_android_background);
             pressedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_pressedBackground);
             checkedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_checkedBackground);
-            unEnabledBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_unEnabledBackground);
+            disabledBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_disabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_activatedBackground);
 
             // 渐变
@@ -80,9 +78,9 @@ public class XBackgroundHelper implements XIBackground {
             checkedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_checkedBackgroundStartColor, 0);
             checkedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_checkedBackgroundEndColor, 0);
             checkedBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_checkedBackgroundOrientation, GradientOrientation.HORIZONTAL);
-            unEnabledBgStartColor = ta.getColor(R.styleable.XIBackground_xp_unEnabledBackgroundStartColor, 0);
-            unEnabledBgEndColor = ta.getColor(R.styleable.XIBackground_xp_unEnabledBackgroundEndColor, 0);
-            unEnabledBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_unEnabledBackgroundOrientation, GradientOrientation.HORIZONTAL);
+            disabledBgStartColor = ta.getColor(R.styleable.XIBackground_xp_disabledBackgroundStartColor, 0);
+            disabledBgEndColor = ta.getColor(R.styleable.XIBackground_xp_disabledBackgroundEndColor, 0);
+            disabledBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_disabledBackgroundOrientation, GradientOrientation.HORIZONTAL);
             activatedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_activatedBackgroundStartColor, 0);
             activatedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_activatedBackgroundEndColor, 0);
             activatedBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_activatedBackgroundOrientation, GradientOrientation.HORIZONTAL);
@@ -108,11 +106,11 @@ public class XBackgroundHelper implements XIBackground {
                     checkedBgColorOrientation
             );
 
-            unEnabledBackground = getFinalDrawable(
-                    unEnabledBackgroundTmp,
-                    unEnabledBgStartColor,
-                    unEnabledBgEndColor,
-                    unEnabledBgColorOrientation
+            disabledBackground = getFinalDrawable(
+                    disabledBackgroundTmp,
+                    disabledBgStartColor,
+                    disabledBgEndColor,
+                    disabledBgColorOrientation
             );
 
             activatedBackground = getFinalDrawable(
@@ -166,7 +164,7 @@ public class XBackgroundHelper implements XIBackground {
     }
 
     private void setBackgroundSelector() {
-        if (pressedBackground == null && unEnabledBackground == null && checkedBackground == null && activatedBackground == null) {
+        if (pressedBackground == null && disabledBackground == null && checkedBackground == null && activatedBackground == null) {
             if (mOwner.get() != null) {
                 mOwner.get().setBackground(background);
             }
@@ -176,8 +174,8 @@ public class XBackgroundHelper implements XIBackground {
                 if (pressedBackground != null) {
                     builder.addPressedState(pressedBackground);
                 }
-                if (unEnabledBackground != null) {
-                    builder.addUnEnabledState(unEnabledBackground);
+                if (disabledBackground != null) {
+                    builder.addDisabledState(disabledBackground);
                 }
                 if (checkedBackground != null) {
                     builder.addCheckedState(checkedBackground);
@@ -264,39 +262,39 @@ public class XBackgroundHelper implements XIBackground {
     }
 
     @Override
-    public void setUnEnabledBackground(Drawable drawable) {
-        this.unEnabledBackgroundTmp = drawable;
-        this.unEnabledBackground = getFinalDrawable(
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+    public void setDisabledBackground(Drawable drawable) {
+        this.disabledBackgroundTmp = drawable;
+        this.disabledBackground = getFinalDrawable(
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBackgroundGradient(int startColor, int endColor, int orientation) {
-        this.unEnabledBgStartColor = startColor;
-        this.unEnabledBgEndColor = endColor;
-        this.unEnabledBgColorOrientation = orientation;
-        this.unEnabledBackground = getFinalDrawable(
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+    public void setDisabledBackgroundGradient(int startColor, int endColor, int orientation) {
+        this.disabledBgStartColor = startColor;
+        this.disabledBgEndColor = endColor;
+        this.disabledBgColorOrientation = orientation;
+        this.disabledBackground = getFinalDrawable(
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientStartColor(int startColor) {
-        setUnEnabledBackgroundGradient(startColor, unEnabledBgEndColor, unEnabledBgColorOrientation);
+    public void setDisabledBackgroundGradientStartColor(int startColor) {
+        setDisabledBackgroundGradient(startColor, disabledBgEndColor, disabledBgColorOrientation);
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientEndColor(int endColor) {
-        setUnEnabledBackgroundGradient(unEnabledBgStartColor, endColor, unEnabledBgColorOrientation);
+    public void setDisabledBackgroundGradientEndColor(int endColor) {
+        setDisabledBackgroundGradient(disabledBgStartColor, endColor, disabledBgColorOrientation);
     }
 
     @Override
@@ -392,8 +390,8 @@ public class XBackgroundHelper implements XIBackground {
     }
 
     @Override
-    public void setUnEnabledBackgroundColor(int color) {
-        setUnEnabledBackground(new ColorDrawable(color));
+    public void setDisabledBackgroundColor(int color) {
+        setDisabledBackground(new ColorDrawable(color));
     }
 
     @Override
@@ -401,12 +399,12 @@ public class XBackgroundHelper implements XIBackground {
         background = null;
         pressedBackground = null;
         checkedBackground = null;
-        unEnabledBackground = null;
+        disabledBackground = null;
         activatedBackground = null;
         backgroundTmp = null;
         pressedBackgroundTmp = null;
         checkedBackgroundTmp = null;
-        unEnabledBackgroundTmp = null;
+        disabledBackgroundTmp = null;
         activatedBackgroundTmp = null;
         setBackgroundSelector();
         return this;

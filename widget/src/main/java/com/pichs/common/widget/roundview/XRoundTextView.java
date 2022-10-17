@@ -8,11 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 
 import com.pichs.common.widget.cardview.XIAlpha;
-import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.cardview.XIRoundBackground;
 import com.pichs.common.widget.cardview.XITextView;
 import com.pichs.common.widget.utils.XAlphaHelper;
-import com.pichs.common.widget.utils.XBackgroundHelper;
 import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 import com.pichs.common.widget.utils.XTextViewHelper;
 
@@ -96,8 +94,8 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
     }
 
     @Override
-    public void setUnEnabledBorderColor(int unEnabledBorderColor) {
-        backgroundHelper.setUnEnabledBorderColor(unEnabledBorderColor);
+    public void setDisabledBorderColor(int disabledBorderColor) {
+        backgroundHelper.setDisabledBorderColor(disabledBorderColor);
     }
 
     @Override
@@ -131,13 +129,13 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
     }
 
     @Override
-    public void setUnEnabledBackground(Drawable unEnabledBackground) {
-        backgroundHelper.setUnEnabledBackground(unEnabledBackground);
+    public void setDisabledBackground(Drawable disabledBackground) {
+        backgroundHelper.setDisabledBackground(disabledBackground);
     }
 
     @Override
-    public void setUnEnabledBackgroundGradient(int startColor, int endColor, int orientation) {
-        backgroundHelper.setUnEnabledBackgroundGradient(startColor, endColor, orientation);
+    public void setDisabledBackgroundGradient(int startColor, int endColor, int orientation) {
+        backgroundHelper.setDisabledBackgroundGradient(startColor, endColor, orientation);
     }
 
     @Override
@@ -186,8 +184,8 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
     }
 
     @Override
-    public void setUnEnabledTextColor(int color) {
-        textViewHelper.setUnEnabledTextColor(color);
+    public void setDisabledTextColor(int color) {
+        textViewHelper.setDisabledTextColor(color);
     }
 
     @Override
@@ -221,13 +219,13 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientStartColor(int startColor) {
-        backgroundHelper.setUnEnabledBackgroundGradientStartColor(startColor);
+    public void setDisabledBackgroundGradientStartColor(int startColor) {
+        backgroundHelper.setDisabledBackgroundGradientStartColor(startColor);
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientEndColor(int endColor) {
-        backgroundHelper.setUnEnabledBackgroundGradientEndColor(endColor);
+    public void setDisabledBackgroundGradientEndColor(int endColor) {
+        backgroundHelper.setDisabledBackgroundGradientEndColor(endColor);
     }
 
     @Override
@@ -271,8 +269,8 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
     }
 
     @Override
-    public void setUnEnabledBackgroundColor(int color) {
-        backgroundHelper.setUnEnabledBackgroundColor(color);
+    public void setDisabledBackgroundColor(int color) {
+        backgroundHelper.setDisabledBackgroundColor(color);
     }
 }
 

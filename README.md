@@ -8,7 +8,7 @@
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:2.0.6'
+        implementation 'com.gitee.pichs:xwidget:3.0.0'
 
 ## 走过路过不要错过。 最强基础组件库，超级轻量级。
 
@@ -61,7 +61,13 @@
 
 ## 升级日志
 
+### 3.0.0版本
+- 破坏性升级
+- 所有UnEnabled属性和方法名都改为Disabled(因为单词语义更加正确...)
+- 其他修改无。
+
 ### 2.0.6版本
+
 - 增加XLockableScrollView_xxx系列可以动态设置是否可滚动布局，
 - 包含XLockableRecyclerView,XLockableNestedScrollView,XLockableHorizontalScrollView
 

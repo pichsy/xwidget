@@ -2,6 +2,13 @@
 buildscript {
     ext.kotlin_version = "1.5.10"
     repositories {
+        maven {
+            credentials {
+                username '62fa2685aaa5896cee9e1174'
+                password 'TYvWvmJu7]]T'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2047378-release-EBo6g1/'
+        }
         maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
@@ -17,6 +24,13 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            credentials {
+                username '62fa2685aaa5896cee9e1174'
+                password 'TYvWvmJu7]]T'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2047378-release-EBo6g1/'
+        }
         maven { url 'https://jitpack.io' }
         google()
         mavenCentral()

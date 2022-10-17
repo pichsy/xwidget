@@ -25,14 +25,14 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     private Drawable background;
     private Drawable pressedBackground;
     private Drawable checkedBackground;
-    private Drawable unEnabledBackground;
+    private Drawable disabledBackground;
     private Drawable activatedBackground;
 
     // 原始设置的background drawable
     private Drawable backgroundTmp;
     private Drawable pressedBackgroundTmp;
     private Drawable checkedBackgroundTmp;
-    private Drawable unEnabledBackgroundTmp;
+    private Drawable disabledBackgroundTmp;
     private Drawable activatedBackgroundTmp;
 
     /**
@@ -52,7 +52,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @ColorInt
     private int activatedBorderColor = 0;
     @ColorInt
-    private int unEnabledBorderColor = 0;
+    private int disabledBorderColor = 0;
 
     private int borderWidth = 0;
 
@@ -65,9 +65,9 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     private int checkedBgStartColor;
     private int checkedBgEndColor;
     private int checkedBgColorOrientation;
-    private int unEnabledBgStartColor;
-    private int unEnabledBgEndColor;
-    private int unEnabledBgColorOrientation;
+    private int disabledBgStartColor;
+    private int disabledBgEndColor;
+    private int disabledBgColorOrientation;
     private int activatedBgStartColor;
     private int activatedBgEndColor;
     private int activatedBgColorOrientation;
@@ -95,13 +95,13 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             borderColor = ta.getColor(R.styleable.XIRoundBackground_xp_borderColor, 0);
             pressedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBorderColor, 0);
             checkedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBorderColor, 0);
-            unEnabledBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_unEnabledBorderColor, 0);
+            disabledBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBorderColor, 0);
             activatedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBorderColor, 0);
             // 常色
             backgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_android_background);
             pressedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_pressedBackground);
             checkedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_checkedBackground);
-            unEnabledBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_unEnabledBackground);
+            disabledBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_disabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_activatedBackground);
             // 渐变
             bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, 0);
@@ -113,9 +113,9 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             checkedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundStartColor, 0);
             checkedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundEndColor, 0);
             checkedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_checkedBackgroundOrientation, GradientOrientation.HORIZONTAL);
-            unEnabledBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_unEnabledBackgroundStartColor, 0);
-            unEnabledBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_unEnabledBackgroundEndColor, 0);
-            unEnabledBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_unEnabledBackgroundOrientation, GradientOrientation.HORIZONTAL);
+            disabledBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundStartColor, 0);
+            disabledBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundEndColor, 0);
+            disabledBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_disabledBackgroundOrientation, GradientOrientation.HORIZONTAL);
             activatedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundStartColor, 0);
             activatedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundEndColor, 0);
             activatedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_activatedBackgroundOrientation, GradientOrientation.HORIZONTAL);
@@ -147,13 +147,13 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                     checkedBgColorOrientation
             );
 
-            unEnabledBackground = getFinalDrawable(
+            disabledBackground = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                    unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                    unEnabledBackgroundTmp,
-                    unEnabledBgStartColor,
-                    unEnabledBgEndColor,
-                    unEnabledBgColorOrientation
+                    disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                    disabledBackgroundTmp,
+                    disabledBgStartColor,
+                    disabledBgEndColor,
+                    disabledBgColorOrientation
             );
 
             activatedBackground = getFinalDrawable(
@@ -215,7 +215,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     private void setBackgroundSelector() {
-        if (pressedBackground == null && unEnabledBackground == null && checkedBackground == null && activatedBackground == null) {
+        if (pressedBackground == null && disabledBackground == null && checkedBackground == null && activatedBackground == null) {
             if (mOwner.get() != null) {
                 mOwner.get().setBackground(background);
             }
@@ -225,8 +225,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 if (pressedBackground != null) {
                     builder.addPressedState(pressedBackground);
                 }
-                if (unEnabledBackground != null) {
-                    builder.addUnEnabledState(unEnabledBackground);
+                if (disabledBackground != null) {
+                    builder.addDisabledState(disabledBackground);
                 }
                 if (checkedBackground != null) {
                     builder.addCheckedState(checkedBackground);
@@ -270,13 +270,13 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 checkedBgColorOrientation
         );
 
-        unEnabledBackground = getFinalDrawable(
+        disabledBackground = getFinalDrawable(
                 this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+                disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
 
         activatedBackground = getFinalDrawable(
@@ -323,13 +323,13 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 checkedBgColorOrientation
         );
 
-        unEnabledBackground = getFinalDrawable(
+        disabledBackground = getFinalDrawable(
                 radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+                disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
 
         activatedBackground = getFinalDrawable(
@@ -387,13 +387,13 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 checkedBgColorOrientation
         );
 
-        unEnabledBackground = getFinalDrawable(
+        disabledBackground = getFinalDrawable(
                 radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+                disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
 
         activatedBackground = getFinalDrawable(
@@ -422,15 +422,15 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     @Override
-    public void setUnEnabledBorderColor(int unEnabledBorderColor) {
-        this.unEnabledBorderColor = unEnabledBorderColor;
-        unEnabledBackground = getFinalDrawable(
+    public void setDisabledBorderColor(int disabledBorderColor) {
+        this.disabledBorderColor = disabledBorderColor;
+        disabledBackground = getFinalDrawable(
                 radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+                disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
         setBackgroundSelector();
     }
@@ -545,43 +545,43 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     @Override
-    public void setUnEnabledBackground(Drawable drawable) {
-        this.unEnabledBackgroundTmp = drawable;
-        this.unEnabledBackground = getFinalDrawable(
+    public void setDisabledBackground(Drawable drawable) {
+        this.disabledBackgroundTmp = drawable;
+        this.disabledBackground = getFinalDrawable(
                 radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+                disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBackgroundGradient(int startColor, int endColor, int orientation) {
-        this.unEnabledBgStartColor = startColor;
-        this.unEnabledBgEndColor = endColor;
-        this.unEnabledBgColorOrientation = orientation;
-        this.unEnabledBackground = getFinalDrawable(
+    public void setDisabledBackgroundGradient(int startColor, int endColor, int orientation) {
+        this.disabledBgStartColor = startColor;
+        this.disabledBgEndColor = endColor;
+        this.disabledBgColorOrientation = orientation;
+        this.disabledBackground = getFinalDrawable(
                 radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+                disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                disabledBackgroundTmp,
+                disabledBgStartColor,
+                disabledBgEndColor,
+                disabledBgColorOrientation
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientStartColor(int startColor) {
-        setUnEnabledBackgroundGradient(startColor, unEnabledBgEndColor, unEnabledBgColorOrientation);
+    public void setDisabledBackgroundGradientStartColor(int startColor) {
+        setDisabledBackgroundGradient(startColor, disabledBgEndColor, disabledBgColorOrientation);
     }
 
     @Override
-    public void setUnEnabledBackgroundGradientEndColor(int endColor) {
-        setUnEnabledBackgroundGradient(unEnabledBgStartColor, endColor, unEnabledBgColorOrientation);
+    public void setDisabledBackgroundGradientEndColor(int endColor) {
+        setDisabledBackgroundGradient(disabledBgStartColor, endColor, disabledBgColorOrientation);
     }
 
     @Override
@@ -685,8 +685,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     @Override
-    public void setUnEnabledBackgroundColor(int color) {
-        setUnEnabledBackground(new ColorDrawable(color));
+    public void setDisabledBackgroundColor(int color) {
+        setDisabledBackground(new ColorDrawable(color));
     }
 
     @Override
@@ -694,12 +694,12 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         background = null;
         pressedBackground = null;
         checkedBackground = null;
-        unEnabledBackground = null;
+        disabledBackground = null;
         activatedBackground = null;
         backgroundTmp = null;
         pressedBackgroundTmp = null;
         checkedBackgroundTmp = null;
-        unEnabledBackgroundTmp = null;
+        disabledBackgroundTmp = null;
         activatedBackgroundTmp = null;
         radius = 0;
         topLeftRadius = 0;
@@ -710,7 +710,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         borderColor = 0;
         pressedBorderColor = 0;
         checkedBorderColor = 0;
-        unEnabledBorderColor = 0;
+        disabledBorderColor = 0;
         activatedBorderColor = 0;
         setBackgroundSelector();
         return this;

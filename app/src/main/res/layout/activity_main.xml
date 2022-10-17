@@ -6,11 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/teal_200">
 
-    <LinearLayout
+    <com.pichs.common.widget.flowlayout.XFlowLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:gravity="start"
+        android:padding="16dp"
+        app:xp_childHorizontalSpacing="16dp"
+        app:xp_childVerticalSpacing="16dp"
+        android:orientation="horizontal"
         tools:context=".MainActivity">
 
         <com.pichs.common.widget.view.XStatusBarView
@@ -36,7 +39,7 @@
             android:layout_height="40dp"
             android:gravity="center"
             android:minHeight="10dp"
-            android:text="原样"
+            android:text="点击设置字体"
             android:textColor="#fff"
             android:textSize="20sp"
             android:typeface="serif"
@@ -128,27 +131,6 @@
             app:xp_pressedTextColor="#ddd"
             android:layout_height="wrap_content"/>
 
-        <com.pichs.common.widget.view.XLinearLayout
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:background="#00f"
-            app:xp_disabledAlpha=".5"
-            app:xp_pressedAlpha=".8" />
-
-        <com.pichs.common.widget.roundview.XRoundView
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:background="#f09"
-            app:xp_isRadiusAdjustBounds="true" />
-
-        <com.pichs.common.widget.roundview.XRoundButton
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:background="#f09"
-            app:xp_isRadiusAdjustBounds="true" />
-
-
         <com.pichs.common.widget.roundview.XRoundTextView
             android:id="@+id/tv_round"
             android:layout_width="180dp"
@@ -166,10 +148,14 @@
             app:xp_pressedTextColor="#f00"
             app:xp_radius="1dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <com.pichs.common.widget.cardview.XCardButton
+            android:layout_width="80dp"
+            android:layout_height="44dp"
             android:onClick="changeRadius"
+            android:gravity="center"
+            android:textColor="#fff"
+            app:xp_pressedAlpha=".7"
+            android:background="#673AB7"
             android:text="改变角度" />
 
         <com.pichs.common.widget.view.XImageView
@@ -193,7 +179,7 @@
             app:xp_radius="20dp">
 
 
-            <TextView
+            <com.pichs.common.widget.view.XTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果"
@@ -206,5 +192,5 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="300dp" />
-    </LinearLayout>
+    </com.pichs.common.widget.flowlayout.XFlowLayout>
 </com.pichs.common.widget.view.XScrollView>

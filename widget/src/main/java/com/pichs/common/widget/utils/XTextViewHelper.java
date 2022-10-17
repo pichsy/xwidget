@@ -21,7 +21,7 @@ public class XTextViewHelper implements XITextView {
     private int normalColor = Color.DKGRAY;
     private int pressedColor = 0;
     private int checkedColor = 0;
-    private int unEnabledColor = 0;
+    private int disabledColor = 0;
     private int activatedColor = 0;
     // 是否忽略全局字体更换
     private boolean isIgnoreGlobalTypeface = false;
@@ -49,7 +49,7 @@ public class XTextViewHelper implements XITextView {
             normalColor = ta.getColor(R.styleable.XITextView_android_textColor, Color.DKGRAY);
             pressedColor = ta.getColor(R.styleable.XITextView_xp_pressedTextColor, 0);
             checkedColor = ta.getColor(R.styleable.XITextView_xp_checkedTextColor, 0);
-            unEnabledColor = ta.getColor(R.styleable.XITextView_xp_unEnabledTextColor, 0);
+            disabledColor = ta.getColor(R.styleable.XITextView_xp_disabledTextColor, 0);
             activatedColor = ta.getColor(R.styleable.XITextView_xp_activatedTextColor, 0);
             isIgnoreGlobalTypeface = ta.getBoolean(R.styleable.XITextView_xp_ignoreGlobalTypeface, false);
             ta.recycle();
@@ -93,15 +93,15 @@ public class XTextViewHelper implements XITextView {
 
     private void setSelector() {
         if (mOwner.get() != null) {
-            if (pressedColor == 0 && checkedColor == 0 && unEnabledColor == 0 && activatedColor == 0) {
+            if (pressedColor == 0 && checkedColor == 0 && disabledColor == 0 && activatedColor == 0) {
                 mOwner.get().setTextColor(normalColor);
             } else {
                 XGradientHelper.ColorStateListBuilder builder = new XGradientHelper.ColorStateListBuilder();
                 if (pressedColor != 0) {
                     builder.addPressedColor(pressedColor);
                 }
-                if (unEnabledColor != 0) {
-                    builder.addUnEnabledColor(unEnabledColor);
+                if (disabledColor != 0) {
+                    builder.addDisabledColor(disabledColor);
                 }
                 if (activatedColor != 0) {
                     builder.addActivatedColor(activatedColor);
@@ -140,8 +140,8 @@ public class XTextViewHelper implements XITextView {
     }
 
     @Override
-    public void setUnEnabledTextColor(int color) {
-        unEnabledColor = color;
+    public void setDisabledTextColor(int color) {
+        disabledColor = color;
         setSelector();
     }
 
@@ -151,7 +151,7 @@ public class XTextViewHelper implements XITextView {
     @Override
     public void clearTextStateColor() {
         pressedColor = 0;
-        unEnabledColor = 0;
+        disabledColor = 0;
         checkedColor = 0;
         activatedColor = 0;
         setSelector();
