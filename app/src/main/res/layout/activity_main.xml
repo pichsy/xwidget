@@ -46,8 +46,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:xp_backgroundGradientEndColor="#f8e"
             app:xp_backgroundGradientStartColor="#d94"
-            app:xp_radius="10dp"
-            app:xp_shadowElevation="6dp" />
+            app:xp_borderWidth="4dp"
+            app:xp_borderGradientStartColor="#FF5722"
+            app:xp_borderGradientOrientation="vertical"
+            app:xp_borderGradientEndColor="#00BCD4"
+            app:xp_radius="10dp"/>
 
         <com.pichs.common.widget.view.XButton
             android:id="@+id/normalBtn"
@@ -113,12 +116,17 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
             android:src="#9D9DC4"
-            app:xp_checked="true"
+            app:xp_checked="false"
             app:xp_checked_src="#6532E6"
             app:xp_clickable="false"
             app:xp_disabledAlpha=".3"
             app:xp_pressedAlpha=".7"
             app:xp_radius="22dp" />
+
+        <com.pichs.common.widget.cardview.XCardTextView
+            android:layout_width="wrap_content"
+            app:xp_pressedTextColor="#ddd"
+            android:layout_height="wrap_content"/>
 
         <com.pichs.common.widget.view.XLinearLayout
             android:layout_width="80dp"
@@ -173,21 +181,22 @@
             app:xp_pressedAlpha="0.5" />
 
         <com.pichs.common.widget.cardview.XCardConstraintLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:alpha="1"
             android:onClick="changeRadiusBg"
             app:xp_backgroundGradientEndColor="#3B58F5"
             app:xp_backgroundGradientOrientation="TL_BR"
             app:xp_backgroundGradientStartColor="#E18181"
+            app:xp_hideRadiusSide="bottom"
             app:xp_pressedAlpha="0.5"
-            app:xp_radius="16dp">
+            app:xp_radius="20dp">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Card系列具有圆角剪裁效果"
+                android:text="Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
