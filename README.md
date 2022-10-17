@@ -62,8 +62,8 @@
 ## 升级日志
 
 ### 2.0.6版本
-- 增加LockableScrollView_xxx系列可以动态设置是否可滚动布局，
-- 包含LockableRecyclerView,LockableNestedScrollView,LockableHorizontalScrollView
+- 增加XLockableScrollView_xxx系列可以动态设置是否可滚动布局，
+- 包含XLockableRecyclerView,XLockableNestedScrollView,XLockableHorizontalScrollView
 
 ### 2.0.5版本
 

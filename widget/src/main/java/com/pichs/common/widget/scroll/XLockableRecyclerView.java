@@ -7,20 +7,19 @@ import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class LockableRecyclerView extends RecyclerView {
+public class XLockableRecyclerView extends RecyclerView {
 
-    public LockableRecyclerView(@NonNull Context context) {
+    public XLockableRecyclerView(@NonNull Context context) {
         this(context, null);
     }
 
-    public LockableRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public XLockableRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public LockableRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public XLockableRecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

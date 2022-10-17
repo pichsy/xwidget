@@ -6,24 +6,22 @@ import android.view.MotionEvent;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.core.widget.NestedScrollView;
 
-/**
- * 解决滑动冲突
- */
-public class ViewPager2RecyclerView extends RecyclerView {
-
-    public ViewPager2RecyclerView(@NonNull Context context) {
-        super(context);
+public class XViewPager2NestedScrollView extends NestedScrollView {
+    public XViewPager2NestedScrollView(@NonNull Context context) {
+        this(context,null);
     }
 
-    public ViewPager2RecyclerView(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
+    public XViewPager2NestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs,0);
     }
 
-    public ViewPager2RecyclerView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public XViewPager2NestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+
 
     private int startX, startY;
 

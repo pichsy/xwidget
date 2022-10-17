@@ -4,19 +4,21 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.HorizontalScrollView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.widget.NestedScrollView;
 
-public class LockableHorizontalScrollView extends HorizontalScrollView {
+public class XLockableNestedScrollView extends NestedScrollView {
 
-    public LockableHorizontalScrollView(Context context) {
-        this(context,null);
+    public XLockableNestedScrollView(@NonNull Context context) {
+        this(context, null);
     }
 
-    public LockableHorizontalScrollView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+    public XLockableNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public LockableHorizontalScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public XLockableNestedScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

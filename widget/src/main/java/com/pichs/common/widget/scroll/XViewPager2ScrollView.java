@@ -8,16 +8,16 @@ import android.widget.ScrollView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class ViewPager2ScrollView extends ScrollView {
-    public ViewPager2ScrollView(@NonNull Context context) {
+public class XViewPager2ScrollView extends ScrollView {
+    public XViewPager2ScrollView(@NonNull Context context) {
         this(context, null);
     }
 
-    public ViewPager2ScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public XViewPager2ScrollView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ViewPager2ScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public XViewPager2ScrollView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
