@@ -287,4 +287,65 @@ public class XRoundLinearLayout extends LinearLayout implements XIRoundBackgroun
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
+
+
+    @Override
+    public void setCubeFrontGradientColors(int... colors) {
+        backgroundHelper.setCubeFrontGradientColors(colors);
+    }
+
+    @Override
+    public void setCubeFrontHeight(int height) {
+        backgroundHelper.setCubeFrontHeight(height);
+    }
+
+    @Override
+    public void setCubeFrontBorderColor(int color) {
+        backgroundHelper.setCubeFrontBorderColor(color);
+    }
+
+    @Override
+    public void setCubeFrontBorderWidth(int width) {
+        backgroundHelper.setCubeFrontBorderWidth(width);
+    }
+
+    @Override
+    public void setPressedCubeFrontGradientColors(int... colors) {
+        backgroundHelper.setPressedCubeFrontGradientColors(colors);
+    }
+
+    @Override
+    public void setPressedCubeFrontHeight(int height) {
+        backgroundHelper.setPressedCubeFrontHeight(height);
+    }
+
+    @Override
+    public void setDisabledCubeFrontGradientColors(int... colors) {
+        backgroundHelper.setDisabledCubeFrontGradientColors(colors);
+    }
+
+    @Override
+    public void setDisabledCubeFrontHeight(int height) {
+        backgroundHelper.setDisabledCubeFrontHeight(height);
+    }
+
+    @Override
+    public void setCheckedCubeFrontGradientColors(int... colors) {
+        backgroundHelper.setCheckedCubeFrontGradientColors(colors);
+    }
+
+    @Override
+    public void setCheckedCubeFrontHeight(int height) {
+        backgroundHelper.setCheckedCubeFrontHeight(height);
+    }
+
+    @Override
+    public void setActivatedCubeFrontGradientColors(int... colors) {
+        backgroundHelper.setActivatedCubeFrontGradientColors(colors);
+    }
+
+    @Override
+    public void setActivatedCubeFrontHeight(int height) {
+        backgroundHelper.setActivatedCubeFrontHeight(height);
+    }
 }

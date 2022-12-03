@@ -87,12 +87,14 @@ public interface XIRoundBackground {
 
     /**
      * 设置正常背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置正常背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setBackgroundGradientEndColor(int endColor);
@@ -107,12 +109,14 @@ public interface XIRoundBackground {
 
     /**
      * 设置按压背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setPressedBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置按压背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setPressedBackgroundGradientEndColor(int endColor);
@@ -127,12 +131,14 @@ public interface XIRoundBackground {
 
     /**
      * 设置不可用背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setDisabledBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置不可用背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setDisabledBackgroundGradientEndColor(int endColor);
@@ -147,12 +153,14 @@ public interface XIRoundBackground {
 
     /**
      * 设置选中用背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setCheckedBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置选中用背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setCheckedBackgroundGradientEndColor(int endColor);
@@ -167,12 +175,14 @@ public interface XIRoundBackground {
 
     /**
      * 设置选中用背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setActivatedBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置选中用背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setActivatedBackgroundGradientEndColor(int endColor);
@@ -222,6 +232,32 @@ public interface XIRoundBackground {
 
     @GradientOrientation
     int getDisabledBackgroundGradientOrientation();
+
+    void setCubeFrontGradientColors(@ColorInt int... colors);
+
+    void setCubeFrontHeight(int height);
+
+    void setCubeFrontBorderColor(@ColorInt int color);
+
+    void setCubeFrontBorderWidth(int width);
+
+
+    void setPressedCubeFrontGradientColors(@ColorInt int... colors);
+
+    void setPressedCubeFrontHeight(int height);
+
+    void setDisabledCubeFrontGradientColors(@ColorInt int... colors);
+
+    void setDisabledCubeFrontHeight(int height);
+
+    void setCheckedCubeFrontGradientColors(@ColorInt int... colors);
+
+    void setCheckedCubeFrontHeight(int height);
+
+    void setActivatedCubeFrontGradientColors(@ColorInt int... colors);
+
+    void setActivatedCubeFrontHeight(int height);
+
 
     XRoundBackgroundHelper clearBackgrounds();
 }

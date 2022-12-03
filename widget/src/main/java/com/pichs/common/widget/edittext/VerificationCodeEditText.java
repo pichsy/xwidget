@@ -309,7 +309,7 @@ public class VerificationCodeEditText extends XEditText {
         isLoading = true;
         borderColor = borderLoadingColor;
         setEnabled(false);
-        Message message = new Message();
+        Message message = Message.obtain();
         message.what = 1;
         message.arg1 = alpha;
         mHandler.sendMessage(message);

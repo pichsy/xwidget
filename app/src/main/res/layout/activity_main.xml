@@ -189,7 +189,7 @@
 
         </com.pichs.common.widget.cardview.XCardConstraintLayout>
 
-        <com.pichs.common.widget.view.XTextView
+        <TextView
             android:id="@+id/triple_color"
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -200,8 +200,8 @@
 
         <com.pichs.common.widget.view.XLinearLayout
             android:id="@+id/ll_colors"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:gravity="center"
             android:text="三色渐变"
             android:textColor="#fff"
@@ -210,6 +210,25 @@
             app:xp_backgroundGradientColors="#f00,#00f0,#ff00f0"
             android:textSize="16sp"
             android:clickable="true" />
+
+        <com.pichs.common.widget.roundview.XRoundLinearLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            app:xp_backgroundGradientOrientation="horizontal"
+            app:xp_backgroundGradientColors="#fff,#00f"
+            app:xp_cubeFrontGradientColors="#f00"
+            app:xp_cubeFrontHeight="3dp"
+            app:xp_cubeFrontBorderColor="#000"
+            app:xp_cubeFrontBorderWidth="1px"
+            app:xp_radius="10dp"
+            />
+
+        <com.pichs.common.widget.cardview.XCardLinearLayout
+            android:layout_width="50dp"
+            app:xp_backgroundGradientColors="#f0f,#f00"
+            app:xp_radius="10dp"
+            app:xp_backgroundGradientOrientation="vertical"
+            android:layout_height="100dp"/>
 
         <Space
             android:layout_width="match_parent"
