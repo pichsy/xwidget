@@ -192,5 +192,36 @@ public interface XIRoundBackground {
 
     void setDisabledBackgroundColor(@ColorInt int color);
 
+
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors 颜色值数组
+     */
+    void setBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getBackgroundGradientOrientation();
+
+    void setPressedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getPressedBackgroundGradientOrientation();
+
+    void setActivatedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getActivatedBackgroundGradientOrientation();
+
+    void setCheckedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getCheckedBackgroundGradientOrientation();
+
+    void setDisabledBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getDisabledBackgroundGradientOrientation();
+
     XRoundBackgroundHelper clearBackgrounds();
 }

@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.utils.XAlphaHelper;
@@ -67,7 +68,7 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     }
 
     @Override
-    public void setBackgroundGradient(int starColor, int endColor, int orientation) {
+    public void setBackgroundGradient(int starColor, int endColor, @GradientOrientation int orientation) {
         backgroundHelper.setBackgroundGradient(starColor, endColor, orientation);
     }
 
@@ -77,7 +78,7 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     }
 
     @Override
-    public void setPressedBackgroundGradient(int startColor, int endColor, int orientation) {
+    public void setPressedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
         backgroundHelper.setPressedBackgroundGradient(startColor, endColor, orientation);
     }
 
@@ -87,7 +88,7 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     }
 
     @Override
-    public void setDisabledBackgroundGradient(int startColor, int endColor, int orientation) {
+    public void setDisabledBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
         backgroundHelper.setDisabledBackgroundGradient(startColor, endColor, orientation);
     }
 
@@ -97,7 +98,7 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     }
 
     @Override
-    public void setCheckedBackgroundGradient(int startColor, int endColor, int orientation) {
+    public void setCheckedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
         backgroundHelper.setCheckedBackgroundGradient(startColor, endColor, orientation);
     }
 
@@ -107,7 +108,7 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     }
 
     @Override
-    public void setActivatedBackgroundGradient(int startColor, int endColor, int orientation) {
+    public void setActivatedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
         backgroundHelper.setActivatedBackgroundGradient(startColor, endColor, orientation);
     }
 
@@ -189,5 +190,59 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     @Override
     public void setDisabledBackgroundColor(int color) {
         backgroundHelper.setDisabledBackgroundColor(color);
+    }
+
+
+    @Override
+    public void setBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    @GradientOrientation
+    public int getBackgroundGradientOrientation() {
+        return backgroundHelper.getBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setPressedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setPressedBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    @GradientOrientation
+    public int getPressedBackgroundGradientOrientation() {
+        return backgroundHelper.getPressedBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setActivatedBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    @GradientOrientation
+    public int getActivatedBackgroundGradientOrientation() {
+        return backgroundHelper.getActivatedBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setCheckedBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    public int getCheckedBackgroundGradientOrientation() {
+        return backgroundHelper.getCheckedBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setDisabledBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setDisabledBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    public int getDisabledBackgroundGradientOrientation() {
+        return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
 }

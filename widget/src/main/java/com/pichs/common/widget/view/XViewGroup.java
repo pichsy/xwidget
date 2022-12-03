@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.cardview.XIBackground;
 import com.pichs.common.widget.utils.XAlphaHelper;
@@ -193,4 +194,57 @@ public abstract class XViewGroup extends ViewGroup  implements XIBackground, XIA
         xAlphaHelper.onEnabledChanged(this,enabled);
     }
 
+
+    @Override
+    public void setBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    @GradientOrientation
+    public int getBackgroundGradientOrientation() {
+        return backgroundHelper.getBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setPressedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setPressedBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    @GradientOrientation
+    public int getPressedBackgroundGradientOrientation() {
+        return backgroundHelper.getPressedBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setActivatedBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    @GradientOrientation
+    public int getActivatedBackgroundGradientOrientation() {
+        return backgroundHelper.getActivatedBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setCheckedBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    public int getCheckedBackgroundGradientOrientation() {
+        return backgroundHelper.getCheckedBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setDisabledBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        backgroundHelper.setDisabledBackgroundGradientColors(colors, orientation);
+    }
+
+    @Override
+    public int getDisabledBackgroundGradientOrientation() {
+        return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
 }

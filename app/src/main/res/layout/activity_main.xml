@@ -10,10 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="start"
+        android:orientation="horizontal"
         android:padding="16dp"
         app:xp_childHorizontalSpacing="16dp"
         app:xp_childVerticalSpacing="16dp"
-        android:orientation="horizontal"
         tools:context=".MainActivity">
 
         <com.pichs.common.widget.view.XStatusBarView
@@ -49,11 +49,11 @@
             app:layout_constraintTop_toTopOf="parent"
             app:xp_backgroundGradientEndColor="#f8e"
             app:xp_backgroundGradientStartColor="#d94"
-            app:xp_borderWidth="4dp"
-            app:xp_borderGradientStartColor="#FF5722"
-            app:xp_borderGradientOrientation="vertical"
             app:xp_borderGradientEndColor="#00BCD4"
-            app:xp_radius="10dp"/>
+            app:xp_borderGradientOrientation="vertical"
+            app:xp_borderGradientStartColor="#FF5722"
+            app:xp_borderWidth="4dp"
+            app:xp_radius="10dp" />
 
         <com.pichs.common.widget.view.XButton
             android:id="@+id/normalBtn"
@@ -128,8 +128,8 @@
 
         <com.pichs.common.widget.cardview.XCardTextView
             android:layout_width="wrap_content"
-            app:xp_pressedTextColor="#ddd"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:xp_pressedTextColor="#ddd" />
 
         <com.pichs.common.widget.roundview.XRoundTextView
             android:id="@+id/tv_round"
@@ -151,12 +151,12 @@
         <com.pichs.common.widget.cardview.XCardButton
             android:layout_width="80dp"
             android:layout_height="44dp"
-            android:onClick="changeRadius"
-            android:gravity="center"
-            android:textColor="#fff"
-            app:xp_pressedAlpha=".7"
             android:background="#673AB7"
-            android:text="改变角度" />
+            android:gravity="center"
+            android:onClick="changeRadius"
+            android:text="改变角度"
+            android:textColor="#fff"
+            app:xp_pressedAlpha=".7" />
 
         <com.pichs.common.widget.view.XImageView
             android:layout_width="wrap_content"
@@ -167,8 +167,8 @@
             app:xp_pressedAlpha="0.5" />
 
         <com.pichs.common.widget.cardview.XCardConstraintLayout
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:alpha="1"
             android:onClick="changeRadiusBg"
             app:xp_backgroundGradientEndColor="#3B58F5"
@@ -189,8 +189,32 @@
 
         </com.pichs.common.widget.cardview.XCardConstraintLayout>
 
+        <com.pichs.common.widget.view.XTextView
+            android:id="@+id/triple_color"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="三色渐变"
+            android:textColor="#00f"
+            android:textSize="16sp" />
+
+        <com.pichs.common.widget.view.XLinearLayout
+            android:id="@+id/ll_colors"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:text="三色渐变"
+            android:textColor="#fff"
+            app:xp_backgroundGradientOrientation="horizontal"
+            app:xp_pressedBackgroundGradientColors="#fff,#54f400"
+            app:xp_backgroundGradientColors="#f00,#00f0,#ff00f0"
+            android:textSize="16sp"
+            android:clickable="true" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="300dp" />
+
     </com.pichs.common.widget.flowlayout.XFlowLayout>
+
 </com.pichs.common.widget.view.XScrollView>

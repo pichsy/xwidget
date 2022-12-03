@@ -19,6 +19,8 @@ package com.pichs.common.widget.utils;
 import android.graphics.Color;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Size;
 
 
 /**
@@ -82,5 +84,52 @@ public class XColorHelper {
      */
     public static String colorToString(@ColorInt int color) {
         return String.format("#%08X", color);
+    }
+
+    /**
+     * 颜色解析：
+     * 支持：
+     * #RGB
+     * #ARGB
+     * #RRGGBB
+     * #AARRGGBB
+     *
+     * @param colorString 颜色String
+     * @return ColorInt
+     * @throws RuntimeException 异常报错
+     */
+    @ColorInt
+    public static int parseColor(@Size(min = 1) String colorString) throws RuntimeException {
+        if (colorString == null) {
+            throw new RuntimeException("您设置的颜色值：为 null，请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb");
+        }
+        if (!colorString.startsWith("#") && colorString.length() != 4 && colorString.length() != 5 && colorString.length() != 7 && colorString.length() != 9) {
+            throw new RuntimeException("您设置的颜色值：" + colorString + ": 颜色值格式不正确，请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb");
+        }
+        String colorFinal = colorString;
+        if (colorString.length() == 4) {
+            colorFinal = "#" +
+                    colorString.charAt(1) +
+                    colorString.charAt(1) +
+                    colorString.charAt(2) +
+                    colorString.charAt(2) +
+                    colorString.charAt(3) +
+                    colorString.charAt(3);
+        } else if (colorString.length() == 5) {
+            colorFinal = "#" +
+                    colorString.charAt(1) +
+                    colorString.charAt(1) +
+                    colorString.charAt(2) +
+                    colorString.charAt(2) +
+                    colorString.charAt(3) +
+                    colorString.charAt(3) +
+                    colorString.charAt(4) +
+                    colorString.charAt(4);
+        }
+        try {
+            return Color.parseColor(colorFinal);
+        } catch (Exception e) {
+            throw new RuntimeException("最终装换的颜色值：" + colorFinal + " 颜色值格式不正确，请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb\n ex:" + e);
+        }
     }
 }

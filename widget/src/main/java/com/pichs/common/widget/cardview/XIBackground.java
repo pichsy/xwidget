@@ -29,12 +29,14 @@ public interface XIBackground {
 
     /**
      * 设置正常背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置正常背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setBackgroundGradientEndColor(int endColor);
@@ -49,12 +51,14 @@ public interface XIBackground {
 
     /**
      * 设置按压背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setPressedBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置按压背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setPressedBackgroundGradientEndColor(int endColor);
@@ -69,12 +73,14 @@ public interface XIBackground {
 
     /**
      * 设置不可用背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setDisabledBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置不可用背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setDisabledBackgroundGradientEndColor(int endColor);
@@ -89,12 +95,14 @@ public interface XIBackground {
 
     /**
      * 设置选中用背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setCheckedBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置选中用背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setCheckedBackgroundGradientEndColor(int endColor);
@@ -109,12 +117,14 @@ public interface XIBackground {
 
     /**
      * 设置选中用背景渐变色开始颜色
+     *
      * @param startColor startColor
      */
     void setActivatedBackgroundGradientStartColor(int startColor);
 
     /**
      * 设置选中用背景渐变色结束颜色
+     *
      * @param endColor endColor
      */
     void setActivatedBackgroundGradientEndColor(int endColor);
@@ -133,6 +143,36 @@ public interface XIBackground {
     void setCheckedBackgroundColor(@ColorInt int color);
 
     void setDisabledBackgroundColor(@ColorInt int color);
+
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors 颜色值数组
+     */
+    void setBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getBackgroundGradientOrientation();
+
+    void setPressedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getPressedBackgroundGradientOrientation();
+
+    void setActivatedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getActivatedBackgroundGradientOrientation();
+
+    void setCheckedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getCheckedBackgroundGradientOrientation();
+
+    void setDisabledBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
+
+    @GradientOrientation
+    int getDisabledBackgroundGradientOrientation();
 
     XBackgroundHelper clearBackgrounds();
 }
