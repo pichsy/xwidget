@@ -62,7 +62,7 @@
 
 #### 看效果
 
-![](D:\Desktop\Works\gitee\xwidget\shot_cut1.png)
+![](shot_cut1.png)
 
 
 
