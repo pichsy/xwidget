@@ -232,7 +232,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                             pressedBgStartColor,
                             pressedBgEndColor,
                             pressedBackgroundColors,
-                            pressedBgColorOrientation), pressedCubeFrontBackground, pressedCubeFrontHeight
+                            pressedBgColorOrientation
+                    ), pressedCubeFrontBackground, pressedCubeFrontHeight
             );
 
             checkedBackground = getFinalLayerDrawable(
@@ -243,7 +244,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                             checkedBgStartColor,
                             checkedBgEndColor,
                             checkedBackgroundColors,
-                            checkedBgColorOrientation), checkedCubeFrontBackground, checkedCubeFrontHeight
+                            checkedBgColorOrientation
+                    ), checkedCubeFrontBackground, checkedCubeFrontHeight
             );
 
             disabledBackground = getFinalLayerDrawable(
@@ -254,7 +256,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                             disabledBgStartColor,
                             disabledBgEndColor,
                             disabledBackgroundColors,
-                            disabledBgColorOrientation), disabledCubeFrontBackground, disabledCubeFrontHeight
+                            disabledBgColorOrientation
+                    ), disabledCubeFrontBackground, disabledCubeFrontHeight
             );
 
             activatedBackground = getFinalLayerDrawable(
@@ -265,7 +268,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                             activatedBgStartColor,
                             activatedBgEndColor,
                             activatedBackgroundColors,
-                            activatedBgColorOrientation), activatedCubeFrontBackground, activatedCubeFrontHeight
+                            activatedBgColorOrientation
+                    ), activatedCubeFrontBackground, activatedCubeFrontHeight
             );
             ta.recycle();
             setBackgroundSelector();

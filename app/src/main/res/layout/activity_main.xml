@@ -131,22 +131,22 @@
             android:layout_height="wrap_content"
             app:xp_pressedTextColor="#ddd" />
 
-        <com.pichs.common.widget.roundview.XRoundTextView
-            android:id="@+id/tv_round"
-            android:layout_width="180dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="10dp"
-            android:background="#09f"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="我就是深"
-            android:textColor="#F4F4F4"
-            app:xp_borderColor="#FFD146"
-            app:xp_borderWidth="15dp"
-            app:xp_pressedBackground="#0f0"
-            app:xp_pressedBorderColor="#26A69A"
-            app:xp_pressedTextColor="#f00"
-            app:xp_radius="1dp" />
+<!--        <com.pichs.common.widget.roundview.XRoundTextView-->
+<!--            android:id="@+id/tv_round"-->
+<!--            android:layout_width="180dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="#09f"-->
+<!--            android:clickable="true"-->
+<!--            android:gravity="center"-->
+<!--            android:text="我就是深"-->
+<!--            android:textColor="#F4F4F4"-->
+<!--            app:xp_borderColor="#FFD146"-->
+<!--            app:xp_borderWidth="15dp"-->
+<!--            app:xp_pressedBackground="#0f0"-->
+<!--            app:xp_pressedBorderColor="#26A69A"-->
+<!--            app:xp_pressedTextColor="#f00"-->
+<!--            app:xp_radius="1dp" />-->
 
         <com.pichs.common.widget.cardview.XCardButton
             android:layout_width="80dp"
@@ -198,37 +198,50 @@
             android:textColor="#00f"
             android:textSize="16sp" />
 
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:text="按压"
+            android:clickable="true"
+            android:background="@drawable/pressed_cube"
+            android:textColor="#00f"
+            android:textSize="16sp" />
+
         <com.pichs.common.widget.view.XLinearLayout
             android:id="@+id/ll_colors"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:clickable="true"
             android:gravity="center"
             android:text="三色渐变"
             android:textColor="#fff"
-            app:xp_backgroundGradientOrientation="horizontal"
-            app:xp_pressedBackgroundGradientColors="#fff,#54f400"
-            app:xp_backgroundGradientColors="#f00,#00f0,#ff00f0"
             android:textSize="16sp"
-            android:clickable="true" />
+            app:xp_backgroundGradientColors="#f00,#00f0,#ff00f0"
+            app:xp_backgroundGradientOrientation="horizontal"
+            app:xp_pressedBackgroundGradientColors="#fff,#54f400" />
 
         <com.pichs.common.widget.roundview.XRoundLinearLayout
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="50dp"
-            app:xp_backgroundGradientOrientation="horizontal"
-            app:xp_backgroundGradientColors="#fff,#00f"
+            android:clickable="true"
+            android:id="@+id/round_layout"
+            app:xp_backgroundGradientOrientation="vertical"
+            app:xp_backgroundGradientColors="#00f,#ff0"
             app:xp_cubeFrontGradientColors="#f00"
             app:xp_cubeFrontHeight="3dp"
-            app:xp_cubeFrontBorderColor="#000"
-            app:xp_cubeFrontBorderWidth="1px"
-            app:xp_radius="10dp"
-            />
+            app:xp_pressedAlpha=".8"
+            app:xp_pressedCubeFrontGradientColors="#081"
+            app:xp_pressedBackgroundGradientColors="#0ff,#0f0"
+            app:xp_pressedCubeFrontHeight="2dp"
+            app:xp_radius="25dp" />
 
         <com.pichs.common.widget.cardview.XCardLinearLayout
             android:layout_width="50dp"
+            android:layout_height="100dp"
             app:xp_backgroundGradientColors="#f0f,#f00"
-            app:xp_radius="10dp"
             app:xp_backgroundGradientOrientation="vertical"
-            android:layout_height="100dp"/>
+            app:xp_radius="10dp" />
 
         <Space
             android:layout_width="match_parent"
