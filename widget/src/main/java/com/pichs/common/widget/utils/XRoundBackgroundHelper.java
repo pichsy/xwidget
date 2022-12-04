@@ -16,7 +16,6 @@ import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XIRoundBackground;
 
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
 
 /**
  * 圆角背景帮助类

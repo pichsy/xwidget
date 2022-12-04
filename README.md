@@ -8,7 +8,7 @@
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.0.0'
+        implementation 'com.gitee.pichs:xwidget:3.1.0'
 
 ## 走过路过不要错过。 最强基础组件库，超级轻量级。
 
@@ -61,7 +61,50 @@
 
 ## 升级日志
 
+### 3.1.0版本
+
+- 兼容升级
+- XSpace替代Space （新版AS：Space在xml中用，没有属性提示）
+- XWebView替代WebView （新版AS：WebView在xml中用，没有属性提示）
+- XView系列，XRoundView系列 新增 xp_backgroundGradientColors属性 
+    
+
+    ``` 
+        颜色值支持超全写法，和xml中写法一致随意写，支持以下四种写法
+        例：xxxGradientColors="#rbg,#argb,#rrggbb,#aarrggbb"
+        真实案例：
+        app:xp_backgroundGradientColors="#00f,#ffff00"
+        app:xp_pressedBackgroundGradientColors="#00f,#ff0"
+            
+    ```
+
+- XRoundxxx系列-->新增xp_cubeFront_xxx...属性，立体按钮效果 即动态LayerDrawable
+- LayerDrawable结合StateListDrawable->实现立体按钮按压效果
+- 温馨提示：cube属性必须结合 + background属性才可以生效，因为两者是一体的，也就是一个cube属性必须配一个对应的background属性
+- 看例子：xp_backgroundGradientColors + xp_cubeFrontGradientColors
+- xp_pressedCubeFrontGradientColors + xp_pressedBackgroundGradientColors
+- 生僻单词：cube：立方体 + front: 前面 = cubeFront:立方体前面 (立方体正对着你的那个面)
+
+
+    ```
+         <com.pichs.common.widget.roundview.XRoundLinearLayout
+               android:layout_width="120dp"
+               android:layout_height="50dp"
+               android:clickable="true"
+               android:id="@+id/round_layout"
+               app:xp_backgroundGradientOrientation="vertical"
+               app:xp_backgroundGradientColors="#00f,#ff0"
+               app:xp_cubeFrontGradientColors="#f00"
+               app:xp_cubeFrontHeight="3dp"
+               app:xp_pressedCubeFrontGradientColors="#081"
+               app:xp_pressedBackgroundGradientColors="#0ff,#0f0"
+               app:xp_pressedCubeFrontHeight="2dp"
+               app:xp_radius="25dp" />
+    
+       ```
+
 ### 3.0.0版本
+
 - 破坏性升级
 - 所有UnEnabled属性和方法名都改为Disabled(因为单词语义更加正确...)
 - 其他修改无。
