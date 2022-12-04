@@ -189,13 +189,14 @@
 
         </com.pichs.common.widget.cardview.XCardConstraintLayout>
 
-        <TextView
+        <com.pichs.common.widget.view.XTextView
             android:id="@+id/triple_color"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
-            android:text="三色渐变"
-            android:textColor="#00f"
+            app:xp_backgroundGradientColors="#ff0,#fff,#9f1f,#000000,#f00,#0ff,#0f0,#00f"
+            android:text="多色渐变"
+            android:textColor="#fff"
             android:textSize="16sp" />
 
         <TextView

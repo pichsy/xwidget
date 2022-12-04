@@ -12,52 +12,60 @@
 
 ## 走过路过不要错过。 最强基础组件库，超级轻量级。
 
-### 特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
+-  特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
 
-### 圆角，外阴影，圆头跟随高度宽度，渐变色背景->双色渐变：top->bottom，left->right,TL->BR, BL->TR
+- 圆角，外阴影，圆头跟随高度宽度，渐变色背景->双色渐变：top->bottom，left->right,TL->BR, BL->TR
 
-### 按压效果，仍然支持渐变，圆角等。 支持按压透明变化，disabled透明变化。
+- 按压效果，仍然支持渐变，圆角等。 支持按压透明变化，disabled透明变化。
 
-### 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
+- 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
-### 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿，不属基础的坚决不加。绝对好用。
+# 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿，不属基础的坚决不加。绝对好用。
 
-### 升级内容，新增字体全局设置。
+- 升级内容，新增字体全局设置。
 
-### 升级内容，新增XRoundView系列。RoundView系列动态生成的渐变Drawable，可单独设置四个角的圆角大小。渐变背景，按压效果等。
+- 升级内容，新增XRoundView系列。RoundView系列动态生成的渐变Drawable，可单独设置四个角的圆角大小。渐变背景，按压效果等。
 
-### XNested系列，滑动组件，粘性头部，更方便，处理滑动冲突，丝滑体验。企业级---放心使用。
+-  XNested系列，滑动组件，粘性头部，更方便，处理滑动冲突，丝滑体验。企业级---放心使用。
 
-### 使用示例去 demo中的xml中探索吧。
+#### 使用示例去 demo中的xml中探索吧。
 
 - 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
-
 1. 在Application中初始化
+   
+   ```
+     // 初始化，自动缓存。
+     public class App extends Application {
+         @Override
+         public void onCreate() {
+             super.onCreate();
+             XTypefaceHelper.init(this, true);
+         }
+     }
+   
+     XCardButton btn = findViewById(R.id.btn1);
+     btn.setOnClickListener(v -> {
+         XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+         XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
+     });
+     XButton normalBtn = findViewById(R.id.normalBtn);
+     normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
+     XButton closeFont = findViewById(R.id.closeFont);
+     XButton openFont = findViewById(R.id.openFont);
+   
+     closeFont.setOnClickListener(v -> XTypefaceHelper.closeTypeface(this));
+     openFont.setOnClickListener(v -> XTypefaceHelper.openTypeface(this));
+   
+   ```
 
-    ```
-      // 初始化，自动缓存。
-      public class App extends Application {
-          @Override
-          public void onCreate() {
-              super.onCreate();
-              XTypefaceHelper.init(this, true);
-          }
-      }
-    
-      XCardButton btn = findViewById(R.id.btn1);
-      btn.setOnClickListener(v -> {
-          XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
-          XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
-      });
-      XButton normalBtn = findViewById(R.id.normalBtn);
-      normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
-      XButton closeFont = findViewById(R.id.closeFont);
-      XButton openFont = findViewById(R.id.openFont);
 
-      closeFont.setOnClickListener(v -> XTypefaceHelper.closeTypeface(this));
-      openFont.setOnClickListener(v -> XTypefaceHelper.openTypeface(this));
-        
-    ```
+
+#### 看效果
+
+![](D:\Desktop\Works\gitee\xwidget\shot_cut1.png)
+
+
+
 
 ## 升级日志
 
@@ -68,14 +76,13 @@
 - XWebView替代WebView （新版AS：WebView在xml中用，没有属性提示）
 - XView系列，XRoundView系列 新增 xp_backgroundGradientColors属性 支持多色渐变，颜色值随意+
 
-
     ``` 
         颜色值支持超全写法，和xml中写法一致随意写，支持以下四种写法
         例：xxxGradientColors="#rbg,#argb,#rrggbb,#aarrggbb"
         真实案例：
         app:xp_backgroundGradientColors="#00f,#ffff00,#999,#87ff,#98ff,#f0f"
         app:xp_pressedBackgroundGradientColors="#00f,#ff0"
-            
+    
     ```
 
 - XRoundxxx系列-->新增xp_cubeFront_xxx...属性，立体按钮效果 即动态LayerDrawable
@@ -84,7 +91,6 @@
 - 看例子：xp_backgroundGradientColors + xp_cubeFrontGradientColors
 - xp_pressedCubeFrontGradientColors + xp_pressedBackgroundGradientColors
 - 生僻单词：cube：立方体 + front: 前面 = cubeFront:立方体前面 (立方体正对着你的那个面)
-
 
     ```
          <com.pichs.common.widget.roundview.XRoundLinearLayout
