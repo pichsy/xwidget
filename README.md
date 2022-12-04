@@ -66,14 +66,14 @@
 - 兼容升级
 - XSpace替代Space （新版AS：Space在xml中用，没有属性提示）
 - XWebView替代WebView （新版AS：WebView在xml中用，没有属性提示）
-- XView系列，XRoundView系列 新增 xp_backgroundGradientColors属性 
-    
+- XView系列，XRoundView系列 新增 xp_backgroundGradientColors属性 支持多色渐变，颜色值随意+
+
 
     ``` 
         颜色值支持超全写法，和xml中写法一致随意写，支持以下四种写法
         例：xxxGradientColors="#rbg,#argb,#rrggbb,#aarrggbb"
         真实案例：
-        app:xp_backgroundGradientColors="#00f,#ffff00"
+        app:xp_backgroundGradientColors="#00f,#ffff00,#999,#87ff,#98ff,#f0f"
         app:xp_pressedBackgroundGradientColors="#00f,#ff0"
             
     ```
