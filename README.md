@@ -1,16 +1,13 @@
 # xwidget
-
-最喜欢的自定义控件
-
-- 此次更新优化字体相关设置，用起来更随心，更舒服。
+最喜欢的自定义控件，开发更加快乐。
 
 ### 引入控件
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.1.0'
+        implementation 'com.gitee.pichs:xwidget:3.1.1'
 
-## 走过路过不要错过。 最强基础组件库，超级轻量级。
+## 最好用基础组件库，超级轻量级。
 
 -  特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
 
@@ -20,7 +17,7 @@
 
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
-# 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿，不属基础的坚决不加。绝对好用。
+# 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿。
 
 - 升级内容，新增字体全局设置。
 
@@ -68,6 +65,10 @@
 
 
 ## 升级日志
+
+### 3.1.1版本
+- 不常用方法setBorderGradientStartColor和setBorderGradientEndColor删除
+- 新增setBorderGradientColors()一次性设置两个，防止重复刷新绘制
 
 ### 3.1.0版本
 
