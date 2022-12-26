@@ -224,33 +224,31 @@ public class XLayoutHelper implements XILayout {
             }
             ta.recycle();
         }
-//        setRadiusAndShadow(mRadius, mHideRadiusSide, mShadowElevation, mShadowColor, mShadowAlpha);
     }
 
     @Override
-    public void setBorderGradientStartColor(int borderGradientStartColor) {
-        this.mBorderGradientStartColor = borderGradientStartColor;
-        invalidate();
-    }
-
-    @Override
-    public void setBorderGradientEndColor(int borderGradientEndColor) {
-        this.mBorderGradientEndColor = borderGradientEndColor;
-        invalidate();
-    }
-
-    @Override
-    public void setBorderGradientOrientation(@GradientOrientation int orientation) {
-        this.mBorderGradientOrientation = orientation;
-        invalidate();
-    }
-
-    @Override
-    public void setBorderGradientOrientation(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
+    public void setBorderGradientColors(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
+        this.mLinearGradient = null;
         this.mBorderGradientStartColor = borderGradientStartColor;
         this.mBorderGradientEndColor = borderGradientEndColor;
         this.mBorderGradientOrientation = orientation;
         invalidate();
+    }
+
+    @Override
+    public int getBorderGradientStartColor() {
+        return this.mBorderGradientStartColor;
+    }
+
+    @Override
+    public int getBorderGradientEndColor() {
+        return this.mBorderGradientEndColor;
+    }
+
+    @Override
+    @GradientOrientation
+    public int getBorderGradientOrientation() {
+        return this.mBorderGradientOrientation;
     }
 
     @Override

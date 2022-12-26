@@ -2,9 +2,12 @@ package com.pichs.app.xwidget;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 
 import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XCardButton;
+import com.pichs.common.widget.cardview.XCardConstraintLayout;
 import com.pichs.common.widget.checkbox.XCheckBox;
 import com.pichs.common.widget.roundview.XRoundTextView;
 import com.pichs.common.widget.utils.XColorHelper;
@@ -35,6 +39,21 @@ public class MainActivity extends AppCompatActivity {
         changeTypeface();
         tripleColor();
 
+        initColorfulBorder();
+
+    }
+
+    private void initColorfulBorder() {
+
+        XCardConstraintLayout card = findViewById(R.id.cl_colorful_border);
+
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "变色", Toast.LENGTH_SHORT).show();
+                card.setBorderGradientColors(Color.WHITE, Color.BLACK, GradientOrientation.VERTICAL);
+            }
+        });
     }
 
     private void tripleColor() {
@@ -65,6 +84,33 @@ public class MainActivity extends AppCompatActivity {
         LayerDrawable ld = XGradientHelper.getLayerDrawable(top, bottom, XDisplayHelper.dp2px(this, 5f));
 
         tv.setBackground(ld);
+
+
+        View jump = findViewById(R.id.cl_jump);
+
+        jump.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("heartapp://com.pichs.heart/test"));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
+
+        View actionJump = findViewById(R.id.cl_action);
+        View tvScan = findViewById(R.id.tv_scan);
+
+        actionJump.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("heartapp://com.pichs.heart/qrcode"));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
+
+        tvScan.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("heartapp://com.pichs.heart/scanner"));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
 
     }
 

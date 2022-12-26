@@ -241,7 +241,6 @@ public interface XIRoundBackground {
 
     void setCubeFrontBorderWidth(int width);
 
-
     void setPressedCubeFrontGradientColors(@ColorInt int... colors);
 
     void setPressedCubeFrontHeight(int height);
@@ -257,7 +256,6 @@ public interface XIRoundBackground {
     void setActivatedCubeFrontGradientColors(@ColorInt int... colors);
 
     void setActivatedCubeFrontHeight(int height);
-
 
     XRoundBackgroundHelper clearBackgrounds();
 }

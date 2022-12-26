@@ -19,7 +19,6 @@ package com.pichs.common.widget.cardview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
 
 import androidx.annotation.ColorInt;
 
@@ -311,24 +310,24 @@ public class XCardLinearLayout extends XLinearLayout implements XILayout {
         return mLayoutHelper.hasBottomSeparator();
     }
 
+    @Override
+    public void setBorderGradientColors(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
+        mLayoutHelper.setBorderGradientColors(borderGradientStartColor, borderGradientEndColor, orientation);
+    }
+
 
     @Override
-    public void setBorderGradientStartColor(int borderGradientStartColor) {
-        mLayoutHelper.setBorderGradientStartColor(borderGradientStartColor);
+    public int getBorderGradientStartColor() {
+        return mLayoutHelper.getBorderGradientStartColor();
     }
 
     @Override
-    public void setBorderGradientEndColor(int borderGradientEndColor) {
-        mLayoutHelper.setBorderGradientEndColor(borderGradientEndColor);
+    public int getBorderGradientEndColor() {
+        return mLayoutHelper.getBorderGradientEndColor();
     }
 
     @Override
-    public void setBorderGradientOrientation(@GradientOrientation int orientation) {
-        mLayoutHelper.setBorderGradientOrientation(orientation);
-    }
-
-    @Override
-    public void setBorderGradientOrientation(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
-        mLayoutHelper.setBorderGradientOrientation(borderGradientStartColor, borderGradientEndColor, orientation);
+    public int getBorderGradientOrientation() {
+        return mLayoutHelper.getBorderGradientOrientation();
     }
 }
