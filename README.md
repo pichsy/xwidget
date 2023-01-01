@@ -1,11 +1,12 @@
 # xwidget
+
 最喜欢的自定义控件，开发更加快乐。
 
 ### 引入控件
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.1.1'
+        implementation 'com.gitee.pichs:xwidget:3.1.2'
 
 ## 最好用基础组件库，超级轻量级。
 
@@ -17,13 +18,13 @@
 
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
-# 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿。
+## 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿。
 
 - 升级内容，新增字体全局设置。
 
 - 升级内容，新增XRoundView系列。RoundView系列动态生成的渐变Drawable，可单独设置四个角的圆角大小。渐变背景，按压效果等。
 
--  XNested系列，滑动组件，粘性头部，更方便，处理滑动冲突，丝滑体验。企业级---放心使用。
+- XNested系列，滑动组件，粘性头部，更方便，处理滑动冲突，丝滑体验。
 
 #### 使用示例去 demo中的xml中探索吧。
 
@@ -55,60 +56,75 @@
    
    ```
 
-
-
 #### 看效果
 
 ![](shot_cut1.png)
 
-
-
-
 ## 升级日志
 
+### 3.1.2版本
+
+- 优化属性的使用
+
+- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(xp_backgroundGradientStartColor...)对应的背景色。
+
+- 总之用起来更舒服了，代码也可以减少了。
+
 ### 3.1.1版本
+
 - 不常用方法setBorderGradientStartColor和setBorderGradientEndColor删除
 - 新增setBorderGradientColors()一次性设置两个，防止重复刷新绘制
 
 ### 3.1.0版本
 
 - 兼容升级
-- XSpace替代Space （新版AS：Space在xml中用，没有属性提示）
-- XWebView替代WebView （新版AS：WebView在xml中用，没有属性提示）
-- XView系列，XRoundView系列 新增 xp_backgroundGradientColors属性 支持多色渐变，颜色值随意+
 
-    ``` 
-        颜色值支持超全写法，和xml中写法一致随意写，支持以下四种写法
-        例：xxxGradientColors="#rbg,#argb,#rrggbb,#aarrggbb"
-        真实案例：
-        app:xp_backgroundGradientColors="#00f,#ffff00,#999,#87ff,#98ff,#f0f"
-        app:xp_pressedBackgroundGradientColors="#00f,#ff0"
-    
-    ```
+- XSpace替代Space （新版AS：Space在xml中用，没有属性提示）
+
+- XWebView替代WebView （新版AS：WebView在xml中用，没有属性提示）
+
+- XView系列，XRoundView系列 新增 xp_backgroundGradientColors属性 支持多色渐变，颜色值随意+
+  
+
+  ```
+      颜色值支持超全写法，和xml中写法一致随意写，支持以下四种写法
+      例：xxxGradientColors="#rbg,#argb,#rrggbb,#aarrggbb"
+      真实案例：
+      app:xp_backgroundGradientColors="#00f,#ffff00,#999,#87ff,#98ff,#f0f"
+      app:xp_pressedBackgroundGradientColors="#00f,#ff0"
+  
+  ```
 
 - XRoundxxx系列-->新增xp_cubeFront_xxx...属性，立体按钮效果 即动态LayerDrawable
-- LayerDrawable结合StateListDrawable->实现立体按钮按压效果
-- 温馨提示：cube属性必须结合 + background属性才可以生效，因为两者是一体的，也就是一个cube属性必须配一个对应的background属性
-- 看例子：xp_backgroundGradientColors + xp_cubeFrontGradientColors
-- xp_pressedCubeFrontGradientColors + xp_pressedBackgroundGradientColors
-- 生僻单词：cube：立方体 + front: 前面 = cubeFront:立方体前面 (立方体正对着你的那个面)
 
-    ```
-         <com.pichs.common.widget.roundview.XRoundLinearLayout
-               android:layout_width="120dp"
-               android:layout_height="50dp"
-               android:clickable="true"
-               android:id="@+id/round_layout"
-               app:xp_backgroundGradientOrientation="vertical"
-               app:xp_backgroundGradientColors="#00f,#ff0"
-               app:xp_cubeFrontGradientColors="#f00"
-               app:xp_cubeFrontHeight="3dp"
-               app:xp_pressedCubeFrontGradientColors="#081"
-               app:xp_pressedBackgroundGradientColors="#0ff,#0f0"
-               app:xp_pressedCubeFrontHeight="2dp"
-               app:xp_radius="25dp" />
-    
-       ```
+- LayerDrawable结合StateListDrawable->实现立体按钮按压效果
+
+- 温馨提示：cube属性必须结合 + background属性才可以生效，因为两者是一体的，都属于背景drawable生成时必要的参数。
+
+- 看例子：xp_backgroundGradientColors + xp_cubeFrontGradientColors
+
+- ~~xp_pressedCubeFrontGradientColors + xp_pressedBackgroundGradientColors~~
+
+- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(xp_backgroundGradientStartColor...)对应的背景色。
+
+- 生僻单词：cube：立方体 + front: 前面 = cubeFront:立方体前面 (立方体正对着你的那个面)
+  
+
+  ```
+       <com.pichs.common.widget.roundview.XRoundLinearLayout
+             android:layout_width="120dp"
+             android:layout_height="50dp"
+             android:clickable="true"
+             android:id="@+id/round_layout"
+             app:xp_backgroundGradientOrientation="vertical"
+             app:xp_backgroundGradientColors="#00f,#ff0"
+             app:xp_cubeFrontGradientColors="#f00"
+             app:xp_cubeFrontHeight="3dp"
+             app:xp_pressedCubeFrontHeight="1.5dp"
+             app:xp_radius="25dp" />
+  
+  ```
+
 
 ### 3.0.0版本
 
@@ -123,25 +139,5 @@
 
 ### 2.0.5版本
 
-- jitpack打包一直失败，一直升级到此版本才成功
 - 修复XCheckBox属性显示问题，修复XCheckImageView属性显示问题
 - 修改XCardImageView不默认CENTER_CROP属性
-
-### 2.0.0版本
-
-- 最新版本，新增nested系列，丝滑嵌套，炫酷布局，简单实现。
-- 修复XRound系列属性，删除不想管的属性，完善其他控件属性
-- xp_pressedAlpha属性扩展多一些控件。
-- 抓紧时间用起来吧，高效。
-
-### 1.5 版本
-
-#### 增加CircularProgressDrawable
-
-- 此类摘录自SwipeRefreshLayout官方框架，性能高，放心使用
-- 为啥单独搞下来，因为很多人都不用SwipeRefreshLayout官方框架，而是用三方的SmartRefreshLayout，<br>
-  所以这么好用的CircularProgressDrawable就浪费了，故本人将此类摘了备用，可用作加载进度条。效果贼好。 ~机智~
-
-### 1.4, 1.3, 1.2, 1.1, 1.0 版本
-
-- 优化加修bug~

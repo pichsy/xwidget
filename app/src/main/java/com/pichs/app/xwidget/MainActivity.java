@@ -89,27 +89,27 @@ public class MainActivity extends AppCompatActivity {
         View jump = findViewById(R.id.cl_jump);
 
         jump.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("heartapp://com.pichs.heart/test"));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+//            Intent intent = new Intent(Intent.ACTION_VIEW);
+//            intent.setData(Uri.parse("heartapp://com.pichs.heart/test"));
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
         });
 
         View actionJump = findViewById(R.id.cl_action);
         View tvScan = findViewById(R.id.tv_scan);
 
         actionJump.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("heartapp://com.pichs.heart/qrcode"));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+//            Intent intent = new Intent(Intent.ACTION_VIEW);
+//            intent.setData(Uri.parse("heartapp://com.pichs.heart/qrcode"));
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
         });
 
         tvScan.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("heartapp://com.pichs.heart/scanner"));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+//            Intent intent = new Intent(Intent.ACTION_VIEW);
+//            intent.setData(Uri.parse("heartapp://com.pichs.heart/scanner"));
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(intent);
         });
 
     }
