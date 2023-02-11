@@ -112,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(intent);
         });
 
+        findViewById(R.id.web_view).setOnClickListener(v->{
+            startActivity(new Intent(this,WebViewActivity.class));
+        });
     }
 
     int color = -0xFFFFFF1;

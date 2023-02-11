@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pichs.app.xwidget">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -19,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TowActivity" />
+        <activity android:name=".WebViewActivity" />
     </application>
 
 </manifest>

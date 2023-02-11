@@ -141,3 +141,10 @@
 
 - 修复XCheckBox属性显示问题，修复XCheckImageView属性显示问题
 - 修改XCardImageView不默认CENTER_CROP属性
+
+
+
+## 更新计划
+1. 优化 cube属性，使其更加全能，增加更多立体按钮效果，包括凹陷按钮效果
+2. 增加 XRadioGroup, 直属子类可用XCheckBox，并且其他布局随意添加不参加单选，只做辅助显示。
+3. XWebView优化，删除大量设置，只保留必要设置（javascript支持，自适应屏幕）。其他设置由用户自行设置和扩展。
