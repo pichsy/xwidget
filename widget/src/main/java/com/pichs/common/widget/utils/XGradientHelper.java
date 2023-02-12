@@ -410,4 +410,22 @@ public class XGradientHelper {
         return layerDrawable;
     }
 
+
+    /**
+     * 动态创建一个 layer-list 对应的drawable
+     * 这个目前仅为 立体按钮 提供便捷，若需要全功能，不如去写xml->代码不太方便
+     *
+     * @param top    底部立体的高度，也就是上面drawable的底部下移距离
+     * @param left   底部立体的高度，也就是上面drawable的底部右移距离
+     * @param right  底部立体的高度，也就是上面drawable的底部左移距离
+     * @param bottom 底部立体的高度，也就是上面drawable的底部上移距离
+     * @return {@link LayerDrawable}
+     */
+    public static LayerDrawable getLayerDrawable(Drawable topDrawable, Drawable bottomDrawable, int left, int top, int right, int bottom) {
+        if (topDrawable == null || bottomDrawable == null) return null;
+        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{bottomDrawable, topDrawable});
+        layerDrawable.setLayerInset(1, left, top, right, bottom);
+        return layerDrawable;
+    }
+
 }

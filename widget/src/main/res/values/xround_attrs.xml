@@ -19,20 +19,44 @@
 
     <attr name="xp_cubeFrontGradientColors" format="string" />
     <attr name="xp_cubeFrontHeight" format="dimension" />
+
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  start-->
+    <attr name="xp_cubeBackHeight" format="dimension" />
+    <attr name="xp_cubeLeftHeight" format="dimension" />
+    <attr name="xp_cubeRightHeight" format="dimension" />
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  end-->
+
     <attr name="xp_cubeFrontBorderColor" format="color" />
     <attr name="xp_cubeFrontBorderWidth" format="dimension" />
 
     <attr name="xp_pressedCubeFrontGradientColors" format="string" />
     <attr name="xp_pressedCubeFrontHeight" format="dimension" />
 
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  start-->
+    <attr name="xp_pressedCubeBackHeight" format="dimension" />
+    <attr name="xp_pressedCubeLeftHeight" format="dimension" />
+    <attr name="xp_pressedCubeRightHeight" format="dimension" />
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  start-->
+
     <attr name="xp_activatedCubeFrontGradientColors" format="string" />
     <attr name="xp_activatedCubeFrontHeight" format="dimension" />
+
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  start-->
+    <attr name="xp_activatedCubeBackHeight" format="dimension" />
+    <attr name="xp_activatedCubeLeftHeight" format="dimension" />
+    <attr name="xp_activatedCubeRightHeight" format="dimension" />
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  start-->
 
     <attr name="xp_checkedCubeFrontGradientColors" format="string" />
     <attr name="xp_checkedCubeFrontHeight" format="dimension" />
 
     <attr name="xp_disabledCubeFrontGradientColors" format="string" />
     <attr name="xp_disabledCubeFrontHeight" format="dimension" />
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  start-->
+    <attr name="xp_disabledCubeBackHeight" format="dimension" />
+    <attr name="xp_disabledCubeLeftHeight" format="dimension" />
+    <attr name="xp_disabledCubeRightHeight" format="dimension" />
+    <!--  todo 立体按钮顶部偏移高度，做凹下去按钮  start-->
 
     <!--  背景颜色选择器  -->
     <declare-styleable name="XIRoundBackground">
@@ -91,20 +115,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
 
     </declare-styleable>
     <!--  圆形图片  -->
@@ -200,20 +224,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
 
         <!--    不可用时 背景色    -->
         <attr name="xp_disabledBackground" />
@@ -287,20 +311,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -363,20 +387,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -439,20 +463,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -515,20 +539,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -591,20 +615,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -667,20 +691,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
@@ -741,20 +765,20 @@
         <!--    立体按钮属性    -->
         <attr name="xp_cubeFrontGradientColors" />
         <attr name="xp_cubeFrontHeight" />
-        <attr name="xp_cubeFrontBorderColor"/>
-        <attr name="xp_cubeFrontBorderWidth"/>
+        <attr name="xp_cubeFrontBorderColor" />
+        <attr name="xp_cubeFrontBorderWidth" />
 
-        <attr name="xp_pressedCubeFrontGradientColors"/>
-        <attr name="xp_pressedCubeFrontHeight"/>
+        <attr name="xp_pressedCubeFrontGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
 
-        <attr name="xp_disabledCubeFrontGradientColors"/>
-        <attr name="xp_disabledCubeFrontHeight"/>
+        <attr name="xp_disabledCubeFrontGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
 
-        <attr name="xp_activatedCubeFrontGradientColors"/>
-        <attr name="xp_activatedCubeFrontHeight"/>
+        <attr name="xp_activatedCubeFrontGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
 
-        <attr name="xp_checkedCubeFrontGradientColors"/>
-        <attr name="xp_checkedCubeFrontHeight"/>
+        <attr name="xp_checkedCubeFrontGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
