@@ -3,7 +3,6 @@ package com.pichs.common.widget.roundview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 
@@ -21,12 +20,10 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.utils.XAlphaHelper;
-import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 
 import java.util.TreeSet;
 
@@ -180,13 +177,13 @@ public class XRoundImageView extends AppCompatImageView implements XIAlpha {
     }
 
     @Override
-    public void setChangeAlphaOnPressed(float alpha) {
-        xAlphaHelper.setChangeAlphaOnPressed(alpha);
+    public void setAlphaOnPressed(float alpha) {
+        xAlphaHelper.setAlphaOnPressed(alpha);
     }
 
     @Override
-    public void setChangeAlphaOnDisabled(float alpha) {
-        xAlphaHelper.setChangeAlphaOnDisabled(alpha);
+    public void setAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setAlphaOnDisabled(alpha);
     }
 
     @Override
@@ -195,13 +192,13 @@ public class XRoundImageView extends AppCompatImageView implements XIAlpha {
     }
 
     @Override
-    public void setChangeScaleOnPressed(float scaleRate) {
-        xAlphaHelper.setChangeScaleOnPressed(scaleRate);
+    public void setScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setScaleOnPressed(scaleRate);
     }
 
     @Override
-    public void setChangeScaleOnDisabled(float scaleRate) {
-        xAlphaHelper.setChangeScaleOnDisabled(scaleRate);
+    public void setScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setScaleOnDisabled(scaleRate);
     }
 
     @Override

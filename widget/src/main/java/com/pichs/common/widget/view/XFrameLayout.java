@@ -48,13 +48,13 @@ public class XFrameLayout extends FrameLayout  implements XIBackground, XIAlpha 
     }
 
     @Override
-    public void setChangeAlphaOnPressed(float alpha) {
-        xAlphaHelper.setChangeAlphaOnPressed(alpha);
+    public void setAlphaOnPressed(float alpha) {
+        xAlphaHelper.setAlphaOnPressed(alpha);
     }
 
     @Override
-    public void setChangeAlphaOnDisabled(float alpha) {
-        xAlphaHelper.setChangeAlphaOnDisabled(alpha);
+    public void setAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setAlphaOnDisabled(alpha);
     }
 
     @Override
@@ -63,13 +63,13 @@ public class XFrameLayout extends FrameLayout  implements XIBackground, XIAlpha 
     }
 
     @Override
-    public void setChangeScaleOnPressed(float scaleRate) {
-        xAlphaHelper.setChangeScaleOnPressed(scaleRate);
+    public void setScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setScaleOnPressed(scaleRate);
     }
 
     @Override
-    public void setChangeScaleOnDisabled(float scaleRate) {
-        xAlphaHelper.setChangeScaleOnDisabled(scaleRate);
+    public void setScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setScaleOnDisabled(scaleRate);
     }
 
     @Override

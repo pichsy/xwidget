@@ -6,7 +6,7 @@
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.1.2'
+        implementation 'com.gitee.pichs:xwidget:3.2.0'
 
 ## 最好用基础组件库，超级轻量级。
 
@@ -19,12 +19,8 @@
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
 ## 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿。
+- 如果用起来不爽，速来提issue
 
-- 升级内容，新增字体全局设置。
-
-- 升级内容，新增XRoundView系列。RoundView系列动态生成的渐变Drawable，可单独设置四个角的圆角大小。渐变背景，按压效果等。
-
-- XNested系列，滑动组件，粘性头部，更方便，处理滑动冲突，丝滑体验。
 
 #### 使用示例去 demo中的xml中探索吧。
 
@@ -58,9 +54,17 @@
 
 #### 看效果
 
-![](shot_cut1.png)
+![](shot_cut1.jpg)
 
 ## 升级日志
+
+### 3.2.0 版本
+- 兼容新增 xp_cubeSidesGradientColors 用来代替 xp_cubeFrontGradientColors属性（依然能用，建议用前者，名字更贴切）（兼容升级）
+- 修改 cubeXXXedFrontGradientColors状态系列属性 用 cubeXXXSidesGradientColors代替 （破坏性，偏门属性，很少人用）
+- 修改 cubeFrontBorderColor和cubeFrontBorderWidth用cubeSidesBorderColor和cubeSidesBorderWidth代替 （破坏性，偏门属性，很少人用）
+- 新增 cubeBackHeight，cubeLeftHeight,cubeRightHeight和原有属性cubeFrontHeight形成完整一套Api可以实现更多效果，如按下凹陷，松开弹起等，
+- 新增 xp_pressedScale属性，按压缩放，可以放大放小，xp_disabledScale:不可用时放大缩小（带动画）
+- 对应的set方法也会同样删减和增加。
 
 ### 3.1.2版本
 

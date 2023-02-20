@@ -47,6 +47,9 @@
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardTextView">
@@ -95,6 +98,9 @@
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardConstraintLayout">
@@ -143,6 +149,9 @@
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardFrameLayout">
@@ -191,6 +200,9 @@
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardLinearLayout">
@@ -239,6 +251,9 @@
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardRelativeLayout">
@@ -287,6 +302,9 @@
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--**********************************************
@@ -346,6 +364,9 @@
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
 </resources>

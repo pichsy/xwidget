@@ -160,13 +160,13 @@ public class XAlphaHelper implements XIAlpha {
     }
 
     @Override
-    public void setChangeAlphaOnPressed(float alpha) {
+    public void setAlphaOnPressed(float alpha) {
         this.mPressedAlpha = alpha;
         isChangeAlphaOnPress = mPressedAlpha != mNormalAlpha;
     }
 
     @Override
-    public void setChangeAlphaOnDisabled(float alpha) {
+    public void setAlphaOnDisabled(float alpha) {
         this.mDisabledAlpha = alpha;
         isChangeAlphaOnDisable = mDisabledAlpha != mNormalAlpha;
         View target = mOwner.get();
@@ -187,13 +187,13 @@ public class XAlphaHelper implements XIAlpha {
     }
 
     @Override
-    public void setChangeScaleOnPressed(float scaleRate) {
+    public void setScaleOnPressed(float scaleRate) {
         this.mPressedScale = scaleRate;
         isChangeScaleOnPress = mNormalScale != scaleRate;
     }
 
     @Override
-    public void setChangeScaleOnDisabled(float scaleRate) {
+    public void setScaleOnDisabled(float scaleRate) {
         this.mDisabledScale = scaleRate;
         isChangeScaleOnDisable = mDisabledScale != scaleRate;
         View target = mOwner.get();

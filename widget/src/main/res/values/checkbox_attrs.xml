@@ -23,6 +23,10 @@
         <attr name="xp_pressedAlpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="android:alpha" />
+
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
     <attr name="SmoothCheckBoxStyle" format="reference" />
 

@@ -34,8 +34,6 @@ import androidx.appcompat.widget.AppCompatImageView;
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.utils.XAlphaHelper;
-import com.pichs.common.widget.utils.XRoundBackgroundHelper;
-import com.pichs.common.widget.view.XImageView;
 
 /**
  * 圆形图片，高性能版
@@ -123,13 +121,13 @@ public class XCircleImageView extends AppCompatImageView implements XIAlpha {
     }
 
     @Override
-    public void setChangeAlphaOnPressed(float alpha) {
-        xAlphaHelper.setChangeAlphaOnPressed(alpha);
+    public void setAlphaOnPressed(float alpha) {
+        xAlphaHelper.setAlphaOnPressed(alpha);
     }
 
     @Override
-    public void setChangeAlphaOnDisabled(float alpha) {
-        xAlphaHelper.setChangeAlphaOnDisabled(alpha);
+    public void setAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setAlphaOnDisabled(alpha);
     }
 
     @Override
@@ -138,13 +136,13 @@ public class XCircleImageView extends AppCompatImageView implements XIAlpha {
     }
 
     @Override
-    public void setChangeScaleOnPressed(float scaleRate) {
-        xAlphaHelper.setChangeScaleOnPressed(scaleRate);
+    public void setScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setScaleOnPressed(scaleRate);
     }
 
     @Override
-    public void setChangeScaleOnDisabled(float scaleRate) {
-        xAlphaHelper.setChangeScaleOnDisabled(scaleRate);
+    public void setScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setScaleOnDisabled(scaleRate);
     }
 
     @Override

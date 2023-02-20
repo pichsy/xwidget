@@ -27,7 +27,6 @@ import com.pichs.common.widget.view.XButton;
 import com.pichs.common.widget.view.XLinearLayout;
 
 public class MainActivity extends AppCompatActivity {
-    XCheckBox xchekbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         XStatusBarHelper.translucent(this);
         XStatusBarHelper.setStatusBarDarkMode(this);
         setContentView(R.layout.activity_main);
-        xchekbox = findViewById(R.id.xchekbox);
         changeTypeface();
         tripleColor();
 
@@ -57,61 +55,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void tripleColor() {
-//        Drawable drawable = XGradientHelper.getGradientDrawable(20, GradientDrawable.Orientation.LEFT_RIGHT, new int[]{
-//                Color.RED, Color.BLUE, Color.GREEN,Color.BLACK,Color.RED,Color.GREEN
-//        });
-        XLinearLayout ll = findViewById(R.id.ll_colors);
-        ll.setBackgroundGradientColors(new int[]{XColorHelper.parseColor("#fff"), XColorHelper.parseColor("#000"), Color.parseColor("purple")}, GradientOrientation.HORIZONTAL);
-        ll.setPressedBackgroundGradientColors(new int[]{XColorHelper.parseColor("#f00"), XColorHelper.parseColor("#0f0")}, GradientOrientation.HORIZONTAL);
-//        tv.setBackground(drawable);
-        TextView tv = findViewById(R.id.triple_color);
-        Drawable top = new XGradientHelper.GradientDrawableBuilder()
-                .setRadius(XDisplayHelper.dp2px(this, 20f))
-                .setFillColor(Color.parseColor("purple"))
-                .setStrokeColor(Color.WHITE)
-                .setStrokeWidth(1)
-                .build();
-        Drawable bottom = new XGradientHelper.GradientDrawableBuilder()
-                .setRadius(XDisplayHelper.dp2px(this, 20f))
-                .setFillColor(Color.parseColor("red"))
-                .setStrokeColor(Color.BLUE)
-                .setStrokeWidth(1)
-                .build();
-//        new XGradientHelper.StateListDrawableBuilder()
-//                .addPressedState()
-//                .build();
-
-        LayerDrawable ld = XGradientHelper.getLayerDrawable(top, bottom, XDisplayHelper.dp2px(this, 5f));
-
-        tv.setBackground(ld);
-
-
-        View jump = findViewById(R.id.cl_jump);
-
-        jump.setOnClickListener(v -> {
-//            Intent intent = new Intent(Intent.ACTION_VIEW);
-//            intent.setData(Uri.parse("heartapp://com.pichs.heart/test"));
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent);
-        });
-
-        View actionJump = findViewById(R.id.cl_action);
-        View tvScan = findViewById(R.id.tv_scan);
-
-        actionJump.setOnClickListener(v -> {
-//            Intent intent = new Intent(Intent.ACTION_VIEW);
-//            intent.setData(Uri.parse("heartapp://com.pichs.heart/qrcode"));
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent);
-        });
-
-        tvScan.setOnClickListener(v -> {
-//            Intent intent = new Intent(Intent.ACTION_VIEW);
-//            intent.setData(Uri.parse("heartapp://com.pichs.heart/scanner"));
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent);
-        });
-
         findViewById(R.id.web_view).setOnClickListener(v->{
             startActivity(new Intent(this,WebViewActivity.class));
         });
@@ -122,28 +65,17 @@ public class MainActivity extends AppCompatActivity {
     private void changeTypeface() {
         XCardButton btn = findViewById(R.id.btn1);
 
-        XButton normalBtn = findViewById(R.id.normalBtn);
         btn.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
             XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
             XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
-            normalBtn.setBackgroundColor(color);
         });
 
-        normalBtn.setOnClickListener(v -> XTypefaceHelper.resetTypeface(MainActivity.this));
         XButton closeFont = findViewById(R.id.closeFont);
         XButton openFont = findViewById(R.id.openFont);
 
         closeFont.setOnClickListener(v -> XTypefaceHelper.closeTypeface(this));
         openFont.setOnClickListener(v -> XTypefaceHelper.openTypeface(this));
-    }
-
-    public void changeRadius(View view) {
-        xchekbox.setCanClick(!xchekbox.isCanClick());
-    }
-
-    public void changeRadiusBg(View view) {
-        Toast.makeText(this, "变透明了吗", Toast.LENGTH_SHORT).show();
     }
 
 }
