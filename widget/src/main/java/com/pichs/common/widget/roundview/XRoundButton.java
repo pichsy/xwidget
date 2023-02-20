@@ -18,7 +18,7 @@ import com.pichs.common.widget.utils.XTextViewHelper;
 /**
  * XRoundButton 自定义基类
  */
-public class XRoundButton extends AppCompatButton implements XIRoundBackground, XITextView , XIAlpha {
+public class XRoundButton extends AppCompatButton implements XIRoundBackground, XITextView, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -59,13 +59,13 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     @Override
@@ -326,64 +326,74 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
 
-
+    /**
+     * 请使用： {@link #setCubeSidesGradientColors(int...)}
+     *
+     * @param colors @Deprecated
+     */
+    @Deprecated
     @Override
     public void setCubeFrontGradientColors(int... colors) {
         backgroundHelper.setCubeFrontGradientColors(colors);
     }
 
     @Override
-    public void setCubeFrontHeight(int height) {
-        backgroundHelper.setCubeFrontHeight(height);
+    public void setCubeSidesBorderColor(int color) {
+        backgroundHelper.setCubeSidesBorderColor(color);
     }
 
     @Override
-    public void setCubeFrontBorderColor(int color) {
-        backgroundHelper.setCubeFrontBorderColor(color);
+    public void setCubeSidesBorderWidth(int width) {
+        backgroundHelper.setCubeSidesBorderWidth(width);
     }
 
     @Override
-    public void setCubeFrontBorderWidth(int width) {
-        backgroundHelper.setCubeFrontBorderWidth(width);
+    public void setPressedCubeSidesGradientColors(int... colors) {
+        backgroundHelper.setPressedCubeSidesGradientColors(colors);
     }
 
     @Override
-    public void setPressedCubeFrontGradientColors(int... colors) {
-        backgroundHelper.setPressedCubeFrontGradientColors(colors);
+    public void setDisabledCubeSidesGradientColors(int... colors) {
+        backgroundHelper.setDisabledCubeSidesGradientColors(colors);
     }
 
     @Override
-    public void setPressedCubeFrontHeight(int height) {
-        backgroundHelper.setPressedCubeFrontHeight(height);
+    public void setCheckedCubeSidesGradientColors(int... colors) {
+        backgroundHelper.setCheckedCubeSidesGradientColors(colors);
     }
 
     @Override
-    public void setDisabledCubeFrontGradientColors(int... colors) {
-        backgroundHelper.setDisabledCubeFrontGradientColors(colors);
+    public void setActivatedCubeSidesGradientColors(int... colors) {
+        backgroundHelper.setActivatedCubeSidesGradientColors(colors);
     }
 
     @Override
-    public void setDisabledCubeFrontHeight(int height) {
-        backgroundHelper.setDisabledCubeFrontHeight(height);
+    public void setCubeSidesGradientColors(int... colors) {
+        backgroundHelper.setCubeSidesGradientColors(colors);
     }
 
     @Override
-    public void setCheckedCubeFrontGradientColors(int... colors) {
-        backgroundHelper.setCheckedCubeFrontGradientColors(colors);
+    public void setCubeSidesHeight(int left, int back, int right, int front) {
+        backgroundHelper.setCubeSidesHeight(left, back, right, front);
     }
 
     @Override
-    public void setCheckedCubeFrontHeight(int height) {
-        backgroundHelper.setCheckedCubeFrontHeight(height);
+    public void setPressedCubeSidesHeight(int left, int back, int right, int front) {
+        backgroundHelper.setPressedCubeSidesHeight(left, back, right, front);
     }
 
     @Override
-    public void setActivatedCubeFrontGradientColors(int... colors) {
-        backgroundHelper.setActivatedCubeFrontGradientColors(colors);
+    public void setDisabledCubeSidesHeight(int left, int back, int right, int front) {
+        backgroundHelper.setDisabledCubeSidesHeight(left, back, right, front);
     }
 
     @Override
-    public void setActivatedCubeFrontHeight(int height) {
-        backgroundHelper.setActivatedCubeFrontHeight(height);
+    public void setCheckedCubeSidesHeight(int left, int back, int right, int front) {
+        backgroundHelper.setCheckedCubeSidesHeight(left, back, right, front);
+    }
+
+    @Override
+    public void setActivatedCubeSidesHeight(int left, int back, int right, int front) {
+        backgroundHelper.setActivatedCubeSidesHeight(left, back, right, front);
     }
 }

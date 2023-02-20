@@ -3,7 +3,9 @@ package com.pichs.common.widget.cardview;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
 
+import com.pichs.common.widget.roundview.XCubeSidesHeight;
 import com.pichs.common.widget.utils.XRoundBackgroundHelper;
 
 /**
@@ -233,29 +235,46 @@ public interface XIRoundBackground {
     @GradientOrientation
     int getDisabledBackgroundGradientOrientation();
 
+    /**
+     * Deprecated this,  please use {@link #setCubeSidesGradientColors}
+     *
+     * @param colors @Deprecated
+     */
+    @Deprecated
     void setCubeFrontGradientColors(@ColorInt int... colors);
 
-    void setCubeFrontHeight(int height);
+    void setCubeSidesGradientColors(@ColorInt int... colors);
 
-    void setCubeFrontBorderColor(@ColorInt int color);
 
-    void setCubeFrontBorderWidth(int width);
+    /**
+     * 不设置就是NONE 设置为任何数都会生效
+     *
+     * @param left  default={@link XCubeSidesHeight#NONE}
+     * @param back  default={@link XCubeSidesHeight#NONE}
+     * @param right default={@link XCubeSidesHeight#NONE}
+     * @param front default={@link XCubeSidesHeight#NONE}
+     */
+    void setCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
-    void setPressedCubeFrontGradientColors(@ColorInt int... colors);
+    void setCubeSidesBorderColor(@ColorInt int color);
 
-    void setPressedCubeFrontHeight(int height);
+    void setCubeSidesBorderWidth(int width);
 
-    void setDisabledCubeFrontGradientColors(@ColorInt int... colors);
+    void setPressedCubeSidesGradientColors(@ColorInt int... colors);
 
-    void setDisabledCubeFrontHeight(int height);
+    void setPressedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
-    void setCheckedCubeFrontGradientColors(@ColorInt int... colors);
+    void setDisabledCubeSidesGradientColors(@ColorInt int... colors);
 
-    void setCheckedCubeFrontHeight(int height);
+    void setDisabledCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
-    void setActivatedCubeFrontGradientColors(@ColorInt int... colors);
+    void setCheckedCubeSidesGradientColors(@ColorInt int... colors);
 
-    void setActivatedCubeFrontHeight(int height);
+    void setCheckedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
+
+    void setActivatedCubeSidesGradientColors(@ColorInt int... colors);
+
+    void setActivatedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
     XRoundBackgroundHelper clearBackgrounds();
 }

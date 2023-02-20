@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    android:background="#A1FBF2">
 
     <com.pichs.common.widget.flowlayout.XFlowLayout
         android:layout_width="match_parent"
@@ -233,8 +233,8 @@
             app:xp_cubeFrontHeight="3dp"
             app:xp_pressedAlpha=".8"
             app:xp_pressedBackgroundGradientColors="#0ff,#0f0"
-            app:xp_pressedCubeFrontGradientColors="#081"
             app:xp_pressedCubeFrontHeight="2dp"
+            app:xp_pressedCubeSidesGradientColors="#081"
             app:xp_radius="25dp" />
 
         <com.pichs.common.widget.cardview.XCardTextView
@@ -253,6 +253,7 @@
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:gravity="center"
+            android:singleLine="false"
             android:text="QRCode"
             android:textColor="#fff"
             app:xp_backgroundGradientColors="#000,#01f,#999,#01f,#000"
@@ -272,6 +273,21 @@
             app:xp_pressedBackgroundGradientColors="#DCE775"
             app:xp_radius="16dp" />
 
+        <com.pichs.common.widget.roundview.XRoundTextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="#A6DED9"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="按下压瘪"
+            android:textColor="#1C1C1C"
+            android:textSize="15sp"
+            app:xp_cubeFrontHeight="3dp"
+            app:xp_cubeRightHeight="3dp"
+            app:xp_cubeSidesGradientColors="#019A8C"
+            app:xp_pressedCubeBackHeight="3dp"
+            app:xp_pressedCubeLeftHeight="3dp"
+            app:xp_radius="25dp" />
 
         <com.pichs.common.widget.cardview.XCardConstraintLayout
             android:id="@+id/cl_colorful_border"
@@ -293,15 +309,15 @@
             android:gravity="center"
             android:text="按压变矮"
             android:textColor="#fff"
-            app:xp_backgroundGradientColors="#09f,#f0f"
-            app:xp_cubeFrontGradientColors="#3535AD"
+            app:xp_backgroundGradientColors="#f0f"
+            app:xp_cubeFrontGradientColors="#600377"
             app:xp_cubeFrontHeight="3dp"
             app:xp_pressedCubeFrontHeight="1dp"
             app:xp_radius="25dp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="300dp" />
+            android:layout_height="10dp" />
 
     </com.pichs.common.widget.flowlayout.XFlowLayout>
 
