@@ -140,6 +140,10 @@
     <attr name="xp_pressedAlpha" format="float" />
     <attr name="xp_disabledAlpha" format="float" />
     <!--  控件按压透明度变化效果 end  -->
+    <!--  控件按压按钮大小变化效果 start  -->
+    <attr name="xp_pressedScale" format="float" />
+    <attr name="xp_disabledScale" format="float" />
+    <!--  控件按压按钮大小变化效果 end  -->
 
     <!--  多状态，文字颜色效果，只针对XCardTextView效  -->
     <attr name="xp_pressedTextColor" format="color|reference" />
@@ -229,6 +233,8 @@
         <attr name="xp_pressedAlpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="android:alpha" />
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XCard 顶层接口  -->
@@ -441,9 +447,13 @@
         <attr name="xp_disabledBackgroundOrientation" />
         <attr name="xp_disabledBackgroundGradientColors" />
 
+        <!--   按压按钮透明度变化   -->
         <attr name="android:alpha" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  背景颜色选择器  -->

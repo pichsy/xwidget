@@ -289,6 +289,14 @@
             app:xp_pressedCubeLeftHeight="3dp"
             app:xp_radius="25dp" />
 
+        <com.pichs.common.widget.view.XConstraintLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="#6EAEA9"
+            android:clickable="true"
+            app:xp_pressedScale="1.06"
+            app:xp_radius="25dp" />
+
         <com.pichs.common.widget.cardview.XCardConstraintLayout
             android:id="@+id/cl_colorful_border"
             android:layout_width="100dp"

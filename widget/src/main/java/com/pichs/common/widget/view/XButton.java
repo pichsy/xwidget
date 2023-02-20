@@ -46,16 +46,6 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     }
 
     @Override
-    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
-        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
-    }
-
-    @Override
-    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
-        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
-    }
-
-    @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
         xAlphaHelper.onPressedChanged(this,pressed);
@@ -294,6 +284,35 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
-    
+
+    @Override
+    public void setNormalAlpha(float alpha) {
+       xAlphaHelper.setNormalAlpha(alpha);
+    }
+
+    @Override
+    public void setChangeAlphaOnPressed(float alpha) {
+        xAlphaHelper.setChangeAlphaOnPressed(alpha);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setChangeAlphaOnDisabled(alpha);
+    }
+
+    @Override
+    public void setNormalScale(float scaleRate) {
+        xAlphaHelper.setNormalScale(scaleRate);
+    }
+
+    @Override
+    public void setChangeScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setChangeScaleOnPressed(scaleRate);
+    }
+
+    @Override
+    public void setChangeScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setChangeScaleOnDisabled(scaleRate);
+    }
 }
 

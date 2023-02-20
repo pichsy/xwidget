@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.XIAlpha;
+import com.pichs.common.widget.interpolator.XInterpolators;
 
 import java.lang.ref.WeakReference;
 
@@ -17,17 +18,30 @@ public class XAlphaHelper implements XIAlpha {
     /**
      * 设置是否要在 press 时改变透明度
      */
-    private boolean isChangeAlphaOnPress = true;
+    private boolean isChangeAlphaOnPress = false;
 
     /**
      * 设置是否要在 disabled 时改变透明度
      */
-    private boolean isChangeAlphaOnDisable = true;
+    private boolean isChangeAlphaOnDisable = false;
+
+    /**
+     * 设置是否要在 press 时改变大小
+     */
+    private boolean isChangeScaleOnPress = false;
+
+    /**
+     * 设置是否要在 disabled 时改变大小
+     */
+    private boolean isChangeScaleOnDisable = false;
 
     private float mNormalAlpha = 1f;
-    private float mPressedAlpha = .7f;
-    private float mDisabledAlpha = .7f;
+    private float mPressedAlpha = 1f;
+    private float mDisabledAlpha = 1f;
 
+    private float mNormalScale = 1f;
+    private float mPressedScale = 1f;
+    private float mDisabledScale = 1f;
 
     public XAlphaHelper(Context context, AttributeSet attrs, int defAttr, View owner) {
         this(context, attrs, defAttr, 0, owner);
@@ -44,15 +58,22 @@ public class XAlphaHelper implements XIAlpha {
             mNormalAlpha = ta.getFloat(R.styleable.XIAlpha_android_alpha, 1f);
             mPressedAlpha = ta.getFloat(R.styleable.XIAlpha_xp_pressedAlpha, 1f);
             mDisabledAlpha = ta.getFloat(R.styleable.XIAlpha_xp_disabledAlpha, 1f);
+            mPressedScale = ta.getFloat(R.styleable.XIAlpha_xp_pressedScale, 1f);
+            mDisabledScale = ta.getFloat(R.styleable.XIAlpha_xp_disabledScale, 1f);
             ta.recycle();
-            if (mPressedAlpha == 1f) {
-                isChangeAlphaOnPress = false;
+            if (mPressedAlpha != mNormalAlpha) {
+                isChangeAlphaOnPress = true;
             }
-            if (mDisabledAlpha == 1f) {
-                isChangeAlphaOnDisable = false;
+            if (mDisabledAlpha != mNormalAlpha) {
+                isChangeAlphaOnDisable = true;
+            }
+            if (mNormalScale != mPressedScale) {
+                isChangeScaleOnPress = true;
+            }
+            if (mNormalScale != mDisabledScale) {
+                isChangeScaleOnDisable = true;
             }
         }
-
     }
 
 
@@ -61,13 +82,30 @@ public class XAlphaHelper implements XIAlpha {
         if (target == null) {
             return;
         }
-        if (current.isEnabled()) {
+        if (target.isEnabled()) {
             target.setAlpha(isChangeAlphaOnPress && pressed && current.isClickable() ? mPressedAlpha : mNormalAlpha);
-        } else {
-            if (isChangeAlphaOnDisable) {
-                target.setAlpha(mDisabledAlpha);
+            if (isChangeScaleOnPress) {
+                if (pressed) {
+                    target.animate()
+                            .scaleX(mPressedScale)
+                            .scaleY(mPressedScale)
+                            .setDuration(80)
+                            .setInterpolator(XInterpolators.linear)
+                            .start();
+                } else {
+                    target.animate()
+                            .scaleX(mNormalScale)
+                            .scaleY(mNormalScale)
+                            .setDuration(80)
+                            .setInterpolator(XInterpolators.linear)
+                            .start();
+                }
             }
-        }
+        } /*else {
+//            if (isChangeAlphaOnDisable) {
+//                target.setAlpha(mDisabledAlpha);
+//            }
+        }*/
     }
 
     /**
@@ -91,17 +129,73 @@ public class XAlphaHelper implements XIAlpha {
             target.setEnabled(enabled);
         }
         target.setAlpha(alphaForIsEnable);
+        if (enabled) {
+            target.animate()
+                    .scaleX(mNormalScale)
+                    .scaleY(mNormalScale)
+                    .setDuration(150)
+                    .setInterpolator(XInterpolators.linear)
+                    .start();
+        } else {
+            if (isChangeScaleOnDisable) {
+                target.animate()
+                        .scaleX(mDisabledScale)
+                        .scaleY(mDisabledScale)
+                        .setDuration(150)
+                        .setInterpolator(XInterpolators.linear)
+                        .start();
+            }
+        }
     }
 
-
     @Override
-    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
-        isChangeAlphaOnPress = isChangeAlphaOnPressed;
+    public void setNormalAlpha(float alpha) {
+        this.mNormalAlpha = alpha;
+        isChangeAlphaOnPress = mPressedAlpha != mNormalAlpha;
+        isChangeAlphaOnDisable = mDisabledAlpha != mNormalAlpha;
+        View target = mOwner.get();
+        if (target != null) {
+            onEnabledChanged(target, target.isEnabled());
+        }
     }
 
     @Override
-    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
-        isChangeAlphaOnDisable = isChangeAlphaOnDisabled;
+    public void setChangeAlphaOnPressed(float alpha) {
+        this.mPressedAlpha = alpha;
+        isChangeAlphaOnPress = mPressedAlpha != mNormalAlpha;
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(float alpha) {
+        this.mDisabledAlpha = alpha;
+        isChangeAlphaOnDisable = mDisabledAlpha != mNormalAlpha;
+        View target = mOwner.get();
+        if (target != null) {
+            onEnabledChanged(target, target.isEnabled());
+        }
+    }
+
+    @Override
+    public void setNormalScale(float scaleRate) {
+        this.mNormalScale = scaleRate;
+        isChangeScaleOnPress = mNormalScale != mPressedScale;
+        isChangeScaleOnDisable = mNormalScale != mDisabledScale;
+        View target = mOwner.get();
+        if (target != null) {
+            onEnabledChanged(target, target.isEnabled());
+        }
+    }
+
+    @Override
+    public void setChangeScaleOnPressed(float scaleRate) {
+        this.mPressedScale = scaleRate;
+        isChangeScaleOnPress = mNormalScale != scaleRate;
+    }
+
+    @Override
+    public void setChangeScaleOnDisabled(float scaleRate) {
+        this.mDisabledScale = scaleRate;
+        isChangeScaleOnDisable = mDisabledScale != scaleRate;
         View target = mOwner.get();
         if (target != null) {
             onEnabledChanged(target, target.isEnabled());

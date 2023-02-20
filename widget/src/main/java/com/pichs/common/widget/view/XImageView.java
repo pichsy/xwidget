@@ -115,13 +115,33 @@ public class XImageView extends AppCompatImageView implements XIBackground, XIAl
     }
 
     @Override
-    public void setChangeAlphaOnPressed(boolean isChangeAlphaOnPressed) {
-        xAlphaHelper.setChangeAlphaOnPressed(isChangeAlphaOnPressed);
+    public void setNormalAlpha(float alpha) {
+        xAlphaHelper.setNormalAlpha(alpha);
     }
 
     @Override
-    public void setChangeAlphaOnDisabled(boolean isChangeAlphaOnDisabled) {
-        xAlphaHelper.setChangeAlphaOnDisabled(isChangeAlphaOnDisabled);
+    public void setChangeAlphaOnPressed(float alpha) {
+        xAlphaHelper.setChangeAlphaOnPressed(alpha);
+    }
+
+    @Override
+    public void setChangeAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setChangeAlphaOnDisabled(alpha);
+    }
+
+    @Override
+    public void setNormalScale(float scaleRate) {
+        xAlphaHelper.setNormalScale(scaleRate);
+    }
+
+    @Override
+    public void setChangeScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setChangeScaleOnPressed(scaleRate);
+    }
+
+    @Override
+    public void setChangeScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setChangeScaleOnDisabled(scaleRate);
     }
 
     @Override
