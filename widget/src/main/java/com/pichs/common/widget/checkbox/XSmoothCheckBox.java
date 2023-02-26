@@ -31,20 +31,26 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Checkable;
+
 import androidx.core.content.ContextCompat;
+
 import com.pichs.common.widget.R;
+import com.pichs.common.widget.cardview.XIAlpha;
+import com.pichs.common.widget.utils.XAlphaHelper;
 import com.pichs.common.widget.utils.XDisplayHelper;
 
 /**
  * 自带动画的checkbox
+ * <p>
+ * XSmoothCheckBox
  *
- * @author xuexiang
  * @since 2020-01-06 9:55
  */
-public class XSmoothCheckBox extends View implements Checkable {
+public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
     private static final String KEY_INSTANCE_STATE = "InstanceState";
 
     private static final int COLOR_FLOOR_UNCHECKED = Color.parseColor("#DFDFDF");
+    private XAlphaHelper xAlphaHelper;
 
     private static final int DEF_DRAW_SIZE = 25;
     private static final int DEF_ANIM_DURATION = 300;
@@ -62,6 +68,7 @@ public class XSmoothCheckBox extends View implements Checkable {
     private boolean mChecked;
     private boolean mTickDrawing;
     private OnCheckedChangeListener mOnCheckedChangeListener;
+    private int mTickColor;
 
     public XSmoothCheckBox(Context context) {
         this(context, null);
@@ -78,7 +85,7 @@ public class XSmoothCheckBox extends View implements Checkable {
 
     private void initAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.XSmoothCheckBox, defStyleAttr, 0);
-        int tickColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_tick, Color.WHITE);
+        mTickColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_tick, Color.WHITE);
         mAnimDuration = array.getInt(R.styleable.XSmoothCheckBox_xp_cbox_duration, DEF_ANIM_DURATION);
         mFloorColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_unchecked_stroke, COLOR_FLOOR_UNCHECKED);
         mCheckedColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_checked, ContextCompat.getColor(context, R.color.xp_config_color_blue));
@@ -91,7 +98,7 @@ public class XSmoothCheckBox extends View implements Checkable {
         mTickPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mTickPaint.setStyle(Paint.Style.STROKE);
         mTickPaint.setStrokeCap(Paint.Cap.ROUND);
-        mTickPaint.setColor(tickColor);
+        mTickPaint.setColor(mTickColor);
 
         mFloorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mFloorPaint.setStyle(Paint.Style.FILL);
@@ -121,6 +128,7 @@ public class XSmoothCheckBox extends View implements Checkable {
                 }
             }
         });
+        xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
     }
 
     @Override
@@ -142,6 +150,31 @@ public class XSmoothCheckBox extends View implements Checkable {
         }
         super.onRestoreInstanceState(state);
     }
+
+    public void setTickColor(int tickColor) {
+        this.mTickColor = tickColor;
+        mTickPaint.setColor(mTickColor);
+        invalidate();
+    }
+
+    public void setCheckedColor(int color) {
+        this.mCheckedColor = color;
+        mPaint.setColor(this.mCheckedColor);
+        invalidate();
+    }
+
+    public void setUnCheckedColor(int color) {
+        this.mUnCheckedColor = color;
+        invalidate();
+    }
+
+    public void setUnCheckedStrokeColor(int color) {
+        this.mFloorUnCheckedColor = color;
+        mFloorPaint.setColor(this.mFloorUnCheckedColor);
+        invalidate();
+    }
+
+
 
     @Override
     public boolean isChecked() {
@@ -419,6 +452,48 @@ public class XSmoothCheckBox extends View implements Checkable {
 
     public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
         mOnCheckedChangeListener = onCheckedChangeListener;
+    }
+
+    @Override
+    public void setNormalAlpha(float alpha) {
+        xAlphaHelper.setNormalAlpha(alpha);
+    }
+
+    @Override
+    public void setAlphaOnPressed(float alpha) {
+        xAlphaHelper.setAlphaOnPressed(alpha);
+    }
+
+    @Override
+    public void setAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setAlphaOnDisabled(alpha);
+    }
+
+    @Override
+    public void setNormalScale(float scaleRate) {
+        xAlphaHelper.setNormalScale(scaleRate);
+    }
+
+    @Override
+    public void setScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setScaleOnPressed(scaleRate);
+    }
+
+    @Override
+    public void setScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setScaleOnDisabled(scaleRate);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
     }
 
     public interface OnCheckedChangeListener {

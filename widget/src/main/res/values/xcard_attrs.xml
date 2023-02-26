@@ -43,6 +43,13 @@
         <attr name="xp_borderGradientOrientation" />
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardTextView">
@@ -87,6 +94,13 @@
         <attr name="xp_borderGradientOrientation" />
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardConstraintLayout">
@@ -131,6 +145,13 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardFrameLayout">
@@ -175,6 +196,13 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardLinearLayout">
@@ -219,6 +247,13 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <declare-styleable name="XCardRelativeLayout">
@@ -263,6 +298,13 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--**********************************************
@@ -273,6 +315,7 @@
         <attr name="xp_isRadiusAdjustBounds" />
         <attr name="xp_borderColor" />
         <attr name="xp_borderWidth" />
+        <attr name="android:scaleType" />
         <attr name="xp_isCircle" format="boolean" />
         <attr name="xp_selectedBorderWidth" format="dimension" />
         <attr name="xp_selectedMaskColor" format="color|reference" />
@@ -317,6 +360,13 @@
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
 </resources>

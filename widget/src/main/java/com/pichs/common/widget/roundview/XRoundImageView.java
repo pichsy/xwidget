@@ -3,6 +3,7 @@ package com.pichs.common.widget.roundview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 
 import androidx.annotation.ColorInt;
@@ -19,9 +20,10 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.pichs.common.widget.R;
+import com.pichs.common.widget.cardview.XIAlpha;
+import com.pichs.common.widget.utils.XAlphaHelper;
 
 import java.util.TreeSet;
 
@@ -31,10 +33,11 @@ import java.util.TreeSet;
  * the oval is supported
  */
 @SuppressLint("AppCompatCustomView")
-public class XRoundImageView extends AppCompatImageView {
+public class XRoundImageView extends AppCompatImageView implements XIAlpha {
 
     public static final String TAG = "RoundedImageView";
     private static final String ANDROID_NAMESPACE = "http://schemas.android.com/apk/res/android";
+    private XAlphaHelper xAlphaHelper;
 
     public static final float DEFAULT_RADIUS = 0f;
     public static final float DEFAULT_BORDER_WIDTH = 0f;
@@ -66,6 +69,8 @@ public class XRoundImageView extends AppCompatImageView {
     private ScaleType mScaleType;
     private Shader.TileMode mTileModeX = Shader.TileMode.CLAMP;
     private Shader.TileMode mTileModeY = Shader.TileMode.CLAMP;
+    private PorterDuff.Mode mMode;
+
 
     public XRoundImageView(Context context) {
         super(context);
@@ -146,6 +151,14 @@ public class XRoundImageView extends AppCompatImageView {
 
         mIsOval = a.getBoolean(R.styleable.XRoundImageView_xp_oval, false);
 
+        int colorFilter = a.getColor(R.styleable.XRoundImageView_xp_colorFilter, -1);
+        int colorFilterMode = a.getInt(R.styleable.XRoundImageView_xp_colorFilterMode, 1);
+        if (colorFilter == -1) {
+            clearColorFilter();
+        } else {
+            mMode = getColorFilterMode(colorFilterMode);
+            setColorFilter(colorFilter, mMode);
+        }
         setTileModeX(Shader.TileMode.CLAMP);
         setTileModeY(Shader.TileMode.CLAMP);
 
@@ -153,6 +166,105 @@ public class XRoundImageView extends AppCompatImageView {
         updateBackgroundDrawableAttrs(true);
         super.setBackgroundDrawable(mBackgroundDrawable);
         a.recycle();
+
+        xAlphaHelper = new XAlphaHelper(context, attrs, 0, this);
+
+    }
+
+     @Override
+    public void setNormalAlpha(float alpha) {
+       xAlphaHelper.setNormalAlpha(alpha);
+    }
+
+    @Override
+    public void setAlphaOnPressed(float alpha) {
+        xAlphaHelper.setAlphaOnPressed(alpha);
+    }
+
+    @Override
+    public void setAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setAlphaOnDisabled(alpha);
+    }
+
+    @Override
+    public void setNormalScale(float scaleRate) {
+        xAlphaHelper.setNormalScale(scaleRate);
+    }
+
+    @Override
+    public void setScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setScaleOnPressed(scaleRate);
+    }
+
+    @Override
+    public void setScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setScaleOnDisabled(scaleRate);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this,pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this,enabled);
+    }
+
+    public void setColorFilterOverride(int color) {
+        if (getCurrentMode() != null) {
+            setColorFilter(color, getCurrentMode());
+        } else {
+            setColorFilter(color);
+        }
+    }
+
+    public PorterDuff.Mode getCurrentMode() {
+        return mMode;
+    }
+
+    private PorterDuff.Mode getColorFilterMode(int mode) {
+        switch (mode) {
+            case 0:
+                return PorterDuff.Mode.SRC;
+            case 1:
+                return PorterDuff.Mode.SRC_ATOP;
+            case 2:
+                return PorterDuff.Mode.SRC_IN;
+            case 3:
+                return PorterDuff.Mode.SRC_OUT;
+            case 4:
+                return PorterDuff.Mode.SRC_OVER;
+            case 5:
+                return PorterDuff.Mode.MULTIPLY;
+            case 6:
+                return PorterDuff.Mode.DST;
+            case 7:
+                return PorterDuff.Mode.DST_ATOP;
+            case 8:
+                return PorterDuff.Mode.DST_IN;
+            case 9:
+                return PorterDuff.Mode.DST_OUT;
+            case 10:
+                return PorterDuff.Mode.DST_OVER;
+            case 11:
+                return PorterDuff.Mode.CLEAR;
+            case 12:
+                return PorterDuff.Mode.XOR;
+            case 13:
+                return PorterDuff.Mode.SCREEN;
+            case 14:
+                return PorterDuff.Mode.DARKEN;
+            case 15:
+                return PorterDuff.Mode.LIGHTEN;
+            case 16:
+                return PorterDuff.Mode.ADD;
+            case 17:
+                return PorterDuff.Mode.OVERLAY;
+        }
+        return PorterDuff.Mode.SRC_ATOP;
     }
 
     private float getMinNotZeroFloat(float topLeft, float topRight, float bottomLeft, float bottomRight, float width, float height) {

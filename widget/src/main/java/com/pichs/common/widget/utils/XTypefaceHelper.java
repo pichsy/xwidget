@@ -24,6 +24,8 @@ public class XTypefaceHelper {
     public static final String TYPEFACE_MONOSPACE = "MONOSPACE"; // monospace字体
     public static final String TYPEFACE_SERIF = "SERIF"; // serif字体
 
+    public static boolean isOpenTypeface = false;
+
     // 恢复字体的原本样式
     public static final int NONE = -1;
     // 不加粗不斜体
@@ -62,6 +64,14 @@ public class XTypefaceHelper {
     private final static WeakHashMap<View, GlobalTypefaceObserver> mTypefaceMap = new WeakHashMap<>();
 
     public static void init(Context context) {
+        init(context, false);
+    }
+
+    public static void init(Context context, boolean isOpenTypeface) {
+        XTypefaceHelper.isOpenTypeface = isOpenTypeface;
+        if (!isOpenTypeface) {
+            return;
+        }
         int typefaceFrom = XWidgetCache.getInstance(context).getInt(KEY_TYPEFACE_FROM, 0);
         String path = XWidgetCache.getInstance(context).getString(KEY_TYPEFACE_FILEPATH, null);
         int style = XWidgetCache.getInstance(context).getInt(KEY_TYPEFACE_STYLE, NONE);
@@ -75,6 +85,21 @@ public class XTypefaceHelper {
             }
         }
         setGlobalTypefaceStyle(context, style);
+    }
+
+    /**
+     * 关闭字体
+     */
+    public static void closeTypeface(Context context) {
+        isOpenTypeface = false;
+        resetTypeface(context);
+    }
+
+    /**
+     * 开启字体需要重启，后才能生效
+     */
+    public static void openTypeface(Context context) {
+        init(context, true);
     }
 
     /**
@@ -123,6 +148,9 @@ public class XTypefaceHelper {
      * @param filePath 文件路径
      */
     public static void setGlobalTypefaceFromFile(Context context, String filePath) {
+        if (!isOpenTypeface){
+            return;
+        }
         File file = new File(filePath);
         if (!file.exists()) {
             return;
@@ -139,6 +167,9 @@ public class XTypefaceHelper {
      * @param file 文件
      */
     public static void setGlobalTypefaceFromFile(Context context, File file) {
+        if (!isOpenTypeface){
+            return;
+        }
         if (!file.exists()) {
             return;
         }
@@ -155,6 +186,9 @@ public class XTypefaceHelper {
      * @param typefaceName 字体assets路径
      */
     public static void setGlobalTypefaceFromAssets(Context context, String typefaceName) {
+        if (!isOpenTypeface){
+            return;
+        }
         if (TextUtils.isEmpty(typefaceName)) {
             return;
         }

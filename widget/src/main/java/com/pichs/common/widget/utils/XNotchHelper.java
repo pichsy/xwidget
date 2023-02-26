@@ -33,6 +33,9 @@ import android.view.WindowManager;
 
 import java.lang.reflect.Method;
 
+/**
+ * 刘海帮助类
+ */
 public class XNotchHelper {
 
     private static final String TAG = "XNotchHelper";

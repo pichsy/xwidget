@@ -27,9 +27,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Created by cgspine on 2018/3/23.
+ * card系列接口
  */
-
 public interface XILayout {
     /**
      * 都不隐藏
@@ -377,28 +376,19 @@ public interface XILayout {
     boolean hasBorder();
 
     /**
-     * 开始颜色
-     *
-     * @param borderGradientStartColor color
-     */
-    void setBorderGradientStartColor(int borderGradientStartColor);
-
-    /**
-     * 结束颜色
-     *
-     * @param borderGradientEndColor color
-     */
-    void setBorderGradientEndColor(int borderGradientEndColor);
-
-    /**
-     * @param orientation 0 横向（默认）， 1 竖向
-     */
-    void setBorderGradientOrientation(@GradientOrientation int orientation);
-
-    /**
      * @param borderGradientStartColor 开始颜色
      * @param borderGradientEndColor   结束颜色
-     * @param orientation              0 横向（默认）， 1 竖向
+     * @param orientation              0 横向（默认）， 1 竖向 {@link GradientOrientation}
      */
-    void setBorderGradientOrientation(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation);
+    void setBorderGradientColors(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation);
+
+    @ColorInt
+    int getBorderGradientStartColor();
+
+    @ColorInt
+    int getBorderGradientEndColor();
+
+    @GradientOrientation
+    int getBorderGradientOrientation();
+
 }

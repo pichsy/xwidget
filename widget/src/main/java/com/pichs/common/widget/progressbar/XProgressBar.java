@@ -46,8 +46,7 @@ import java.lang.annotation.RetentionPolicy;
  * <li>支持限制进度的最大值。</li>
  * </ol>
  *
- * @author cginechen
- * @date 2015-07-29
+ * XProgressBar
  */
 public class XProgressBar extends XView {
 

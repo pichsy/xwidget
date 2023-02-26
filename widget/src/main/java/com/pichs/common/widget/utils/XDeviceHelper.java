@@ -36,8 +36,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author cginechen
- * @date 2016-08-11
+ * 设备帮助类
  */
 @SuppressLint("PrivateApi")
 public class XDeviceHelper {

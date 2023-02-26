@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import java.lang.reflect.Field;
 
+/**
+ * 编辑框帮助类
+ */
 public class XEditTextHelper {
     @SuppressLint("ClickableViewAccessibility")
     public static void disableCopyAndPaste(final EditText editText) {

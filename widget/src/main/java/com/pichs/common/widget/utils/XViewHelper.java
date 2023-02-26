@@ -54,8 +54,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author cginechen
- * @date 2016-03-17
+ * view帮助类
  */
 public class XViewHelper {
 
@@ -86,7 +85,7 @@ public class XViewHelper {
      * 扩展点击区域的范围
      *
      * @param view       需要扩展的元素，此元素必需要有父级元素
-     * @param expendSize 需要扩展的尺寸（以sp为单位的）
+     * @param expendSize 需要扩展的尺寸（以dp为单位的）
      */
     public static void expendTouchArea(final View view, final int expendSize) {
         if (view != null) {

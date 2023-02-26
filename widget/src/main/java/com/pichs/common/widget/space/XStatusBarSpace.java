@@ -1,6 +1,8 @@
 package com.pichs.common.widget.space;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -28,6 +30,12 @@ public class XStatusBarSpace extends View {
 
     public XStatusBarSpace(Context context) {
         this(context, null);
+    }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void draw(Canvas canvas) {
+//        super.draw(canvas);
     }
 
     /**

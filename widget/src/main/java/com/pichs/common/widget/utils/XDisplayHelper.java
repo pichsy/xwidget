@@ -44,8 +44,7 @@ import java.lang.reflect.Method;
 import java.util.Locale;
 
 /**
- * @author cginechen
- * @date 2016-03-17
+ * 像素转换帮助类
  */
 public class XDisplayHelper {
     private static final String TAG = "XDisplayHelper";

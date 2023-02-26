@@ -26,7 +26,6 @@ import java.util.TimerTask;
 /**
  * Created pichs
  * 验证码输入框，可带加载动画，只限线性有动画
- *
  */
 public class VerificationCodeEditText extends XEditText {
 
@@ -310,7 +309,7 @@ public class VerificationCodeEditText extends XEditText {
         isLoading = true;
         borderColor = borderLoadingColor;
         setEnabled(false);
-        Message message = new Message();
+        Message message = Message.obtain();
         message.what = 1;
         message.arg1 = alpha;
         mHandler.sendMessage(message);

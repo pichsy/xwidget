@@ -25,8 +25,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 /**
- * @author cginechen
- * @date 2016-03-17
+ * 数字帮助类，长度
  */
 public class XLangHelper {
 

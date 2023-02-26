@@ -170,11 +170,11 @@ public class InputLayout extends XCardLinearLayout {
         setClearIconVisible(isClearIconShow);
         setClearIconSize(clearIconWidth,clearIconHeight);
         setClearIconPadding(clearIconPadding);
-        setCleaIconColorFilter(clearIconColorFilter);
+        setClearIconColorFilter(clearIconColorFilter);
         handleViewData();
     }
 
-    public InputLayout setCleaIconColorFilter(int clearIconColorFilter) {
+    public InputLayout setClearIconColorFilter(int clearIconColorFilter) {
         this.clearIconColorFilter = clearIconColorFilter;
         mClearImageView.setColorFilterOverride(clearIconColorFilter);
         return this;

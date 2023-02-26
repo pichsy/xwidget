@@ -11,6 +11,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Outline;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
@@ -23,6 +24,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
@@ -30,9 +32,14 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import com.pichs.common.widget.R;
-import com.pichs.common.widget.view.XImageView;
+import com.pichs.common.widget.cardview.XIAlpha;
+import com.pichs.common.widget.utils.XAlphaHelper;
 
-public class XCircleImageView extends AppCompatImageView {
+/**
+ * 圆形图片，高性能版
+ * 只支持圆形图片
+ */
+public class XCircleImageView extends AppCompatImageView implements XIAlpha {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -72,6 +79,9 @@ public class XCircleImageView extends AppCompatImageView {
     private boolean mSetupPending;
     private boolean mBorderOverlay;
     private boolean mDisableCircularTransformation;
+    private PorterDuff.Mode mMode;
+    private XAlphaHelper xAlphaHelper;
+
 
     public XCircleImageView(Context context) {
         super(context);
@@ -85,15 +95,66 @@ public class XCircleImageView extends AppCompatImageView {
 
     public XCircleImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
+        xAlphaHelper = new XAlphaHelper(context, attrs, 0, this);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XCircleImageView, defStyle, 0);
 
         mBorderWidth = a.getDimensionPixelSize(R.styleable.XCircleImageView_xp_borderWidth, DEFAULT_BORDER_WIDTH);
         mBorderColor = a.getColor(R.styleable.XCircleImageView_xp_borderColor, DEFAULT_BORDER_COLOR);
         mBorderOverlay = a.getBoolean(R.styleable.XCircleImageView_xp_borderOverlay, DEFAULT_BORDER_OVERLAY);
-        a.recycle();
+        int colorFilter = a.getColor(R.styleable.XCircleImageView_xp_colorFilter, -1);
+        int colorFilterMode = a.getInt(R.styleable.XCircleImageView_xp_colorFilterMode, 1);
+        if (colorFilter == -1) {
+            clearColorFilter();
+        } else {
+            mMode = getColorFilterMode(colorFilterMode);
+            setColorFilter(colorFilter, mMode);
+        }
 
+        a.recycle();
         init();
+    }
+
+
+     @Override
+    public void setNormalAlpha(float alpha) {
+       xAlphaHelper.setNormalAlpha(alpha);
+    }
+
+    @Override
+    public void setAlphaOnPressed(float alpha) {
+        xAlphaHelper.setAlphaOnPressed(alpha);
+    }
+
+    @Override
+    public void setAlphaOnDisabled(float alpha) {
+        xAlphaHelper.setAlphaOnDisabled(alpha);
+    }
+
+    @Override
+    public void setNormalScale(float scaleRate) {
+        xAlphaHelper.setNormalScale(scaleRate);
+    }
+
+    @Override
+    public void setScaleOnPressed(float scaleRate) {
+        xAlphaHelper.setScaleOnPressed(scaleRate);
+    }
+
+    @Override
+    public void setScaleOnDisabled(float scaleRate) {
+        xAlphaHelper.setScaleOnDisabled(scaleRate);
+    }
+
+    @Override
+    public void setPressed(boolean pressed) {
+        super.setPressed(pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     private void init() {
@@ -108,6 +169,60 @@ public class XCircleImageView extends AppCompatImageView {
             setup();
             mSetupPending = false;
         }
+    }
+
+    public void setColorFilterOverride(int color) {
+        if (getCurrentMode() != null) {
+            setColorFilter(color, getCurrentMode());
+        } else {
+            setColorFilter(color);
+        }
+    }
+
+    public PorterDuff.Mode getCurrentMode() {
+        return mMode;
+    }
+
+    private PorterDuff.Mode getColorFilterMode(int mode) {
+        switch (mode) {
+            case 0:
+                return PorterDuff.Mode.SRC;
+            case 1:
+                return PorterDuff.Mode.SRC_ATOP;
+            case 2:
+                return PorterDuff.Mode.SRC_IN;
+            case 3:
+                return PorterDuff.Mode.SRC_OUT;
+            case 4:
+                return PorterDuff.Mode.SRC_OVER;
+            case 5:
+                return PorterDuff.Mode.MULTIPLY;
+            case 6:
+                return PorterDuff.Mode.DST;
+            case 7:
+                return PorterDuff.Mode.DST_ATOP;
+            case 8:
+                return PorterDuff.Mode.DST_IN;
+            case 9:
+                return PorterDuff.Mode.DST_OUT;
+            case 10:
+                return PorterDuff.Mode.DST_OVER;
+            case 11:
+                return PorterDuff.Mode.CLEAR;
+            case 12:
+                return PorterDuff.Mode.XOR;
+            case 13:
+                return PorterDuff.Mode.SCREEN;
+            case 14:
+                return PorterDuff.Mode.DARKEN;
+            case 15:
+                return PorterDuff.Mode.LIGHTEN;
+            case 16:
+                return PorterDuff.Mode.ADD;
+            case 17:
+                return PorterDuff.Mode.OVERLAY;
+        }
+        return PorterDuff.Mode.SRC_ATOP;
     }
 
     @Override
@@ -401,7 +516,7 @@ public class XCircleImageView extends AppCompatImageView {
     }
 
     private RectF calculateBounds() {
-        int availableWidth  = getWidth() - getPaddingLeft() - getPaddingRight();
+        int availableWidth = getWidth() - getPaddingLeft() - getPaddingRight();
         int availableHeight = getHeight() - getPaddingTop() - getPaddingBottom();
 
         int sideLength = Math.min(availableWidth, availableHeight);
@@ -450,7 +565,7 @@ public class XCircleImageView extends AppCompatImageView {
 
         return Math.pow(x - mBorderRect.centerX(), 2) + Math.pow(y - mBorderRect.centerY(), 2) <= Math.pow(mBorderRadius, 2);
     }
-    
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private class OutlineProvider extends ViewOutlineProvider {
 

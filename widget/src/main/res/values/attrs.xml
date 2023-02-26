@@ -16,8 +16,6 @@
         <enum name="right" value="2" />
         <enum name="bottom" value="3" />
         <enum name="left" value="4" />
-        <enum name="lt_rb" value="5" />
-        <enum name="lb_rt" value="6" />
     </attr>
     <!--  layout  -->
     <attr name="xp_bottomDividerHeight" format="dimension" />
@@ -46,6 +44,7 @@
     <attr name="xp_outlineExcludePadding" format="boolean" />
 
     <!--  给背景设置渐变色  -->
+    <attr name="xp_backgroundGradientColors" format="string" />
     <attr name="xp_backgroundGradientStartColor" format="color|reference" />
     <attr name="xp_backgroundGradientEndColor" format="color|reference" />
     <attr name="xp_backgroundGradientOrientation" format="enum">
@@ -75,6 +74,8 @@
     </attr>
 
     <!--  多状态，背景色效果 start  -->
+
+    <attr name="xp_pressedBackgroundGradientColors" format="string" />
     <attr name="xp_pressedBackground" format="color|reference" />
     <attr name="xp_pressedBackgroundStartColor" format="color|reference" />
     <attr name="xp_pressedBackgroundEndColor" format="color|reference" />
@@ -89,6 +90,7 @@
         <enum name="BL_TR" value="3" />
     </attr>
 
+    <attr name="xp_checkedBackgroundGradientColors" format="string" />
     <attr name="xp_checkedBackground" format="color|reference" />
     <attr name="xp_checkedBackgroundStartColor" format="color|reference" />
     <attr name="xp_checkedBackgroundEndColor" format="color|reference" />
@@ -103,6 +105,7 @@
         <enum name="BL_TR" value="3" />
     </attr>
 
+    <attr name="xp_activatedBackgroundGradientColors" format="string" />
     <attr name="xp_activatedBackground" format="color|reference" />
     <attr name="xp_activatedBackgroundStartColor" format="color|reference" />
     <attr name="xp_activatedBackgroundEndColor" format="color|reference" />
@@ -117,10 +120,11 @@
         <enum name="BL_TR" value="3" />
     </attr>
 
-    <attr name="xp_unEnabledBackground" format="color|reference" />
-    <attr name="xp_unEnabledBackgroundStartColor" format="color|reference" />
-    <attr name="xp_unEnabledBackgroundEndColor" format="color|reference" />
-    <attr name="xp_unEnabledBackgroundOrientation" format="enum">
+    <attr name="xp_disabledBackgroundGradientColors" format="string" />
+    <attr name="xp_disabledBackground" format="color|reference" />
+    <attr name="xp_disabledBackgroundStartColor" format="color|reference" />
+    <attr name="xp_disabledBackgroundEndColor" format="color|reference" />
+    <attr name="xp_disabledBackgroundOrientation" format="enum">
         <!--    从左到右    -->
         <enum name="horizontal" value="0" />
         <!--    从上到下    -->
@@ -132,18 +136,27 @@
     </attr>
     <!--  多状态，背景色效果 end  -->
 
+    <!--  控件按压透明度变化效果 start  -->
+    <attr name="xp_pressedAlpha" format="float" />
+    <attr name="xp_disabledAlpha" format="float" />
+    <!--  控件按压透明度变化效果 end  -->
+    <!--  控件按压按钮大小变化效果 start  -->
+    <attr name="xp_pressedScale" format="float" />
+    <attr name="xp_disabledScale" format="float" />
+    <!--  控件按压按钮大小变化效果 end  -->
+
     <!--  多状态，文字颜色效果，只针对XCardTextView效  -->
     <attr name="xp_pressedTextColor" format="color|reference" />
     <attr name="xp_checkedTextColor" format="color|reference" />
     <attr name="xp_activatedTextColor" format="color|reference" />
-    <attr name="xp_unEnabledTextColor" format="color|reference" />
+    <attr name="xp_disabledTextColor" format="color|reference" />
     <!--  是否忽略全局字体切换  -->
     <attr name="xp_ignoreGlobalTypeface" format="boolean" />
     <!--  边框色  -->
     <attr name="xp_pressedBorderColor" format="color" />
     <attr name="xp_checkedBorderColor" format="color" />
     <attr name="xp_activatedBorderColor" format="color" />
-    <attr name="xp_unEnabledBorderColor" format="color" />
+    <attr name="xp_disabledBorderColor" format="color" />
     <!--  颜色过滤器  -->
     <attr name="xp_colorFilter" format="color" />
     <attr name="xp_colorFilterMode" format="enum">
@@ -173,30 +186,35 @@
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
     </declare-styleable>
 
@@ -206,9 +224,17 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
 
+    </declare-styleable>
+
+    <declare-styleable name="XIAlpha">
+        <attr name="xp_pressedAlpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="android:alpha" />
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XCard 顶层接口  -->
@@ -248,6 +274,7 @@
         <attr name="xp_outlineInsetRight" />
         <attr name="xp_outlineInsetBottom" />
         <attr name="xp_outlineExcludePadding" />
+        <attr name="xp_backgroundGradientColors" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
@@ -258,37 +285,47 @@
 
     <!--  XLinearLayout  -->
     <declare-styleable name="XLinearLayout">
-
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XRelativeLayout  -->
@@ -299,101 +336,133 @@
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XFrameLayout  -->
     <declare-styleable name="XFrameLayout">
-
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XConstraintLayout  -->
     <declare-styleable name="XConstraintLayout">
-
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <!--   按压按钮透明度变化   -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  背景颜色选择器  -->
@@ -402,38 +471,49 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XTextView  -->
@@ -442,38 +522,49 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  禁用复制和粘贴  -->
@@ -487,37 +578,42 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
     </declare-styleable>
 
@@ -527,73 +623,95 @@
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />
-        <attr name="xp_unEnabledTextColor" />
+        <attr name="xp_disabledTextColor" />
         <attr name="xp_ignoreGlobalTypeface" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XView  -->
     <declare-styleable name="XView">
-
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XStatusBarView  -->
@@ -604,30 +722,35 @@
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
     </declare-styleable>
 
@@ -639,77 +762,126 @@
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XImageView  -->
     <declare-styleable name="XImageView">
-
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
 
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
         <attr name="xp_pressedBackgroundEndColor" />
         <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
 
         <!--   选中时 背景色     -->
         <attr name="xp_checkedBackground" />
         <attr name="xp_checkedBackgroundStartColor" />
         <attr name="xp_checkedBackgroundEndColor" />
         <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
 
         <!--    活跃时 背景色    -->
         <attr name="xp_activatedBackground" />
         <attr name="xp_activatedBackgroundStartColor" />
         <attr name="xp_activatedBackgroundEndColor" />
         <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
 
         <!--    不可用时 背景色    -->
-        <attr name="xp_unEnabledBackground" />
-        <attr name="xp_unEnabledBackgroundStartColor" />
-        <attr name="xp_unEnabledBackgroundEndColor" />
-        <attr name="xp_unEnabledBackgroundOrientation" />
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
 
         <attr name="xp_colorFilter" />
         <attr name="xp_colorFilterMode" />
+
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
 
+    <!--  ImageView 选中时候的资源、颜色 -->
+    <attr name="xp_checked_src" format="reference|color" />
 
     <declare-styleable name="XCheckBox">
         <attr name="android:src" />
         <attr name="xp_checked" />
         <attr name="xp_clickable" />
-        <attr name="xp_src_checked" format="reference|color" />
+        <attr name="xp_checked_src" />
         <attr name="xp_radius" />
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
     </declare-styleable>
+
+    <declare-styleable name="XCheckedImageView">
+        <attr name="android:src" />
+        <attr name="xp_checked" />
+        <attr name="xp_checked_src" />
+        <attr name="xp_radius" />
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
+    </declare-styleable>
+
 
 </resources>

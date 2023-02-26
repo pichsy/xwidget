@@ -37,7 +37,7 @@ import com.pichs.common.widget.utils.XLayoutHelper;
  * 提供为图片添加圆角、边框、剪裁到圆形。
  * shown image in radius view,
  * the oval is not supported
- * @author pichs
+ * XCardImageView
  */
 public class XCardImageView extends XImageView implements XILayout {
     private static final int DEFAULT_BORDER_COLOR = Color.GRAY;
@@ -78,11 +78,9 @@ public class XCardImageView extends XImageView implements XILayout {
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         mAttrs = attrs;
         mDefStyleAttr = defStyleAttr;
-        setScaleType(ScaleType.CENTER_CROP);
         mLayoutHelper = new XLayoutHelper(context, attrs, defStyleAttr, this);
         TypedArray array = context.obtainStyledAttributes(
                 attrs, R.styleable.XCardImageView, defStyleAttr, 0);
-
         mBorderWidth = array.getDimensionPixelSize(R.styleable.XCardImageView_xp_borderWidth, 0);
         mBorderColor = array.getColor(R.styleable.XCardImageView_xp_borderColor, DEFAULT_BORDER_COLOR);
         mSelectedBorderWidth = array.getDimensionPixelSize(
@@ -547,22 +545,22 @@ public class XCardImageView extends XImageView implements XILayout {
     }
 
     @Override
-    public void setBorderGradientStartColor(int borderGradientStartColor) {
-        mLayoutHelper.setBorderGradientStartColor(borderGradientStartColor);
+    public void setBorderGradientColors(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
+        mLayoutHelper.setBorderGradientColors(borderGradientStartColor, borderGradientEndColor, orientation);
     }
 
     @Override
-    public void setBorderGradientEndColor(int borderGradientEndColor) {
-        mLayoutHelper.setBorderGradientEndColor(borderGradientEndColor);
+    public int getBorderGradientStartColor() {
+        return mLayoutHelper.getBorderGradientStartColor();
     }
 
     @Override
-    public void setBorderGradientOrientation(@GradientOrientation int orientation) {
-        mLayoutHelper.setBorderGradientOrientation(orientation);
+    public int getBorderGradientEndColor() {
+        return mLayoutHelper.getBorderGradientEndColor();
     }
 
     @Override
-    public void setBorderGradientOrientation(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
-        mLayoutHelper.setBorderGradientOrientation(borderGradientStartColor, borderGradientEndColor, orientation);
+    public int getBorderGradientOrientation() {
+        return mLayoutHelper.getBorderGradientOrientation();
     }
 }

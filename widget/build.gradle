@@ -1,4 +1,13 @@
-apply plugin: 'com.android.library'
+project.apply plugin: 'com.android.library'
+project.apply plugin: 'kotlin-parcelize'
+project.apply plugin: 'kotlin-android'
+project.apply plugin: 'kotlin-kapt'
+
+
+//apply plugin: 'maven-publish'
+//def GROUP_ID = 'com.gitee.pichs'
+//def VERSION = '2.0.0'
+//def ARTIFACT_ID = 'xwidget'
 
 android {
     compileSdkVersion 30
@@ -24,8 +33,28 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.annotation:annotation:1.3.0'
+    kapt 'androidx.annotation:annotation:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
 }
+//
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = GROUP_ID
+//                artifactId = ARTIFACT_ID
+//                version = VERSION
+//            }
+//        }
+//    }
+//}
+
+// 此写法可忽略文件夹层级带来的影响
+apply from: "${rootProject.rootDir}/maven.gradle"

@@ -5,17 +5,21 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.StateListDrawable;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
+import androidx.annotation.Size;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 渐变背景帮助类
+ */
 public class XGradientHelper {
     /**
      * 定义状态
@@ -72,7 +76,7 @@ public class XGradientHelper {
             return addState(State.state_checked, color);
         }
 
-        public ColorStateListBuilder addUnEnabledColor(@ColorInt int color) {
+        public ColorStateListBuilder addDisabledColor(@ColorInt int color) {
             return addState(-State.state_enabled, color);
         }
 
@@ -160,12 +164,12 @@ public class XGradientHelper {
             return addSelectedState(new ColorDrawable(color));
         }
 
-        public StateListDrawableBuilder addUnEnabledState(Drawable drawable) {
+        public StateListDrawableBuilder addDisabledState(Drawable drawable) {
             return addState(-State.state_enabled, drawable);
         }
 
-        public StateListDrawableBuilder addUnEnabledState(int color) {
-            return addUnEnabledState(new ColorDrawable(color));
+        public StateListDrawableBuilder addDisabledState(int color) {
+            return addDisabledState(new ColorDrawable(color));
         }
 
         public StateListDrawableBuilder addState(int state, Drawable drawable) {
@@ -358,6 +362,8 @@ public class XGradientHelper {
     public static GradientDrawable getDrawable(int radius, int topLeftRadius, int topRightRadius,
                                                int bottomLeftRadius, int bottomRightRadius,
                                                @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor,
+
+
                                                GradientDrawable.Orientation orientation, @ColorInt int... gradientColors) {
         GradientDrawable gradientDrawable = new GradientDrawable();
         // 有先使用单独设置圆角
@@ -386,6 +392,40 @@ public class XGradientHelper {
             gradientDrawable.setColor(fillColor);
         }
         return gradientDrawable;
+    }
+
+    /**
+     * 动态创建一个 layer-list 对应的drawable
+     * 这个目前仅为 立体按钮 提供便捷，若需要全功能，不如去写xml->代码不太方便
+     *
+     * @param top         上面的drawable top和bottom必须同时设置才有用
+     * @param bottom      下面的drawable top和bottom必须同时设置才有用
+     * @param insetBottom 底部立体的高度，也就是上面drawable的底部上移距离
+     * @return {@link LayerDrawable}
+     */
+    public static LayerDrawable getLayerDrawable(Drawable top, Drawable bottom, int insetBottom) {
+        if (top == null || bottom == null) return null;
+        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{bottom, top});
+        layerDrawable.setLayerInset(1, 0, 0, 0, insetBottom);
+        return layerDrawable;
+    }
+
+
+    /**
+     * 动态创建一个 layer-list 对应的drawable
+     * 这个目前仅为 立体按钮 提供便捷，若需要全功能，不如去写xml->代码不太方便
+     *
+     * @param top    底部立体的高度，也就是上面drawable的底部下移距离
+     * @param left   底部立体的高度，也就是上面drawable的底部右移距离
+     * @param right  底部立体的高度，也就是上面drawable的底部左移距离
+     * @param bottom 底部立体的高度，也就是上面drawable的底部上移距离
+     * @return {@link LayerDrawable}
+     */
+    public static LayerDrawable getLayerDrawable(Drawable topDrawable, Drawable bottomDrawable, int left, int top, int right, int bottom) {
+        if (topDrawable == null || bottomDrawable == null) return null;
+        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{bottomDrawable, topDrawable});
+        layerDrawable.setLayerInset(1, left, top, right, bottom);
+        return layerDrawable;
     }
 
 }

@@ -31,7 +31,7 @@ import com.pichs.common.widget.R;
 /**
  * 图标资源控件
  *
- * @author xuexiang
+ * PorterShapeImageView
  * @since 2020-01-06 20:42
  */
 public class PorterShapeImageView extends PorterImageView {

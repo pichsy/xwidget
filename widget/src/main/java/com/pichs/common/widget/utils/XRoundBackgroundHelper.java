@@ -5,25 +5,22 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.IntRange;
 
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XIRoundBackground;
+import com.pichs.common.widget.roundview.XCubeSidesHeight;
 
 import java.lang.ref.WeakReference;
 
 /**
- * @Description: $
- * @Author: WuBo
- * @CreateDate: 2020/11/25$ 18:36$
- * @UpdateUser: WuBo
- * @UpdateDate: 2020/11/25$ 18:36$
- * @UpdateRemark: 更新说明
- * @Version: 1.0
+ * 圆角背景帮助类
  */
 public class XRoundBackgroundHelper implements XIRoundBackground {
 
@@ -31,14 +28,20 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     private Drawable background;
     private Drawable pressedBackground;
     private Drawable checkedBackground;
-    private Drawable unEnabledBackground;
+    private Drawable disabledBackground;
     private Drawable activatedBackground;
+    // 立体属性
+    private Drawable cubeSidesBackground;
+    private Drawable pressedCubeSidesBackground;
+    private Drawable activatedCubeSidesBackground;
+    private Drawable checkedCubeSidesBackground;
+    private Drawable disabledCubeSidesBackground;
 
     // 原始设置的background drawable
     private Drawable backgroundTmp;
     private Drawable pressedBackgroundTmp;
     private Drawable checkedBackgroundTmp;
-    private Drawable unEnabledBackgroundTmp;
+    private Drawable disabledBackgroundTmp;
     private Drawable activatedBackgroundTmp;
 
     /**
@@ -58,25 +61,76 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @ColorInt
     private int activatedBorderColor = 0;
     @ColorInt
-    private int unEnabledBorderColor = 0;
+    private int disabledBorderColor = 0;
 
     private int borderWidth = 0;
 
     private int bgStartColor;
     private int bgEndColor;
-    private int bgColorOrientation;
+    @GradientOrientation
+    private int bgColorOrientation = GradientOrientation.HORIZONTAL;
     private int pressedBgStartColor;
     private int pressedBgEndColor;
-    private int pressedBgColorOrientation;
+    @GradientOrientation
+    private int pressedBgColorOrientation = GradientOrientation.HORIZONTAL;
     private int checkedBgStartColor;
     private int checkedBgEndColor;
-    private int checkedBgColorOrientation;
-    private int unEnabledBgStartColor;
-    private int unEnabledBgEndColor;
-    private int unEnabledBgColorOrientation;
+    @GradientOrientation
+    private int checkedBgColorOrientation = GradientOrientation.HORIZONTAL;
+    private int disabledBgStartColor;
+    private int disabledBgEndColor;
+    @GradientOrientation
+    private int disabledBgColorOrientation = GradientOrientation.HORIZONTAL;
     private int activatedBgStartColor;
     private int activatedBgEndColor;
-    private int activatedBgColorOrientation;
+    @GradientOrientation
+    private int activatedBgColorOrientation = GradientOrientation.HORIZONTAL;
+
+    // 渐变色，列表，支持多色渐变
+    private int[] backgroundColors;
+    private int[] activatedBackgroundColors;
+    private int[] pressedBackgroundColors;
+    private int[] checkedBackgroundColors;
+    private int[] disabledBackgroundColors;
+
+
+    // 颜色数组
+    private int[] cubeSidesColors;
+    private int[] pressedCubeSidesColors;
+    private int[] activatedCubeSidesColors;
+    private int[] disabledCubeSidesColors;
+    private int[] checkedCubeSidesColors;
+
+    // 边框颜色,宽度
+    @ColorInt
+    // cube- border是通用，不提供单独某个状态设置，基本没人这么用，遇到了，建议xml代码创建
+    private int cubeSidesBorderColor;
+    private int cubeSidesBorderWidth;
+    // 立体按钮默认值 设置为 NONE
+    private int cubeFrontHeight = XCubeSidesHeight.NONE;
+    private int cubeRightHeight = XCubeSidesHeight.NONE;
+    private int cubeLeftHeight = XCubeSidesHeight.NONE;
+    private int cubeBackHeight = XCubeSidesHeight.NONE;
+
+    private int pressedCubeFrontHeight = XCubeSidesHeight.NONE;
+    private int pressedCubeBackHeight = XCubeSidesHeight.NONE;
+    private int pressedCubeLeftHeight = XCubeSidesHeight.NONE;
+    private int pressedCubeRightHeight = XCubeSidesHeight.NONE;
+
+    private int activatedCubeFrontHeight = XCubeSidesHeight.NONE;
+    private int activatedCubeLeftHeight = XCubeSidesHeight.NONE;
+    private int activatedCubeBackHeight = XCubeSidesHeight.NONE;
+    private int activatedCubeRightHeight = XCubeSidesHeight.NONE;
+
+    private int checkedCubeFrontHeight = XCubeSidesHeight.NONE;
+    private int checkedCubeBackHeight = XCubeSidesHeight.NONE;
+    private int checkedCubeLeftHeight = XCubeSidesHeight.NONE;
+    private int checkedCubeRightHeight = XCubeSidesHeight.NONE;
+
+    private int disabledCubeFrontHeight = XCubeSidesHeight.NONE;
+    private int disabledCubeLeftHeight = XCubeSidesHeight.NONE;
+    private int disabledCubeBackHeight = XCubeSidesHeight.NONE;
+    private int disabledCubeRightHeight = XCubeSidesHeight.NONE;
 
     public XRoundBackgroundHelper(Context context, AttributeSet attrs, int defAttr, View owner) {
         this(context, attrs, defAttr, 0, owner);
@@ -101,81 +155,359 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             borderColor = ta.getColor(R.styleable.XIRoundBackground_xp_borderColor, 0);
             pressedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBorderColor, 0);
             checkedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBorderColor, 0);
-            unEnabledBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_unEnabledBorderColor, 0);
+            disabledBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBorderColor, 0);
             activatedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBorderColor, 0);
-
+            // 常色
             backgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_android_background);
             pressedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_pressedBackground);
             checkedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_checkedBackground);
-            unEnabledBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_unEnabledBackground);
+            disabledBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_disabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_activatedBackground);
-
+            // 渐变
             bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, 0);
             bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientEndColor, 0);
             bgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_backgroundGradientOrientation, GradientOrientation.HORIZONTAL);
             pressedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundStartColor, 0);
             pressedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundEndColor, 0);
-            pressedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_pressedBackgroundOrientation, GradientOrientation.HORIZONTAL);
+            pressedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_pressedBackgroundOrientation, bgColorOrientation);
             checkedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundStartColor, 0);
             checkedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundEndColor, 0);
-            checkedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_checkedBackgroundOrientation, GradientOrientation.HORIZONTAL);
-            unEnabledBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_unEnabledBackgroundStartColor, 0);
-            unEnabledBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_unEnabledBackgroundEndColor, 0);
-            unEnabledBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_unEnabledBackgroundOrientation, GradientOrientation.HORIZONTAL);
+            checkedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_checkedBackgroundOrientation, bgColorOrientation);
+            disabledBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundStartColor, 0);
+            disabledBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundEndColor, 0);
+            disabledBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_disabledBackgroundOrientation, bgColorOrientation);
             activatedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundStartColor, 0);
             activatedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundEndColor, 0);
-            activatedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_activatedBackgroundOrientation, GradientOrientation.HORIZONTAL);
+            activatedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_activatedBackgroundOrientation, bgColorOrientation);
 
-            background = getFinalDrawable(
+            String backgroundColorString = ta.getString(R.styleable.XIRoundBackground_xp_backgroundGradientColors);
+            String pressedBackgroundColorString = ta.getString(R.styleable.XIRoundBackground_xp_pressedBackgroundGradientColors);
+            String activatedBackgroundColorString = ta.getString(R.styleable.XIRoundBackground_xp_activatedBackgroundGradientColors);
+            String checkedBackgroundColorString = ta.getString(R.styleable.XIRoundBackground_xp_checkedBackgroundGradientColors);
+            String disabledBackgroundColorString = ta.getString(R.styleable.XIRoundBackground_xp_disabledBackgroundGradientColors);
+
+            String cubeSidesColorString = ta.getString(R.styleable.XIRoundBackground_xp_cubeSidesGradientColors);
+//          // 优先使用新属性，xp_cubeSidesGradientColors, 没有这个属性，才会使用xp_cubeFrontBorderColor
+            if (cubeSidesColorString == null) {
+                cubeSidesColorString = ta.getString(R.styleable.XIRoundBackground_xp_cubeFrontGradientColors);
+            }
+            cubeSidesBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_cubeSidesBorderColor, 0);
+            cubeSidesBorderWidth = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_cubeSidesBorderWidth, 0);
+
+            cubeLeftHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_cubeLeftHeight, XCubeSidesHeight.NONE);
+            cubeBackHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_cubeBackHeight, XCubeSidesHeight.NONE);
+            cubeRightHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_cubeRightHeight, XCubeSidesHeight.NONE);
+            cubeFrontHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_cubeFrontHeight, XCubeSidesHeight.NONE);
+
+            String pressedCubeSidesColorString = ta.getString(R.styleable.XIRoundBackground_xp_pressedCubeSidesGradientColors);
+            pressedCubeFrontHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_pressedCubeFrontHeight, XCubeSidesHeight.NONE);
+            pressedCubeBackHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_pressedCubeBackHeight, XCubeSidesHeight.NONE);
+            pressedCubeLeftHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_pressedCubeLeftHeight, XCubeSidesHeight.NONE);
+            pressedCubeRightHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_pressedCubeRightHeight, XCubeSidesHeight.NONE);
+
+            String activatedCubeSidesColorString = ta.getString(R.styleable.XIRoundBackground_xp_activatedCubeSidesGradientColors);
+            activatedCubeFrontHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_activatedCubeFrontHeight, XCubeSidesHeight.NONE);
+            activatedCubeBackHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_activatedCubeBackHeight, XCubeSidesHeight.NONE);
+            activatedCubeLeftHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_activatedCubeLeftHeight, XCubeSidesHeight.NONE);
+            activatedCubeRightHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_activatedCubeRightHeight, XCubeSidesHeight.NONE);
+
+            String disabledCubeSidesColorString = ta.getString(R.styleable.XIRoundBackground_xp_disabledCubeSidesGradientColors);
+            disabledCubeFrontHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_disabledCubeFrontHeight, XCubeSidesHeight.NONE);
+            disabledCubeBackHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_disabledCubeBackHeight, XCubeSidesHeight.NONE);
+            disabledCubeLeftHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_disabledCubeLeftHeight, XCubeSidesHeight.NONE);
+            disabledCubeRightHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_disabledCubeRightHeight, XCubeSidesHeight.NONE);
+
+            String checkedCubeSidesColorString = ta.getString(R.styleable.XIRoundBackground_xp_checkedCubeSidesGradientColors);
+            checkedCubeFrontHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_checkedCubeFrontHeight, XCubeSidesHeight.NONE);
+            checkedCubeBackHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_checkedCubeBackHeight, XCubeSidesHeight.NONE);
+            checkedCubeLeftHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_checkedCubeLeftHeight, XCubeSidesHeight.NONE);
+            checkedCubeRightHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_checkedCubeRightHeight, XCubeSidesHeight.NONE);
+
+            ta.recycle();
+
+            backgroundColors = dealWithColors(backgroundColorString);
+
+            pressedBackgroundColors = dealWithColors(pressedBackgroundColorString);
+            activatedBackgroundColors = dealWithColors(activatedBackgroundColorString);
+            checkedBackgroundColors = dealWithColors(checkedBackgroundColorString);
+            disabledBackgroundColors = dealWithColors(disabledBackgroundColorString);
+
+            // 立体属性
+            cubeSidesColors = dealWithColors(cubeSidesColorString);
+            // 立方体侧面的背景色
+            cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                    cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
+
+            // 立体属性
+            pressedCubeSidesColors = dealWithColors(pressedCubeSidesColorString);
+            // 立体属性
+            disabledCubeSidesColors = dealWithColors(disabledCubeSidesColorString);
+            // 立体属性
+            checkedCubeSidesColors = dealWithColors(checkedCubeSidesColorString);
+            // 立体属性
+            activatedCubeSidesColors = dealWithColors(activatedCubeSidesColorString);
+
+            Drawable finalBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                     borderColor, borderWidth,
                     backgroundTmp,
                     bgStartColor,
                     bgEndColor,
+                    backgroundColors,
                     bgColorOrientation
             );
 
-            pressedBackground = getFinalDrawable(
+            background = getFinalLayerDrawable(
+                    finalBgDrawable, cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
+            );
+
+            Drawable finalPressedBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                     pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
                     pressedBackgroundTmp,
                     pressedBgStartColor,
                     pressedBgEndColor,
+                    pressedBackgroundColors,
                     pressedBgColorOrientation
             );
 
-            checkedBackground = getFinalDrawable(
+            if (isCubeSidesEnabled() && isPressedCubeSidesEnabled()) {
+                if (pressedCubeSidesColors == null || pressedCubeSidesColors.length == 0) {
+                    pressedCubeSidesColors = cubeSidesColors;
+                }
+                if (finalPressedBgDrawable == null) {
+                    finalPressedBgDrawable = finalBgDrawable;
+                }
+            }
+
+            pressedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                    pressedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, pressedBgColorOrientation);
+
+            pressedBackground = getFinalLayerDrawable(
+                    finalPressedBgDrawable, pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
+            );
+
+            Drawable finalCheckedBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                     checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
                     checkedBackgroundTmp,
                     checkedBgStartColor,
                     checkedBgEndColor,
+                    checkedBackgroundColors,
                     checkedBgColorOrientation
             );
 
-            unEnabledBackground = getFinalDrawable(
-                    radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                    unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                    unEnabledBackgroundTmp,
-                    unEnabledBgStartColor,
-                    unEnabledBgEndColor,
-                    unEnabledBgColorOrientation
+            if (isCubeSidesEnabled() && isCheckedCubeSidesEnabled()) {
+                if (checkedCubeSidesColors == null || checkedCubeSidesColors.length == 0) {
+                    checkedCubeSidesColors = cubeSidesColors;
+                }
+                if (finalCheckedBgDrawable == null) {
+                    finalCheckedBgDrawable = finalBgDrawable;
+                }
+            }
+            checkedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                    checkedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, checkedBgColorOrientation);
+
+            checkedBackground = getFinalLayerDrawable(
+                    finalCheckedBgDrawable, checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
             );
 
-            activatedBackground = getFinalDrawable(
+            Drawable finalDisabledBgDrawable = getFinalDrawable(
+                    radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                    disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                    disabledBackgroundTmp,
+                    disabledBgStartColor,
+                    disabledBgEndColor,
+                    disabledBackgroundColors,
+                    disabledBgColorOrientation
+            );
+
+            if (isCubeSidesEnabled() && isDisabledCubeSidesEnabled()) {
+                if (disabledCubeSidesColors == null || disabledCubeSidesColors.length == 0) {
+                    disabledCubeSidesColors = cubeSidesColors;
+                }
+                if (finalDisabledBgDrawable == null) {
+                    finalDisabledBgDrawable = finalBgDrawable;
+                }
+            }
+
+            disabledCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                    disabledCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, disabledBgColorOrientation);
+
+            disabledBackground = getFinalLayerDrawable(
+                    finalDisabledBgDrawable, disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
+            );
+
+            Drawable finalActivatedBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                     activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
                     activatedBackgroundTmp,
                     activatedBgStartColor,
                     activatedBgEndColor,
+                    activatedBackgroundColors,
                     activatedBgColorOrientation
             );
-            ta.recycle();
+
+            if (isCubeSidesEnabled() && isActivatedCubeSidesEnabled()) {
+                if (activatedCubeSidesColors == null || activatedCubeSidesColors.length == 0) {
+                    activatedCubeSidesColors = cubeSidesColors;
+                }
+                if (finalActivatedBgDrawable == null) {
+                    finalActivatedBgDrawable = finalBgDrawable;
+                }
+            }
+
+            activatedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                    activatedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, activatedBgColorOrientation);
+
+            activatedBackground = getFinalLayerDrawable(
+                    finalActivatedBgDrawable, activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
+            );
             setBackgroundSelector();
         }
     }
 
-    private Drawable getFinalDrawable(int radius, int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius, int borderColor, int borderWidth, Drawable bg, int startColor, int endColor, int orientation) {
+    private int[] dealWithColors(String backgroundColorString) {
+        if (!TextUtils.isEmpty(backgroundColorString) && !TextUtils.isEmpty(backgroundColorString.trim())) {
+            try {
+                String[] cors = backgroundColorString.trim().split(",");
+                if (cors.length > 0) {
+                    int[] colors = new int[cors.length];
+                    for (int i = 0; i < cors.length; i++) {
+                        int color = XColorHelper.parseColor(cors[i]);
+                        colors[i] = color;
+                    }
+                    return colors;
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("gradientColors:" + backgroundColorString + " 格式不正确，请用《,》分割，并且检查一下颜色值格式\n ex:" + e);
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * 只要有一个设置了，就激活立方体,立体效果
+     *
+     * @return isCubeSidesEnabled
+     */
+    private boolean isCubeSidesEnabled() {
+        return cubeSidesColors != null &&
+                cubeSidesColors.length != 0 &&
+                (cubeFrontHeight != XCubeSidesHeight.NONE ||
+                        cubeBackHeight != XCubeSidesHeight.NONE ||
+                        cubeLeftHeight != XCubeSidesHeight.NONE ||
+                        cubeRightHeight != XCubeSidesHeight.NONE
+                );
+    }
+
+
+    /**
+     * 只要有一个设置了，就激活
+     *
+     * @return isPressedCubeSidesEnabled
+     */
+    private boolean isPressedCubeSidesEnabled() {
+        return pressedCubeBackHeight != XCubeSidesHeight.NONE ||
+                pressedCubeFrontHeight != XCubeSidesHeight.NONE ||
+                pressedCubeLeftHeight != XCubeSidesHeight.NONE ||
+                pressedCubeRightHeight != XCubeSidesHeight.NONE;
+    }
+
+    /**
+     * 只要有一个设置了，就激活
+     *
+     * @return isDisabledCubeSidesEnabled
+     */
+    private boolean isDisabledCubeSidesEnabled() {
+        return disabledCubeBackHeight != XCubeSidesHeight.NONE ||
+                disabledCubeFrontHeight != XCubeSidesHeight.NONE ||
+                disabledCubeLeftHeight != XCubeSidesHeight.NONE ||
+                disabledCubeRightHeight != XCubeSidesHeight.NONE;
+    }
+
+    /**
+     * 只要有一个设置了，就激活
+     *
+     * @return isCheckedCubeSidesEnabled
+     */
+    private boolean isCheckedCubeSidesEnabled() {
+        return checkedCubeBackHeight != XCubeSidesHeight.NONE ||
+                checkedCubeFrontHeight != XCubeSidesHeight.NONE ||
+                checkedCubeLeftHeight != XCubeSidesHeight.NONE ||
+                checkedCubeRightHeight != XCubeSidesHeight.NONE;
+    }
+
+    /**
+     * 只要有一个设置了，就激活
+     *
+     * @return isActivatedCubeSidesEnabled
+     */
+    private boolean isActivatedCubeSidesEnabled() {
+        return activatedCubeBackHeight != XCubeSidesHeight.NONE ||
+                activatedCubeFrontHeight != XCubeSidesHeight.NONE ||
+                activatedCubeLeftHeight != XCubeSidesHeight.NONE ||
+                activatedCubeRightHeight != XCubeSidesHeight.NONE;
+    }
+
+
+    private Drawable getFinalLayerDrawable(Drawable finalDrawable, Drawable cubeDrawable, int cubeLeftHeight, int cubeBackHeight, int cubeRightHeight, int cubeFrontHeight) {
+        if (finalDrawable == null) return null;
+        if (cubeDrawable == null || (cubeFrontHeight == XCubeSidesHeight.NONE && cubeLeftHeight == XCubeSidesHeight.NONE && cubeRightHeight == XCubeSidesHeight.NONE && cubeBackHeight == XCubeSidesHeight.NONE)) {
+            return finalDrawable;
+        }
+        return XGradientHelper.getLayerDrawable(
+                finalDrawable,
+                cubeDrawable,
+                cubeLeftHeight == XCubeSidesHeight.NONE ? 0 : cubeLeftHeight,
+                cubeBackHeight == XCubeSidesHeight.NONE ? 0 : cubeBackHeight,
+                cubeRightHeight == XCubeSidesHeight.NONE ? 0 : cubeRightHeight,
+                cubeFrontHeight == XCubeSidesHeight.NONE ? 0 : cubeFrontHeight
+        );
+    }
+
+//    @Deprecated
+//    private Drawable getFinalLayerDrawable(Drawable finalDrawable, Drawable cubeDrawable, int cubeFrontHeight) {
+//        if (finalDrawable == null) return null;
+//        if (cubeDrawable == null || cubeFrontHeight == 0) {
+//            return finalDrawable;
+//        }
+//        return XGradientHelper.getLayerDrawable(finalDrawable, cubeDrawable, cubeFrontHeight);
+//    }
+
+    private Drawable getGradientDrawable(int radius, int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius, int[] gradientColors, int borderColor, int borderWidth, @GradientOrientation int orientation) {
+        if (gradientColors == null || gradientColors.length == 0) {
+            return null;
+        }
+        XGradientHelper.GradientDrawableBuilder builder = new XGradientHelper.GradientDrawableBuilder();
+        builder.setRadius(radius)
+                .setTopLeftRadius(topLeftRadius)
+                .setTopRightRadius(topRightRadius)
+                .setBottomLeftRadius(bottomLeftRadius)
+                .setBottomRightRadius(bottomRightRadius)
+                .setStrokeWidth(borderWidth)
+                .setStrokeColor(borderColor);
+        if (gradientColors.length > 1) {
+            GradientDrawable.Orientation ot;
+            if (orientation == GradientOrientation.VERTICAL) {
+                ot = GradientDrawable.Orientation.TOP_BOTTOM;
+            } else if (orientation == GradientOrientation.TL_BR) {
+                ot = GradientDrawable.Orientation.TL_BR;
+            } else if (orientation == GradientOrientation.BL_TR) {
+                ot = GradientDrawable.Orientation.BL_TR;
+            } else {
+                ot = GradientDrawable.Orientation.LEFT_RIGHT;
+            }
+            builder.setOrientation(ot);
+            builder.setGradientColors(gradientColors);
+        } else {
+            builder.setFillColor(gradientColors[0]);
+        }
+        return builder.build();
+    }
+
+    private Drawable getFinalDrawable(int radius, int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius, int borderColor, int borderWidth, Drawable bg, int startColor, int endColor, int[] gradientColors, @GradientOrientation int orientation) {
         if (bg != null && !(bg instanceof ColorDrawable) && !(bg instanceof GradientDrawable)) {
             return bg;
         }
@@ -202,6 +534,21 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             builder.setGradientColors(new int[]{startColor, endColor});
             return builder.build();
         }
+        if (gradientColors != null && gradientColors.length > 1) {
+            GradientDrawable.Orientation ot;
+            if (orientation == GradientOrientation.VERTICAL) {
+                ot = GradientDrawable.Orientation.TOP_BOTTOM;
+            } else if (orientation == GradientOrientation.TL_BR) {
+                ot = GradientDrawable.Orientation.TL_BR;
+            } else if (orientation == GradientOrientation.BL_TR) {
+                ot = GradientDrawable.Orientation.BL_TR;
+            } else {
+                ot = GradientDrawable.Orientation.LEFT_RIGHT;
+            }
+            builder.setOrientation(ot);
+            builder.setGradientColors(gradientColors);
+            return builder.build();
+        }
 
         if (bg instanceof ColorDrawable) {
             // 如果背景色是颜色，则提出颜色，使用builder
@@ -217,12 +564,16 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             builder.setFillColor(endColor);
             return builder.build();
         }
-        return null;
+        // 优先级最低
+        if (gradientColors != null && gradientColors.length == 1) {
+            builder.setFillColor(gradientColors[0]);
+            return builder.build();
+        }
+        return bg;
     }
 
-
     private void setBackgroundSelector() {
-        if (pressedBackground == null && unEnabledBackground == null && checkedBackground == null && activatedBackground == null) {
+        if (pressedBackground == null && disabledBackground == null && checkedBackground == null && activatedBackground == null) {
             if (mOwner.get() != null) {
                 mOwner.get().setBackground(background);
             }
@@ -232,8 +583,8 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 if (pressedBackground != null) {
                     builder.addPressedState(pressedBackground);
                 }
-                if (unEnabledBackground != null) {
-                    builder.addUnEnabledState(unEnabledBackground);
+                if (disabledBackground != null) {
+                    builder.addDisabledState(disabledBackground);
                 }
                 if (checkedBackground != null) {
                     builder.addCheckedState(checkedBackground);
@@ -247,53 +598,81 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         }
     }
 
-
     @Override
     public void setRadius(int radius) {
         this.radius = radius;
-        background = getFinalDrawable(
-                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                borderColor, borderWidth,
-                backgroundTmp,
-                bgStartColor,
-                bgEndColor,
-                bgColorOrientation
+        cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation
+                ), cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
         );
 
-        pressedBackground = getFinalDrawable(
-                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
-                pressedBackgroundTmp,
-                pressedBgStartColor,
-                pressedBgEndColor,
-                pressedBgColorOrientation
+        pressedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                pressedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, pressedBgColorOrientation);
+
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
         );
 
-        checkedBackground = getFinalDrawable(
-                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
-                checkedBackgroundTmp,
-                checkedBgStartColor,
-                checkedBgEndColor,
-                checkedBgColorOrientation
+        checkedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                checkedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, checkedBgColorOrientation);
+
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
         );
 
-        unEnabledBackground = getFinalDrawable(
-                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+        disabledCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                disabledCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, disabledBgColorOrientation);
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
         );
 
-        activatedBackground = getFinalDrawable(
-                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
-                activatedBackgroundTmp,
-                activatedBgStartColor,
-                activatedBgEndColor,
-                activatedBgColorOrientation
+        activatedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                activatedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, activatedBgColorOrientation);
+
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
     }
@@ -304,49 +683,79 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         this.topRightRadius = topRightRadius;
         this.bottomLeftRadius = bottomLeftRadius;
         this.bottomRightRadius = bottomRightRadius;
-        background = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                borderColor, borderWidth,
-                backgroundTmp,
-                bgStartColor,
-                bgEndColor,
-                bgColorOrientation
+        cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation
+                ), cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
         );
 
-        pressedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
-                pressedBackgroundTmp,
-                pressedBgStartColor,
-                pressedBgEndColor,
-                pressedBgColorOrientation
+        pressedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                pressedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, pressedBgColorOrientation);
+
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
         );
 
-        checkedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
-                checkedBackgroundTmp,
-                checkedBgStartColor,
-                checkedBgEndColor,
-                checkedBgColorOrientation
+        checkedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                checkedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, checkedBgColorOrientation);
+
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
         );
 
-        unEnabledBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+
+        disabledCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                disabledCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, disabledBgColorOrientation);
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
         );
 
-        activatedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
-                activatedBackgroundTmp,
-                activatedBgStartColor,
-                activatedBgEndColor,
-                activatedBgColorOrientation
+        activatedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                activatedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, activatedBgColorOrientation);
+
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
     }
@@ -354,13 +763,16 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @Override
     public void setBorderColor(int borderColor) {
         this.borderColor = borderColor;
-        background = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                borderColor, borderWidth,
-                backgroundTmp,
-                bgStartColor,
-                bgEndColor,
-                bgColorOrientation
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
         );
         setBackgroundSelector();
     }
@@ -368,49 +780,65 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @Override
     public void setBorderWidth(int borderWidth) {
         this.borderWidth = borderWidth;
-        background = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                borderColor, borderWidth,
-                backgroundTmp,
-                bgStartColor,
-                bgEndColor,
-                bgColorOrientation
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
         );
 
-        pressedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
-                pressedBackgroundTmp,
-                pressedBgStartColor,
-                pressedBgEndColor,
-                pressedBgColorOrientation
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
         );
 
-        checkedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
-                checkedBackgroundTmp,
-                checkedBgStartColor,
-                checkedBgEndColor,
-                checkedBgColorOrientation
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
         );
 
-        unEnabledBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
         );
 
-        activatedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
-                activatedBackgroundTmp,
-                activatedBgStartColor,
-                activatedBgEndColor,
-                activatedBgColorOrientation
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
     }
@@ -418,41 +846,52 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @Override
     public void setPressedBorderColor(int pressedBorderColor) {
         this.pressedBorderColor = pressedBorderColor;
-        pressedBackground = getFinalDrawable(
-                this.radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
-                pressedBackgroundTmp,
-                pressedBgStartColor,
-                pressedBgEndColor,
-                pressedBgColorOrientation
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBorderColor(int unEnabledBorderColor) {
-        this.unEnabledBorderColor = unEnabledBorderColor;
-        unEnabledBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+    public void setDisabledBorderColor(int disabledBorderColor) {
+        this.disabledBorderColor = disabledBorderColor;
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
         );
+
         setBackgroundSelector();
     }
 
     @Override
     public void setActivatedBorderColor(int activatedBorderColor) {
         this.activatedBorderColor = activatedBorderColor;
-        activatedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
-                activatedBackgroundTmp,
-                activatedBgStartColor,
-                activatedBgEndColor,
-                activatedBgColorOrientation
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
     }
@@ -460,14 +899,18 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @Override
     public void setCheckedBorderColor(int checkedBorderColor) {
         this.checkedBorderColor = checkedBorderColor;
-        checkedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
-                checkedBackgroundTmp,
-                checkedBgStartColor,
-                checkedBgEndColor,
-                checkedBgColorOrientation
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
         );
+
         setBackgroundSelector();
     }
 
@@ -475,149 +918,771 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @Override
     public void setNormalBackground(Drawable drawable) {
         this.backgroundTmp = drawable;
-        background = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                borderColor, borderWidth,
-                backgroundTmp,
-                bgStartColor,
-                bgEndColor,
-                bgColorOrientation
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setBackgroundGradient(int starColor, int endColor, int orientation) {
+    public void setBackgroundGradient(int starColor, int endColor, @GradientOrientation int orientation) {
         this.bgStartColor = starColor;
         this.bgEndColor = endColor;
         this.bgColorOrientation = orientation;
-        background = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                borderColor, borderWidth,
-                backgroundTmp,
-                bgStartColor,
-                bgEndColor,
-                bgColorOrientation
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
         );
         setBackgroundSelector();
+    }
+
+    @Override
+    public void setBackgroundGradientStartColor(int startColor) {
+        setBackgroundGradient(startColor, bgEndColor, bgColorOrientation);
+    }
+
+    @Override
+    public void setBackgroundGradientEndColor(int endColor) {
+        setBackgroundGradient(bgStartColor, endColor, bgColorOrientation);
     }
 
     @Override
     public void setPressedBackground(Drawable drawable) {
         this.pressedBackgroundTmp = drawable;
-        pressedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
-                pressedBackgroundTmp,
-                pressedBgStartColor,
-                pressedBgEndColor,
-                pressedBgColorOrientation
+
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setPressedBackgroundGradient(int startColor, int endColor, int orientation) {
+    public void setPressedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
         this.pressedBgStartColor = startColor;
         this.pressedBgEndColor = endColor;
         this.pressedBgColorOrientation = orientation;
-        pressedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
-                pressedBackgroundTmp,
-                pressedBgStartColor,
-                pressedBgEndColor,
-                pressedBgColorOrientation
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBackground(Drawable drawable) {
-        this.unEnabledBackgroundTmp = drawable;
-        this.unEnabledBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+    public void setPressedBackgroundGradientStartColor(int startColor) {
+        setPressedBackgroundGradient(startColor, pressedBgEndColor, pressedBgColorOrientation);
+    }
+
+    @Override
+    public void setPressedBackgroundGradientEndColor(int endColor) {
+        setPressedBackgroundGradient(pressedBgStartColor, endColor, pressedBgColorOrientation);
+    }
+
+    @Override
+    public void setDisabledBackground(Drawable drawable) {
+        this.disabledBackgroundTmp = drawable;
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
         );
+
         setBackgroundSelector();
     }
 
     @Override
-    public void setUnEnabledBackgroundGradient(int startColor, int endColor, int orientation) {
-        this.unEnabledBgStartColor = startColor;
-        this.unEnabledBgEndColor = endColor;
-        this.unEnabledBgColorOrientation = orientation;
-        this.unEnabledBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                unEnabledBorderColor == 0 ? borderColor : unEnabledBorderColor, borderWidth,
-                unEnabledBackgroundTmp,
-                unEnabledBgStartColor,
-                unEnabledBgEndColor,
-                unEnabledBgColorOrientation
+    public void setDisabledBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
+        this.disabledBgStartColor = startColor;
+        this.disabledBgEndColor = endColor;
+        this.disabledBgColorOrientation = orientation;
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
         );
+
         setBackgroundSelector();
+    }
+
+    @Override
+    public void setDisabledBackgroundGradientStartColor(int startColor) {
+        setDisabledBackgroundGradient(startColor, disabledBgEndColor, disabledBgColorOrientation);
+    }
+
+    @Override
+    public void setDisabledBackgroundGradientEndColor(int endColor) {
+        setDisabledBackgroundGradient(disabledBgStartColor, endColor, disabledBgColorOrientation);
     }
 
     @Override
     public void setCheckedBackground(Drawable drawable) {
         this.checkedBackgroundTmp = drawable;
-        this.checkedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
-                checkedBackgroundTmp,
-                checkedBgStartColor,
-                checkedBgEndColor,
-                checkedBgColorOrientation
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
         );
+
         setBackgroundSelector();
     }
 
     @Override
-    public void setCheckedBackgroundGradient(int startColor, int endColor, int orientation) {
+    public void setCheckedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
         this.checkedBgEndColor = endColor;
         this.checkedBgStartColor = startColor;
         this.checkedBgColorOrientation = orientation;
-        this.checkedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
-                checkedBackgroundTmp,
-                checkedBgStartColor,
-                checkedBgEndColor,
-                checkedBgColorOrientation
+
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
         );
+
         setBackgroundSelector();
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientStartColor(int startColor) {
+        setCheckedBackgroundGradient(startColor, checkedBgEndColor, checkedBgColorOrientation);
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientEndColor(int endColor) {
+        setCheckedBackgroundGradient(checkedBgStartColor, endColor, checkedBgColorOrientation);
     }
 
     @Override
     public void setActivatedBackground(Drawable drawable) {
         this.activatedBackgroundTmp = drawable;
-        this.activatedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
-                activatedBackgroundTmp,
-                activatedBgStartColor,
-                activatedBgEndColor,
-                activatedBgColorOrientation
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
     }
 
     @Override
-    public void setActivatedBackgroundGradient(int startColor, int endColor, int orientation) {
+    public void setActivatedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation) {
         this.activatedBgStartColor = startColor;
         this.activatedBgEndColor = endColor;
         this.activatedBgColorOrientation = orientation;
-        this.activatedBackground = getFinalDrawable(
-                radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
-                activatedBackgroundTmp,
-                activatedBgStartColor,
-                activatedBgEndColor,
-                activatedBgColorOrientation
+        this.activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientStartColor(int startColor) {
+        setActivatedBackgroundGradient(startColor, this.activatedBgEndColor, this.activatedBgColorOrientation);
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientEndColor(int endColor) {
+        setActivatedBackgroundGradient(activatedBgStartColor, endColor, this.activatedBgColorOrientation);
+    }
+
+    @Override
+    public void setNormalBackgroundColor(int color) {
+        setNormalBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setPressedBackgroundColor(int color) {
+        setPressedBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setActivatedBackgroundColor(int color) {
+        setActivatedBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setCheckedBackgroundColor(int color) {
+        setCheckedBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setDisabledBackgroundColor(int color) {
+        setDisabledBackground(new ColorDrawable(color));
+    }
+
+    @Override
+    public void setBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        this.bgColorOrientation = orientation;
+        this.backgroundColors = colors;
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    @GradientOrientation
+    public int getBackgroundGradientOrientation() {
+        return bgColorOrientation;
+    }
+
+    @Override
+    public void setPressedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        this.pressedBgColorOrientation = orientation;
+        this.pressedBackgroundColors = colors;
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    @GradientOrientation
+    public int getPressedBackgroundGradientOrientation() {
+        return pressedBgColorOrientation;
+    }
+
+    @Override
+    public void setActivatedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        this.activatedBgColorOrientation = orientation;
+        this.activatedBackgroundColors = colors;
+        this.activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    @GradientOrientation
+    public int getActivatedBackgroundGradientOrientation() {
+        return activatedBgColorOrientation;
+    }
+
+    @Override
+    public void setCheckedBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        this.checkedBgColorOrientation = orientation;
+        this.checkedBackgroundColors = colors;
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
+        );
+
+        setBackgroundSelector();
+    }
+
+    @Override
+    @GradientOrientation
+    public int getCheckedBackgroundGradientOrientation() {
+        return checkedBgColorOrientation;
+    }
+
+    @Override
+    public void setDisabledBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
+        this.disabledBgColorOrientation = orientation;
+        this.disabledBackgroundColors = colors;
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
+        );
+
+        setBackgroundSelector();
+    }
+
+    @Override
+    @GradientOrientation
+    public int getDisabledBackgroundGradientOrientation() {
+        return disabledBgColorOrientation;
+    }
+
+    /**
+     * 请使用： {@link #setCubeSidesGradientColors(int...)}
+     *
+     * @param colors @Deprecated
+     */
+    @Deprecated
+    @Override
+    public void setCubeFrontGradientColors(int... colors) {
+        setCubeSidesGradientColors(colors);
+    }
+
+    @Override
+    public void setCubeSidesGradientColors(int... colors) {
+        this.cubeSidesColors = colors;
+        cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front) {
+        if (cubeFrontHeight == front && cubeLeftHeight == left && cubeRightHeight == right && cubeBackHeight == back) {
+            return;
+        }
+        this.cubeFrontHeight = front;
+        this.cubeBackHeight = back;
+        this.cubeLeftHeight = left;
+        this.cubeRightHeight = right;
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setCubeSidesBorderColor(@ColorInt int color) {
+        this.cubeSidesBorderColor = color;
+        // 立体属性
+        cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
+        // 立体属性
+        pressedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                pressedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, pressedBgColorOrientation);
+        // 立体属性
+        disabledCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                disabledCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, disabledBgColorOrientation);
+        // 立体属性
+        checkedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                checkedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, checkedBgColorOrientation);
+        // 立体属性
+        activatedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                activatedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, activatedBgColorOrientation);
+
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
+        );
+
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
+        );
+
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
+        );
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
+        );
+
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
+        );
+
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setCubeSidesBorderWidth(int width) {
+        this.cubeSidesBorderWidth = width;
+        // 立体属性
+        cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
+        // 立体属性
+        pressedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                pressedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, pressedBgColorOrientation);
+        // 立体属性
+        disabledCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                disabledCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, disabledBgColorOrientation);
+        // 立体属性
+        checkedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                checkedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, checkedBgColorOrientation);
+        // 立体属性
+        activatedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                activatedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, activatedBgColorOrientation);
+
+        background = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        borderColor, borderWidth,
+                        backgroundTmp,
+                        bgStartColor,
+                        bgEndColor,
+                        backgroundColors,
+                        bgColorOrientation),
+                cubeSidesBackground, cubeLeftHeight, cubeBackHeight, cubeRightHeight, cubeFrontHeight
+        );
+
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
+        );
+
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
+        );
+
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
+        );
+
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
+        );
+
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setPressedCubeSidesGradientColors(@ColorInt int... colors) {
+        this.pressedCubeSidesColors = colors;
+        pressedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                pressedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, pressedBgColorOrientation);
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setPressedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front) {
+        if (this.pressedCubeFrontHeight == front && pressedCubeBackHeight == back && pressedCubeLeftHeight == left && pressedCubeRightHeight == right) {
+            return;
+        }
+        this.pressedCubeFrontHeight = front;
+        this.pressedCubeBackHeight = back;
+        this.pressedCubeLeftHeight = left;
+        this.pressedCubeRightHeight = right;
+        pressedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBackgroundTmp,
+                        pressedBgStartColor,
+                        pressedBgEndColor,
+                        pressedBackgroundColors,
+                        pressedBgColorOrientation),
+                pressedCubeSidesBackground, pressedCubeLeftHeight, pressedCubeBackHeight, pressedCubeRightHeight, pressedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setDisabledCubeSidesGradientColors(@ColorInt int... colors) {
+        this.disabledCubeSidesColors = colors;
+        // 立体属性
+        disabledCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                disabledCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, disabledBgColorOrientation);
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setDisabledCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front) {
+        if (this.disabledCubeFrontHeight == front && disabledCubeBackHeight == back && disabledCubeLeftHeight == left && disabledCubeRightHeight == right) {
+            return;
+        }
+        this.disabledCubeFrontHeight = front;
+        this.disabledCubeBackHeight = back;
+        this.disabledCubeLeftHeight = left;
+        this.disabledCubeRightHeight = right;
+        disabledBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBackgroundTmp,
+                        disabledBgStartColor,
+                        disabledBgEndColor,
+                        disabledBackgroundColors,
+                        disabledBgColorOrientation),
+                disabledCubeSidesBackground, disabledCubeLeftHeight, disabledCubeBackHeight, disabledCubeRightHeight, disabledCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setCheckedCubeSidesGradientColors(@ColorInt int... colors) {
+        this.checkedCubeSidesColors = colors;
+        checkedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                checkedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, checkedBgColorOrientation);
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setCheckedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front) {
+        if (this.checkedCubeFrontHeight == left && checkedCubeBackHeight == back && checkedCubeRightHeight == right && checkedCubeLeftHeight == left) {
+            return;
+        }
+        this.checkedCubeFrontHeight = front;
+        this.checkedCubeBackHeight = back;
+        this.checkedCubeRightHeight = right;
+        this.checkedCubeLeftHeight = left;
+        checkedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBackgroundTmp,
+                        checkedBgStartColor,
+                        checkedBgEndColor,
+                        checkedBackgroundColors,
+                        checkedBgColorOrientation),
+                checkedCubeSidesBackground, checkedCubeLeftHeight, checkedCubeBackHeight, checkedCubeRightHeight, checkedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setActivatedCubeSidesGradientColors(@ColorInt int... colors) {
+        this.activatedCubeSidesColors = colors;
+        activatedCubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                activatedCubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, activatedBgColorOrientation);
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
+        );
+        setBackgroundSelector();
+    }
+
+    @Override
+    public void setActivatedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front) {
+        if (this.activatedCubeFrontHeight == front && activatedCubeRightHeight == right && activatedCubeLeftHeight == left && activatedCubeBackHeight == back) {
+            return;
+        }
+        this.activatedCubeFrontHeight = front;
+        this.activatedCubeBackHeight = back;
+        this.activatedCubeRightHeight = right;
+        this.activatedCubeLeftHeight = left;
+
+        activatedBackground = getFinalLayerDrawable(
+                getFinalDrawable(
+                        radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
+                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBackgroundTmp,
+                        activatedBgStartColor,
+                        activatedBgEndColor,
+                        activatedBackgroundColors,
+                        activatedBgColorOrientation),
+                activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
     }
@@ -627,12 +1692,12 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         background = null;
         pressedBackground = null;
         checkedBackground = null;
-        unEnabledBackground = null;
+        disabledBackground = null;
         activatedBackground = null;
         backgroundTmp = null;
         pressedBackgroundTmp = null;
         checkedBackgroundTmp = null;
-        unEnabledBackgroundTmp = null;
+        disabledBackgroundTmp = null;
         activatedBackgroundTmp = null;
         radius = 0;
         topLeftRadius = 0;
@@ -643,8 +1708,45 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         borderColor = 0;
         pressedBorderColor = 0;
         checkedBorderColor = 0;
-        unEnabledBorderColor = 0;
+        disabledBorderColor = 0;
         activatedBorderColor = 0;
+        backgroundColors = null;
+        pressedBackgroundColors = null;
+        checkedBackgroundColors = null;
+        activatedBackgroundColors = null;
+        disabledBackgroundColors = null;
+        cubeSidesColors = null;
+        cubeSidesBackground = null;
+        cubeSidesBorderColor = 0;
+        cubeSidesBorderWidth = 0;
+        cubeFrontHeight = 0;
+        cubeBackHeight = 0;
+        cubeLeftHeight = 0;
+        cubeRightHeight = 0;
+        pressedCubeSidesBackground = null;
+        pressedCubeSidesColors = null;
+        pressedCubeFrontHeight = 0;
+        pressedCubeBackHeight = 0;
+        pressedCubeLeftHeight = 0;
+        pressedCubeRightHeight = 0;
+        disabledCubeSidesBackground = null;
+        disabledCubeFrontHeight = 0;
+        disabledCubeBackHeight = 0;
+        disabledCubeLeftHeight = 0;
+        disabledCubeRightHeight = 0;
+        disabledCubeSidesColors = null;
+        checkedCubeSidesBackground = null;
+        checkedCubeSidesColors = null;
+        checkedCubeFrontHeight = 0;
+        checkedCubeBackHeight = 0;
+        checkedCubeLeftHeight = 0;
+        checkedCubeRightHeight = 0;
+        activatedCubeSidesBackground = null;
+        activatedCubeFrontHeight = 0;
+        activatedCubeBackHeight = 0;
+        activatedCubeLeftHeight = 0;
+        activatedCubeRightHeight = 0;
+        activatedCubeSidesColors = null;
         setBackgroundSelector();
         return this;
     }

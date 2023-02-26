@@ -44,8 +44,7 @@ import com.pichs.common.widget.cardview.XILayout;
 import java.lang.ref.WeakReference;
 
 /**
- * @author cginechen
- * @date 2017-03-10
+ * 布局帮助类
  */
 
 public class XLayoutHelper implements XILayout {
@@ -225,33 +224,31 @@ public class XLayoutHelper implements XILayout {
             }
             ta.recycle();
         }
-//        setRadiusAndShadow(radius, mHideRadiusSide, shadow, mShadowColor, mShadowAlpha);
     }
 
     @Override
-    public void setBorderGradientStartColor(int borderGradientStartColor) {
-        this.mBorderGradientStartColor = borderGradientStartColor;
-        invalidate();
-    }
-
-    @Override
-    public void setBorderGradientEndColor(int borderGradientEndColor) {
-        this.mBorderGradientEndColor = borderGradientEndColor;
-        invalidate();
-    }
-
-    @Override
-    public void setBorderGradientOrientation(@GradientOrientation int orientation) {
-        this.mBorderGradientOrientation = orientation;
-        invalidate();
-    }
-
-    @Override
-    public void setBorderGradientOrientation(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
+    public void setBorderGradientColors(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation) {
+        this.mLinearGradient = null;
         this.mBorderGradientStartColor = borderGradientStartColor;
         this.mBorderGradientEndColor = borderGradientEndColor;
         this.mBorderGradientOrientation = orientation;
         invalidate();
+    }
+
+    @Override
+    public int getBorderGradientStartColor() {
+        return this.mBorderGradientStartColor;
+    }
+
+    @Override
+    public int getBorderGradientEndColor() {
+        return this.mBorderGradientEndColor;
+    }
+
+    @Override
+    @GradientOrientation
+    public int getBorderGradientOrientation() {
+        return this.mBorderGradientOrientation;
     }
 
     @Override
@@ -571,33 +568,40 @@ public class XLayoutHelper implements XILayout {
 
     @Override
     public void updateTopDivider(int topInsetLeft, int topInsetRight, int topDividerHeight, int topDividerColor) {
-        mTopDividerInsetLeft = topInsetLeft;
-        mTopDividerInsetRight = topInsetRight;
-        mTopDividerHeight = topDividerHeight;
+        if (topInsetLeft >= 0) {
+            mTopDividerInsetLeft = topInsetLeft;
+        }
+        if (topInsetRight >= 0) {
+            mTopDividerInsetRight = topInsetRight;
+        }
+        if (topDividerHeight >= 0) {
+            mTopDividerHeight = topDividerHeight;
+        }
         mTopDividerColor = topDividerColor;
     }
 
     @Override
     public void updateBottomDivider(int bottomInsetLeft, int bottomInsetRight, int bottomDividerHeight, int bottomDividerColor) {
-        mBottomDividerInsetLeft = bottomInsetLeft;
-        mBottomDividerInsetRight = bottomInsetRight;
+        if (bottomInsetLeft > 0) mBottomDividerInsetLeft = bottomInsetLeft;
+        if (bottomInsetRight > 0) mBottomDividerInsetRight = bottomInsetRight;
+        if (bottomDividerHeight > 0) mBottomDividerHeight = bottomDividerHeight;
         mBottomDividerColor = bottomDividerColor;
-        mBottomDividerHeight = bottomDividerHeight;
+
     }
 
     @Override
     public void updateLeftDivider(int leftInsetTop, int leftInsetBottom, int leftDividerWidth, int leftDividerColor) {
-        mLeftDividerInsetTop = leftInsetTop;
-        mLeftDividerInsetBottom = leftInsetBottom;
-        mLeftDividerWidth = leftDividerWidth;
+        if (leftInsetTop > 0) mLeftDividerInsetTop = leftInsetTop;
+        if (leftInsetBottom > 0) mLeftDividerInsetBottom = leftInsetBottom;
+        if (leftDividerWidth > 0) mLeftDividerWidth = leftDividerWidth;
         mLeftDividerColor = leftDividerColor;
     }
 
     @Override
     public void updateRightDivider(int rightInsetTop, int rightInsetBottom, int rightDividerWidth, int rightDividerColor) {
-        mRightDividerInsetTop = rightInsetTop;
-        mRightDividerInsetBottom = rightInsetBottom;
-        mRightDividerWidth = rightDividerWidth;
+        if (rightInsetTop > 0) mRightDividerInsetTop = rightInsetTop;
+        if (rightInsetBottom > 0) mRightDividerInsetBottom = rightInsetBottom;
+        if (rightInsetBottom > 0) mRightDividerWidth = rightInsetBottom;
         mRightDividerColor = rightDividerColor;
     }
 

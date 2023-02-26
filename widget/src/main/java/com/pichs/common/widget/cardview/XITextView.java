@@ -1,7 +1,7 @@
 package com.pichs.common.widget.cardview;
 
 /**
- * 字体颜色选择器
+ * 字体颜色选择器 接口
  */
 public interface XITextView {
 
@@ -28,7 +28,7 @@ public interface XITextView {
     /**
      * 文本 不可用 颜色
      */
-    void setUnEnabledTextColor(int color);
+    void setDisabledTextColor(int color);
 
     /**
      * 清除textView的状态颜色
