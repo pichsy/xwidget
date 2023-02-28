@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
-            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "SmileySans.ttf");
             XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
         });
 
