@@ -6,7 +6,7 @@
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.2.0'
+        implementation 'com.gitee.pichs:xwidget:3.2.2'
 
 ## 最好用基础组件库，超级轻量级。
 
@@ -57,6 +57,12 @@
 ![](shot_cut1.jpg)
 
 ## 升级日志
+
+### 3.2.2版本
+- 修复statusbarheight方法，在鸿蒙os3.0上获取数值不对的问题。
+
+### 3.2.1版本
+- 增强TimerManager的稳定性。
 
 ### 3.2.0 版本
 - 兼容新增 xp_cubeSidesGradientColors 用来代替 xp_cubeFrontGradientColors属性（依然能用，建议用前者，名字更贴切）（兼容升级）

@@ -327,25 +327,7 @@ public class XDisplayHelper {
      * @return
      */
     public static int getStatusBarHeight(Context context) {
-        if (XDeviceHelper.isXiaomi()) {
-            int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-            if (resourceId > 0) {
-                return context.getResources().getDimensionPixelSize(resourceId);
-            }
-            return 0;
-        }
-        try {
-            Class<?> c = Class.forName("com.android.internal.R$dimen");
-            Object obj = c.newInstance();
-            Field field = c.getField("status_bar_height");
-            int x = Integer.parseInt(field.get(obj).toString());
-            if (x > 0) {
-                return context.getResources().getDimensionPixelSize(x);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
+       return XStatusBarHelper.getStatusBarHeight(context);
     }
 
     /**
@@ -365,7 +347,7 @@ public class XDisplayHelper {
      * @param context context上下文
      * @return Int
      */
-    public static int getNavMenuHeight(Context context) {
+    private static int getNavMenuHeight(Context context) {
         if (!isNavMenuExist(context)) {
             return 0;
         }

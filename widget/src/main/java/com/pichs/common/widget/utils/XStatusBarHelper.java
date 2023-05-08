@@ -1,8 +1,10 @@
 package com.pichs.common.widget.utils;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
@@ -33,7 +35,6 @@ public class XStatusBarHelper {
     // 在某些机子上存在不同的density值，所以增加两个虚拟值
     public static float sVirtualDensity = -1;
     public static float sVirtualDensityDpi = -1;
-    private static int sStatusbarHeight = -1;
     private static @StatusBarType
     int mStatuBarType = STATUSBAR_TYPE_DEFAULT;
     private static Integer sTransparentValue;
@@ -404,13 +405,25 @@ public class XStatusBarHelper {
      * 获取状态栏的高度。
      */
     public static int getStatusBarHeight(Context context) {
-        if (sStatusbarHeight == -1) {
-            initStatusBarHeight(context);
+        Resources res = Resources.getSystem();
+        @SuppressLint("InternalInsetResource")
+        int resourceId = res.getIdentifier("status_bar_height", "dimen", "android");
+        int height = 0;
+        if (resourceId != 0) {
+            height = res.getDimensionPixelSize(resourceId);
         }
-        return sStatusbarHeight;
+        if (height == 0 && context != null) {
+            height = getStatusBarHeight2(context);
+        }
+        return height;
     }
 
-    private static void initStatusBarHeight(Context context) {
+    public static int getStatusBarHeight() {
+        return getStatusBarHeight(null);
+    }
+
+    private static int getStatusBarHeight2(Context context) {
+        int sStatusbarHeight = 0;
         Class<?> clazz;
         Object obj = null;
         Field field = null;
@@ -451,6 +464,7 @@ public class XStatusBarHelper {
                 }
             }
         }
+        return sStatusbarHeight;
     }
 
     public static void setVirtualDensity(float density) {
@@ -510,4 +524,21 @@ public class XStatusBarHelper {
         }
 
     }
+
+    /**
+     * 获取导航键的高度
+     * @return height
+     */
+    public static int getNavigationHeight() {
+        // 小米4没有nav bar, 而 navigation_bar_height 有值
+        Resources res = Resources.getSystem();
+        @SuppressLint("InternalInsetResource")
+        int resourceId = res.getIdentifier("navigation_bar_height", "dimen", "android");
+        int height = 0;
+        if (resourceId != 0) {
+            height = res.getDimensionPixelSize(resourceId);
+        }
+        return height;
+    }
+
 }
