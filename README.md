@@ -6,11 +6,11 @@
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.2.2'
+        implementation 'com.gitee.pichs:xwidget:3.2.3'
 
 ## 最好用基础组件库，超级轻量级。
 
--  特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
+- 特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
 
 - 圆角，外阴影，圆头跟随高度宽度，渐变色背景->双色渐变：top->bottom，left->right,TL->BR, BL->TR
 
@@ -19,14 +19,15 @@
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
 ## 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿。
-- 如果用起来不爽，速来提issue
 
+- 如果用起来不爽，速来提issue
 
 #### 使用示例去 demo中的xml中探索吧。
 
 - 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
+
 1. 在Application中初始化
-   
+
    ```
      // 初始化，自动缓存。
      public class App extends Application {
@@ -58,13 +59,19 @@
 
 ## 升级日志
 
+### 3.2.3版本
+- 增加XRatingBar控件，支持自定义星星数量，星星大小，星星间距，星星背景，星星前景，星星数量，星星是否可以点击，星星是否可以半颗星
+
 ### 3.2.2版本
+
 - 修复statusbarheight方法，在鸿蒙os3.0上获取数值不对的问题。
 
 ### 3.2.1版本
+
 - 增强TimerManager的稳定性。
 
 ### 3.2.0 版本
+
 - 兼容新增 xp_cubeSidesGradientColors 用来代替 xp_cubeFrontGradientColors属性（依然能用，建议用前者，名字更贴切）（兼容升级）
 - 修改 cubeXXXedFrontGradientColors状态系列属性 用 cubeXXXSidesGradientColors代替 （破坏性，偏门属性，很少人用）
 - 修改 cubeFrontBorderColor和cubeFrontBorderWidth用cubeSidesBorderColor和cubeSidesBorderWidth代替 （破坏性，偏门属性，很少人用）
@@ -94,7 +101,6 @@
 - XWebView替代WebView （新版AS：WebView在xml中用，没有属性提示）
 
 - XView系列，XRoundView系列 新增 xp_backgroundGradientColors属性 支持多色渐变，颜色值随意+
-  
 
   ```
       颜色值支持超全写法，和xml中写法一致随意写，支持以下四种写法
@@ -118,7 +124,6 @@
 - xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(xp_backgroundGradientStartColor...)对应的背景色。
 
 - 生僻单词：cube：立方体 + front: 前面 = cubeFront:立方体前面 (立方体正对着你的那个面)
-  
 
   ```
        <com.pichs.common.widget.roundview.XRoundLinearLayout
@@ -134,7 +139,6 @@
              app:xp_radius="25dp" />
   
   ```
-
 
 ### 3.0.0版本
 
@@ -152,9 +156,8 @@
 - 修复XCheckBox属性显示问题，修复XCheckImageView属性显示问题
 - 修改XCardImageView不默认CENTER_CROP属性
 
-
-
 ## 更新计划
+
 1. 优化 cube属性，使其更加全能，增加更多立体按钮效果，包括凹陷按钮效果
 2. 增加 XRadioGroup, 直属子类可用XCheckBox，并且其他布局随意添加不参加单选，只做辅助显示。
 3. XWebView优化，删除大量设置，只保留必要设置（javascript支持，自适应屏幕）。其他设置由用户自行设置和扩展。
