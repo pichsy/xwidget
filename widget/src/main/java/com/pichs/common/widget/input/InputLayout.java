@@ -2,6 +2,7 @@ package com.pichs.common.widget.input;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
@@ -56,7 +57,7 @@ public class InputLayout extends XCardLinearLayout {
      */
     private int textStyle = Typeface.NORMAL;
     private int maxLines = 1;
-    private int textColor = 0, textHintColor = 0;
+    private int textColor = Color.BLACK, textHintColor = Color.LTGRAY;
     private int textSize = 0;
     private int clearIconPadding = 0;
     private int eyeIconPadding = 0;
@@ -162,13 +163,13 @@ public class InputLayout extends XCardLinearLayout {
         setEyeIconVisible(isEyeIconShow);
         setEyeCloseDrawable(mEyeCloseDrawable);
         setEyeOpenDrawable(mEyeOpenDrawable);
-        setEyeIconSize(eyeIconWidth,eyeIconHeight);
+        setEyeIconSize(eyeIconWidth, eyeIconHeight);
         setEyeIconPadding(eyeIconPadding);
         setEyeIconColorFilter(eyeIconColorFilter);
 
         setClearDrawable(mClearDrawable);
         setClearIconVisible(isClearIconShow);
-        setClearIconSize(clearIconWidth,clearIconHeight);
+        setClearIconSize(clearIconWidth, clearIconHeight);
         setClearIconPadding(clearIconPadding);
         setClearIconColorFilter(clearIconColorFilter);
         handleViewData();
@@ -269,7 +270,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setClearIconSize(int width,int height) {
+    public InputLayout setClearIconSize(int width, int height) {
         this.clearIconHeight = height;
         this.clearIconWidth = width;
         if (mClearImageView != null) {
@@ -362,8 +363,10 @@ public class InputLayout extends XCardLinearLayout {
             }
         }
 
-        if (isClearIconShow) {
-            setClearIconVisible(!TextUtils.isEmpty(mEditText.getText()));
+        if (isClearIconShow && !TextUtils.isEmpty(mEditText.getText())) {
+            mClearImageView.setVisibility(VISIBLE);
+        } else {
+            mClearImageView.setVisibility(GONE);
         }
 
         mEditText.setDisableCopyAndPaste(disableCopyAndPaste);
@@ -380,12 +383,10 @@ public class InputLayout extends XCardLinearLayout {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (TextUtils.isEmpty(s)) {
-                    mClearImageView.setVisibility(GONE);
+                if (isClearIconShow && !TextUtils.isEmpty(s)) {
+                    mClearImageView.setVisibility(VISIBLE);
                 } else {
-                    if (isClearIconShow) {
-                        mClearImageView.setVisibility(VISIBLE);
-                    }
+                    mClearImageView.setVisibility(GONE);
                 }
             }
         });
@@ -417,7 +418,7 @@ public class InputLayout extends XCardLinearLayout {
 
     public void setClearIconVisible(boolean visible) {
         this.isClearIconShow = visible;
-        if (visible) {
+        if (isClearIconShow && !TextUtils.isEmpty(mEditText.getText())) {
             mClearImageView.setVisibility(VISIBLE);
         } else {
             mClearImageView.setVisibility(GONE);

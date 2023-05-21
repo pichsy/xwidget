@@ -283,6 +283,19 @@
             app:xp_starSize="30dp"
             app:xp_starStep="1.0" />
 
+        <com.pichs.common.widget.input.InputLayout
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:background="#FDFDFD"
+            android:text="十分大方"
+            android:id="@+id/input_layout"
+            app:xp_textPassword="false"
+            android:textColor="#333"
+            android:hint="#333"
+            app:xp_clearDrawable="@drawable/ic_heart"
+            app:xp_clearIconColorFilter="#99f"
+            app:xp_clearIconVisible="true" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp" />

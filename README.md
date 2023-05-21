@@ -6,7 +6,7 @@
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.2.3'
+        implementation 'com.gitee.pichs:xwidget:3.2.4'
 
 ## 最好用基础组件库，超级轻量级。
 
@@ -55,9 +55,12 @@
 
 #### 看效果
 
-![](shot_cut1.jpg)
+![](shotcut_2.png)
 
 ## 升级日志
+
+### 3.2.4版本
+- 修复InputLayout控件 close图标显示不正常的bug。
 
 ### 3.2.3版本
 - 增加XRatingBar控件，支持自定义星星数量，星星大小，星星间距，星星背景，星星前景，星星数量，星星是否可以点击，星星是否可以半颗星
