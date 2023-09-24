@@ -33,7 +33,7 @@ public class VerificationCodeEditText extends XEditText {
     private static final int TYPE_SOLID = 2;//实心
     private static final int TYPE_UNDERLINE = 3;//下划线
 
-    private Paint borderPaint;//边界画笔
+    private Paint borderPaint;// 边界画笔
 
     /**
      * 边界进度
