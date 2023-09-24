@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="XRatingBar">
+        <attr name="xp_borderColor" />
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_borderWidth" />
+        <attr name="xp_starSelectedColor" format="color" />
+        <attr name="xp_starNormalColor" format="color" />
+        <attr name="xp_pressedStarSelectedColor" format="color" />
+        <attr name="xp_pressedStarNormalColor" format="color" />
+        <attr name="xp_starCount" format="integer" />
+        <attr name="xp_starSize" format="dimension" />
+        <attr name="xp_maxStarSize" format="dimension" />
+        <attr name="xp_starsSeparation" format="dimension" />
+        <attr name="xp_starCornerRadius" format="dimension" />
+        <attr name="xp_isIndicator" format="boolean" />
+        <attr name="xp_starProgress" format="float" />
+        <attr name="xp_starStep" format="float" />
+        <attr name="xp_ratingGravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+    </declare-styleable>
+    <color name="srb_golden_stars">#FFC619</color>
+
+
+</resources>

@@ -5,26 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XCardButton;
 import com.pichs.common.widget.cardview.XCardConstraintLayout;
-import com.pichs.common.widget.checkbox.XCheckBox;
-import com.pichs.common.widget.roundview.XRoundTextView;
-import com.pichs.common.widget.utils.XColorHelper;
-import com.pichs.common.widget.utils.XDisplayHelper;
-import com.pichs.common.widget.utils.XGradientHelper;
 import com.pichs.common.widget.utils.XStatusBarHelper;
 import com.pichs.common.widget.utils.XTypefaceHelper;
 import com.pichs.common.widget.view.XButton;
-import com.pichs.common.widget.view.XLinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XStatusBarHelper.translucent(this);
-        XStatusBarHelper.setStatusBarDarkMode(this);
+        XStatusBarHelper.setStatusBarLightMode(this);
         setContentView(R.layout.activity_main);
         changeTypeface();
         tripleColor();
@@ -67,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
-            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "leihong.ttf");
+            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "SmileySans.ttf");
             XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
         });
 

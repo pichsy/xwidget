@@ -1,19 +1,3 @@
-/*
- * Tencent is pleased to support the open source community by making QMUI_Android available.
- *
- * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.
- *
- * Licensed under the MIT License (the "License"); you may not use this file except in
- * compliance with the License. You may obtain a copy of the License at
- *
- * http://opensource.org/licenses/MIT
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
- * either express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.pichs.common.widget.utils;
 
 import android.annotation.SuppressLint;
@@ -23,7 +7,6 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -34,7 +17,6 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
@@ -47,17 +29,11 @@ import java.util.Locale;
  * 像素转换帮助类
  */
 public class XDisplayHelper {
-    private static final String TAG = "XDisplayHelper";
-
-    /**
-     * 屏幕密度,系统源码注释不推荐使用
-     */
-    public static final float DENSITY = Resources.getSystem().getDisplayMetrics().density;
-
     /**
      * 是否有摄像头
      */
     private static Boolean sHasCamera = null;
+
 
     /**
      * 获取 DisplayMetrics
@@ -66,26 +42,6 @@ public class XDisplayHelper {
      */
     public static DisplayMetrics getDisplayMetrics(Context context) {
         return context.getResources().getDisplayMetrics();
-    }
-
-    /**
-     * 把以 dp 为单位的值，转化为以 px 为单位的值
-     *
-     * @param dpValue 以 dp 为单位的值
-     * @return px value
-     */
-    public static int dpToPx(int dpValue) {
-        return (int) (dpValue * DENSITY + 0.5f);
-    }
-
-    /**
-     * 把以 px 为单位的值，转化为以 dp 为单位的值
-     *
-     * @param pxValue 以 px 为单位的值
-     * @return dp值
-     */
-    public static int pxToDp(float pxValue) {
-        return (int) (pxValue / DENSITY + 0.5f);
     }
 
     public static float getDensity(Context context) {
@@ -118,13 +74,112 @@ public class XDisplayHelper {
         return screenHeight;
     }
 
+
+    /**
+     * 获取屏幕真实宽
+     *
+     * @param context Context
+     * @return RealScreenWidth
+     */
+    public static int getRealScreenWidth(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return getScreenWidth(context);
+        } else {
+            Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            @SuppressWarnings("rawtypes")
+            Class c;
+            try {
+                c = Class.forName("android.view.Display");
+                @SuppressWarnings("unchecked")
+                Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+                method.invoke(display, displayMetrics);
+                return displayMetrics.widthPixels;
+            } catch (Exception e) {
+                return getScreenWidth(context);
+            }
+        }
+    }
+
+    /**
+     * 获取屏幕真实高
+     *
+     * @param context Context
+     * @return RealScreenHeight
+     */
+    public static int getRealScreenHeight(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return getScreenHeight(context);
+        } else {
+            Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            @SuppressWarnings("rawtypes")
+            Class c;
+            try {
+                c = Class.forName("android.view.Display");
+                @SuppressWarnings("unchecked")
+                Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+                method.invoke(display, displayMetrics);
+                return displayMetrics.heightPixels;
+            } catch (Exception e) {
+                return getScreenHeight(context);
+            }
+        }
+    }
+
+    /**
+     * 获取屏幕物理高
+     *
+     * @param context Context
+     * @return getPhysicalHeight
+     */
+    public static int getPhysicalHeight(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return getScreenWidth(context);
+        } else {
+            Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+            @SuppressWarnings("rawtypes")
+            Class c;
+            try {
+                c = Class.forName("android.view.Display");
+                @SuppressWarnings("unchecked")
+                Method method = c.getMethod("getPhysicalHeight");
+                return (int) method.invoke(display);
+            } catch (Exception e) {
+                return getRealScreenHeight(context);
+            }
+        }
+    }
+
+    /**
+     * 获取屏幕物理宽
+     *
+     * @param context Context
+     * @return getPhysicalWidth
+     */
+    public static int getPhysicalWidth(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            return getScreenHeight(context);
+        } else {
+            Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+            @SuppressWarnings("rawtypes")
+            Class c;
+            try {
+                c = Class.forName("android.view.Display");
+                @SuppressWarnings("unchecked")
+                Method method = c.getMethod("getPhysicalWidth");
+                return (int) method.invoke(display);
+            } catch (Exception e) {
+                return getRealScreenWidth(context);
+            }
+        }
+    }
+
     /**
      * 获取屏幕的真实宽高
-     *
-     * @param context
-     * @return
+     * @param context Context
+     * @return int[0] 宽，int[1] 高
      */
-
     public static int[] getRealScreenSize(Context context) {
         // 切换屏幕导致宽高变化时不能用 cache，先去掉 cache
         return doGetRealScreenSize(context);
@@ -162,80 +217,6 @@ public class XDisplayHelper {
         return size;
     }
 
-    /**
-     * 剔除挖孔屏等导致的不可用区域后的 width
-     *
-     * @param activity
-     * @return
-     */
-    public static int getUsefulScreenWidth(Activity activity) {
-        return getUsefulScreenWidth(activity, XNotchHelper.hasNotch(activity));
-    }
-
-    public static int getUsefulScreenWidth(View view) {
-        return getUsefulScreenWidth(view.getContext(), XNotchHelper.hasNotch(view));
-    }
-
-    public static int getUsefulScreenWidth(Context context, boolean hasNotch) {
-        int result = getRealScreenSize(context)[0];
-        int orientation = context.getResources().getConfiguration().orientation;
-        boolean isLandscape = orientation == Configuration.ORIENTATION_LANDSCAPE;
-        if (!hasNotch) {
-            if (isLandscape && XDeviceHelper.isEssentialPhone()
-                    && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                // https://arstechnica.com/gadgets/2017/09/essential-phone-review-impressive-for-a-new-company-but-not-competitive/
-                // 这里说挖孔屏是状态栏高度的两倍， 但横屏好像小了一点点
-                result -= 2 * XStatusBarHelper.getStatusBarHeight(context);
-            }
-            return result;
-        }
-        if (isLandscape) {
-            // 华为挖孔屏横屏时，会把整个 window 往后移动，因此，可用区域减小
-            if (XDeviceHelper.isHuawei() && !XDisplayHelper.huaweiIsNotchSetToShowInSetting(context)) {
-                result -= XNotchHelper.getNotchSizeInHuawei(context)[1];
-            }
-            // TODO vivo 设置-系统导航-导航手势样式-显示手势操作区域 打开的情况下，应该减去手势操作区域的高度，但无API
-            // TODO vivo 设置-显示与亮度-第三方应用显示比例 选为安全区域显示时，整个 window 会移动，应该减去移动区域，但无API
-            // TODO oppo 设置-显示与亮度-应用全屏显示-凹形区域显示控制 关闭是，整个 window 会移动，应该减去移动区域，但无API
-        }
-        return result;
-    }
-
-    /**
-     * 剔除挖孔屏等导致的不可用区域后的 height
-     *
-     * @param activity
-     * @return
-     */
-    public static int getUsefulScreenHeight(Activity activity) {
-        return getUsefulScreenHeight(activity, XNotchHelper.hasNotch(activity));
-    }
-
-    public static int getUsefulScreenHeight(View view) {
-        return getUsefulScreenHeight(view.getContext(), XNotchHelper.hasNotch(view));
-    }
-
-    private static int getUsefulScreenHeight(Context context, boolean hasNotch) {
-        int result = getRealScreenSize(context)[1];
-        int orientation = context.getResources().getConfiguration().orientation;
-        boolean isPortrait = orientation == Configuration.ORIENTATION_PORTRAIT;
-        if (!hasNotch) {
-            if (isPortrait && XDeviceHelper.isEssentialPhone()
-                    && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                // https://arstechnica.com/gadgets/2017/09/essential-phone-review-impressive-for-a-new-company-but-not-competitive/
-                // 这里说挖孔屏是状态栏高度的两倍
-                result -= 2 * XStatusBarHelper.getStatusBarHeight(context);
-            }
-            return result;
-        }
-//        if (isPortrait) {
-        // TODO vivo 设置-系统导航-导航手势样式-显示手势操作区域 打开的情况下，应该减去手势操作区域的高度，但无API
-        // TODO vivo 设置-显示与亮度-第三方应用显示比例 选为安全区域显示时，整个 window 会移动，应该减去移动区域，但无API
-        // TODO oppo 设置-显示与亮度-应用全屏显示-凹形区域显示控制 关闭是，整个 window 会移动，应该减去移动区域，但无API
-//        }
-        return result;
-    }
-
     public static boolean isNavMenuExist(Context context) {
         //通过判断设备是否有返回键、菜单键(不是虚拟键,是手机屏幕外的按键)来确定是否有navigation bar
         boolean hasMenuKey = ViewConfiguration.get(context).hasPermanentMenuKey();
@@ -257,6 +238,7 @@ public class XDisplayHelper {
     public static int dp2px(Context context, float dp) {
         return (int) (getDensity(context) * dp + 0.5);
     }
+
     /**
      * 单位转换: dp -> px
      *
@@ -266,6 +248,7 @@ public class XDisplayHelper {
     public static int dp2px(Context context, int dp) {
         return (int) (getDensity(context) * dp + 0.5);
     }
+
     /**
      * 单位转换: sp -> px
      *
@@ -344,34 +327,27 @@ public class XDisplayHelper {
      * @return
      */
     public static int getStatusBarHeight(Context context) {
-        if (XDeviceHelper.isXiaomi()) {
-            int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
-            if (resourceId > 0) {
-                return context.getResources().getDimensionPixelSize(resourceId);
-            }
-            return 0;
-        }
-        try {
-            Class<?> c = Class.forName("com.android.internal.R$dimen");
-            Object obj = c.newInstance();
-            Field field = c.getField("status_bar_height");
-            int x = Integer.parseInt(field.get(obj).toString());
-            if (x > 0) {
-                return context.getResources().getDimensionPixelSize(x);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0;
+       return XStatusBarHelper.getStatusBarHeight(context);
     }
 
     /**
-     * 获取虚拟菜单的高度,若无则返回0
+     * 获取导航栏高度，即返回键，Home键 那个 bar 的高度
      *
-     * @param context
-     * @return
+     * @param context context上下文
+     * @return Int
+     * @see #getNavMenuHeight(Context)
      */
-    public static int getNavMenuHeight(Context context) {
+    public static int getNavigationBarHeight(Context context) {
+        return getNavMenuHeight(context);
+    }
+
+    /**
+     * 获取导航栏高度，即返回键，Home键 那个 bar 的高度
+     *
+     * @param context context上下文
+     * @return Int
+     */
+    private static int getNavMenuHeight(Context context) {
         if (!isNavMenuExist(context)) {
             return 0;
         }

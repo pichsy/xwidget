@@ -1,22 +1,7 @@
-/*
- * Tencent is pleased to support the open source community by making QMUI_Android available.
- *
- * Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.
- *
- * Licensed under the MIT License (the "License"); you may not use this file except in
- * compliance with the License. You may obtain a copy of the License at
- *
- * http://opensource.org/licenses/MIT
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License is
- * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
- * either express or implied. See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.pichs.common.widget.progressbar;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -25,6 +10,7 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
@@ -45,7 +31,7 @@ import java.lang.annotation.RetentionPolicy;
  * <li>可以通过 xml 属性修改进度背景色，当前进度颜色，进度条尺寸。</li>
  * <li>支持限制进度的最大值。</li>
  * </ol>
- *
+ * <p>
  * XProgressBar
  */
 public class XProgressBar extends XView {
@@ -70,7 +56,7 @@ public class XProgressBar extends XView {
     public final static int DEFAULT_TEXT_COLOR = Color.BLACK;
     private final static int PENDING_VALUE_NOT_SET = -1;
     /*circle_progress member*/
-    public static int DEFAULT_STROKE_WIDTH = XDisplayHelper.dpToPx(40);
+    public static int DEFAULT_STROKE_WIDTH = dp2px(40);
     private XProgressBarTextGenerator mXProgressBarTextGenerator;
     /*rect_progress member*/
     RectF mBgRect;
@@ -100,6 +86,9 @@ public class XProgressBar extends XView {
     private int mCircleRadius;
     private Point mCenterPoint;
 
+    public static int dp2px(float dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
+    }
 
     public XProgressBar(Context context) {
         super(context);
