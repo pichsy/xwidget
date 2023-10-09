@@ -406,7 +406,11 @@ public class InputLayout extends XCardLinearLayout {
             @Override
             public void onClick(View v) {
                 mEditText.setText("");
-                setClearIconVisible(false);
+                if (isClearIconShow && !TextUtils.isEmpty(mEditText.getText())) {
+                    mClearImageView.setVisibility(VISIBLE);
+                } else {
+                    mClearImageView.setVisibility(GONE);
+                }
             }
         });
 

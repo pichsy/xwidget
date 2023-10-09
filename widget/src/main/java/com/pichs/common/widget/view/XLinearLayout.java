@@ -16,7 +16,7 @@ import com.pichs.common.widget.utils.XBackgroundHelper;
 /**
  * XLinearLayout
  */
-public class XLinearLayout extends LinearLayout implements XIBackground, XIAlpha {
+public class XLinearLayout extends LinearLayout implements XIBackground, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
 
@@ -263,5 +263,10 @@ public class XLinearLayout extends LinearLayout implements XIBackground, XIAlpha
     @Override
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }

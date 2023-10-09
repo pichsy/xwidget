@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
+
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.GradientOrientation;
 import com.pichs.common.widget.cardview.XIBackground;
@@ -283,4 +284,5 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
+
 }

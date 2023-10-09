@@ -8,12 +8,21 @@ import android.view.View;
 import com.pichs.common.widget.R;
 import com.pichs.common.widget.cardview.XIAlpha;
 import com.pichs.common.widget.interpolator.XInterpolators;
+import com.pichs.common.widget.view.IPressedStateHelper;
+import com.pichs.common.widget.view.OnPressedStateListener;
 
 import java.lang.ref.WeakReference;
 
-public class XAlphaHelper implements XIAlpha {
+public class XAlphaHelper implements XIAlpha, IPressedStateHelper {
 
     private final WeakReference<View> mOwner;
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        this.mOnPressedStateListener = listener;
+    }
+
+    private OnPressedStateListener mOnPressedStateListener;
 
     /**
      * 设置是否要在 press 时改变透明度
@@ -100,6 +109,9 @@ public class XAlphaHelper implements XIAlpha {
                             .setInterpolator(XInterpolators.linear)
                             .start();
                 }
+            }
+            if (mOnPressedStateListener != null) {
+                mOnPressedStateListener.onPressedStatusChanged(pressed);
             }
         } /*else {
 //            if (isChangeAlphaOnDisable) {

@@ -1,5 +1,7 @@
 package com.pichs.common.widget.utils;
 
+import static com.pichs.common.widget.utils.XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
@@ -7,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.ColorInt;
@@ -53,36 +56,36 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     private int bottomLeftRadius = 0;
     private int bottomRightRadius = 0;
     @ColorInt
-    private int borderColor = 0;
+    private int borderColor = DEFAULT_COLOR_TRANSPARENT;
     @ColorInt
-    private int pressedBorderColor = 0;
+    private int pressedBorderColor = DEFAULT_COLOR_TRANSPARENT;
     @ColorInt
-    private int checkedBorderColor = 0;
+    private int checkedBorderColor = DEFAULT_COLOR_TRANSPARENT;
     @ColorInt
-    private int activatedBorderColor = 0;
+    private int activatedBorderColor = DEFAULT_COLOR_TRANSPARENT;
     @ColorInt
-    private int disabledBorderColor = 0;
+    private int disabledBorderColor = DEFAULT_COLOR_TRANSPARENT;
 
     private int borderWidth = 0;
 
-    private int bgStartColor;
-    private int bgEndColor;
+    private int bgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int bgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int bgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int pressedBgStartColor;
-    private int pressedBgEndColor;
+    private int pressedBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int pressedBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int pressedBgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int checkedBgStartColor;
-    private int checkedBgEndColor;
+    private int checkedBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int checkedBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int checkedBgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int disabledBgStartColor;
-    private int disabledBgEndColor;
+    private int disabledBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int disabledBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int disabledBgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int activatedBgStartColor;
-    private int activatedBgEndColor;
+    private int activatedBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int activatedBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int activatedBgColorOrientation = GradientOrientation.HORIZONTAL;
 
@@ -104,7 +107,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     // 边框颜色,宽度
     @ColorInt
     // cube- border是通用，不提供单独某个状态设置，基本没人这么用，遇到了，建议xml代码创建
-    private int cubeSidesBorderColor;
+    private int cubeSidesBorderColor = DEFAULT_COLOR_TRANSPARENT;
     private int cubeSidesBorderWidth;
     // 立体按钮默认值 设置为 NONE
     private int cubeFrontHeight = XCubeSidesHeight.NONE;
@@ -152,11 +155,11 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             bottomRightRadius = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_radiusBottomRight, 0);
             borderWidth = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_borderWidth, 0);
             // 边框颜色
-            borderColor = ta.getColor(R.styleable.XIRoundBackground_xp_borderColor, 0);
-            pressedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBorderColor, 0);
-            checkedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBorderColor, 0);
-            disabledBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBorderColor, 0);
-            activatedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBorderColor, 0);
+            borderColor = ta.getColor(R.styleable.XIRoundBackground_xp_borderColor, borderColor);
+            pressedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBorderColor, pressedBorderColor);
+            checkedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBorderColor, checkedBorderColor);
+            disabledBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBorderColor, disabledBorderColor);
+            activatedBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBorderColor, activatedBorderColor);
             // 常色
             backgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_android_background);
             pressedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_pressedBackground);
@@ -164,20 +167,20 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             disabledBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_disabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_activatedBackground);
             // 渐变
-            bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, 0);
-            bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientEndColor, 0);
+            bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, bgStartColor);
+            bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientEndColor, bgEndColor);
             bgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_backgroundGradientOrientation, GradientOrientation.HORIZONTAL);
-            pressedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundStartColor, 0);
-            pressedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundEndColor, 0);
+            pressedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundStartColor, pressedBgStartColor);
+            pressedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundEndColor, pressedBgEndColor);
             pressedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_pressedBackgroundOrientation, bgColorOrientation);
-            checkedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundStartColor, 0);
-            checkedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundEndColor, 0);
+            checkedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundStartColor, checkedBgStartColor);
+            checkedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_checkedBackgroundEndColor, checkedBgEndColor);
             checkedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_checkedBackgroundOrientation, bgColorOrientation);
-            disabledBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundStartColor, 0);
-            disabledBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundEndColor, 0);
+            disabledBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundStartColor, disabledBgStartColor);
+            disabledBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_disabledBackgroundEndColor, disabledBgEndColor);
             disabledBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_disabledBackgroundOrientation, bgColorOrientation);
-            activatedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundStartColor, 0);
-            activatedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundEndColor, 0);
+            activatedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundStartColor, activatedBgStartColor);
+            activatedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_activatedBackgroundEndColor, activatedBgEndColor);
             activatedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_activatedBackgroundOrientation, bgColorOrientation);
 
             String backgroundColorString = ta.getString(R.styleable.XIRoundBackground_xp_backgroundGradientColors);
@@ -191,7 +194,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             if (cubeSidesColorString == null) {
                 cubeSidesColorString = ta.getString(R.styleable.XIRoundBackground_xp_cubeFrontGradientColors);
             }
-            cubeSidesBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_cubeSidesBorderColor, 0);
+            cubeSidesBorderColor = ta.getColor(R.styleable.XIRoundBackground_xp_cubeSidesBorderColor, cubeSidesBorderColor);
             cubeSidesBorderWidth = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_cubeSidesBorderWidth, 0);
 
             cubeLeftHeight = ta.getDimensionPixelSize(R.styleable.XIRoundBackground_xp_cubeLeftHeight, XCubeSidesHeight.NONE);
@@ -263,7 +266,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
             Drawable finalPressedBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                    pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                    pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                     pressedBackgroundTmp,
                     pressedBgStartColor,
                     pressedBgEndColor,
@@ -289,7 +292,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
             Drawable finalCheckedBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                    checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                    checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                     checkedBackgroundTmp,
                     checkedBgStartColor,
                     checkedBgEndColor,
@@ -314,7 +317,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
             Drawable finalDisabledBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                    disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                    disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                     disabledBackgroundTmp,
                     disabledBgStartColor,
                     disabledBgEndColor,
@@ -340,7 +343,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
             Drawable finalActivatedBgDrawable = getFinalDrawable(
                     radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                    activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                    activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                     activatedBackgroundTmp,
                     activatedBgStartColor,
                     activatedBgEndColor,
@@ -519,7 +522,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 .setBottomRightRadius(bottomRightRadius)
                 .setStrokeWidth(borderWidth)
                 .setStrokeColor(borderColor);
-        if (startColor != 0 && endColor != 0) {
+        if (startColor != DEFAULT_COLOR_TRANSPARENT && endColor != DEFAULT_COLOR_TRANSPARENT) {
             GradientDrawable.Orientation ot;
             if (orientation == GradientOrientation.VERTICAL) {
                 ot = GradientDrawable.Orientation.TOP_BOTTOM;
@@ -556,16 +559,16 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             builder.setFillColor(color);
             return builder.build();
         }
-        if (startColor != 0) {
+        if (startColor != DEFAULT_COLOR_TRANSPARENT) {
             builder.setFillColor(startColor);
             return builder.build();
         }
-        if (endColor != 0) {
+        if (endColor != DEFAULT_COLOR_TRANSPARENT) {
             builder.setFillColor(endColor);
             return builder.build();
         }
         // 优先级最低
-        if (gradientColors != null && gradientColors.length == 1) {
+        if (gradientColors != null && gradientColors.length == 1 & gradientColors[0] != DEFAULT_COLOR_TRANSPARENT) {
             builder.setFillColor(gradientColors[0]);
             return builder.build();
         }
@@ -621,7 +624,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -636,7 +639,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -651,7 +654,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -666,7 +669,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -703,7 +706,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -718,7 +721,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -734,7 +737,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -749,7 +752,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -795,7 +798,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -807,7 +810,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -820,7 +823,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -832,7 +835,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -849,7 +852,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -867,7 +870,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -885,7 +888,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -902,7 +905,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -968,7 +971,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -987,7 +990,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -1014,7 +1017,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -1035,7 +1038,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -1063,7 +1066,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -1084,7 +1087,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -1112,7 +1115,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -1131,7 +1134,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         this.activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -1208,7 +1211,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -1232,7 +1235,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         this.activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -1256,7 +1259,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -1282,7 +1285,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -1387,7 +1390,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -1399,7 +1402,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -1411,7 +1414,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -1423,7 +1426,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -1469,7 +1472,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -1481,7 +1484,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -1493,7 +1496,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -1505,7 +1508,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -1525,7 +1528,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -1548,7 +1551,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         pressedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        pressedBorderColor == 0 ? borderColor : pressedBorderColor, borderWidth,
+                        pressedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : pressedBorderColor, borderWidth,
                         pressedBackgroundTmp,
                         pressedBgStartColor,
                         pressedBgEndColor,
@@ -1568,7 +1571,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -1591,7 +1594,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        disabledBorderColor == 0 ? borderColor : disabledBorderColor, borderWidth,
+                        disabledBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : disabledBorderColor, borderWidth,
                         disabledBackgroundTmp,
                         disabledBgStartColor,
                         disabledBgEndColor,
@@ -1610,7 +1613,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -1633,7 +1636,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         checkedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        checkedBorderColor == 0 ? borderColor : checkedBorderColor, borderWidth,
+                        checkedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : checkedBorderColor, borderWidth,
                         checkedBackgroundTmp,
                         checkedBgStartColor,
                         checkedBgEndColor,
@@ -1652,7 +1655,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -1676,7 +1679,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         activatedBackground = getFinalLayerDrawable(
                 getFinalDrawable(
                         radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                        activatedBorderColor == 0 ? borderColor : activatedBorderColor, borderWidth,
+                        activatedBorderColor == DEFAULT_COLOR_TRANSPARENT ? borderColor : activatedBorderColor, borderWidth,
                         activatedBackgroundTmp,
                         activatedBgStartColor,
                         activatedBgEndColor,
@@ -1705,11 +1708,11 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         bottomLeftRadius = 0;
         bottomRightRadius = 0;
         borderWidth = 0;
-        borderColor = 0;
-        pressedBorderColor = 0;
-        checkedBorderColor = 0;
-        disabledBorderColor = 0;
-        activatedBorderColor = 0;
+        borderColor = DEFAULT_COLOR_TRANSPARENT;
+        pressedBorderColor = DEFAULT_COLOR_TRANSPARENT;
+        checkedBorderColor = DEFAULT_COLOR_TRANSPARENT;
+        disabledBorderColor = DEFAULT_COLOR_TRANSPARENT;
+        activatedBorderColor = DEFAULT_COLOR_TRANSPARENT;
         backgroundColors = null;
         pressedBackgroundColors = null;
         checkedBackgroundColors = null;
@@ -1717,7 +1720,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         disabledBackgroundColors = null;
         cubeSidesColors = null;
         cubeSidesBackground = null;
-        cubeSidesBorderColor = 0;
+        cubeSidesBorderColor = DEFAULT_COLOR_TRANSPARENT;
         cubeSidesBorderWidth = 0;
         cubeFrontHeight = 0;
         cubeBackHeight = 0;

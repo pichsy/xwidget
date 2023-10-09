@@ -18,7 +18,7 @@ import com.pichs.common.widget.utils.XTextViewHelper;
 /**
  * XButton
  */
-public class XButton extends AppCompatButton implements XIBackground, XITextView, XIAlpha {
+public class XButton extends AppCompatButton implements XIBackground, XITextView, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -313,6 +313,11 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     @Override
     public void setScaleOnDisabled(float scaleRate) {
         xAlphaHelper.setScaleOnDisabled(scaleRate);
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }
 

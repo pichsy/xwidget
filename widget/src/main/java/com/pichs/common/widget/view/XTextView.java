@@ -18,7 +18,7 @@ import com.pichs.common.widget.utils.XTextViewHelper;
 /**
  * TextView 自定义基类
  */
-public class XTextView extends AppCompatTextView implements XIBackground, XITextView, XIAlpha {
+public class XTextView extends AppCompatTextView implements XIBackground, XITextView, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -305,5 +305,10 @@ public class XTextView extends AppCompatTextView implements XIBackground, XIText
     @Override
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }

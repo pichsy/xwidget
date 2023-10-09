@@ -16,7 +16,7 @@ import com.pichs.common.widget.utils.XBackgroundHelper;
 /**
  * XConstraintLayout
  */
-public class XConstraintLayout extends ConstraintLayout implements XIBackground , XIAlpha {
+public class XConstraintLayout extends ConstraintLayout implements XIBackground, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -31,6 +31,7 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
         super(context, attrs);
         init(context, attrs, 0);
     }
+
     public XConstraintLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
@@ -74,14 +75,15 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
+
     @Override
     public void setNormalBackground(Drawable drawable) {
         backgroundHelper.setNormalBackground(drawable);
@@ -264,5 +266,10 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground 
     @Override
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }

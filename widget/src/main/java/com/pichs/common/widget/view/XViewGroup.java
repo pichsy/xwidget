@@ -16,7 +16,7 @@ import com.pichs.common.widget.utils.XBackgroundHelper;
 /**
  * XViewGroup
  */
-public abstract class XViewGroup extends ViewGroup  implements XIBackground, XIAlpha {
+public abstract class XViewGroup extends ViewGroup implements XIBackground, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -205,13 +205,13 @@ public abstract class XViewGroup extends ViewGroup  implements XIBackground, XIA
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
 
@@ -266,5 +266,10 @@ public abstract class XViewGroup extends ViewGroup  implements XIBackground, XIA
     @Override
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }

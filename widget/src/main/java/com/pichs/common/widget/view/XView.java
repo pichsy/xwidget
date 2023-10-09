@@ -16,7 +16,7 @@ import com.pichs.common.widget.utils.XBackgroundHelper;
 /**
  * XView
  */
-public class XView extends View implements XIBackground, XIAlpha {
+public class XView extends View implements XIBackground, XIAlpha,IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -266,6 +266,11 @@ public class XView extends View implements XIBackground, XIAlpha {
     @Override
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }
 

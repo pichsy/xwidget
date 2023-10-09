@@ -37,8 +37,4 @@ public class AnimationProperty {
      * X方向缩放
      */
     public static final String scaleX = "scaleX";
-
-
-
-
 }

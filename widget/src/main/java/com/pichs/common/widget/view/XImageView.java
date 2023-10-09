@@ -19,7 +19,7 @@ import com.pichs.common.widget.utils.XBackgroundHelper;
  * 可以属性自定义的ColorFilter的ImageView
  * 方便换肤，节省切图，降低apk体积
  */
-public class XImageView extends AppCompatImageView implements XIBackground, XIAlpha {
+public class XImageView extends AppCompatImageView implements XIBackground, XIAlpha, IPressedStateHelper {
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
 
@@ -147,13 +147,13 @@ public class XImageView extends AppCompatImageView implements XIBackground, XIAl
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     @Override
@@ -339,5 +339,10 @@ public class XImageView extends AppCompatImageView implements XIBackground, XIAl
     @Override
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }

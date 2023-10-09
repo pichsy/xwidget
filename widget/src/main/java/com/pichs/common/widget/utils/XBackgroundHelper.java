@@ -23,6 +23,9 @@ import java.util.Arrays;
  */
 public class XBackgroundHelper implements XIBackground {
 
+    // 默认透明颜色值 0x0000000f = 15
+    public static final int DEFAULT_COLOR_TRANSPARENT = 0x0000000f;
+
     private final WeakReference<View> mOwner;
     private Drawable background;
     private Drawable pressedBackground;
@@ -37,24 +40,24 @@ public class XBackgroundHelper implements XIBackground {
     private Drawable disabledBackgroundTmp;
     private Drawable activatedBackgroundTmp;
 
-    private int bgStartColor;
-    private int bgEndColor;
+    private int bgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int bgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int bgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int pressedBgStartColor;
-    private int pressedBgEndColor;
+    private int pressedBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int pressedBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int pressedBgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int checkedBgStartColor;
-    private int checkedBgEndColor;
+    private int checkedBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int checkedBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int checkedBgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int disabledBgStartColor;
-    private int disabledBgEndColor;
+    private int disabledBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int disabledBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int disabledBgColorOrientation = GradientOrientation.HORIZONTAL;
-    private int activatedBgStartColor;
-    private int activatedBgEndColor;
+    private int activatedBgStartColor = DEFAULT_COLOR_TRANSPARENT;
+    private int activatedBgEndColor = DEFAULT_COLOR_TRANSPARENT;
     @GradientOrientation
     private int activatedBgColorOrientation = GradientOrientation.HORIZONTAL;
     // 渐变色，列表，支持多色渐变
@@ -84,20 +87,20 @@ public class XBackgroundHelper implements XIBackground {
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_activatedBackground);
 
             // 渐变
-            bgStartColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientStartColor, 0);
-            bgEndColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientEndColor, 0);
+            bgStartColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientStartColor, bgStartColor);
+            bgEndColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientEndColor, bgEndColor);
             bgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_backgroundGradientOrientation, GradientOrientation.HORIZONTAL);
-            pressedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_pressedBackgroundStartColor, 0);
-            pressedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_pressedBackgroundEndColor, 0);
+            pressedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_pressedBackgroundStartColor, pressedBgStartColor);
+            pressedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_pressedBackgroundEndColor, pressedBgEndColor);
             pressedBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_pressedBackgroundOrientation, GradientOrientation.HORIZONTAL);
-            checkedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_checkedBackgroundStartColor, 0);
-            checkedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_checkedBackgroundEndColor, 0);
+            checkedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_checkedBackgroundStartColor, checkedBgStartColor);
+            checkedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_checkedBackgroundEndColor, checkedBgEndColor);
             checkedBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_checkedBackgroundOrientation, GradientOrientation.HORIZONTAL);
-            disabledBgStartColor = ta.getColor(R.styleable.XIBackground_xp_disabledBackgroundStartColor, 0);
-            disabledBgEndColor = ta.getColor(R.styleable.XIBackground_xp_disabledBackgroundEndColor, 0);
+            disabledBgStartColor = ta.getColor(R.styleable.XIBackground_xp_disabledBackgroundStartColor, disabledBgStartColor);
+            disabledBgEndColor = ta.getColor(R.styleable.XIBackground_xp_disabledBackgroundEndColor, disabledBgEndColor);
             disabledBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_disabledBackgroundOrientation, GradientOrientation.HORIZONTAL);
-            activatedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_activatedBackgroundStartColor, 0);
-            activatedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_activatedBackgroundEndColor, 0);
+            activatedBgStartColor = ta.getColor(R.styleable.XIBackground_xp_activatedBackgroundStartColor, activatedBgStartColor);
+            activatedBgEndColor = ta.getColor(R.styleable.XIBackground_xp_activatedBackgroundEndColor, activatedBgEndColor);
             activatedBgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_activatedBackgroundOrientation, GradientOrientation.HORIZONTAL);
             String backgroundColorString = ta.getString(R.styleable.XIBackground_xp_backgroundGradientColors);
             String pressedBackgroundColorString = ta.getString(R.styleable.XIBackground_xp_pressedBackgroundGradientColors);
@@ -179,7 +182,7 @@ public class XBackgroundHelper implements XIBackground {
             return bg;
         }
         XGradientHelper.GradientDrawableBuilder builder = new XGradientHelper.GradientDrawableBuilder();
-        if (startColor != 0 && endColor != 0) {
+        if (startColor != DEFAULT_COLOR_TRANSPARENT && endColor != DEFAULT_COLOR_TRANSPARENT) {
             GradientDrawable.Orientation ot;
             if (orientation == GradientOrientation.VERTICAL) {
                 ot = GradientDrawable.Orientation.TOP_BOTTOM;
@@ -217,16 +220,16 @@ public class XBackgroundHelper implements XIBackground {
             builder.setFillColor(color);
             return builder.build();
         }
-        if (startColor != 0) {
+        if (startColor != DEFAULT_COLOR_TRANSPARENT) {
             builder.setFillColor(startColor);
             return builder.build();
         }
-        if (endColor != 0) {
+        if (endColor != DEFAULT_COLOR_TRANSPARENT) {
             builder.setFillColor(endColor);
             return builder.build();
         }
         // 优先级最低
-        if (gradientColors != null && gradientColors.length == 1) {
+        if (gradientColors != null && gradientColors.length == 1 && gradientColors[0] != DEFAULT_COLOR_TRANSPARENT) {
             builder.setFillColor(gradientColors[0]);
             return builder.build();
         }

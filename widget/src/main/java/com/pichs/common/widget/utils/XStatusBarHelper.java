@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -89,9 +90,11 @@ public class XStatusBarHelper {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && supportTranslucentStatusBar6()) {
                 // android 6以后可以改状态栏字体颜色，因此可以自行设置为透明
                 // ZUK Z1是个另类，自家应用可以实现字体颜色变色，但没开放接口
-                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.TRANSPARENT);
+//                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//                window.setStatusBarColor(Color.TRANSPARENT);
+                transparentStatusBar(window);
+                transparentNavigationBar(window);
             } else {
                 // android 5不能修改状态栏字体颜色，因此直接用FLAG_TRANSLUCENT_STATUS，nexus表现为半透明
                 // 魅族和小米的表现如何？
@@ -103,17 +106,55 @@ public class XStatusBarHelper {
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setStatusBarColor(colorOn5x);
             }
-//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            // android4.4的默认是从上到下黑到透明，我们的背景是白色，很难看，因此只做魅族和小米的
-//        } else if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR1){
-//            // 如果app 为白色，需要更改状态栏颜色，因此不能让19一下支持透明状态栏
-//            Window window = activity.getWindow();
-//            Integer transparentValue = getStatusBarAPITransparentValue(activity);
-//            if(transparentValue != null) {
-//                window.getDecorView().setSystemUiVisibility(transparentValue);
-//            }
         }
     }
+
+    /**
+     * 透明状态栏
+     */
+    public static void transparentStatusBar(Window window) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
+            systemUiVisibility = systemUiVisibility | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            window.getDecorView().setSystemUiVisibility(systemUiVisibility);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
+    /**
+     * 透明导航栏
+     */
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public static void transparentNavigationBar(Window window) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            window.setNavigationBarContrastEnforced(false);
+        }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        int systemUiVisibility = window.getDecorView().getSystemUiVisibility();
+        systemUiVisibility = systemUiVisibility | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
+        window.getDecorView().setSystemUiVisibility(systemUiVisibility);
+        window.setNavigationBarColor(Color.TRANSPARENT);
+    }
+
+    /**
+     * 黑色状态栏文字
+     * 设置状态栏文字颜色
+     *
+     * @param isDark true为黑色，false为白色
+     */
+    @RequiresApi(Build.VERSION_CODES.M)
+    public static void setStatusBarFontDark(Window window, boolean isDark) {
+        View decor = window.getDecorView();
+        if (isDark) {
+            decor.setSystemUiVisibility(decor.getSystemUiVisibility() | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        } else {
+            decor.setSystemUiVisibility(decor.getSystemUiVisibility() & ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
+
 
     @TargetApi(28)
     private static void handleDisplayCutoutMode(final Window window) {
@@ -157,11 +198,15 @@ public class XStatusBarHelper {
      */
     public static boolean setStatusBarLightMode(Activity activity) {
         if (activity == null) return false;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            setStatusBarFontDark(activity.getWindow(), true);
+            return true;
+        }
+
         // 无语系列：ZTK C2016只能时间和电池图标变色。。。。
         if (XDeviceHelper.isZTKC2016()) {
             return false;
         }
-
         if (mStatuBarType != STATUSBAR_TYPE_DEFAULT) {
             return setStatusBarLightMode(activity, mStatuBarType);
         }
@@ -527,6 +572,7 @@ public class XStatusBarHelper {
 
     /**
      * 获取导航键的高度
+     *
      * @return height
      */
     public static int getNavigationHeight() {

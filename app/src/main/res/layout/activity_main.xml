@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    android:background="#A1FBF2">
+    android:background="#A1FBF2"
+    android:fitsSystemWindows="false">
 
     <com.pichs.common.widget.flowlayout.XFlowLayout
         android:layout_width="match_parent"
@@ -220,11 +220,13 @@
             app:xp_cubeFrontHeight="3dp"
             app:xp_cubeRightHeight="3dp"
             app:xp_cubeSidesGradientColors="#019A8C"
+
             app:xp_pressedCubeBackHeight="3dp"
             app:xp_pressedCubeLeftHeight="3dp"
             app:xp_radius="25dp" />
 
         <com.pichs.common.widget.view.XTextView
+            android:id="@+id/tv_pressed_scale"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="#6EAEA9"
@@ -232,10 +234,12 @@
             android:gravity="center"
             android:text="按压放大"
             android:textColor="#333"
+            android:textSize="11sp"
             app:xp_pressedScale="1.06"
             app:xp_radius="25dp" />
 
         <com.pichs.common.widget.view.XTextView
+            android:id="@+id/tv_pressed_scale2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="#6EAEA9"
@@ -243,19 +247,36 @@
             android:gravity="center"
             android:text="按压缩小"
             android:textColor="#333"
+            android:textSize="11sp"
             app:xp_pressedScale="0.94"
             app:xp_radius="25dp" />
 
         <com.pichs.common.widget.cardview.XCardConstraintLayout
             android:id="@+id/cl_colorful_border"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="#009688"
-            app:xp_borderGradientEndColor="#E1004F"
-            app:xp_borderGradientOrientation="vertical"
-            app:xp_borderGradientStartColor="#3F51B5"
-            app:xp_borderWidth="3dp"
-            app:xp_radius="16dp" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#00000000"
+            app:xp_isRadiusAdjustBounds="true"
+            app:xp_shadowAlpha="1"
+            app:xp_shadowColor="#000"
+            app:xp_shadowElevation="5dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardBackgroundColor="#0000"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="5dp" />
+
+        <com.pichs.common.widget.roundview.XRoundConstraintLayout
+            android:id="@+id/xlc_new_round"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#00f"
+            app:xp_backgroundGradientColors="#09f,#88f"
+            app:xp_borderColor="#00f"
+            app:xp_borderWidth="1dp"
+            app:xp_radius="10dp" />
 
         <com.pichs.common.widget.roundview.XRoundTextView
             android:id="@+id/iv_round"
@@ -285,17 +306,45 @@
             app:xp_starStep="1.0" />
 
         <com.pichs.common.widget.input.InputLayout
+            android:id="@+id/input_layout"
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:background="#FDFDFD"
-            android:text="十分大方"
-            android:id="@+id/input_layout"
-            app:xp_textPassword="false"
-            android:textColor="#333"
             android:hint="#333"
-            app:xp_clearDrawable="@drawable/ic_heart"
-            app:xp_clearIconColorFilter="#99f"
-            app:xp_clearIconVisible="true" />
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="输入框"
+            android:textColor="#333"
+            android:textSize="13dp"
+            app:xp_backgroundGradientEndColor="#3434D1"
+            app:xp_backgroundGradientOrientation="horizontal"
+            app:xp_backgroundGradientStartColor="#A684DF"
+            app:xp_clearDrawable="@android:drawable/ic_menu_close_clear_cancel"
+            app:xp_clearIconColorFilter="#FFFFFF"
+            app:xp_clearIconVisible="true"
+            app:xp_radius="8dp"
+            app:xp_textPassword="false" />
+
+        <com.pichs.common.widget.layout.PressScaleLayout
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:background="#A7A7CF"
+            android:clickable="true"
+            android:padding="16dp"
+            app:xp_pressedScale="0.5"
+            app:xp_pressedScaleAnimDuration="90">
+
+            <com.pichs.common.widget.cardview.XCardTextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="我是子控件"
+                android:textColor="#fff"
+                android:textSize="10dp"
+                app:xp_backgroundGradientColors="#9f1,#42f"
+                app:xp_radius="8dp" />
+
+        </com.pichs.common.widget.layout.PressScaleLayout>
 
         <Space
             android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.pichs.common.widget.utils;
 
+import static com.pichs.common.widget.utils.XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT;
+
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -237,10 +239,10 @@ public class XGradientHelper {
         int bottomRightRadius = 0;
 
         @ColorInt
-        int fillColor = 0;
+        int fillColor = DEFAULT_COLOR_TRANSPARENT;
         int strokeWidth = 0;
         @ColorInt
-        int strokeColor = 0;
+        int strokeColor = DEFAULT_COLOR_TRANSPARENT;
         // 默认从左到右
         GradientDrawable.Orientation orientation = GradientDrawable.Orientation.LEFT_RIGHT;
         int[] gradientColors;
@@ -378,7 +380,7 @@ public class XGradientHelper {
         } else if (radius > 0) {
             gradientDrawable.setCornerRadius(radius);
         }
-        if (strokeColor != 0 && strokeWidth > 0) {
+        if (strokeColor != DEFAULT_COLOR_TRANSPARENT && strokeWidth > 0) {
             gradientDrawable.setStroke(strokeWidth, strokeColor);
         }
         if (gradientColors != null && gradientColors.length >= 2) {

@@ -6,7 +6,7 @@
 
 最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.2.4'
+        implementation 'com.gitee.pichs:xwidget:3.2.5'
 
 ## 最好用基础组件库，超级轻量级。
 
@@ -59,10 +59,41 @@
 
 ## 升级日志
 
-### 3.2.4版本
+### 3.2.5版本 推荐升级（兼容升级）
+- 颜色默认值不再判断为0，改为0x0000000f(15)-该值比较罕见，不会影响到正常的颜色值。
+- 增加新的控件 PressedScaleLayout，按压缩放子控件，可以设置缩放比例，缩放动画时间。
+```xml
+    <com.pichs.common.widget.layout.PressScaleLayout
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:background="#A7A7CF"
+            android:clickable="true"
+            android:padding="16dp"
+            app:xp_pressedScale="0.5"
+            app:xp_pressedScaleAnimDuration="90">
+
+            <com.pichs.common.widget.cardview.XCardTextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="我是子控件"
+                android:textColor="#fff"
+                android:textSize="10dp"
+                app:xp_backgroundGradientColors="#9f1,#42f"
+                app:xp_radius="8dp" />
+
+        </com.pichs.common.widget.layout.PressScaleLayout>
+
+```
+- 修复InputLayout close图标显示不正常的问题
+- 基础控件都增加了按压事件回调 (XView...等).setOnPressedStateListener(isPressed ->{})
+
+### 3.2.4版
+
 - 修复InputLayout控件 close图标显示不正常的bug。
 
 ### 3.2.3版本
+
 - 增加XRatingBar控件，支持自定义星星数量，星星大小，星星间距，星星背景，星星前景，星星数量，星星是否可以点击，星星是否可以半颗星
 
 ### 3.2.2版本

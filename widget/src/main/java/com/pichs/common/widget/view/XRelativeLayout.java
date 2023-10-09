@@ -16,7 +16,7 @@ import com.pichs.common.widget.utils.XBackgroundHelper;
 /**
  * XRelativeLayout
  */
-public class XRelativeLayout  extends RelativeLayout  implements XIBackground, XIAlpha {
+public class XRelativeLayout  extends RelativeLayout  implements XIBackground, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -266,5 +266,10 @@ public class XRelativeLayout  extends RelativeLayout  implements XIBackground, X
     @Override
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
+    }
+
+    @Override
+    public void setOnPressedStateListener(OnPressedStateListener listener) {
+        xAlphaHelper.setOnPressedStateListener(listener);
     }
 }
