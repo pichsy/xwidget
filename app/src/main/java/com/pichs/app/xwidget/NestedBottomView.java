@@ -10,9 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pichs.common.widget.nestedscroll.XNestedBottomDelegateLayout;
-import com.pichs.common.widget.nestedscroll.XNestedBottomRecyclerView;
-import com.pichs.common.widget.utils.XDisplayHelper;
+import com.pichs.xwidget.nestedscroll.XNestedBottomDelegateLayout;
+import com.pichs.xwidget.nestedscroll.XNestedBottomRecyclerView;
+import com.pichs.xwidget.utils.XDisplayHelper;
 
 public class NestedBottomView extends XNestedBottomDelegateLayout {
     public NestedBottomView(Context context) {
