@@ -58,7 +58,9 @@
 ![](shotcut_2.png)
 
 
-#### xia    
+#### 下载体验
+
+[下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/xwidget.apk)   
 
 ## 升级日志
 
