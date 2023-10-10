@@ -1,6 +1,8 @@
 # xwidget
 
-最喜欢的自定义控件，开发更加快乐。
+1. 最喜欢的自定义控件，开发更加快乐。
+2. 最新版4.x移至 github=>[https://github.com/pichsy/xwidget](https://github.com/pichsy/xwidget)
+3. 3.x版本不建议升级到4.x版本。3.2.5为最新稳定版本。
 
 ### 引入控件
 
