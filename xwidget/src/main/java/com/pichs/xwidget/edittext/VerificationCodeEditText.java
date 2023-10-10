@@ -17,7 +17,7 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.view.XEditText;
 
 import java.util.Timer;

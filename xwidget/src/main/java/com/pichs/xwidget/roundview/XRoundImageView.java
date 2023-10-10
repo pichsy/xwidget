@@ -21,7 +21,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.view.ViewGroup;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.utils.XAlphaHelper;
 

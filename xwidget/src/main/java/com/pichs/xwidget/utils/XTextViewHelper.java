@@ -7,7 +7,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XITextView;
 
 import java.lang.ref.WeakReference;

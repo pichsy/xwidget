@@ -31,7 +31,7 @@ import static android.util.TypedValue.applyDimension;
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntRange;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.utils.XDisplayHelper;
 
 /**

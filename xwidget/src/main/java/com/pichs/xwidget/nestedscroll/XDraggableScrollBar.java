@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.utils.XDisplayHelper;
 import com.pichs.xwidget.utils.XLangHelper;
 

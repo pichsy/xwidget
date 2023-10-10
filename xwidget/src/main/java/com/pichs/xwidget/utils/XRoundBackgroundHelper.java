@@ -14,7 +14,7 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntRange;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIRoundBackground;
 import com.pichs.xwidget.roundview.XCubeSidesHeight;

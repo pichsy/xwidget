@@ -14,7 +14,7 @@ import android.util.TypedValue;
 import androidx.annotation.IntDef;
 import androidx.core.view.ViewCompat;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.view.XView;
 
 import java.lang.annotation.Retention;

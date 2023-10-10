@@ -5,7 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.interpolator.XInterpolators;
 import com.pichs.xwidget.view.IPressedStateHelper;

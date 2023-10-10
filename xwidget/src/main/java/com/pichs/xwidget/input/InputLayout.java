@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XCardLinearLayout;
 import com.pichs.xwidget.utils.XDisplayHelper;
 import com.pichs.xwidget.view.XEditText;

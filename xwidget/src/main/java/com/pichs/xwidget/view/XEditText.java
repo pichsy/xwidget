@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIBackground;
 import com.pichs.xwidget.cardview.XITextView;

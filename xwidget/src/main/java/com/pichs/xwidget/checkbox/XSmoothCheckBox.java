@@ -34,7 +34,7 @@ import android.widget.Checkable;
 
 import androidx.core.content.ContextCompat;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.utils.XAlphaHelper;
 import com.pichs.xwidget.utils.XDisplayHelper;

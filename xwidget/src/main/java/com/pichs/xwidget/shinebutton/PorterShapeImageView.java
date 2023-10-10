@@ -26,7 +26,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 
 /**
  * 图标资源控件

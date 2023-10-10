@@ -17,7 +17,7 @@ import android.widget.Checkable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 
 import java.lang.ref.WeakReference;
 

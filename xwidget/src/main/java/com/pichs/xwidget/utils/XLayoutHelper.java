@@ -21,7 +21,7 @@ import android.view.ViewOutlineProvider;
 import androidx.annotation.ColorInt;
 import androidx.core.content.ContextCompat;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XILayout;
 

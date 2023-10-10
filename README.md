@@ -4,9 +4,15 @@
 
 ### 引入控件
 
-最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
+新版仓库移至mavenCenter
+最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-        implementation 'com.gitee.pichs:xwidget:3.2.5'
+        implementation 'com.gitee.pichs:xwidget:4.0.0'
+
+
+### 3.x.x请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
+
+### 4.x破坏性升级，仓库移至mavenCenter， 控件包名改为 com.pichs.xwidget.xxxx
 
 ## 最好用基础组件库，超级轻量级。
 
@@ -57,39 +63,34 @@
 
 ![](shotcut_2.png)
 
+## 下载体验
 
-#### 下载体验
-
-[下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/xwidget.apk)   
+[下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/xwidget.apk)
 
 ## 升级日志
 
+### 4.0.0版本 破坏升级，3.0版本的请移步 gitee 地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
+
+- gitee地址仓库发布在jitpack上
+- 新的仓库转移到mavenCenter上
+
 ### 3.2.5版本 推荐升级（兼容升级）
+
 - 颜色默认值不再判断为0，改为0x0000000f(15)-该值比较罕见，不会影响到正常的颜色值。
 - 增加新的控件 PressedScaleLayout，按压缩放子控件，可以设置缩放比例，缩放动画时间。
+
 ```xml
-    <com.pichs.common.widget.layout.PressScaleLayout
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:background="#A7A7CF"
-            android:clickable="true"
-            android:padding="16dp"
-            app:xp_pressedScale="0.5"
-            app:xp_pressedScaleAnimDuration="90">
 
-            <com.pichs.common.widget.cardview.XCardTextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:text="我是子控件"
-                android:textColor="#fff"
-                android:textSize="10dp"
-                app:xp_backgroundGradientColors="#9f1,#42f"
-                app:xp_radius="8dp" />
+<com.pichs.xwidget.layout.PressScaleLayout android:layout_width="300dp" android:layout_height="100dp" android:background="#A7A7CF" android:clickable="true"
+    android:padding="16dp" app:xp_pressedScale="0.5" app:xp_pressedScaleAnimDuration="90">
 
-        </com.pichs.common.widget.layout.PressScaleLayout>
+    <com.pichs.xwidget.cardview.XCardTextView android:layout_width="50dp" android:layout_height="50dp" android:gravity="center" android:text="我是子控件"
+        android:textColor="#fff" android:textSize="10dp" app:xp_backgroundGradientColors="#9f1,#42f" app:xp_radius="8dp" />
+
+</com.pichs.xwidget.layout.PressScaleLayout>
 
 ```
+
 - 修复InputLayout close图标显示不正常的问题
 - 基础控件都增加了按压事件回调 (XView...等).setOnPressedStateListener(isPressed ->{})
 
@@ -122,7 +123,8 @@
 
 - 优化属性的使用
 
-- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(xp_backgroundGradientStartColor...)对应的背景色。
+- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(
+  xp_backgroundGradientStartColor...)对应的背景色。
 
 - 总之用起来更舒服了，代码也可以减少了。
 
@@ -160,7 +162,8 @@
 
 - ~~xp_pressedCubeFrontGradientColors + xp_pressedBackgroundGradientColors~~
 
-- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(xp_backgroundGradientStartColor...)对应的背景色。
+- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(
+  xp_backgroundGradientStartColor...)对应的背景色。
 
 - 生僻单词：cube：立方体 + front: 前面 = cubeFront:立方体前面 (立方体正对着你的那个面)
 

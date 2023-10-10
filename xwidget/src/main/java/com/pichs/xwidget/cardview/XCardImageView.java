@@ -14,7 +14,7 @@ import android.view.MotionEvent;
 
 import androidx.annotation.ColorInt;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.view.XImageView;
 import com.pichs.xwidget.utils.XLayoutHelper;
 

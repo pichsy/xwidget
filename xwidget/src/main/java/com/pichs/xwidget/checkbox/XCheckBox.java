@@ -11,7 +11,7 @@ import android.widget.Checkable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XCardImageView;
 
 /**

@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.interpolator.AnimationProperty;
 import com.pichs.xwidget.interpolator.XInterpolators;
 

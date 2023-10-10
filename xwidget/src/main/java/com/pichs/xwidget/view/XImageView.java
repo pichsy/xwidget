@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIBackground;

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.view.XViewGroup;
 
 /**

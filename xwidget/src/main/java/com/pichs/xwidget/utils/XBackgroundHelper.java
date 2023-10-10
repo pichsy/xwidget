@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIBackground;
 

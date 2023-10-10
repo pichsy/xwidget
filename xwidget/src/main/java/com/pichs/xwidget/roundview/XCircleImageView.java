@@ -31,7 +31,7 @@ import androidx.annotation.DrawableRes;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatImageView;
 
-import com.pichs.common.widget.R;
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.utils.XAlphaHelper;
 
