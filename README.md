@@ -5,14 +5,22 @@
 ### 引入控件
 
 新版仓库移至mavenCenter
-最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
+#### 4.x 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
         implementation 'com.gitee.pichs:xwidget:4.0.0'
 
 
+### 4.x破坏性升级，仓库移至mavenCenter， 控件包名改为 com.pichs.xwidget.xxxx
+
+
+
+#### 3.x 最新版本: [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
+
+
+    implementation 'com.gitee.pichs:xwidget:3.2.5'
+
 ### 3.x.x请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
 
-### 4.x破坏性升级，仓库移至mavenCenter， 控件包名改为 com.pichs.xwidget.xxxx
 
 ## 最好用基础组件库，超级轻量级。
 
