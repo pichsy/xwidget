@@ -27,11 +27,10 @@ public class XWebView extends WebView {
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private void initDefault() {
+    protected void initDefault() {
         WebSettings settings = getSettings();
-        if (settings != null) {
-            settings.setJavaScriptEnabled(true);
-            settings.setJavaScriptCanOpenWindowsAutomatically(false);
+        settings.setJavaScriptEnabled(true);
+        settings.setJavaScriptCanOpenWindowsAutomatically(false);
 //            settings.setSupportMultipleWindows(false);
 //            settings.setDefaultTextEncodingName("utf-8");
 //            settings.setSupportZoom(true);
@@ -52,12 +51,11 @@ public class XWebView extends WebView {
 //            settings.setDefaultZoom(zoomDensity);
 //            settings.setDisplayZoomControls(false);
 //            settings.setBuiltInZoomControls(true);
-            //自适应屏幕
-            settings.setLoadWithOverviewMode(true);
-            settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-                settings.setMixedContentMode(MIXED_CONTENT_ALWAYS_ALLOW);
-            }
+        //自适应屏幕
+        settings.setLoadWithOverviewMode(true);
+        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            settings.setMixedContentMode(MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
     }
