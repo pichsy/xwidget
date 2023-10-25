@@ -15,7 +15,7 @@
 
 #### 4.x 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:4.0.0'
+      implementation 'com.gitee.pichs:xwidget:4.0.1'
 
 ### 4.x破坏性升级，仓库移至mavenCenter， 控件包名改为 com.pichs.xwidget.xxxx
 
@@ -25,6 +25,7 @@
 
 ### 3.x请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
 
+## 虽然是破坏性，但破坏性小，仍推荐升级到4.0及以上版本
 ## 3.x升级到 4.x指南
 
 - 全局搜索包名并替换 "com.pichs.common.widget." ->  "com.pichs.xwidget." 即可完成替换，非常的简单！
