@@ -23,11 +23,12 @@
 
       implementation 'com.gitee.pichs:xwidget:3.2.5'
 
-### 3.2.5版本源码请移步gitee地址 [https://gitee.com/pichs/xwidget/tree/3.2.5/](https://gitee.com/pichs/xwidget/tree/3.2.5/)
+### 3.2.5版本源码请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget/tree/3.2.5/)
 
 
 
-### 4.x为小破坏性升级，仓库移至mavenCenter， 控件包名改为 com.pichs.xwidget.xxxx
+### 4.x为 小破坏性升级 ，仓库移至mavenCenter
+- 控件包名改为 `com.pichs.xwidget.xxxx`
 ### 虽然是破坏性，但破坏性小，仍推荐升级到4.0及以上版本
 
 ## 3.x升级到 4.x指南
@@ -102,9 +103,12 @@
 
 ## 升级日志
 
-### 4.0.1版本，添加混淆规则，打入aar包，你不在需要自己手动添加混淆规则了。
+### 4.0.1版本
+- 添加混淆规则，打入aar包，你不在需要自己手动添加混淆规则了。
 
-### 4.0.0版本 破坏升级，3.0版本的请移步 gitee 地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
+### 4.0.0版本
+- 破坏升级，控件包名由原来（com.pichs.common.widget.xxx）改为现在的（com.pichs.xwidget.xxxx），其他破坏暂无。
+- 3.2.5版本的请移步 gitee 地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget/tree/3.2.5/)
 
 - gitee地址仓库发布在jitpack上
 - 新的仓库转移到mavenCenter上
