@@ -34,6 +34,9 @@ public interface XILayout {
     int HIDE_RADIUS_SIDE_LEFT = 4;
 
 
+    /**
+     * 隐藏边角
+     */
     @IntDef({
             HIDE_RADIUS_SIDE_NONE,
             HIDE_RADIUS_SIDE_TOP,
@@ -48,57 +51,57 @@ public interface XILayout {
     /**
      * limit the width of a layout
      *
-     * @param widthLimit
-     * @return
+     * @param widthLimit *
+     * @return *
      */
     boolean setWidthLimit(int widthLimit);
 
     /**
      * limit the height of a layout
      *
-     * @param heightLimit
-     * @return
+     * @param heightLimit *
+     * @return *
      */
     boolean setHeightLimit(int heightLimit);
 
     /**
      * determine if the outline contain the padding area, usually false
      *
-     * @param outlineExcludePadding
+     * @param outlineExcludePadding *
      */
     void setOutlineExcludePadding(boolean outlineExcludePadding);
 
     /**
      * See {@link View#setElevation(float)}
      *
-     * @param elevation
+     * @param elevation *
      */
     void setShadowElevation(int elevation);
 
     /**
      * See {@link View#getElevation()}
      *
-     * @return
+     * @return *
      */
     int getShadowElevation();
 
     /**
      * set the outline alpha, which will change the shadow
      *
-     * @param shadowAlpha
+     * @param shadowAlpha *
      */
     void setShadowAlpha(float shadowAlpha);
 
     /**
      * get the outline alpha we set
      *
-     * @return
+     * @return *
      */
     float getShadowAlpha();
 
     /**
      * @param shadowColor opaque color
-     * @return
+     * @return *
      */
     void setShadowColor(int shadowColor);
 
@@ -110,32 +113,32 @@ public interface XILayout {
     /**
      * set the layout radius
      *
-     * @param radius
+     * @param radius *
      */
     void setRadius(int radius);
 
     /**
      * set the layout radius with one or none side been hidden
      *
-     * @param radius
-     * @param hideRadiusSide
+     * @param radius *
+     * @param hideRadiusSide *
      */
     void setRadius(int radius, @HideRadiusSide int hideRadiusSide);
 
     /**
      * get the layout radius
      *
-     * @return
+     * @return *
      */
     int getRadius();
 
     /**
      * inset the outline if needed
      *
-     * @param left
-     * @param top
-     * @param right
-     * @param bottom
+     * @param left *
+     * @param top *
+     * @param right *
+     * @param bottom *
      */
     void setOutlineInset(int left, int top, int right, int bottom);
 
@@ -144,7 +147,7 @@ public interface XILayout {
      * usually we use border, but the border may be redundant for android L+. so will not show border default,
      * if your designer like the border exists with shadow, you can call setShowBorderOnlyBeforeL(false)
      *
-     * @param showBorderOnlyBeforeL
+     * @param showBorderOnlyBeforeL *
      */
     void setShowBorderOnlyBeforeL(boolean showBorderOnlyBeforeL);
 
@@ -153,33 +156,33 @@ public interface XILayout {
      * but there is no convenient way to write the code like canvas.drawPath,
      * so we take another way that hide one radius side
      *
-     * @param hideRadiusSide
+     * @param hideRadiusSide *
      */
     void setHideRadiusSide(@HideRadiusSide int hideRadiusSide);
 
     /**
      * get the side that we have hidden the radius
      *
-     * @return
+     * @return *
      */
     int getHideRadiusSide();
 
     /**
      * this method will determine the radius and shadow.
      *
-     * @param radius
-     * @param shadowElevation
-     * @param shadowAlpha
+     * @param radius *
+     * @param shadowElevation *
+     * @param shadowAlpha *
      */
     void setRadiusAndShadow(int radius, int shadowElevation, float shadowAlpha);
 
     /**
      * this method will determine the radius and shadow with one or none side be hidden
      *
-     * @param radius
-     * @param hideRadiusSide
-     * @param shadowElevation
-     * @param shadowAlpha
+     * @param radius *
+     * @param hideRadiusSide *
+     * @param shadowElevation *
+     * @param shadowAlpha *
      */
     void setRadiusAndShadow(int radius, @HideRadiusSide int hideRadiusSide, int shadowElevation, float shadowAlpha);
 
@@ -187,105 +190,105 @@ public interface XILayout {
     /**
      * this method will determine the radius and shadow (support shadowColor if after android 9)with one or none side be hidden
      *
-     * @param radius
-     * @param hideRadiusSide
-     * @param shadowElevation
-     * @param shadowColor
-     * @param shadowAlpha
+     * @param radius *
+     * @param hideRadiusSide *
+     * @param shadowElevation *
+     * @param shadowColor *
+     * @param shadowAlpha *
      */
     void setRadiusAndShadow(int radius, @HideRadiusSide int hideRadiusSide, int shadowElevation, int shadowColor, float shadowAlpha);
 
     /**
      * border color, if you don not set it, the layout will not draw the border
      *
-     * @param borderColor
+     * @param borderColor *
      */
     void setBorderColor(@ColorInt int borderColor);
 
     /**
      * border width, default is 1px, usually no need to set
      *
-     * @param borderWidth
+     * @param borderWidth *
      */
     void setBorderWidth(int borderWidth);
 
     /**
      * config the top divider
      *
-     * @param topInsetLeft
-     * @param topInsetRight
-     * @param topDividerHeight
-     * @param topDividerColor
+     * @param topInsetLeft *
+     * @param topInsetRight *
+     * @param topDividerHeight *
+     * @param topDividerColor *
      */
     void updateTopDivider(int topInsetLeft, int topInsetRight, int topDividerHeight, int topDividerColor);
 
     /**
      * config the bottom divider
      *
-     * @param bottomInsetLeft
-     * @param bottomInsetRight
-     * @param bottomDividerHeight
-     * @param bottomDividerColor
+     * @param bottomInsetLeft *
+     * @param bottomInsetRight *
+     * @param bottomDividerHeight *
+     * @param bottomDividerColor *
      */
     void updateBottomDivider(int bottomInsetLeft, int bottomInsetRight, int bottomDividerHeight, int bottomDividerColor);
 
     /**
      * config the left divider
      *
-     * @param leftInsetTop
-     * @param leftInsetBottom
-     * @param leftDividerWidth
-     * @param leftDividerColor
+     * @param leftInsetTop *
+     * @param leftInsetBottom *
+     * @param leftDividerWidth *
+     * @param leftDividerColor *
      */
     void updateLeftDivider(int leftInsetTop, int leftInsetBottom, int leftDividerWidth, int leftDividerColor);
 
     /**
      * config the right divider
      *
-     * @param rightInsetTop
-     * @param rightInsetBottom
-     * @param rightDividerWidth
-     * @param rightDividerColor
+     * @param rightInsetTop *
+     * @param rightInsetBottom *
+     * @param rightDividerWidth *
+     * @param rightDividerColor *
      */
     void updateRightDivider(int rightInsetTop, int rightInsetBottom, int rightDividerWidth, int rightDividerColor);
 
     /**
      * show top divider, and hide others
      *
-     * @param topInsetLeft
-     * @param topInsetRight
-     * @param topDividerHeight
-     * @param topDividerColor
+     * @param topInsetLeft *
+     * @param topInsetRight *
+     * @param topDividerHeight *
+     * @param topDividerColor *
      */
     void onlyShowTopDivider(int topInsetLeft, int topInsetRight, int topDividerHeight, int topDividerColor);
 
     /**
      * show bottom divider, and hide others
      *
-     * @param bottomInsetLeft
-     * @param bottomInsetRight
-     * @param bottomDividerHeight
-     * @param bottomDividerColor
+     * @param bottomInsetLeft   *
+     * @param bottomInsetRight *
+     * @param bottomDividerHeight *
+     * @param bottomDividerColor *
      */
     void onlyShowBottomDivider(int bottomInsetLeft, int bottomInsetRight, int bottomDividerHeight, int bottomDividerColor);
 
     /**
      * show left divider, and hide others
      *
-     * @param leftInsetTop
-     * @param leftInsetBottom
-     * @param leftDividerWidth
-     * @param leftDividerColor
+     * @param leftInsetTop    *
+     * @param leftInsetBottom *
+     * @param leftDividerWidth *
+     * @param leftDividerColor *
      */
     void onlyShowLeftDivider(int leftInsetTop, int leftInsetBottom, int leftDividerWidth, int leftDividerColor);
 
     /**
      * show right divider, and hide others
      *
-     * @param rightInsetTop
-     * @param rightInsetBottom
-     * @param rightDividerWidth
-     * @param rightDividerColor
+     * @param rightInsetTop    *
+     * @param rightInsetBottom *
+     * @param rightDividerWidth *
+     * @param rightDividerColor *
      */
     void onlyShowRightDivider(int rightInsetTop, int rightInsetBottom, int rightDividerWidth, int rightDividerColor);
 
@@ -308,6 +311,7 @@ public interface XILayout {
     void setLeftDividerAlpha(int dividerAlpha);
 
     /**
+     *
      * @param dividerAlpha [0, 255]
      */
     void setRightDividerAlpha(int dividerAlpha);
@@ -315,46 +319,70 @@ public interface XILayout {
     /**
      * only available before android L
      *
-     * @param color
+     * @param color color
      */
     void setOuterNormalColor(int color);
 
     /**
      * update left separator color
      *
-     * @param color
+     * @param color  color
      */
     void updateLeftSeparatorColor(int color);
 
     /**
      * update right separator color
      *
-     * @param color
+     * @param color   color
      */
     void updateRightSeparatorColor(int color);
 
     /**
      * update top separator color
      *
-     * @param color
+     * @param color    color
      */
     void updateTopSeparatorColor(int color);
 
     /**
      * update bottom separator color
      *
-     * @param color
+     * @param color     color
      */
     void updateBottomSeparatorColor(int color);
 
+    /**
+     * hasTopSeparator
+     *
+     * @return color
+     */
     boolean hasTopSeparator();
 
+    /**
+     * hasRightSeparator
+     *
+     * @return color
+     */
     boolean hasRightSeparator();
 
+    /**
+     * hasLeftSeparator
+     *
+     * @return color
+     */
     boolean hasLeftSeparator();
 
+    /**
+     * hasBottomSeparator
+     *
+     * @return color
+     */
     boolean hasBottomSeparator();
 
+    /**
+     * hasBorder
+     * @return boolean
+     */
     boolean hasBorder();
 
     /**
@@ -364,12 +392,24 @@ public interface XILayout {
      */
     void setBorderGradientColors(int borderGradientStartColor, int borderGradientEndColor, @GradientOrientation int orientation);
 
+    /**
+     * getBorderGradientStartColor
+     * @return int
+     */
     @ColorInt
     int getBorderGradientStartColor();
 
+    /**
+     * getBorderGradientEndColor
+     * @return int
+     */
     @ColorInt
     int getBorderGradientEndColor();
 
+    /**
+     * getBorderGradientOrientation
+     * @return int
+     */
     @GradientOrientation
     int getBorderGradientOrientation();
 

@@ -106,7 +106,14 @@ public interface XIRoundBackground {
      */
     void setPressedBackground(Drawable pressedBackground);
 
-    // 渐变色
+    /**
+     * 按压背景效果
+     * 渐变色
+     *
+     * @param startColor  开始颜色
+     * @param endColor    结束颜色
+     * @param orientation 0 横向（默认）， 1 竖向
+     */
     void setPressedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
     /**
@@ -128,7 +135,14 @@ public interface XIRoundBackground {
      */
     void setDisabledBackground(Drawable disabledBackground);
 
-    // 渐变色
+    /**
+     * 不可用背景效果
+     * 渐变色
+     *
+     * @param startColor  开始颜色
+     * @param endColor    结束颜色
+     * @param orientation 0 横向（默认）， 1 竖向
+     */
     void setDisabledBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
     /**
@@ -150,7 +164,14 @@ public interface XIRoundBackground {
      */
     void setCheckedBackground(Drawable checkedBackground);
 
-    // 渐变色
+    /**
+     * 选中背景效果
+     * 渐变色
+     *
+     * @param startColor  开始颜色
+     * @param endColor    结束颜色
+     * @param orientation 0 横向（默认）， 1 竖向
+     */
     void setCheckedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
     /**
@@ -172,7 +193,14 @@ public interface XIRoundBackground {
      */
     void setActivatedBackground(Drawable activateBackground);
 
-    // 渐变色
+    /**
+     * activated=true效果
+     * 渐变色
+     *
+     * @param startColor  开始颜色
+     * @param endColor    结束颜色
+     * @param orientation 0 横向（默认）， 1 竖向
+     */
     void setActivatedBackgroundGradient(int startColor, int endColor, @GradientOrientation int orientation);
 
     /**
@@ -190,18 +218,38 @@ public interface XIRoundBackground {
     void setActivatedBackgroundGradientEndColor(int endColor);
 
     /**
-     * 动态改变背景系列颜色值
+     * 设置普通背景色
      *
-     * @param color
+     * @param color 颜色值数组
      */
     void setNormalBackgroundColor(@ColorInt int color);
 
+    /**
+     * 设置正常背景渐变色开始颜色
+     *
+     * @param color setPressedBackgroundColor
+     */
     void setPressedBackgroundColor(@ColorInt int color);
 
+    /**
+     * 设置正常背景渐变色结束颜色
+     *
+     * @param color setActivatedBackgroundColor
+     */
     void setActivatedBackgroundColor(@ColorInt int color);
 
+    /**
+     * 设置正常背景渐变色结束颜色
+     *
+     * @param color setCheckedBackgroundColor
+     */
     void setCheckedBackgroundColor(@ColorInt int color);
 
+    /**
+     * 设置正常背景渐变色结束颜色
+     *
+     * @param color setDisabledBackgroundColor
+     */
     void setDisabledBackgroundColor(@ColorInt int color);
 
 
@@ -212,24 +260,68 @@ public interface XIRoundBackground {
      */
     void setBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setPressedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getPressedBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setActivatedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getActivatedBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setCheckedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getCheckedBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setDisabledBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
     @GradientOrientation
@@ -243,6 +335,11 @@ public interface XIRoundBackground {
     @Deprecated
     void setCubeFrontGradientColors(@ColorInt int... colors);
 
+    /**
+     * setCubeSidesGradientColors 多色随便加
+     *
+     * @param colors @Deprecated
+     */
     void setCubeSidesGradientColors(@ColorInt int... colors);
 
 
@@ -256,25 +353,92 @@ public interface XIRoundBackground {
      */
     void setCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
+    /**
+     * setCubeSidesBorderColor
+     *
+     * @param color int
+     */
     void setCubeSidesBorderColor(@ColorInt int color);
 
+    /**
+     * setCubeSidesBorderWidth
+     *
+     * @param width int
+     */
     void setCubeSidesBorderWidth(int width);
 
+    /**
+     * setPressedCubeSidesGradientColors
+     *
+     * @param colors int
+     */
     void setPressedCubeSidesGradientColors(@ColorInt int... colors);
 
+    /**
+     * setPressedCubeSidesHeight
+     *
+     * @param left  int size px
+     * @param back  int size px
+     * @param right int size px
+     * @param front int size px
+     */
     void setPressedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
+    /**
+     * setActivatedCubeSidesGradientColors
+     *
+     * @param colors int
+     */
     void setDisabledCubeSidesGradientColors(@ColorInt int... colors);
 
+    /**
+     * setDisabledCubeSidesHeight
+     *
+     * @param left  int size px
+     * @param back  int size px
+     * @param right int size px
+     * @param front int size px
+     */
     void setDisabledCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
+    /**
+     * setActivatedCubeSidesGradientColors
+     *
+     * @param colors int
+     */
     void setCheckedCubeSidesGradientColors(@ColorInt int... colors);
 
+    /**
+     * setCheckedCubeSidesHeight
+     *
+     * @param left  int size px
+     * @param back  int size px
+     * @param right int size px
+     * @param front int size px
+     */
     void setCheckedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
+    /**
+     * setActivatedCubeSidesGradientColors
+     *
+     * @param colors int
+     */
     void setActivatedCubeSidesGradientColors(@ColorInt int... colors);
 
+    /**
+     * setActivatedCubeSidesHeight
+     *
+     * @param left  int size px
+     * @param back  int size px
+     * @param right int size px
+     * @param front int size px
+     */
     void setActivatedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front);
 
+    /**
+     * clearBackgrounds
+     *
+     * @return XRoundBackgroundHelper
+     */
     XRoundBackgroundHelper clearBackgrounds();
 }

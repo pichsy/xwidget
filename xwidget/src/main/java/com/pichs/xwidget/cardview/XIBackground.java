@@ -151,28 +151,80 @@ public interface XIBackground {
      */
     void setBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setPressedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getPressedBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setActivatedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getActivatedBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setCheckedBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getCheckedBackgroundGradientOrientation();
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @param colors      颜色值数组
+     * @param orientation 渐变方向
+     */
     void setDisabledBackgroundGradientColors(@ColorInt int[] colors, @GradientOrientation int orientation);
 
+    /**
+     * 动态改变背景系列颜色值
+     *
+     * @return 颜色值数组
+     */
     @GradientOrientation
     int getDisabledBackgroundGradientOrientation();
 
+    /**
+     * 清除背景
+     */
     XBackgroundHelper clearBackgrounds();
 }
