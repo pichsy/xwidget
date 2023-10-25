@@ -1,6 +1,13 @@
-# xwidget
+# 碉堡了的基础组件库
 
-最喜欢的自定义控件，开发更加快乐。
+ 快乐的开发，是坚持的下去的动力源泉！
+
+### 好用的很，直接上车！
+- 还在为写布局太慢而困扰？还在为写的圆角而心烦？还在为各种渐变头疼？
+- 当你用了xwidget这个库，你会发现，**你直接飞起**
+- 圆角，阴影，按压效果，渐变色，属性一键实现。
+- 从此菜鸟变大神，无敌之路正式开始。
+
 
 ### 引入控件
 
@@ -16,10 +23,10 @@
 
       implementation 'com.gitee.pichs:xwidget:3.2.5'
 
-
 ### 3.x请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
 
 ## 3.x升级到 4.x指南
+
 - 全局搜索包名并替换 "com.pichs.common.widget." ->  "com.pichs.xwidget." 即可完成替换，非常的简单！
 - 示例：
 - ![](./uplibs.png)
@@ -77,7 +84,20 @@
 
 [下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/xwidget.apk)
 
+## 代码混淆
+
+    # 4.x版本混淆规则
+    -keep class com.pichs.xwidget.**{ *; }
+
+    --------------------或者--------------------
+
+    # 3.x版本混淆规则
+    -keep class com.pichs.common.widget.**{ *; }
+
+
 ## 升级日志
+
+### 4.0.1版本，添加混淆规则，打入aar包，你不在需要自己手动添加混淆规则了。
 
 ### 4.0.0版本 破坏升级，3.0版本的请移步 gitee 地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
 
