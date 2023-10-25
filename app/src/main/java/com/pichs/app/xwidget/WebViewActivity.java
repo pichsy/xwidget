@@ -5,7 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.pichs.common.widget.webview.XWebView;
+import com.pichs.xwidget.webview.XWebView;
 
 public class WebViewActivity extends AppCompatActivity {
 

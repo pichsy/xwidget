@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.pichs.common.widget.view.XScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.pichs.xwidget.view.XScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     android:background="#A1FBF2"
     android:fitsSystemWindows="false">
 
-    <com.pichs.common.widget.flowlayout.XFlowLayout
+    <com.pichs.xwidget.flowlayout.XFlowLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="start"
@@ -16,18 +16,18 @@
         app:xp_childVerticalSpacing="16dp"
         tools:context=".MainActivity">
 
-        <com.pichs.common.widget.view.XStatusBarView
+        <com.pichs.xwidget.view.XStatusBarView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#f00" />
 
-        <com.pichs.common.widget.view.XTextView
+        <com.pichs.xwidget.view.XTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="最上面红色是XStatusBarView，会自动计算statusBar高度"
             android:textColor="#000" />
 
-        <com.pichs.common.widget.cardview.XCardButton
+        <com.pichs.xwidget.cardview.XCardButton
             android:id="@+id/btn1"
             android:layout_width="180dp"
             android:layout_height="40dp"
@@ -49,7 +49,7 @@
             app:xp_borderWidth="4dp"
             app:xp_radius="10dp" />
 
-        <com.pichs.common.widget.view.XButton
+        <com.pichs.xwidget.view.XButton
             android:id="@+id/closeFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:padding="10dp"
             android:text="关闭字体变化" />
 
-        <com.pichs.common.widget.view.XButton
+        <com.pichs.xwidget.view.XButton
             android:id="@+id/openFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,7 +69,7 @@
             android:padding="10dp"
             android:text="打开字体变化" />
 
-        <com.pichs.common.widget.view.XTextView
+        <com.pichs.xwidget.view.XTextView
             android:id="@+id/tv3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btn1"
             app:xp_ignoreGlobalTypeface="true" />
 
-        <com.pichs.common.widget.shinebutton.ShineButton
+        <com.pichs.xwidget.shinebutton.ShineButton
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
@@ -95,7 +95,7 @@
             app:xp_shine_normal_color="#C71FEA"
             app:xp_shine_small_shine_color="#3CC63C" />
 
-        <com.pichs.common.widget.checkbox.XCheckBox
+        <com.pichs.xwidget.checkbox.XCheckBox
             android:id="@+id/xchekbox"
             android:layout_width="44dp"
             android:layout_height="44dp"
@@ -111,7 +111,7 @@
             app:xp_pressedAlpha=".7"
             app:xp_radius="22dp" />
 
-        <com.pichs.common.widget.cardview.XCardTextView
+        <com.pichs.xwidget.cardview.XCardTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:xp_pressedTextColor="#ddd" />
@@ -133,7 +133,7 @@
         <!--            app:xp_pressedTextColor="#f00"-->
         <!--            app:xp_radius="1dp" />-->
 
-        <com.pichs.common.widget.cardview.XCardButton
+        <com.pichs.xwidget.cardview.XCardButton
             android:layout_width="120dp"
             android:layout_height="44dp"
             android:background="#673AB7"
@@ -144,7 +144,7 @@
             app:xp_pressedAlpha=".5"
             app:xp_radius="8dp" />
 
-        <com.pichs.common.widget.roundview.XRoundTextView
+        <com.pichs.xwidget.roundview.XRoundTextView
             android:id="@+id/web_view"
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -156,7 +156,7 @@
             app:xp_pressedAlpha="0.5"
             app:xp_radius="25dp" />
 
-        <com.pichs.common.widget.cardview.XCardConstraintLayout
+        <com.pichs.xwidget.cardview.XCardConstraintLayout
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:alpha="1"
@@ -169,7 +169,7 @@
             app:xp_radius="20dp">
 
 
-            <com.pichs.common.widget.view.XTextView
+            <com.pichs.xwidget.view.XTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果Card系列具有圆角剪裁效果"
@@ -177,9 +177,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-        </com.pichs.common.widget.cardview.XCardConstraintLayout>
+        </com.pichs.xwidget.cardview.XCardConstraintLayout>
 
-        <com.pichs.common.widget.view.XTextView
+        <com.pichs.xwidget.view.XTextView
             android:layout_width="220dp"
             android:layout_height="50dp"
             android:gravity="center"
@@ -188,7 +188,7 @@
             android:textSize="16sp"
             app:xp_backgroundGradientColors="#ff0,#fff,#9f1f,#000000,#f00,#0ff,#0f0,#00f" />
 
-        <com.pichs.common.widget.roundview.XRoundTextView
+        <com.pichs.xwidget.roundview.XRoundTextView
             android:id="@+id/round_layout"
             android:layout_width="120dp"
             android:layout_height="50dp"
@@ -208,7 +208,7 @@
             app:xp_pressedCubeSidesGradientColors="#081"
             app:xp_radius="25dp" />
 
-        <com.pichs.common.widget.roundview.XRoundTextView
+        <com.pichs.xwidget.roundview.XRoundTextView
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="#A6DED9"
@@ -225,7 +225,7 @@
             app:xp_pressedCubeLeftHeight="3dp"
             app:xp_radius="25dp" />
 
-        <com.pichs.common.widget.view.XTextView
+        <com.pichs.xwidget.view.XTextView
             android:id="@+id/tv_pressed_scale"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -238,7 +238,7 @@
             app:xp_pressedScale="1.06"
             app:xp_radius="25dp" />
 
-        <com.pichs.common.widget.view.XTextView
+        <com.pichs.xwidget.view.XTextView
             android:id="@+id/tv_pressed_scale2"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -251,7 +251,7 @@
             app:xp_pressedScale="0.94"
             app:xp_radius="25dp" />
 
-        <com.pichs.common.widget.cardview.XCardConstraintLayout
+        <com.pichs.xwidget.cardview.XCardConstraintLayout
             android:id="@+id/cl_colorful_border"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -268,7 +268,7 @@
             app:cardCornerRadius="25dp"
             app:cardElevation="5dp" />
 
-        <com.pichs.common.widget.roundview.XRoundConstraintLayout
+        <com.pichs.xwidget.roundview.XRoundConstraintLayout
             android:id="@+id/xlc_new_round"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -278,7 +278,7 @@
             app:xp_borderWidth="1dp"
             app:xp_radius="10dp" />
 
-        <com.pichs.common.widget.roundview.XRoundTextView
+        <com.pichs.xwidget.roundview.XRoundTextView
             android:id="@+id/iv_round"
             android:layout_width="180dp"
             android:layout_height="40dp"
@@ -292,7 +292,7 @@
             app:xp_pressedCubeFrontHeight="1dp"
             app:xp_radius="25dp" />
 
-        <com.pichs.common.widget.ratingbar.XRatingBar
+        <com.pichs.xwidget.ratingbar.XRatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:xp_borderColor="#BF961A"
@@ -305,7 +305,7 @@
             app:xp_starSize="30dp"
             app:xp_starStep="1.0" />
 
-        <com.pichs.common.widget.input.InputLayout
+        <com.pichs.xwidget.input.InputLayout
             android:id="@+id/input_layout"
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -325,7 +325,7 @@
             app:xp_radius="8dp"
             app:xp_textPassword="false" />
 
-        <com.pichs.common.widget.layout.PressScaleLayout
+        <com.pichs.xwidget.layout.PressScaleLayout
             android:layout_width="300dp"
             android:layout_height="100dp"
             android:background="#A7A7CF"
@@ -334,7 +334,7 @@
             app:xp_pressedScale="0.5"
             app:xp_pressedScaleAnimDuration="90">
 
-            <com.pichs.common.widget.cardview.XCardTextView
+            <com.pichs.xwidget.cardview.XCardTextView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:gravity="center"
@@ -344,12 +344,12 @@
                 app:xp_backgroundGradientColors="#9f1,#42f"
                 app:xp_radius="8dp" />
 
-        </com.pichs.common.widget.layout.PressScaleLayout>
+        </com.pichs.xwidget.layout.PressScaleLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="10dp" />
 
-    </com.pichs.common.widget.flowlayout.XFlowLayout>
+    </com.pichs.xwidget.flowlayout.XFlowLayout>
 
-</com.pichs.common.widget.view.XScrollView>
+</com.pichs.xwidget.view.XScrollView>

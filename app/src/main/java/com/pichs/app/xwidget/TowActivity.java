@@ -13,11 +13,11 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pichs.common.widget.nestedscroll.XNestedBottomAreaBehavior;
-import com.pichs.common.widget.nestedscroll.XNestedScrollLayout;
-import com.pichs.common.widget.nestedscroll.XNestedTopAreaBehavior;
-import com.pichs.common.widget.nestedscroll.XNestedTopDelegateLayout;
-import com.pichs.common.widget.nestedscroll.XNestedTopRecyclerView;
+import com.pichs.xwidget.nestedscroll.XNestedBottomAreaBehavior;
+import com.pichs.xwidget.nestedscroll.XNestedScrollLayout;
+import com.pichs.xwidget.nestedscroll.XNestedTopAreaBehavior;
+import com.pichs.xwidget.nestedscroll.XNestedTopDelegateLayout;
+import com.pichs.xwidget.nestedscroll.XNestedTopRecyclerView;
 
 public class TowActivity extends AppCompatActivity {
 

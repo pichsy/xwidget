@@ -1,18 +1,40 @@
-# xwidget
+# 碉堡了的基础组件库
 
-1. 最喜欢的自定义控件，开发更加快乐。
-2. 最新版4.x移至 github=>[https://github.com/pichsy/xwidget](https://github.com/pichsy/xwidget)
-3. 3.x版本不建议升级到4.x版本。3.2.5为最新稳定版本。
+ 快乐的开发，是坚持的下去的动力源泉！
+
+### 好用的很，直接上车！
+- 还在为写布局太慢而困扰？还在为写的圆角而心烦？还在为各种渐变头疼？
+- 当你用了xwidget这个库，你会发现，**你直接飞起**
+- 圆角，阴影，按压效果，渐变色，属性一键实现。
+- 从此菜鸟变大神，无敌之路正式开始。
+
 
 ### 引入控件
 
-最新版本:  [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
+新版仓库移至mavenCenter
 
-        implementation 'com.gitee.pichs:xwidget:3.2.5'
+#### 4.x 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
+
+      implementation 'com.gitee.pichs:xwidget:4.0.1'
+
+### 4.x破坏性升级，仓库移至mavenCenter， 控件包名改为 com.pichs.xwidget.xxxx
+
+#### 3.x 最新版本: [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
+
+      implementation 'com.gitee.pichs:xwidget:3.2.5'
+
+### 3.x请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
+
+## 虽然是破坏性，但破坏性小，仍推荐升级到4.0及以上版本
+## 3.x升级到 4.x指南
+
+- 全局搜索包名并替换 "com.pichs.common.widget." ->  "com.pichs.xwidget." 即可完成替换，非常的简单！
+- 示例：
+- ![](./uplibs.png)
 
 ## 最好用基础组件库，超级轻量级。
 
-- 特色杜绝属性冲突==属性完美复用，属性前缀 ‘xp_’ ,简短快速。
+- 特色杜绝属性冲突，属性完美复用，属性前缀 ‘xp_’ ,简短快速。
 
 - 圆角，外阴影，圆头跟随高度宽度，渐变色背景->双色渐变：top->bottom，left->right,TL->BR, BL->TR
 
@@ -20,7 +42,7 @@
 
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
-## 持续维护，已更新3年了。持续增强更有用的功能，杜绝臃肿。
+### 持续维护，已更新四年了。持续增强更有用的功能，简单而强大。
 
 - 如果用起来不爽，速来提issue
 
@@ -59,34 +81,57 @@
 
 ![](shotcut_2.png)
 
+## 下载体验
+
+[下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/xwidget.apk)
+
+## 代码混淆
+
+    # 4.x版本混淆规则
+    -keep class com.pichs.xwidget.**{ *; }
+
+    --------------------或者--------------------
+
+    # 3.x版本混淆规则
+    -keep class com.pichs.common.widget.**{ *; }
+
+
 ## 升级日志
 
+### 4.0.1版本，添加混淆规则，打入aar包，你不在需要自己手动添加混淆规则了。
+
+### 4.0.0版本 破坏升级，3.0版本的请移步 gitee 地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget)
+
+- gitee地址仓库发布在jitpack上
+- 新的仓库转移到mavenCenter上
+
 ### 3.2.5版本 推荐升级（兼容升级）
+
 - 颜色默认值不再判断为0，改为0x0000000f(15)-该值比较罕见，不会影响到正常的颜色值。
 - 增加新的控件 PressedScaleLayout，按压缩放子控件，可以设置缩放比例，缩放动画时间。
-```xml
-    <com.pichs.common.widget.layout.PressScaleLayout
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:background="#A7A7CF"
-            android:clickable="true"
-            android:padding="16dp"
-            app:xp_pressedScale="0.5"
-            app:xp_pressedScaleAnimDuration="90">
 
-            <com.pichs.common.widget.cardview.XCardTextView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:text="我是子控件"
-                android:textColor="#fff"
-                android:textSize="10dp"
-                app:xp_backgroundGradientColors="#9f1,#42f"
-                app:xp_radius="8dp" />
+            <com.pichs.xwidget.layout.PressScaleLayout
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:background="#A7A7CF"
+                android:clickable="true"
+                android:padding="16dp"
+                app:xp_pressedScale="0.5"
+                app:xp_pressedScaleAnimDuration="90">
+          
+                <com.pichs.xwidget.cardview.XCardTextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="我是子控件"
+                    android:textColor="#fff"
+                    android:textSize="10dp"
+                    app:xp_backgroundGradientColors="#9f1,#42f"
+                    app:xp_radius="8dp" />
+          
+            </com.pichs.xwidget.layout.PressScaleLayout>
 
-        </com.pichs.common.widget.layout.PressScaleLayout>
 
-```
 - 修复InputLayout close图标显示不正常的问题
 - 基础控件都增加了按压事件回调 (XView...等).setOnPressedStateListener(isPressed ->{})
 
@@ -119,7 +164,8 @@
 
 - 优化属性的使用
 
-- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(xp_backgroundGradientStartColor...)对应的背景色。
+- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(
+  xp_backgroundGradientStartColor...)对应的背景色。
 
 - 总之用起来更舒服了，代码也可以减少了。
 
@@ -157,7 +203,8 @@
 
 - ~~xp_pressedCubeFrontGradientColors + xp_pressedBackgroundGradientColors~~
 
-- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(xp_backgroundGradientStartColor...)对应的背景色。
+- xp_pressedCubeFrontHeight="2dp" 现在按压及其他状态效果只需要设置对应的height也可以了，背景色默认会使用xp_backgroundGradientColors/(
+  xp_backgroundGradientStartColor...)对应的背景色。
 
 - 生僻单词：cube：立方体 + front: 前面 = cubeFront:立方体前面 (立方体正对着你的那个面)
 
@@ -194,6 +241,5 @@
 
 ## 更新计划
 
-1. 优化 cube属性，使其更加全能，增加更多立体按钮效果，包括凹陷按钮效果
-2. 增加 XRadioGroup, 直属子类可用XCheckBox，并且其他布局随意添加不参加单选，只做辅助显示。
-3. XWebView优化，删除大量设置，只保留必要设置（javascript支持，自适应屏幕）。其他设置由用户自行设置和扩展。
+1. ~~优化 cube属性，使其更加全能，增加更多立体按钮效果，包括凹陷按钮效果~~ 💯✔️
+2. 增加 XRadioGroup, 直属子类可用XCheckBox，并且其他布局随意添加不参加单选，只做辅助显示。**🦉doing.......**

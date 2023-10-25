@@ -2,7 +2,7 @@ package com.pichs.app.xwidget;
 
 import android.app.Application;
 
-import com.pichs.common.widget.utils.XTypefaceHelper;
+import com.pichs.xwidget.utils.XTypefaceHelper;
 
 /**
  * @Description:

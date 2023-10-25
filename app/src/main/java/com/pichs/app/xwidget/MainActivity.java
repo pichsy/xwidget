@@ -7,22 +7,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.pichs.common.widget.cardview.GradientOrientation;
-import com.pichs.common.widget.cardview.XCardButton;
-import com.pichs.common.widget.cardview.XCardConstraintLayout;
-import com.pichs.common.widget.utils.XBackgroundHelper;
-import com.pichs.common.widget.utils.XColorHelper;
-import com.pichs.common.widget.utils.XDrawableHelper;
-import com.pichs.common.widget.utils.XStatusBarHelper;
-import com.pichs.common.widget.utils.XTypefaceHelper;
-import com.pichs.common.widget.view.OnPressedStateListener;
-import com.pichs.common.widget.view.XButton;
-import com.pichs.common.widget.view.XTextView;
-
-import org.w3c.dom.Text;
+import com.pichs.xwidget.cardview.GradientOrientation;
+import com.pichs.xwidget.cardview.XCardButton;
+import com.pichs.xwidget.cardview.XCardConstraintLayout;
+import com.pichs.xwidget.utils.XStatusBarHelper;
+import com.pichs.xwidget.utils.XTypefaceHelper;
+import com.pichs.xwidget.view.XButton;
+import com.pichs.xwidget.view.XTextView;
 
 public class MainActivity extends AppCompatActivity {
 

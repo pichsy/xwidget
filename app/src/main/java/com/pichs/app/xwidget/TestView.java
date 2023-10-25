@@ -14,7 +14,7 @@ import android.view.ViewOutlineProvider;
 
 import androidx.annotation.Nullable;
 
-import com.pichs.common.widget.view.XView;
+import com.pichs.xwidget.view.XView;
 
 /**
  * @Description:
