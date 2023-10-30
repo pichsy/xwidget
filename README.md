@@ -1,12 +1,12 @@
 # 碉堡了的基础组件库
 
- 快乐的开发，是坚持的下去的动力源泉！
+ 用心创造快乐！
 
 ### 好用的很，直接上车！
 - 还在为写布局太慢而困扰？还在为写的圆角而心烦？还在为各种渐变头疼？
 - 当你用了xwidget这个库，你会发现，**你直接飞起**
 - 圆角，阴影，按压效果，渐变色，属性一键实现。
-- 从此菜鸟变大神，无敌之路正式开始。
+- 从此菜鸟变大神，超神之路正式开始。
 
 
 ### 引入控件
@@ -86,6 +86,11 @@
 
 ![](shotcut_2.png)
 
+#### 录屏
+
+<video src='./demo.mp4' controls='' width='300' height='400'></video>
+
+
 ## 下载体验
 
 [下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/xwidget.apk)
@@ -110,8 +115,8 @@
 - 破坏升级，控件包名由原来（com.pichs.common.widget.xxx）改为现在的（com.pichs.xwidget.xxxx），其他破坏暂无。
 - 3.2.5版本的请移步 gitee 地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget/tree/3.2.5/)
 
-- gitee地址仓库发布在jitpack上
-- 新的仓库转移到mavenCenter上
+- 3.2.5版本：仓库地址发布在jitpack上（仓库劣势，看aar源码费劲）
+- 4.0.0及以上版本（新版） 仓库转移到mavenCenter上（仓库劣势，暂无）
 
 ### 3.2.5版本 推荐升级（兼容升级）
 
