@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XCardButton;
 import com.pichs.xwidget.cardview.XCardConstraintLayout;
+import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
+import com.pichs.xwidget.checkbox.XCheckBox;
 import com.pichs.xwidget.utils.XStatusBarHelper;
 import com.pichs.xwidget.utils.XTypefaceHelper;
 import com.pichs.xwidget.view.XButton;
@@ -74,8 +76,19 @@ public class MainActivity extends AppCompatActivity {
 
         XButton closeFont = findViewById(R.id.closeFont);
         XButton openFont = findViewById(R.id.openFont);
+        XCheckBox xCheckBox = findViewById(R.id.cbox_ignore);
 
-        closeFont.setOnClickListener(v -> XTypefaceHelper.closeTypeface(this));
+        xCheckBox.setOnCheckedChangeListener((view, isChecked) -> {
+            Toast.makeText(getApplicationContext(), (isChecked ? "选中了：" : " 取消选中：") + view.getId(), Toast.LENGTH_SHORT).show();
+        });
+
+        closeFont.setOnClickListener(v -> {
+            XTypefaceHelper.closeTypeface(this);
+
+            closeFont.setChecked(!closeFont.isChecked());
+
+        });
+
         openFont.setOnClickListener(v -> XTypefaceHelper.openTypeface(this));
     }
 

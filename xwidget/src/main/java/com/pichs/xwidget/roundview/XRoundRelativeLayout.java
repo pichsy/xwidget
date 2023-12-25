@@ -3,6 +3,7 @@ package com.pichs.xwidget.roundview;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.widget.Checkable;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
@@ -16,7 +17,7 @@ import com.pichs.xwidget.utils.XRoundBackgroundHelper;
 /**
  * XRoundRelativeLayout
  */
-public class XRoundRelativeLayout extends RelativeLayout implements XIRoundBackground, XIAlpha {
+public class XRoundRelativeLayout extends RelativeLayout implements XIRoundBackground, Checkable, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -41,9 +42,9 @@ public class XRoundRelativeLayout extends RelativeLayout implements XIRoundBackg
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
     }
 
-     @Override
+    @Override
     public void setNormalAlpha(float alpha) {
-       xAlphaHelper.setNormalAlpha(alpha);
+        xAlphaHelper.setNormalAlpha(alpha);
     }
 
     @Override
@@ -74,13 +75,13 @@ public class XRoundRelativeLayout extends RelativeLayout implements XIRoundBackg
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     @Override
@@ -307,8 +308,10 @@ public class XRoundRelativeLayout extends RelativeLayout implements XIRoundBackg
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
+
     /**
      * 请使用： {@link #setCubeSidesGradientColors(int...)}
+     *
      * @param colors @Deprecated
      */
     @Deprecated
@@ -354,27 +357,60 @@ public class XRoundRelativeLayout extends RelativeLayout implements XIRoundBackg
 
     @Override
     public void setCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setPressedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setPressedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setPressedCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setDisabledCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setDisabledCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setDisabledCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setCheckedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setCheckedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setCheckedCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setActivatedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setActivatedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setActivatedCubeSidesHeight(left, back, right, front);
+    }
+
+    protected boolean mChecked = false;
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {
+            android.R.attr.state_checked
+    };
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
     }
 }
 

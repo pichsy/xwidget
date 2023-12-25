@@ -13,16 +13,20 @@ import androidx.annotation.Nullable;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XCardImageView;
+import com.pichs.xwidget.radiobutton.XRadioButtonCheckable;
 
 /**
  * 自定义CheckBox，使用更舒适
+ * 复选框
+ * 放在 XRadioGroup 中会自动变成单选框
  */
 public class XCheckBox extends XCardImageView implements Checkable, View.OnClickListener {
 
-    private Drawable checkedDrawable;
-    private Drawable normalDrawable;
-    private boolean isChecked = false;
-    private boolean mCanClick = true;
+    protected Drawable checkedDrawable;
+    protected Drawable normalDrawable;
+    protected boolean isChecked = false;
+    protected boolean mCanClick = true;
+    protected OnCheckedChangeListener mChangeListener;
 
     public XCheckBox(@NonNull Context context) {
         this(context, null);
@@ -52,6 +56,11 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
         super.setOnClickListener(this);
     }
 
+    /**
+     * 设置选中状态
+     *
+     * @param checkedDrawable 选中状态的图片
+     */
     public void setCheckedDrawable(Drawable checkedDrawable) {
         this.checkedDrawable = checkedDrawable;
         if (this.isChecked) {
@@ -100,6 +109,12 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
         return super.isClickable();
     }
 
+    /**
+     * 设置未选中状态的图片
+     *
+     * @param drawable the Drawable to set, or {@code null} to clear the
+     *                 content
+     */
     @Override
     public void setImageDrawable(@Nullable Drawable drawable) {
         this.normalDrawable = drawable;
@@ -108,18 +123,31 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
         }
     }
 
+    /**
+     * 设置未选中状态的图片
+     *
+     * @param drawable the Drawable to set, or {@code null} to clear the
+     *                 content
+     * {@link #setImageDrawable(Drawable)}
+     */
     public void setNormalImageDrawable(@Nullable Drawable drawable) {
         setImageDrawable(drawable);
     }
 
     /**
      * @hide 隐藏方法
+     * @param l 点击事件监听器
      */
     @Deprecated
     @Override
     public final void setOnClickListener(@Nullable OnClickListener l) {
+        super.setOnClickListener(l);
     }
 
+    /**
+     *  选中
+     * @param checked checked
+     */
     @Override
     public void setChecked(boolean checked) {
         if (this.isChecked == checked) {
@@ -131,21 +159,30 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
         } else {
             super.setImageDrawable(this.normalDrawable);
         }
-        if (this.mChangeListener != null) {
-            this.mChangeListener.onCheckedChanged(this.isChecked);
+        if (mChangeListener != null) {
+            mChangeListener.onCheckedChanged(this, this.isChecked);
         }
     }
 
+    /**
+     * @return 选中状态
+     */
     @Override
     public boolean isChecked() {
         return this.isChecked;
     }
 
+    /**
+     * 切换选中状态
+     */
     @Override
     public void toggle() {
         setChecked(!this.isChecked);
     }
 
+    /**
+     * 点击事件
+     */
     @Override
     public void onClick(View v) {
         Log.d("XCheckBox", "mCanClick: " + mCanClick);
@@ -154,19 +191,13 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
         }
     }
 
-    private OnCheckedChangeListener mChangeListener;
-
     /**
      * 选中时间监听
      *
-     * @param listener
+     * @param listener listener
      */
     public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
         this.mChangeListener = listener;
     }
 
-
-    public interface OnCheckedChangeListener {
-        void onCheckedChanged(boolean isChecked);
-    }
 }

@@ -3,6 +3,7 @@ package com.pichs.xwidget.view;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.widget.Checkable;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
@@ -16,7 +17,7 @@ import com.pichs.xwidget.utils.XBackgroundHelper;
 /**
  * XLinearLayout
  */
-public class XLinearLayout extends LinearLayout implements XIBackground, XIAlpha, IPressedStateHelper {
+public class XLinearLayout extends LinearLayout implements XIBackground, Checkable, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
 
@@ -268,5 +269,39 @@ public class XLinearLayout extends LinearLayout implements XIBackground, XIAlpha
     @Override
     public void setOnPressedStateListener(OnPressedStateListener listener) {
         xAlphaHelper.setOnPressedStateListener(listener);
+    }
+
+
+    protected boolean mChecked = false;
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {
+            android.R.attr.state_checked
+    };
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
     }
 }

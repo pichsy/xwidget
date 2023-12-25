@@ -1,13 +1,13 @@
 # 碉堡了的基础组件库
 
- 用心创造快乐！
+用心创造快乐！
 
 ### 好用的很，直接上车！
+
 - 还在为写布局太慢而困扰？还在为写的圆角而心烦？还在为各种渐变头疼？
 - 当你用了xwidget这个库，你会发现，**你直接飞起**
 - 圆角，阴影，按压效果，渐变色，属性一键实现。
 - 从此菜鸟变大神，超神之路正式开始。
-
 
 ### 引入控件
 
@@ -15,9 +15,7 @@
 
 ### 4.x 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:4.0.1'
-
-
+      implementation 'com.gitee.pichs:xwidget:4.1.0'
 
 ### 3.x 最新版本: [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
@@ -25,17 +23,17 @@
 
 ### 3.2.5版本源码请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget/tree/3.2.5/)
 
-
-
 ### 4.x为 小破坏性升级 ，仓库移至mavenCenter
+
 - 控件包名改为 `com.pichs.xwidget.xxxx`
+
 ### 虽然是破坏性，但破坏性小，仍推荐升级到4.0及以上版本
 
 ## 3.x升级到 4.x指南
 
 - 全局搜索包名并替换 "com.pichs.common.widget." ->  "com.pichs.xwidget." 即可完成替换，非常的简单！
 - 示例：
-- ![](./uplibs.png)
+- ![](./imgs/uplibs.png)
 
 ## 最好用基础组件库，超级轻量级。
 
@@ -84,12 +82,10 @@
 
 #### 看效果
 
-![](shotcut_2.png)
+![](./imgs/shotcut_2.png)
 
 #### 录屏
-
-<video src='./demo.mp4' controls='' width='300' height='400'></video>
-
+- ![](./imgs/video.gif)
 
 ## 下载体验
 
@@ -105,13 +101,86 @@
     # 3.x版本混淆规则
     -keep class com.pichs.common.widget.**{ *; }
 
-
 ## 升级日志
 
+### 4.1.0版本
+- XView系列，全系实现Checkable接口，xp_checke...系列属性全部生效
+- 增加 X...RadioGroup系列,可作为单选组容器
+- 增加 XRadio....系列，可作为单选组子控件
+- 修改 XCheckBox的监听回调中的参数，第一个参数改为顶层View。
+- 增加XRadio...子控件系列 属性 xp_ignore_radio_group ,添加此属性可以忽略父控件的单选组效果，即不参与单选组的单选效果。
+- 使用手册：
+1. X...RadioGroup系列 都是继承自'父View'控件属性方式完全一致，只是增加了单选组效果，其他属性完全一致。
+2. XRadio...系列 都是继承自原'子View'控件属性方式完全一致，只是增加了单选组效果，其他属性完全一致。
+3. XRadio...系列 可以单独使用，效果和继承的控件一致且效果一样
+4. X...RadioGroup系列 可以单独使用，效果和继承的控件一致且效果一样
+5. 只有X...RadioGroup系列 和 XRadio...系列 配合使用才能实现单选效果。
+   - 使用示例：
+  
+     ```xml
+             <com.pichs.xwidget.radiogroup.XCardLinearRadioGroup
+                 android:layout_width="300dp"
+                 android:layout_height="wrap_content"
+                 android:background="#fff"
+                 android:orientation="vertical"
+                 android:padding="12dp"
+                 app:xp_radius="30dp"
+                 app:xp_shadowAlpha="1"
+                 app:xp_shadowColor="#000"
+                 app:xp_shadowElevation="5dp">
+  
+  
+                 <com.pichs.xwidget.radiobutton.XRadioCardButton
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:background="#CBCBD3"
+                     android:padding="12dp"
+                     android:shadowColor="#3838EF"
+                     android:text="XRadioCardButton"
+                     android:textColor="#333"
+                     android:textSize="15sp"
+                     app:xp_checkedBackground="#563CF3"
+                     app:xp_checkedTextColor="#fff"
+                     app:xp_isRadiusAdjustBounds="true"
+                     app:xp_shadowElevation="3dp" />
+  
+                 <com.pichs.xwidget.radiobutton.XRadioImageView
+                     android:layout_width="40dp"
+                     android:layout_height="40dp"
+                     android:layout_marginTop="12dp"
+                     android:src="@drawable/ic_agree_unckecked"
+                     app:xp_checked_src="@drawable/ic_agree_checked" />
+  
+                 <com.pichs.xwidget.radiobutton.XRadioCardLinearLayout
+                     android:layout_width="200dp"
+                     android:layout_height="40dp"
+                     android:background="#DADAEC"
+                     android:gravity="center"
+                     app:xp_checkedBackground="#BE0FD1"
+                     app:xp_radius="20dp">
+  
+                     <androidx.appcompat.widget.AppCompatTextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                         android:text="XRadioCardLinearLayout" />
+  
+                 </com.pichs.xwidget.radiobutton.XRadioCardLinearLayout>
+             </com.pichs.xwidget.radiogroup.XCardLinearRadioGroup>
+  
+  
+     ```
+
+- 示例效果
+- ![](./imgs/radio.gif)
+
+
 ### 4.0.1版本
+
 - 添加混淆规则，打入aar包，你不在需要自己手动添加混淆规则了。
 
 ### 4.0.0版本
+
 - 破坏升级，控件包名由原来（com.pichs.common.widget.xxx）改为现在的（com.pichs.xwidget.xxxx），其他破坏暂无。
 - 3.2.5版本的请移步 gitee 地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget/tree/3.2.5/)
 
@@ -254,5 +323,7 @@
 
 ## 更新计划
 
+- 已全部完成
+
 1. ~~优化 cube属性，使其更加全能，增加更多立体按钮效果，包括凹陷按钮效果~~ 💯✔️
-2. 增加 XRadioGroup, 直属子类可用XCheckBox，并且其他布局随意添加不参加单选，只做辅助显示。**🦉doing.......**
+2. ~~增加 X...RadioGroup, 直属子类可用XRadio...子控件，并且其他布局随意添加不参加单选，只做辅助显示。~~  💯✔️

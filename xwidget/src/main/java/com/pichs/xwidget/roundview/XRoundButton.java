@@ -3,6 +3,7 @@ package com.pichs.xwidget.roundview;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -18,7 +19,7 @@ import com.pichs.xwidget.utils.XTextViewHelper;
 /**
  * XRoundButton 自定义基类
  */
-public class XRoundButton extends AppCompatButton implements XIRoundBackground, XITextView, XIAlpha {
+public class XRoundButton extends AppCompatButton implements XIRoundBackground, Checkable, XITextView, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -415,5 +416,38 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
     @Override
     public void setActivatedCubeSidesHeight(int left, int back, int right, int front) {
         backgroundHelper.setActivatedCubeSidesHeight(left, back, right, front);
+    }
+
+    protected boolean mChecked = false;
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {
+            android.R.attr.state_checked
+    };
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
     }
 }

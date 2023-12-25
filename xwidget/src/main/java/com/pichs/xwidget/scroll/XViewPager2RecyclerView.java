@@ -44,7 +44,7 @@ public class XViewPager2RecyclerView extends RecyclerView {
                     //如果是纵向滑动，告知父布局不进行时间拦截，交由子布局消费，　requestDisallowInterceptTouchEvent(true)
                     getParent().requestDisallowInterceptTouchEvent(canScrollHorizontally(startX - endX));
                 } else {
-                    getParent().requestDisallowInterceptTouchEvent(canScrollVertically(startX - endX));
+                    getParent().requestDisallowInterceptTouchEvent(canScrollVertically(startY- endY));
                 }
                 break;
             case MotionEvent.ACTION_UP:

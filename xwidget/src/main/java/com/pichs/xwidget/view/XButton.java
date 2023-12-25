@@ -3,6 +3,7 @@ package com.pichs.xwidget.view;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -18,7 +19,7 @@ import com.pichs.xwidget.utils.XTextViewHelper;
 /**
  * XButton
  */
-public class XButton extends AppCompatButton implements XIBackground, XITextView, XIAlpha, IPressedStateHelper {
+public class XButton extends AppCompatButton implements XIBackground, Checkable, XITextView, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -48,14 +49,15 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -287,7 +289,7 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
 
     @Override
     public void setNormalAlpha(float alpha) {
-       xAlphaHelper.setNormalAlpha(alpha);
+        xAlphaHelper.setNormalAlpha(alpha);
     }
 
     @Override
@@ -318,6 +320,37 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     @Override
     public void setOnPressedStateListener(OnPressedStateListener listener) {
         xAlphaHelper.setOnPressedStateListener(listener);
+    }
+    protected boolean mChecked = false;
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {
+            android.R.attr.state_checked
+    };
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
     }
 }
 

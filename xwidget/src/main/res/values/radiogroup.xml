@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="xp_ignore_radio_group" format="boolean" />
+
+    <declare-styleable name="XRadioItem">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioImageView">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioCardButton">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioCardConstraintLayout">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioCardLinearLayout">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioCardFrameLayout">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioRoundButton">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioRoundConstraintLayout">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioRoundLinearLayout">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+    <declare-styleable name="XRadioRoundFrameLayout">
+        <attr name="xp_ignore_radio_group" />
+    </declare-styleable>
+
+</resources>
