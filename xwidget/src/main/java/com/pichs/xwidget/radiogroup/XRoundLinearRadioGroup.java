@@ -47,4 +47,17 @@ public class XRoundLinearRadioGroup extends XRoundLinearLayout {
             mRadioGroupHelper.onViewRemoved(view);
         }
     }
+
+
+    public void select(int i) {
+        if (mRadioGroupHelper != null) {
+            mRadioGroupHelper.select(i);
+        }
+    }
+
+    public void select(View child){
+        if (mRadioGroupHelper!=null){
+            mRadioGroupHelper.select(child);
+        }
+    }
 }

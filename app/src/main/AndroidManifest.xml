@@ -2,22 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pichs.app.xwidget">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
     <application
         android:name=".App"
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:extractNativeLibs="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Xwidget">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Xwidget"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name=".ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +31,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".TowActivity" />
-        <activity android:name=".WebViewActivity" />
+        <activity android:name=".ui.web.WebViewActivity" />
+        <activity android:name=".MainActivity" />
+
     </application>
 
 </manifest>

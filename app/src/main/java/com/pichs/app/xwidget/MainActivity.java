@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.pichs.app.xwidget.ui.web.WebViewActivity;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XCardButton;
 import com.pichs.xwidget.cardview.XCardConstraintLayout;
-import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.checkbox.XCheckBox;
 import com.pichs.xwidget.utils.XStatusBarHelper;
 import com.pichs.xwidget.utils.XTypefaceHelper;

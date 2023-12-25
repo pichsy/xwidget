@@ -1,10 +1,11 @@
-package com.pichs.app.xwidget;
+package com.pichs.app.xwidget.ui.web;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.pichs.app.xwidget.R;
 import com.pichs.xwidget.webview.XWebView;
 
 public class WebViewActivity extends AppCompatActivity {

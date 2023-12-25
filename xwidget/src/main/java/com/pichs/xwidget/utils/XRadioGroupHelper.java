@@ -9,6 +9,7 @@ import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.radiobutton.XRadioButtonCheckable;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class XRadioGroupHelper implements View.OnClickListener {
@@ -16,7 +17,7 @@ public class XRadioGroupHelper implements View.OnClickListener {
     }
 
     private WeakReference<ViewGroup> mOwner;
-    private final HashSet<XRadioButtonCheckable> mXCheckBoxList = new HashSet<>();
+    private final ArrayList<XRadioButtonCheckable> mXCheckBoxList = new ArrayList<>();
     private OnCheckedChangeListener mOnCheckedChangeListener = null;
 
     private View mCheckedView = null;
@@ -43,10 +44,12 @@ public class XRadioGroupHelper implements View.OnClickListener {
     public void onViewAdded(View child) {
         if (child instanceof XRadioButtonCheckable) {
             XRadioButtonCheckable radioButton = (XRadioButtonCheckable) child;
-            if (!radioButton.isIgnoreRadioGroup()) {
-                radioButton.setRadioButtonMode(true);
-                mXCheckBoxList.add(radioButton);
-                radioButton.setOnClickListener(this);
+            if (!mXCheckBoxList.contains(radioButton)) {
+                if (!radioButton.isIgnoreRadioGroup()) {
+                    radioButton.setRadioButtonMode(true);
+                    mXCheckBoxList.add(radioButton);
+                    radioButton.setOnClickListener(this);
+                }
             }
         }
     }
@@ -54,9 +57,11 @@ public class XRadioGroupHelper implements View.OnClickListener {
     public void onViewRemoved(View child) {
         if (child instanceof XRadioButtonCheckable) {
             XRadioButtonCheckable radioButton = (XRadioButtonCheckable) child;
-            if (!radioButton.isIgnoreRadioGroup()) {
-                mXCheckBoxList.remove(radioButton);
-                radioButton.setOnClickListener(null);
+            if (mXCheckBoxList.contains(radioButton)) {
+                if (!radioButton.isIgnoreRadioGroup()) {
+                    mXCheckBoxList.remove(radioButton);
+                    radioButton.setOnClickListener(null);
+                }
             }
         }
     }
@@ -106,6 +111,28 @@ public class XRadioGroupHelper implements View.OnClickListener {
             XRadioButtonCheckable xCheckBox = (XRadioButtonCheckable) v;
             xCheckBox.setChecked(true);
             onCheckedChanged(v, xCheckBox.isChecked());
+        }
+    }
+
+    public void select(int index) {
+        if (index < 0 || index >= mXCheckBoxList.size()) {
+            return;
+        }
+        XRadioButtonCheckable item = mXCheckBoxList.get(index);
+        if (item != null) {
+            onClick((View) item);
+        }
+    }
+
+    public void select(View child) {
+        if (mXCheckBoxList.isEmpty()) {
+            return;
+        }
+        if (child == null) {
+            return;
+        }
+        if (child instanceof XRadioButtonCheckable && mXCheckBoxList.contains(child)) {
+            onClick(child);
         }
     }
 }

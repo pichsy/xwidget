@@ -1,4 +1,4 @@
-package com.pichs.app.xwidget;
+package com.pichs.app.xwidget.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.pichs.app.xwidget.R;
 import com.pichs.xwidget.nestedscroll.XNestedBottomDelegateLayout;
 import com.pichs.xwidget.nestedscroll.XNestedBottomRecyclerView;
 import com.pichs.xwidget.utils.XDisplayHelper;
@@ -30,7 +31,7 @@ public class NestedBottomView extends XNestedBottomDelegateLayout {
     @NonNull
     @Override
     protected View onCreateHeaderView() {
-        View view = inflate(getContext(),R.layout.item_layout_sticky,null);
+        View view = inflate(getContext(), R.layout.item_layout_sticky,null);
         return view;
     }
 

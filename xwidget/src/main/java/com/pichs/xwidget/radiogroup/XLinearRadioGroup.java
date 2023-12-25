@@ -47,4 +47,18 @@ public class XLinearRadioGroup extends XLinearLayout {
             mRadioGroupHelper.onViewRemoved(view);
         }
     }
+
+
+    public void select(int i) {
+        if (mRadioGroupHelper != null) {
+            mRadioGroupHelper.select(i);
+        }
+    }
+
+
+    public void select(View child){
+        if (mRadioGroupHelper!=null){
+            mRadioGroupHelper.select(child);
+        }
+    }
 }
