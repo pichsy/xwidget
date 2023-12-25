@@ -6,11 +6,12 @@ project.apply from: rootProject.file('kotlin.gradle')
 
 android {
     namespace 'com.pichs.xwidget'
-    compileSdk rootProject.ext.compileSdk
+    compileSdk 33
 
     defaultConfig {
-        minSdk rootProject.ext.minSdk
-        targetSdk rootProject.ext.targetSdk
+        minSdk 21
+        //noinspection ExpiredTargetSdkVersion
+        targetSdk 30
         versionCode 1
         versionName "1.0"
         consumerProguardFiles 'proguard-rules.pro'
