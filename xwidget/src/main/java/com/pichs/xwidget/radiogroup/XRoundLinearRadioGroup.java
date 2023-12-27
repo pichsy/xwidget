@@ -4,10 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
-import com.pichs.xwidget.roundview.XRoundConstraintLayout;
 import com.pichs.xwidget.roundview.XRoundLinearLayout;
-import com.pichs.xwidget.utils.XRadioGroupHelper;
 
 public class XRoundLinearRadioGroup extends XRoundLinearLayout implements XRadioGroup {
 

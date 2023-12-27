@@ -358,7 +358,7 @@
             android:layout_height="180dp"
             android:background="#80CFA4">
 
-            <com.pichs.xwidget.radiobutton.XRadioRoundFrameLayout
+            <com.pichs.xwidget.radiobutton.XRadioRoundConstraintLayout
                 android:id="@+id/rfl_1"
                 android:layout_width="40dp"
                 android:layout_height="35dp"
@@ -423,7 +423,9 @@
                 android:src="#999"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:xp_check_state_follow_parent="true"
                 app:xp_checked="true"
+                app:xp_checked_by_click="true"
                 app:xp_checked_src="#0B31F4"
                 app:xp_ignore_radio_group="true"
                 app:xp_radius="20dp" />
@@ -437,6 +439,37 @@
                 app:layout_constraintEnd_toEndOf="@+id/cbox_ignore"
                 app:layout_constraintStart_toStartOf="@+id/cbox_ignore"
                 app:layout_constraintTop_toBottomOf="@+id/cbox_ignore" />
+
+            <com.pichs.xwidget.radiobutton.XRadioCardLinearLayout
+                android:id="@+id/cbox_ignore_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                android:background="#E9ECDF"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ignore"
+                app:xp_checkedBackground="#A706ED"
+                app:xp_checked_by_click="true"
+                app:xp_checked_src="#0B31F4"
+                app:xp_ignore_radio_group="true"
+                app:xp_radius="5dp">
+
+                <com.pichs.xwidget.radiobutton.XRadioCardButton
+                    android:id="@+id/radio_test_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#B0B0F1"
+                    android:text="子RadioButton"
+                    android:textSize="12sp"
+                    app:xp_check_state_follow_parent="false"
+                    app:xp_checkedTextColor="#f00"
+                    app:xp_checked_by_click="true" />
+
+            </com.pichs.xwidget.radiobutton.XRadioCardLinearLayout>
+
 
         </com.pichs.xwidget.radiogroup.XConstraintRadioGroup>
 
@@ -471,6 +504,16 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
                 android:src="@drawable/ic_agree_unckecked"
+                app:xp_checked="true"
+                app:xp_checked_src="@drawable/ic_agree_checked" />
+
+
+            <com.pichs.xwidget.radiobutton.XRadioImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/ic_agree_unckecked"
+                app:xp_checked="true"
                 app:xp_checked_src="@drawable/ic_agree_checked" />
 
             <com.pichs.xwidget.radiobutton.XRadioCardLinearLayout

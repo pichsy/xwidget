@@ -16,11 +16,15 @@ public interface XRadioButton {
 
     /**
      * 设置是否忽略RadioGroup
+     *
+     * @param isIgnoreRadioGroup 是否忽略RadioGroup
      */
     void setIgnoreRadioGroup(boolean isIgnoreRadioGroup);
 
     /**
      * 选中状态改变
+     *
+     * @param checked 是否选中
      */
     void setChecked(boolean checked);
 
@@ -65,6 +69,8 @@ public interface XRadioButton {
 
     /**
      * 设置是否可以监听
+     *
+     * @param isCheckedByClickEnable 是否可以监听
      */
     void setCheckedByClickEnable(boolean isCheckedByClickEnable);
 

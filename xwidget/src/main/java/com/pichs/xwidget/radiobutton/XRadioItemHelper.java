@@ -1,4 +1,4 @@
-package com.pichs.xwidget.utils;
+package com.pichs.xwidget.radiobutton;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -24,6 +24,7 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
 
     private WeakReference<View> mOwner;
     // 选中状态是否跟随父类，如果有父类 XRadioButtonCheckable，那么选中状态跟随父类, 否则不跟随
+
     private boolean isCheckStateFollowParent = false;
 
     public XRadioItemHelper(Context context, AttributeSet attr, int defStyleAttr, View owner) {
@@ -40,10 +41,14 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
         if (isIgnoreRadioGroup) {
             setCheckStateFollowParent(false);
         }
-        if (isCheckStateFollowParent) {
+        if (isCheckStateFollowParent()) {
             isCheckedByClickEnable = false;
         }
-        setCheckedByClickEnable(isCheckedByClickEnable);
+        if (this.isCheckedByClickEnable) {
+            setOnClickListener(this);
+        } else {
+            setOnClickListener(null);
+        }
     }
 
     @Override
@@ -90,12 +95,10 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
     public void setOnClickListener(View.OnClickListener listener) {
         if (mOwner != null && mOwner.get() != null) {
             mOwner.get().setOnClickListener(listener);
+            mOwner.get().setClickable(listener != null);
         }
     }
 
-    public boolean isCheckStateFollowParent() {
-        return isCheckStateFollowParent;
-    }
 
     @Override
     public void setCheckedByClickEnable(boolean isCheckedByClickEnable) {
@@ -126,6 +129,14 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
     @Override
     public void setCheckStateFollowParent(boolean followParent) {
         this.isCheckStateFollowParent = followParent;
+        if (isCheckStateFollowParent()) {
+            setCheckedByClickEnable(false);
+        }
+    }
+
+    @Override
+    public boolean isCheckStateFollowParent() {
+        return isCheckStateFollowParent;
     }
 
     @Override

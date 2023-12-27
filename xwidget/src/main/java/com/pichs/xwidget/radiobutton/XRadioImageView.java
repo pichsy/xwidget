@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
-import com.pichs.xwidget.utils.XRadioItemHelper;
 import com.pichs.xwidget.view.XCheckedImageView;
 
 public class XRadioImageView extends XCheckedImageView implements XRadioButton {

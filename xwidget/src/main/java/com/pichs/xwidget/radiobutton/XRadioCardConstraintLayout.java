@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 
 import com.pichs.xwidget.cardview.XCardConstraintLayout;
 import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
-import com.pichs.xwidget.utils.XRadioItemHelper;
 
 public class XRadioCardConstraintLayout extends XCardConstraintLayout implements XRadioButton {
 

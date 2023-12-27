@@ -4,8 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
-import com.pichs.xwidget.utils.XRadioGroupHelper;
 import com.pichs.xwidget.view.XConstraintLayout;
 
 public class XConstraintRadioGroup extends XConstraintLayout implements XRadioGroup {

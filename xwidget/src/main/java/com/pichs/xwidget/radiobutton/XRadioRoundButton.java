@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 
 import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.roundview.XRoundButton;
-import com.pichs.xwidget.utils.XRadioItemHelper;
 
 public class XRadioRoundButton extends XRoundButton implements XRadioButton {
 

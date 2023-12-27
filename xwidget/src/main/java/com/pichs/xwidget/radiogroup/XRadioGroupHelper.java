@@ -1,4 +1,4 @@
-package com.pichs.xwidget.utils;
+package com.pichs.xwidget.radiogroup;
 
 import android.content.Context;
 import android.util.AttributeSet;

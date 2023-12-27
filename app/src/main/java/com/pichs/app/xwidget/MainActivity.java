@@ -48,12 +48,17 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "isPressed:" + isPressed, Toast.LENGTH_SHORT).show();
         });
 
+        binding.cboxIgnore2.setIgnoreRadioGroup(false);
+        binding.cboxIgnore2.setCheckStateFollowParent(true);
 
-        binding.cboxIgnore.setCheckedByClickEnable(true);
+//       binding.radioTest2.setCheckStateFollowParent(true);
+
         binding.cboxIgnore.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(View view, boolean isChecked) {
                 Toast.makeText(getApplicationContext(), "isChecked:" + isChecked, Toast.LENGTH_SHORT).show();
+                binding.radioTest2.setCheckStateFollowParent(isChecked);
+                binding.radioTest2.setCheckedByClickEnable(isChecked);
             }
         });
     }
