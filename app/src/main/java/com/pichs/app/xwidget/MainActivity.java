@@ -9,24 +9,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.pichs.app.xwidget.databinding.ActivityMainBinding;
 import com.pichs.app.xwidget.ui.web.WebViewActivity;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XCardButton;
 import com.pichs.xwidget.cardview.XCardConstraintLayout;
-import com.pichs.xwidget.checkbox.XCheckBox;
+import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.utils.XStatusBarHelper;
 import com.pichs.xwidget.utils.XTypefaceHelper;
 import com.pichs.xwidget.view.XButton;
 import com.pichs.xwidget.view.XTextView;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XStatusBarHelper.translucent(this);
         XStatusBarHelper.setStatusBarLightMode(this);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         changeTypeface();
         tripleColor();
         initColorfulBorder();
@@ -43,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
         tv.setOnPressedStateListener(isPressed -> {
             Toast.makeText(getApplicationContext(), "isPressed:" + isPressed, Toast.LENGTH_SHORT).show();
+        });
+
+
+        binding.cboxIgnore.setCheckedByClickEnable(true);
+        binding.cboxIgnore.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(View view, boolean isChecked) {
+                Toast.makeText(getApplicationContext(), "isChecked:" + isChecked, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -76,11 +88,6 @@ public class MainActivity extends AppCompatActivity {
 
         XButton closeFont = findViewById(R.id.closeFont);
         XButton openFont = findViewById(R.id.openFont);
-        XCheckBox xCheckBox = findViewById(R.id.cbox_ignore);
-
-        xCheckBox.setOnCheckedChangeListener((view, isChecked) -> {
-            Toast.makeText(getApplicationContext(), (isChecked ? "选中了：" : " 取消选中：") + view.getId(), Toast.LENGTH_SHORT).show();
-        });
 
         closeFont.setOnClickListener(v -> {
             XTypefaceHelper.closeTypeface(this);

@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XCardImageView;
-import com.pichs.xwidget.radiobutton.XRadioButtonCheckable;
 
 /**
  * 自定义CheckBox，使用更舒适

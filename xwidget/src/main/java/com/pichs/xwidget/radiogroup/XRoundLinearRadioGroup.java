@@ -9,16 +9,17 @@ import com.pichs.xwidget.roundview.XRoundConstraintLayout;
 import com.pichs.xwidget.roundview.XRoundLinearLayout;
 import com.pichs.xwidget.utils.XRadioGroupHelper;
 
-public class XRoundLinearRadioGroup extends XRoundLinearLayout {
+public class XRoundLinearRadioGroup extends XRoundLinearLayout implements XRadioGroup {
 
     private final XRadioGroupHelper mRadioGroupHelper;
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+
+    @Override
+    public void setOnRadioCheckedListener(OnRadioCheckedListener onRadioCheckedListener) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.setOnCheckedChangeListener(onCheckedChangeListener);
+            mRadioGroupHelper.setOnRadioCheckedListener(onRadioCheckedListener);
         }
     }
-
     public XRoundLinearRadioGroup(Context context) {
         this(context, null);
     }
@@ -48,15 +49,16 @@ public class XRoundLinearRadioGroup extends XRoundLinearLayout {
         }
     }
 
-
-    public void select(int i) {
+    @Override
+    public void select(int position) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.select(i);
+            mRadioGroupHelper.select(position);
         }
     }
 
-    public void select(View child){
-        if (mRadioGroupHelper!=null){
+    @Override
+    public void select(View child) {
+        if (mRadioGroupHelper != null) {
             mRadioGroupHelper.select(child);
         }
     }

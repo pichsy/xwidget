@@ -9,13 +9,14 @@ import com.pichs.xwidget.utils.XRadioGroupHelper;
 import com.pichs.xwidget.view.XConstraintLayout;
 import com.pichs.xwidget.view.XLinearLayout;
 
-public class XLinearRadioGroup extends XLinearLayout {
+public class XLinearRadioGroup extends XLinearLayout implements XRadioGroup {
 
     private final XRadioGroupHelper mRadioGroupHelper;
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+    @Override
+    public void setOnRadioCheckedListener(OnRadioCheckedListener onRadioCheckedListener) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.setOnCheckedChangeListener(onCheckedChangeListener);
+            mRadioGroupHelper.setOnRadioCheckedListener(onRadioCheckedListener);
         }
     }
 
@@ -48,16 +49,16 @@ public class XLinearRadioGroup extends XLinearLayout {
         }
     }
 
-
-    public void select(int i) {
+    @Override
+    public void select(int position) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.select(i);
+            mRadioGroupHelper.select(position);
         }
     }
 
-
-    public void select(View child){
-        if (mRadioGroupHelper!=null){
+    @Override
+    public void select(View child) {
+        if (mRadioGroupHelper != null) {
             mRadioGroupHelper.select(child);
         }
     }

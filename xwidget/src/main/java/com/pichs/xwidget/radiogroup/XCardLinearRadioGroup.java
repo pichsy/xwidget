@@ -9,16 +9,17 @@ import com.pichs.xwidget.cardview.XCardLinearLayout;
 import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.utils.XRadioGroupHelper;
 
-public class XCardLinearRadioGroup extends XCardLinearLayout {
+public class XCardLinearRadioGroup extends XCardLinearLayout implements XRadioGroup {
 
     private final XRadioGroupHelper mRadioGroupHelper;
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+
+    @Override
+    public void setOnRadioCheckedListener(OnRadioCheckedListener onRadioCheckedListener) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.setOnCheckedChangeListener(onCheckedChangeListener);
+            mRadioGroupHelper.setOnRadioCheckedListener(onRadioCheckedListener);
         }
     }
-
     public XCardLinearRadioGroup(Context context) {
         this(context, null);
     }
@@ -49,15 +50,16 @@ public class XCardLinearRadioGroup extends XCardLinearLayout {
     }
 
 
-    public void select(int i) {
+    @Override
+    public void select(int position) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.select(i);
+            mRadioGroupHelper.select(position);
         }
     }
 
-
-    public void select(View child){
-        if (mRadioGroupHelper!=null){
+    @Override
+    public void select(View child) {
+        if (mRadioGroupHelper != null) {
             mRadioGroupHelper.select(child);
         }
     }

@@ -14,18 +14,21 @@ abstract class BaseActivity<ViewBinder:ViewBinding>:BindingActivity<ViewBinder>(
 
     override fun beforeOnCreate(savedInstanceState: Bundle?) {
         super.beforeOnCreate(savedInstanceState)
-        StatusBarUtils.immersiveStatusBar(this)
+        StatusBarUtils.transparentStatusBar(window)
+        StatusBarUtils.setStatusBarFontDark(window, true)
     }
 
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        StatusBarUtils.immersiveStatusBar(this)
+        StatusBarUtils.transparentStatusBar(window)
+        StatusBarUtils.setStatusBarFontDark(window, true)
     }
 
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        StatusBarUtils.immersiveStatusBar(this)
+        StatusBarUtils.transparentStatusBar(window)
+        StatusBarUtils.setStatusBarFontDark(window, true)
     }
 }

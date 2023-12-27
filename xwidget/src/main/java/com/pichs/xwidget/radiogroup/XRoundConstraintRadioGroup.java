@@ -8,16 +8,17 @@ import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.roundview.XRoundConstraintLayout;
 import com.pichs.xwidget.utils.XRadioGroupHelper;
 
-public class XRoundConstraintRadioGroup extends XRoundConstraintLayout {
+public class XRoundConstraintRadioGroup extends XRoundConstraintLayout implements XRadioGroup {
 
     private final XRadioGroupHelper mRadioGroupHelper;
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+
+    @Override
+    public void setOnRadioCheckedListener(OnRadioCheckedListener onRadioCheckedListener) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.setOnCheckedChangeListener(onCheckedChangeListener);
+            mRadioGroupHelper.setOnRadioCheckedListener(onRadioCheckedListener);
         }
     }
-
     public XRoundConstraintRadioGroup(Context context) {
         this(context, null);
     }
@@ -47,15 +48,16 @@ public class XRoundConstraintRadioGroup extends XRoundConstraintLayout {
         }
     }
 
-    public void select(int i) {
+    @Override
+    public void select(int position) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.select(i);
+            mRadioGroupHelper.select(position);
         }
     }
 
-
-    public void select(View child){
-        if (mRadioGroupHelper!=null){
+    @Override
+    public void select(View child) {
+        if (mRadioGroupHelper != null) {
             mRadioGroupHelper.select(child);
         }
     }

@@ -14,11 +14,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:xp_backgroundGradientEndColor="#6896F3"
+        app:xp_backgroundGradientColors="#ffffff"
         app:xp_backgroundGradientOrientation="vertical"
-        app:xp_backgroundGradientStartColor="#5757FA"
-        app:xp_cubeFrontGradientColors="#5479C3"
+        app:xp_cubeFrontGradientColors="#d1d1d1"
         app:xp_cubeFrontHeight="3dp"
+        app:xp_cubeRightHeight="2dp"
+        app:xp_borderWidth="1px"
+        app:xp_borderColor="#d1d1d1"
         app:xp_radius="10dp">
 
         <com.pichs.xwidget.cardview.XCardImageView
@@ -28,7 +30,7 @@
             android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_home_blue_unchecked" />
 
         <com.pichs.xwidget.view.XTextView
             android:id="@+id/tv_text"
@@ -36,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:text="标题"
-            android:textColor="#ffff"
-            android:textSize="14dp" />
+            android:textColor="#333333"
+            android:textSize="15sp" />
 
     </com.pichs.xwidget.roundview.XRoundLinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

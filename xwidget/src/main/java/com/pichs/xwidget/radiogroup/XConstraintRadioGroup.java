@@ -3,20 +3,21 @@ package com.pichs.xwidget.radiogroup;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+
 import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.utils.XRadioGroupHelper;
 import com.pichs.xwidget.view.XConstraintLayout;
 
-public class XConstraintRadioGroup extends XConstraintLayout {
+public class XConstraintRadioGroup extends XConstraintLayout implements XRadioGroup {
 
     private final XRadioGroupHelper mRadioGroupHelper;
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+    @Override
+    public void setOnRadioCheckedListener(OnRadioCheckedListener onRadioCheckedListener) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.setOnCheckedChangeListener(onCheckedChangeListener);
+            mRadioGroupHelper.setOnRadioCheckedListener(onRadioCheckedListener);
         }
     }
-
     public XConstraintRadioGroup(Context context) {
         this(context, null);
     }
@@ -46,16 +47,16 @@ public class XConstraintRadioGroup extends XConstraintLayout {
         }
     }
 
-
-    public void select(int i) {
+    @Override
+    public void select(int position) {
         if (mRadioGroupHelper != null) {
-            mRadioGroupHelper.select(i);
+            mRadioGroupHelper.select(position);
         }
     }
 
-
-    public void select(View child){
-        if (mRadioGroupHelper!=null){
+    @Override
+    public void select(View child) {
+        if (mRadioGroupHelper != null) {
             mRadioGroupHelper.select(child);
         }
     }

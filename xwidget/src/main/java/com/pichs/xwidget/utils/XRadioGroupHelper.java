@@ -5,49 +5,48 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
-import com.pichs.xwidget.radiobutton.XRadioButtonCheckable;
+import com.pichs.xwidget.radiobutton.XRadioButton;
+import com.pichs.xwidget.radiogroup.OnRadioCheckedListener;
+import com.pichs.xwidget.radiogroup.XRadioGroup;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 
-public class XRadioGroupHelper implements View.OnClickListener {
+public class XRadioGroupHelper implements XRadioGroup, View.OnClickListener {
     private XRadioGroupHelper() {
     }
 
     private WeakReference<ViewGroup> mOwner;
-    private final ArrayList<XRadioButtonCheckable> mXCheckBoxList = new ArrayList<>();
-    private OnCheckedChangeListener mOnCheckedChangeListener = null;
+    private final ArrayList<XRadioButton> mXCheckBoxList = new ArrayList<>();
+    private final HashMap<XRadioButton, ArrayList<XRadioButton>> mXCheckBoxMap = new HashMap<>();
+
+    private OnRadioCheckedListener mOnRadioCheckedListener = null;
 
     private View mCheckedView = null;
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
-        mOnCheckedChangeListener = onCheckedChangeListener;
+    @Override
+    public void setOnRadioCheckedListener(OnRadioCheckedListener onCheckedChangeListener) {
+        mOnRadioCheckedListener = onCheckedChangeListener;
     }
 
     public XRadioGroupHelper(Context context, AttributeSet attrs, int defStyleAttr, ViewGroup owner) {
         mOwner = new WeakReference<>(owner);
-//        if (getChildCount() == 0) {
-//            return;
-//        }
-//        for (int i = 0; i < getChildCount(); i++) {
-//            if (getChildAt(i) instanceof XRadioButtonCheckable) {
-//                XRadioButtonCheckable child = (XRadioButtonCheckable) getChildAt(i);
-//                child.setRadioButtonMode(true);
-//                mXCheckBoxList.add(child);
-//                child.setOnClickListener(this);
-//            }
-//        }
     }
 
     public void onViewAdded(View child) {
-        if (child instanceof XRadioButtonCheckable) {
-            XRadioButtonCheckable radioButton = (XRadioButtonCheckable) child;
+        if (child instanceof XRadioButton) {
+            XRadioButton radioButton = (XRadioButton) child;
             if (!mXCheckBoxList.contains(radioButton)) {
                 if (!radioButton.isIgnoreRadioGroup()) {
-                    radioButton.setRadioButtonMode(true);
                     mXCheckBoxList.add(radioButton);
+                    if (radioButton.isChecked()) {
+                        if (mCheckedView != null) {
+                            radioButton.setChecked(false);
+                        } else {
+                            mCheckedView = child;
+                        }
+                    }
                     radioButton.setOnClickListener(this);
                 }
             }
@@ -55,8 +54,8 @@ public class XRadioGroupHelper implements View.OnClickListener {
     }
 
     public void onViewRemoved(View child) {
-        if (child instanceof XRadioButtonCheckable) {
-            XRadioButtonCheckable radioButton = (XRadioButtonCheckable) child;
+        if (child instanceof XRadioButton) {
+            XRadioButton radioButton = (XRadioButton) child;
             if (mXCheckBoxList.contains(radioButton)) {
                 if (!radioButton.isIgnoreRadioGroup()) {
                     mXCheckBoxList.remove(radioButton);
@@ -81,49 +80,55 @@ public class XRadioGroupHelper implements View.OnClickListener {
     }
 
 
-    public <T extends View> void onCheckedChanged(T view, boolean isChecked) {
+    public void onCheckedChanged(View view, boolean isChecked) {
         if (isChecked && mCheckedView == view) {
             return;
         }
-        // 如果是取消选中，必须要有一个选中的
-//        if (!isChecked && mCheckedView == view) {
-//            if (view instanceof XRadioButtonCheckable) {
-//                ((XRadioButtonCheckable) view).setChecked(true);
-//            }
-//            return;
-//        }
         mCheckedView = view;
         if (isChecked) {
-            for (XRadioButtonCheckable child : mXCheckBoxList) {
+            for (XRadioButton child : mXCheckBoxList) {
                 if (child != view) {
                     child.setChecked(false);
                 }
             }
         }
-        if (mOnCheckedChangeListener != null) {
-            mOnCheckedChangeListener.onCheckedChanged(view, isChecked);
+        if (mOnRadioCheckedListener != null) {
+            mOnRadioCheckedListener.onCheckedChanged((XRadioGroup) mOwner.get(), view, isChecked, indexOf(view));
         }
+    }
+
+    private int indexOf(XRadioButton child) {
+        return mXCheckBoxList.indexOf(child);
+    }
+
+    private int indexOf(View child) {
+        if (child instanceof XRadioButton) {
+            return mXCheckBoxList.indexOf(child);
+        }
+        return -1;
     }
 
     @Override
     public void onClick(View v) {
-        if (v instanceof XRadioButtonCheckable) {
-            XRadioButtonCheckable xCheckBox = (XRadioButtonCheckable) v;
+        if (v instanceof XRadioButton) {
+            XRadioButton xCheckBox = (XRadioButton) v;
             xCheckBox.setChecked(true);
             onCheckedChanged(v, xCheckBox.isChecked());
         }
     }
 
-    public void select(int index) {
-        if (index < 0 || index >= mXCheckBoxList.size()) {
+    @Override
+    public void select(int position) {
+        if (position < 0 || position >= mXCheckBoxList.size()) {
             return;
         }
-        XRadioButtonCheckable item = mXCheckBoxList.get(index);
+        XRadioButton item = mXCheckBoxList.get(position);
         if (item != null) {
             onClick((View) item);
         }
     }
 
+    @Override
     public void select(View child) {
         if (mXCheckBoxList.isEmpty()) {
             return;
@@ -131,7 +136,7 @@ public class XRadioGroupHelper implements View.OnClickListener {
         if (child == null) {
             return;
         }
-        if (child instanceof XRadioButtonCheckable && mXCheckBoxList.contains(child)) {
+        if (child instanceof XRadioButton && mXCheckBoxList.contains(child)) {
             onClick(child);
         }
     }

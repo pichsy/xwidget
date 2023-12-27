@@ -2,15 +2,15 @@ package com.pichs.xwidget.radiobutton;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
-import com.pichs.xwidget.roundview.XRoundFrameLayout;
 import com.pichs.xwidget.roundview.XRoundLinearLayout;
 import com.pichs.xwidget.utils.XRadioItemHelper;
 
-public class XRadioRoundLinearLayout extends XRoundLinearLayout implements XRadioButtonCheckable {
+public class XRadioRoundLinearLayout extends XRoundLinearLayout implements XRadioButton {
 
     private final XRadioItemHelper mRadioItemHelper;
 
@@ -27,6 +27,8 @@ public class XRadioRoundLinearLayout extends XRoundLinearLayout implements XRadi
         mRadioItemHelper = new XRadioItemHelper(context, attrs, defStyleAttr, this);
     }
 
+
+
     @Override
     public boolean isIgnoreRadioGroup() {
         if (mRadioItemHelper == null) return false;
@@ -37,19 +39,6 @@ public class XRadioRoundLinearLayout extends XRoundLinearLayout implements XRadi
     public void setIgnoreRadioGroup(boolean isIgnoreRadioGroup) {
         if (mRadioItemHelper == null) return;
         mRadioItemHelper.setIgnoreRadioGroup(isIgnoreRadioGroup);
-    }
-
-    @Override
-    public boolean isRadioButtonMode() {
-        if (mRadioItemHelper == null) return false;
-        return mRadioItemHelper.isRadioButtonMode();
-    }
-
-    @Override
-    public void setRadioButtonMode(boolean isRadioButtonMode) {
-        if (mRadioItemHelper != null) {
-            mRadioItemHelper.setRadioButtonMode(isRadioButtonMode);
-        }
     }
 
     @Override
@@ -73,15 +62,47 @@ public class XRadioRoundLinearLayout extends XRoundLinearLayout implements XRadi
         setChecked(!isChecked());
     }
 
-    /**
-     * 选中时间监听
-     *
-     * @param listener listener
-     */
-    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
-        if (mRadioItemHelper == null) {
-            return;
+    @Override
+    public void setOnClickListener(@Nullable OnClickListener l) {
+        if (!isCheckStateFollowParent()) {
+            super.setOnClickListener(l);
         }
-        mRadioItemHelper.setOnCheckedChangeListener(listener);
+    }
+
+    @Override
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        if (mRadioItemHelper != null) mRadioItemHelper.setOnCheckedChangeListener(listener);
+    }
+
+    @Override
+    public void setCheckStateFollowParent(boolean followParent) {
+        if (mRadioItemHelper != null) mRadioItemHelper.setCheckStateFollowParent(followParent);
+    }
+
+    @Override
+    public boolean isCheckStateFollowParent() {
+        return mRadioItemHelper != null && mRadioItemHelper.isCheckStateFollowParent();
+    }
+
+    @Override
+    public void onViewRemoved(View view) {
+        super.onViewRemoved(view);
+        if (mRadioItemHelper != null) mRadioItemHelper.onViewRemoved(view);
+    }
+
+    @Override
+    public void onViewAdded(View view) {
+        super.onViewAdded(view);
+        if (mRadioItemHelper != null) mRadioItemHelper.onViewAdded(view);
+    }
+
+    @Override
+    public void setCheckedByClickEnable(boolean isCheckedByClickEnable) {
+        if (mRadioItemHelper != null) mRadioItemHelper.setCheckedByClickEnable(isCheckedByClickEnable);
+    }
+
+    @Override
+    public boolean isCheckedByClickEnable() {
+        return mRadioItemHelper != null && mRadioItemHelper.isCheckedByClickEnable();
     }
 }

@@ -1,46 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--  是否忽略RadioGroup的控制  默认false-->
     <attr name="xp_ignore_radio_group" format="boolean" />
+    <!--  check选中状态跟随父控件，将移除点击事件, 默认true  -->
+    <attr name="xp_check_state_follow_parent" format="boolean" />
+    <!--  是否可以  -->
+    <attr name="xp_checked_by_click" format="boolean" />
 
     <declare-styleable name="XRadioItem">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioImageView">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioCardButton">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioCardConstraintLayout">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioCardLinearLayout">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioCardFrameLayout">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioRoundButton">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioRoundConstraintLayout">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioRoundLinearLayout">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
     <declare-styleable name="XRadioRoundFrameLayout">
         <attr name="xp_ignore_radio_group" />
+        <attr name="xp_check_state_follow_parent" />
+        <attr name="xp_checked_by_click" />
     </declare-styleable>
 
 </resources>

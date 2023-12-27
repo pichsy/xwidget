@@ -24,7 +24,7 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("keystore.jks")
+            storeFile file("xwidget.jks")
             storePassword "xwidget123"
             keyAlias "xwidget"
             keyPassword "xwidget123"
@@ -32,7 +32,7 @@ android {
             v2SigningEnabled = true
         }
         debug {
-            storeFile file("keystore.jks")
+            storeFile file("xwidget.jks")
             storePassword "xwidget123"
             keyAlias "xwidget"
             keyPassword "xwidget123"
