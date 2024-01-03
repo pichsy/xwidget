@@ -26,16 +26,101 @@
         android:theme="@style/Theme.Xwidget"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ui.HomeActivity">
+        <activity
+            android:name=".home.HomeActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TowActivity" />
-        <activity android:name=".ui.web.WebViewActivity" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".TowActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.web.WebViewActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.button.ButtonActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.card.CardLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.checkbox.CheckboxActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.edittext.EditTextActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.flow.FlowLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.image.ImageActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.inputlayout.InputLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.nestedscroll.NestedScrollActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.progress.ProgressActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.radio.RadioActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.rating.RatingActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.round.RoundLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.scale.ScaleAnimationActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.shining.ShiningActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.space.SpaceActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.switcher.SwitcherActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.text.TextActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".tools.ToolsUsageActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
 
     </application>
 

@@ -14,13 +14,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:xp_backgroundGradientColors="#ffffff"
+        app:xp_backgroundGradientColors="#f1f1f1,#ffffff,#f1f1f1"
         app:xp_backgroundGradientOrientation="vertical"
-        app:xp_cubeFrontGradientColors="#d1d1d1"
-        app:xp_cubeFrontHeight="3dp"
-        app:xp_cubeRightHeight="2dp"
+        app:xp_borderColor="#D3CDCD"
         app:xp_borderWidth="1px"
-        app:xp_borderColor="#d1d1d1"
+        app:xp_cubeFrontGradientColors="#D3CDCD"
+        app:xp_cubeFrontHeight="4dp"
+        app:xp_cubeRightHeight="4dp"
+        app:xp_pressedBackgroundGradientColors="#f1f1f1,#ffffff,#f1f1f1"
+        app:xp_pressedCubeBackHeight="3dp"
+        app:xp_pressedCubeFrontHeight="0dp"
+        app:xp_pressedCubeLeftHeight="3dp"
+        app:xp_pressedCubeRightHeight="0dp"
         app:xp_radius="10dp">
 
         <com.pichs.xwidget.cardview.XCardImageView
@@ -30,7 +35,8 @@
             android:layout_marginTop="6dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:src="@drawable/ic_home_blue_unchecked" />
+            android:padding="15dp"
+            android:src="@drawable/ic_home_list_button" />
 
         <com.pichs.xwidget.view.XTextView
             android:id="@+id/tv_text"

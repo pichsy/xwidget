@@ -1,15 +1,14 @@
-package com.pichs.app.xwidget.ui
+package com.pichs.app.xwidget.home
 
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.pichs.app.xwidget.base.BaseActivity
-import com.pichs.app.xwidget.databinding.ActivityHomeBinding
 import com.pichs.app.xwidget.databinding.ActivityHomeWhiteBinding
-import com.pichs.app.xwidget.ui.fragment.HomeFragment
-import com.pichs.app.xwidget.ui.fragment.MyFragment
-import com.pichs.app.xwidget.ui.fragment.ToolsFragment
+import com.pichs.app.xwidget.home.HomeFragment
+import com.pichs.app.xwidget.home.MyFragment
+import com.pichs.app.xwidget.home.ToolsFragment
 import com.pichs.xbase.utils.XLog
 
 class HomeActivity : BaseActivity<ActivityHomeWhiteBinding>() {
@@ -52,6 +51,12 @@ class HomeActivity : BaseActivity<ActivityHomeWhiteBinding>() {
 
     private fun checkBottomItem(index: Int) {
         binding.viewpager2Components.currentItem = index
+        binding.tvTitle.text = when (index) {
+            0 -> "首页"
+            1 -> "工具"
+            2 -> "我的"
+            else -> "首页"
+        }
     }
 
     private fun initView() {

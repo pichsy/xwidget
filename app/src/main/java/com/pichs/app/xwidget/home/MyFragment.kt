@@ -1,4 +1,4 @@
-package com.pichs.app.xwidget.ui.fragment
+package com.pichs.app.xwidget.home
 
 import android.view.View
 import com.pichs.app.xwidget.base.BaseFragment

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.pichs.xwidget.space.XSpace
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
+    <com.pichs.xwidget.cardview.XCardTextView
+        android:id="@+id/tv_style_generator"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="16dp"
+        android:background="#fff"
+        android:gravity="center"
+        android:shadowColor="#000"
+        android:text="布局样式生成工具"
+        android:textColor="#333"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:xp_isRadiusAdjustBounds="true"
+        app:xp_shadowElevation="5dp" />
+
+</LinearLayout>

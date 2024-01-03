@@ -2,16 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#fff"
     android:orientation="vertical">
 
     <com.pichs.xwidget.space.XStatusBarSpace
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.pichs.xwidget.webview.XWebView
-        android:id="@+id/web_view"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </LinearLayout>
