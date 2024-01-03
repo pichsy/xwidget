@@ -38,7 +38,6 @@ public class XRadioRoundButton extends XRoundButton implements XRadioButton {
     }
 
 
-
     @Override
     public void setChecked(boolean checked) {
         if (isChecked() == checked) {
@@ -73,18 +72,8 @@ public class XRadioRoundButton extends XRoundButton implements XRadioButton {
     }
 
     @Override
-    public void setCheckStateFollowParent(boolean followParent) {
-        if (mRadioItemHelper != null) mRadioItemHelper.setCheckStateFollowParent(followParent);
-    }
-
-    @Override
     public boolean isCheckStateFollowParent() {
         return mRadioItemHelper != null && mRadioItemHelper.isCheckStateFollowParent();
-    }
-
-    @Override
-    public void setCheckedByClickEnable(boolean isCheckedByClickEnable) {
-        if (mRadioItemHelper != null) mRadioItemHelper.setCheckedByClickEnable(isCheckedByClickEnable);
     }
 
     @Override

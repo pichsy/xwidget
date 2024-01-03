@@ -46,9 +46,10 @@
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
 - 更多功能可查看demo，或者体验Apk
-## 下载体验
-[下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/xwidget.apk)
 
+## 下载体验
+
+[下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/app-release.apk)
 
 ### 持续维护，已更新四年了。持续增强更有用的功能，简单而强大。
 
@@ -90,6 +91,7 @@
 ![](./imgs/shotcut_2.png)
 
 #### 录屏
+
 - ![](./imgs/video.gif)
 
 ## 代码混淆
@@ -105,76 +107,77 @@
 ## 升级日志
 
 ### 4.1.0版本
+
 - XView系列，全系实现Checkable接口，xp_checke...系列属性全部生效
 - 增加 X...RadioGroup系列,可作为单选组容器
 - 增加 XRadio....系列，可作为单选组子控件
 - 修改 XCheckBox的监听回调中的参数，第一个参数改为顶层View。
 - 增加XRadio...子控件系列 属性 xp_ignore_radio_group ,添加此属性可以忽略父控件的单选组效果，即不参与单选组的单选效果。
 - 使用手册：
+
 1. X...RadioGroup系列 都是继承自'父View'控件属性方式完全一致，只是增加了单选组效果，其他属性完全一致。
 2. XRadio...系列 都是继承自原'子View'控件属性方式完全一致，只是增加了单选组效果，其他属性完全一致。
 3. XRadio...系列 可以单独使用，效果和继承的控件一致且效果一样
 4. X...RadioGroup系列 可以单独使用，效果和继承的控件一致且效果一样
 5. 只有X...RadioGroup系列 和 XRadio...系列 配合使用才能实现单选效果。
-   - 使用示例：
-  
-     ```xml
-             <com.pichs.xwidget.radiogroup.XCardLinearRadioGroup
-                 android:layout_width="300dp"
-                 android:layout_height="wrap_content"
-                 android:background="#fff"
-                 android:orientation="vertical"
-                 android:padding="12dp"
-                 app:xp_radius="30dp"
-                 app:xp_shadowAlpha="1"
-                 app:xp_shadowColor="#000"
-                 app:xp_shadowElevation="5dp">
-  
-  
-                 <com.pichs.xwidget.radiobutton.XRadioCardButton
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:background="#CBCBD3"
-                     android:padding="12dp"
-                     android:shadowColor="#3838EF"
-                     android:text="XRadioCardButton"
-                     android:textColor="#333"
-                     android:textSize="15sp"
-                     app:xp_checkedBackground="#563CF3"
-                     app:xp_checkedTextColor="#fff"
-                     app:xp_isRadiusAdjustBounds="true"
-                     app:xp_shadowElevation="3dp" />
-  
-                 <com.pichs.xwidget.radiobutton.XRadioImageView
-                     android:layout_width="40dp"
-                     android:layout_height="40dp"
-                     android:layout_marginTop="12dp"
-                     android:src="@drawable/ic_agree_unckecked"
-                     app:xp_checked_src="@drawable/ic_agree_checked" />
-  
-                 <com.pichs.xwidget.radiobutton.XRadioCardLinearLayout
-                     android:layout_width="200dp"
-                     android:layout_height="40dp"
-                     android:background="#DADAEC"
-                     android:gravity="center"
-                     app:xp_checkedBackground="#BE0FD1"
-                     app:xp_radius="20dp">
-  
-                     <androidx.appcompat.widget.AppCompatTextView
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_gravity="center"
-                         android:text="XRadioCardLinearLayout" />
-  
-                 </com.pichs.xwidget.radiobutton.XRadioCardLinearLayout>
-             </com.pichs.xwidget.radiogroup.XCardLinearRadioGroup>
-  
-  
-     ```
+    - 使用示例：
+
+      ```xml
+              <com.pichs.xwidget.radiogroup.XCardLinearRadioGroup
+                  android:layout_width="300dp"
+                  android:layout_height="wrap_content"
+                  android:background="#fff"
+                  android:orientation="vertical"
+                  android:padding="12dp"
+                  app:xp_radius="30dp"
+                  app:xp_shadowAlpha="1"
+                  app:xp_shadowColor="#000"
+                  app:xp_shadowElevation="5dp">
+   
+   
+                  <com.pichs.xwidget.radiobutton.XRadioCardButton
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:background="#CBCBD3"
+                      android:padding="12dp"
+                      android:shadowColor="#3838EF"
+                      android:text="XRadioCardButton"
+                      android:textColor="#333"
+                      android:textSize="15sp"
+                      app:xp_checkedBackground="#563CF3"
+                      app:xp_checkedTextColor="#fff"
+                      app:xp_isRadiusAdjustBounds="true"
+                      app:xp_shadowElevation="3dp" />
+   
+                  <com.pichs.xwidget.radiobutton.XRadioImageView
+                      android:layout_width="40dp"
+                      android:layout_height="40dp"
+                      android:layout_marginTop="12dp"
+                      android:src="@drawable/ic_agree_unckecked"
+                      app:xp_checked_src="@drawable/ic_agree_checked" />
+   
+                  <com.pichs.xwidget.radiobutton.XRadioCardLinearLayout
+                      android:layout_width="200dp"
+                      android:layout_height="40dp"
+                      android:background="#DADAEC"
+                      android:gravity="center"
+                      app:xp_checkedBackground="#BE0FD1"
+                      app:xp_radius="20dp">
+   
+                      <androidx.appcompat.widget.AppCompatTextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:text="XRadioCardLinearLayout" />
+   
+                  </com.pichs.xwidget.radiobutton.XRadioCardLinearLayout>
+              </com.pichs.xwidget.radiogroup.XCardLinearRadioGroup>
+   
+   
+      ```
 
 - 示例效果
 - ![](./imgs/radio.gif)
-
 
 ### 4.0.1版本
 

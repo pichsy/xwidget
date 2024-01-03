@@ -10,10 +10,10 @@ android {
 
     defaultConfig {
         applicationId "com.pichs.app.xwidget"
-        minSdk 21
-        targetSdk 30
-        versionCode 410
-        versionName "4.1.0"
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         ndk {
             abiFilters /*"armeabi-v7a",*/ "arm64-v8a"
         }

@@ -83,7 +83,7 @@
             android:background="#ffffff"
             android:gravity="center"
             android:orientation="vertical"
-            app:xp_checkedBackground="#f1f1f1">
+            app:xp_checkedBackground="#ffffff">
 
             <com.pichs.xwidget.radiobutton.XRadioImageView
                 android:id="@+id/radio_home"
@@ -123,7 +123,7 @@
             android:background="#ffffff"
             android:gravity="center"
             android:orientation="vertical"
-            app:xp_checkedBackground="#f1f1f1">
+            app:xp_checkedBackground="#ffffff">
 
             <com.pichs.xwidget.radiobutton.XRadioImageView
                 android:id="@+id/radio_tools"
@@ -162,7 +162,7 @@
             android:background="#ffffff"
             android:gravity="center"
             android:orientation="vertical"
-            app:xp_checkedBackground="#f1f1f1">
+            app:xp_checkedBackground="#ffffff">
 
             <com.pichs.xwidget.radiobutton.XRadioImageView
                 android:id="@+id/radio_my"

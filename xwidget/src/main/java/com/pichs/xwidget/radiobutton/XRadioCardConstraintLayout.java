@@ -39,7 +39,6 @@ public class XRadioCardConstraintLayout extends XCardConstraintLayout implements
     }
 
 
-
     @Override
     public void setChecked(boolean checked) {
         if (isChecked() == checked) {
@@ -73,12 +72,6 @@ public class XRadioCardConstraintLayout extends XCardConstraintLayout implements
         if (mRadioItemHelper != null) mRadioItemHelper.setOnCheckedChangeListener(listener);
     }
 
-
-    @Override
-    public void setCheckStateFollowParent(boolean followParent) {
-        if (mRadioItemHelper != null) mRadioItemHelper.setCheckStateFollowParent(followParent);
-    }
-
     @Override
     public boolean isCheckStateFollowParent() {
         return mRadioItemHelper != null && mRadioItemHelper.isCheckStateFollowParent();
@@ -94,11 +87,6 @@ public class XRadioCardConstraintLayout extends XCardConstraintLayout implements
     public void onViewAdded(View view) {
         super.onViewAdded(view);
         if (mRadioItemHelper != null) mRadioItemHelper.onViewAdded(view);
-    }
-
-    @Override
-    public void setCheckedByClickEnable(boolean isCheckedByClickEnable) {
-        if (mRadioItemHelper != null) mRadioItemHelper.setCheckedByClickEnable(isCheckedByClickEnable);
     }
 
     @Override

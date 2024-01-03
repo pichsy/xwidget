@@ -74,11 +74,6 @@ public class XRadioRoundLinearLayout extends XRoundLinearLayout implements XRadi
     }
 
     @Override
-    public void setCheckStateFollowParent(boolean followParent) {
-        if (mRadioItemHelper != null) mRadioItemHelper.setCheckStateFollowParent(followParent);
-    }
-
-    @Override
     public boolean isCheckStateFollowParent() {
         return mRadioItemHelper != null && mRadioItemHelper.isCheckStateFollowParent();
     }
@@ -93,11 +88,6 @@ public class XRadioRoundLinearLayout extends XRoundLinearLayout implements XRadi
     public void onViewAdded(View view) {
         super.onViewAdded(view);
         if (mRadioItemHelper != null) mRadioItemHelper.onViewAdded(view);
-    }
-
-    @Override
-    public void setCheckedByClickEnable(boolean isCheckedByClickEnable) {
-        if (mRadioItemHelper != null) mRadioItemHelper.setCheckedByClickEnable(isCheckedByClickEnable);
     }
 
     @Override

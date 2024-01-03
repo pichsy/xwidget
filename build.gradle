@@ -42,6 +42,6 @@ ext {
      *  注：versionName->>不能使用非数字的符号,比如[A-Za-z]$等，仅支持数字，仅支持两个点（.）]
      *  升级时仅修改versionName就行了
      */
-    versionName = "4.0.0"
+    versionName = "4.3.0"
     versionCode = calculateVersionCode(versionName)
 }

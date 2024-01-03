@@ -54,25 +54,11 @@ public interface XRadioButton {
     }
 
     /**
-     * 设置是否跟随父类的选中状态
-     *
-     * @param followParent 是否跟随父类的选中状态
-     */
-    void setCheckStateFollowParent(boolean followParent);
-
-    /**
      * 是否跟随父类的选中状态
      *
      * @return 是否跟随父类的选中状态
      */
     boolean isCheckStateFollowParent();
-
-    /**
-     * 设置是否可以监听
-     *
-     * @param isCheckedByClickEnable 是否可以监听
-     */
-    void setCheckedByClickEnable(boolean isCheckedByClickEnable);
 
     /**
      * 是否可以监听

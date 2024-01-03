@@ -45,9 +45,9 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
             isCheckedByClickEnable = false;
         }
         if (this.isCheckedByClickEnable) {
-            setOnClickListener(this);
+            this.setOnClickListener(this);
         } else {
-            setOnClickListener(null);
+            this.setOnClickListener(null);
         }
     }
 
@@ -99,19 +99,6 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
         }
     }
 
-
-    @Override
-    public void setCheckedByClickEnable(boolean isCheckedByClickEnable) {
-        if (!isCheckStateFollowParent() && this.isCheckedByClickEnable != isCheckedByClickEnable) {
-            this.isCheckedByClickEnable = isCheckedByClickEnable;
-            if (this.isCheckedByClickEnable) {
-                setOnClickListener(this);
-            } else {
-                setOnClickListener(null);
-            }
-        }
-    }
-
     @Override
     public boolean isCheckedByClickEnable() {
         return isCheckedByClickEnable;
@@ -126,12 +113,8 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
         this.mChangeListener = listener;
     }
 
-    @Override
     public void setCheckStateFollowParent(boolean followParent) {
         this.isCheckStateFollowParent = followParent;
-        if (isCheckStateFollowParent()) {
-            setCheckedByClickEnable(false);
-        }
     }
 
     @Override

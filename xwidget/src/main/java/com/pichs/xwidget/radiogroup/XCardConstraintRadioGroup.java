@@ -10,7 +10,6 @@ public class XCardConstraintRadioGroup extends XCardConstraintLayout implements 
 
     private final XRadioGroupHelper mRadioGroupHelper;
 
-
     @Override
     public void setOnRadioCheckedListener(OnRadioCheckedListener onRadioCheckedListener) {
         if (mRadioGroupHelper != null) {
