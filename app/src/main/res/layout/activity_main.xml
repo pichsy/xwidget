@@ -308,7 +308,7 @@
             app:xp_starSize="30dp"
             app:xp_starStep="1.0" />
 
-        <com.pichs.xwidget.input.InputLayout
+        <com.pichs.xwidget.input.XInputLayout
             android:id="@+id/input_layout"
             android:layout_width="200dp"
             android:layout_height="40dp"
@@ -328,7 +328,7 @@
             app:xp_radius="8dp"
             app:xp_textPassword="false" />
 
-        <com.pichs.xwidget.layout.PressScaleLayout
+        <com.pichs.xwidget.pressedscale.PressScaleLayout
             android:layout_width="300dp"
             android:layout_height="100dp"
             android:background="#A7A7CF"
@@ -347,7 +347,7 @@
                 app:xp_backgroundGradientColors="#9f1,#42f"
                 app:xp_radius="8dp" />
 
-        </com.pichs.xwidget.layout.PressScaleLayout>
+        </com.pichs.xwidget.pressedscale.PressScaleLayout>
 
         <Space
             android:layout_width="match_parent"

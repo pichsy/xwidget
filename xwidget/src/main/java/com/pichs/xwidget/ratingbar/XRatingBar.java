@@ -1,5 +1,8 @@
 package com.pichs.xwidget.ratingbar;
 
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
+import static android.util.TypedValue.applyDimension;
+
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
@@ -24,9 +27,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.Interpolator;
-
-import static android.util.TypedValue.COMPLEX_UNIT_DIP;
-import static android.util.TypedValue.applyDimension;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntRange;
@@ -749,8 +749,8 @@ public class XRatingBar extends View {
     /**
      * 设置星星的最大尺寸
      */
-    public void setMaxStarSize(int maxStarSize) {
-        this.maxStarSize = maxStarSize;
+    public void setMaxStarSize(float maxStarSize) {
+        this.maxStarSize = (int) maxStarSize;
         if (currentStarSize > maxStarSize) {
             // force re-calculating the layout dimension
             requestLayout();
@@ -775,8 +775,8 @@ public class XRatingBar extends View {
      *
      * @param starSize value in pixels
      */
-    public void setStarSize(int starSize) {
-        this.desiredStarSize = starSize;
+    public void setStarSize(float starSize) {
+        this.desiredStarSize = (int) starSize;
         if (desiredStarSize > maxStarSize) {
             desiredStarSize = maxStarSize;
         } else if (desiredStarSize < 0) {
@@ -795,7 +795,7 @@ public class XRatingBar extends View {
      *
      * @return value in pixels
      */
-    public float getStarsSeparation() {
+    public int getStarsSeparation() {
         return starsSeparation;
     }
 
@@ -861,7 +861,7 @@ public class XRatingBar extends View {
      *
      * @return value in pixels
      */
-    public float getStarCornerRadius() {
+    public int getStarCornerRadius() {
         return starCornerRadius;
     }
 

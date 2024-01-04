@@ -6,9 +6,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.pichs.app.xwidget.base.BaseActivity
 import com.pichs.app.xwidget.databinding.ActivityHomeWhiteBinding
-import com.pichs.app.xwidget.home.HomeFragment
-import com.pichs.app.xwidget.home.MyFragment
-import com.pichs.app.xwidget.home.ToolsFragment
 import com.pichs.xbase.utils.XLog
 
 class HomeActivity : BaseActivity<ActivityHomeWhiteBinding>() {

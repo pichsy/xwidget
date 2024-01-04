@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
 
@@ -27,7 +28,7 @@ import java.util.TimerTask;
  * Created pichs
  * 验证码输入框，可带加载动画，只限线性有动画
  */
-public class VerificationCodeEditText extends XEditText {
+public class XVerificationCodeEditText extends XEditText {
 
     private static final int TYPE_HOLLOW = 1;//空心
     private static final int TYPE_SOLID = 2;//实心
@@ -104,16 +105,17 @@ public class VerificationCodeEditText extends XEditText {
     // 移动距离 px
     private static final float bounce_step = 10;
 
-    public VerificationCodeEditText(Context context) {
+    public XVerificationCodeEditText(Context context) {
         this(context, null);
     }
 
-    public VerificationCodeEditText(Context context, AttributeSet attrs) {
+    public XVerificationCodeEditText(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public VerificationCodeEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+    public XVerificationCodeEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setImeOptions(getImeOptions() | EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         setLongClickable(false);
         setTextIsSelectable(false);
         setCustomSelectionActionModeCallback(new ActionMode.Callback() {
@@ -136,24 +138,24 @@ public class VerificationCodeEditText extends XEditText {
             public void onDestroyActionMode(ActionMode actionMode) {
             }
         });
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.VerificationCodeEditText);
-        password = ta.getBoolean(R.styleable.VerificationCodeEditText_xp_textPassword, false);
-        showCursor = ta.getBoolean(R.styleable.VerificationCodeEditText_xp_showCursor, true);
-        borderColor = ta.getColor(R.styleable.VerificationCodeEditText_xp_borderColor, Color.GRAY);
-        borderColorTemp = ta.getColor(R.styleable.VerificationCodeEditText_xp_borderColor, Color.GRAY);
-        borderNoTextColor = ta.getColor(R.styleable.VerificationCodeEditText_xp_borderNoTextColor, Color.GRAY);
-        blockColor = ta.getColor(R.styleable.VerificationCodeEditText_xp_blockColor, Color.BLUE);
-        textColor = ta.getColor(R.styleable.VerificationCodeEditText_android_textColor, Color.GRAY);
-        cursorColor = ta.getColor(R.styleable.VerificationCodeEditText_xp_cursorColor, Color.GRAY);
-        corner = (int) ta.getDimension(R.styleable.VerificationCodeEditText_xp_radius, 0);
-        spacing = (int) ta.getDimension(R.styleable.VerificationCodeEditText_xp_horizontalSpacing, 0);
-        type = ta.getInt(R.styleable.VerificationCodeEditText_xp_boxType, TYPE_HOLLOW);
-        maxLength = ta.getInt(R.styleable.VerificationCodeEditText_android_maxLength, 6);
-        cursorDuration = ta.getInt(R.styleable.VerificationCodeEditText_xp_cursorDuration, 500);
-        cursorWidth = (int) ta.getDimension(R.styleable.VerificationCodeEditText_xp_cursorWidth, 2);
-        borderWidth = (int) ta.getDimension(R.styleable.VerificationCodeEditText_xp_borderWidth, 5);
-        borderLoadingColor = ta.getColor(R.styleable.VerificationCodeEditText_xp_borderLoadingColor, Color.LTGRAY);
-        borderErrorColor = ta.getColor(R.styleable.VerificationCodeEditText_xp_borderErrorColor, Color.RED);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XVerificationCodeEditText);
+        password = ta.getBoolean(R.styleable.XVerificationCodeEditText_xp_textPassword, false);
+        showCursor = ta.getBoolean(R.styleable.XVerificationCodeEditText_xp_showCursor, true);
+        borderColor = ta.getColor(R.styleable.XVerificationCodeEditText_xp_borderColor, Color.GRAY);
+        borderColorTemp = ta.getColor(R.styleable.XVerificationCodeEditText_xp_borderColor, Color.GRAY);
+        borderNoTextColor = ta.getColor(R.styleable.XVerificationCodeEditText_xp_borderNoTextColor, Color.GRAY);
+        blockColor = ta.getColor(R.styleable.XVerificationCodeEditText_xp_blockColor, Color.BLUE);
+        textColor = ta.getColor(R.styleable.XVerificationCodeEditText_android_textColor, Color.GRAY);
+        cursorColor = ta.getColor(R.styleable.XVerificationCodeEditText_xp_cursorColor, Color.GRAY);
+        corner = (int) ta.getDimension(R.styleable.XVerificationCodeEditText_xp_radius, 0);
+        spacing = (int) ta.getDimension(R.styleable.XVerificationCodeEditText_xp_horizontalSpacing, 0);
+        type = ta.getInt(R.styleable.XVerificationCodeEditText_xp_boxType, TYPE_HOLLOW);
+        maxLength = ta.getInt(R.styleable.XVerificationCodeEditText_xp_maxNumber, 6);
+        cursorDuration = ta.getInt(R.styleable.XVerificationCodeEditText_xp_cursorDuration, 500);
+        cursorWidth = (int) ta.getDimension(R.styleable.XVerificationCodeEditText_xp_cursorWidth, 2);
+        borderWidth = (int) ta.getDimension(R.styleable.XVerificationCodeEditText_xp_borderWidth, 5);
+        borderLoadingColor = ta.getColor(R.styleable.XVerificationCodeEditText_xp_borderLoadingColor, Color.LTGRAY);
+        borderErrorColor = ta.getColor(R.styleable.XVerificationCodeEditText_xp_borderErrorColor, Color.RED);
         ta.recycle();
         init();
     }
@@ -168,7 +170,7 @@ public class VerificationCodeEditText extends XEditText {
         invalidate();
     }
 
-    public void setMaxLength(int maxLength) {
+    public void setMaxNumber(int maxLength) {
         this.maxLength = maxLength;
         invalidate();
     }
@@ -288,8 +290,9 @@ public class VerificationCodeEditText extends XEditText {
         borderRectF = new RectF();
         boxRectF = new RectF();
 
-        if (type == TYPE_HOLLOW)
+        if (type == TYPE_HOLLOW){
             spacing = 0;
+        }
 
         timerTask = new TimerTask() {
             @Override

@@ -1,7 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical">
 
-</FrameLayout>
+    <com.pichs.xwidget.space.XStatusBarSpace
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="组合输入框"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <com.pichs.xwidget.view.XTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="账号:"
+        android:textColor="#333"
+        android:textSize="16sp" />
+
+    <com.pichs.xwidget.input.XInputLayout
+        android:id="@+id/input_layout_account"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:hint="请输入账号"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        android:textSize="14sp"
+        app:xp_borderColor="#999"
+        app:xp_borderWidth="1dp"
+        app:xp_clearDrawable="@drawable/ic_close_with_circle"
+        app:xp_clearIconVisible="true"
+        app:xp_clearIcon_padding="3dp"
+        app:xp_eyeCloseDrawable="@drawable/ic_login_hide"
+        app:xp_eyeIconVisible="false"
+        app:xp_eyeOpenDrawable="@drawable/ic_login_show"
+        app:xp_inputType_normal="text"
+        app:xp_inputType_password="textPassword"
+        app:xp_radius="10dp"
+        app:xp_textPassword="false" />
+
+    <com.pichs.xwidget.view.XTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="密码:"
+        android:textColor="#333"
+        android:textSize="16sp" />
+
+    <com.pichs.xwidget.input.XInputLayout
+        android:id="@+id/input_layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:hint="请输入密码"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textColor="#333"
+        android:textColorHint="#999"
+        android:textSize="14sp"
+        app:xp_borderColor="#999"
+        app:xp_borderWidth="1dp"
+        app:xp_clearDrawable="@drawable/ic_close_with_circle"
+        app:xp_clearIconVisible="true"
+        app:xp_clearIcon_padding="3dp"
+        app:xp_textPassword="true"
+        app:xp_eyeCloseDrawable="@drawable/ic_login_hide"
+        app:xp_eyeIconVisible="true"
+        app:xp_eyeOpenDrawable="@drawable/ic_login_show"
+        app:xp_inputType_normal="number"
+        app:xp_inputType_password="numberPassword"
+        app:xp_radius="10dp" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:background="#464547"
+                android:text="代码"
+                android:textColor="#FFEB3B"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

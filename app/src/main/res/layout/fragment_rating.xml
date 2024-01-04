@@ -1,6 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="星星控件"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <com.pichs.xwidget.ratingbar.XRatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:xp_borderColor="#EAA599"
+                app:xp_maxStarSize="30dp"
+                app:xp_starCornerRadius="0dp"
+                app:xp_starCount="5"
+                app:xp_starNormalColor="#DFDADA"
+                app:xp_starProgress="2"
+                app:xp_starSelectedColor="#EC0690"
+                app:xp_starSize="30dp"
+                app:xp_starStep="1" />
+
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_corner_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:text="星星圆角"
+                android:textColor="#333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seekBar_radius"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#DFDFE6"
+                android:max="100"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_corner_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_corner_desc"
+                app:layout_constraintTop_toTopOf="@+id/tv_corner_desc" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_star_size_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:text="星星大小"
+                android:textColor="#333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_corner_desc" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seekBar_star_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#DFDFE6"
+                android:max="60"
+                android:min="10"
+                android:progress="30"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_star_size_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_star_size_desc"
+                app:layout_constraintTop_toTopOf="@+id/tv_star_size_desc" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_star_count_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:text="星星数量"
+                android:textColor="#333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_star_size_desc" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seekBar_star_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#DFDFE6"
+                android:max="10"
+                android:min="2"
+                android:padding="10dp"
+                android:progress="5"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_star_count_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_star_count_desc"
+                app:layout_constraintTop_toTopOf="@+id/tv_star_count_desc" />
+            <!--            间距-->
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_star_separation_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:text="星星间距"
+                android:textColor="#333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_star_count_desc" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seekBar_star_separation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#DFDFE6"
+                android:max="30"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_star_separation_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_star_separation_desc"
+                app:layout_constraintTop_toTopOf="@+id/tv_star_separation_desc" />
+
+            <!--            星星步数-->
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_star_step_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:text="星星步数"
+                android:textColor="#333"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_star_separation_desc" />
+
+            <androidx.appcompat.widget.AppCompatSeekBar
+                android:id="@+id/seekBar_star_step"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#DFDFE6"
+                android:max="2"
+                android:min="1"
+                android:padding="10dp"
+                android:progress="2"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_star_step_desc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_star_step_desc"
+                app:layout_constraintTop_toTopOf="@+id/tv_star_step_desc" />
+
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="60dp"
+                android:background="#464547"
+                android:text="代码"
+                android:textColor="#FFEB3B"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_star_step_desc" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

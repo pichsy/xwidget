@@ -1,6 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.pichs.xwidget.space.XStatusBarSpace
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击缩放子控件布局"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <com.pichs.xwidget.view.XTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="父控件"
+        android:textColor="#333"
+        android:textSize="12sp" />
+
+    <com.pichs.xwidget.pressedscale.XPressScaleLinearLayout
+        android:id="@+id/ll_pressed_layout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#BDBDF3"
+        android:clickable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:xp_pressedScaleChildIds=""
+        app:xp_pressedScaleJustFirst="false">
+
+        <com.pichs.xwidget.cardview.XCardButton
+            android:id="@+id/tv_btn1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="#05B19D"
+            android:gravity="center"
+            android:text="控件1"
+            android:textColor="#fff"
+            app:xp_isRadiusAdjustBounds="true" />
+
+        <com.pichs.xwidget.cardview.XCardButton
+            android:id="@+id/tv_btn2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="#05B19D"
+            android:gravity="center"
+            android:text="控件2"
+            android:textColor="#fff"
+            app:xp_isRadiusAdjustBounds="true" />
+
+        <com.pichs.xwidget.cardview.XCardButton
+            android:id="@+id/tv_btn3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="#05B19D"
+            android:gravity="center"
+            android:text="控件3"
+            android:textColor="#fff"
+            app:xp_isRadiusAdjustBounds="true" />
+
+    </com.pichs.xwidget.pressedscale.XPressScaleLinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.pichs.xwidget.cardview.XCardButton
+            android:id="@+id/btn_scale_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="#fff"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="设置仅第一个可动"
+            android:textColor="#333"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_isRadiusAdjustBounds="true"
+            app:xp_pressedScale="0.9"
+            app:xp_shadowElevation="2dp" />
+
+        <com.pichs.xwidget.cardview.XCardButton
+            android:id="@+id/btn_scale_ids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="#fff"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="指定Id，1，3 可动"
+            android:textColor="#333"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_isRadiusAdjustBounds="true"
+            app:xp_pressedScale="0.9"
+            app:xp_shadowElevation="2dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.pichs.xwidget.cardview.XCardButton
+            android:id="@+id/btn_scale_remove_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="#fff"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="移除'仅第一个可动'"
+            android:textColor="#333"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_isRadiusAdjustBounds="true"
+            app:xp_pressedScale="0.9"
+            app:xp_shadowElevation="2dp" />
+
+        <com.pichs.xwidget.cardview.XCardButton
+            android:id="@+id/btn_scale_remove_ids"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="#fff"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="移除'所有可动Id'"
+            android:textColor="#333"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_isRadiusAdjustBounds="true"
+            app:xp_pressedScale="0.9"
+            app:xp_shadowElevation="2dp" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:background="#464547"
+                android:text="代码"
+                android:textColor="#FFEB3B"
+                android:textSize="14sp" />
+
+
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:text="注意：xp_pressedScaleChildIds 优先级高于 xp_pressedScaleJustFirst"
+                android:textColor="#f00"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

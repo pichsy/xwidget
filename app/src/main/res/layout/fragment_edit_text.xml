@@ -1,6 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="输入框"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.pichs.xwidget.view.XEditText
+                android:id="@+id/et_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#8BC34A"
+                android:cursorVisible="true"
+                android:padding="16dp"
+                android:text="我是输入框"
+                android:textCursorDrawable="@drawable/cursor_drawable"
+                app:xp_disableCopyAndPaste="true" />
+
+            <com.pichs.xwidget.edittext.XVerificationCodeEditText
+                android:id="@+id/verificationCodeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="26dp"
+                android:background="#FFFFFF"
+                android:cursorVisible="true"
+                android:inputType="numberPassword"
+                android:textColor="#255BFA"
+                app:xp_borderColor="#255BFA"
+                app:xp_borderErrorColor="#EF067E"
+                app:xp_borderLoadingColor="#FFC107"
+                app:xp_borderNoTextColor="#333"
+                app:xp_borderWidth="4dp"
+                app:xp_boxType="underline"
+                app:xp_cursorColor="#D65151"
+                app:xp_cursorDuration="1000"
+                app:xp_cursorWidth="2dp"
+                app:xp_horizontalSpacing="10dp"
+                app:xp_maxNumber="6"
+                app:xp_radius="8dp"
+                app:xp_showCursor="true" />
+
+
+            <com.pichs.xwidget.edittext.XVerificationCodeEditText
+                android:id="@+id/verificationCodeEditText2"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="26dp"
+                android:background="#FFFFFF"
+                android:cursorVisible="true"
+                android:inputType="numberPassword"
+                android:textColor="#fff"
+                app:xp_blockColor="#28CBE8"
+                app:xp_boxType="solid"
+                app:xp_cursorColor="#99f"
+                app:xp_cursorDuration="500"
+                app:xp_cursorWidth="2dp"
+                app:xp_horizontalSpacing="8dp"
+                app:xp_maxNumber="6"
+                app:xp_radius="8dp"
+                app:xp_showCursor="true" />
+
+
+            <com.pichs.xwidget.edittext.XVerificationCodeEditText
+                android:id="@+id/verificationCodeEditText3"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="36dp"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="26dp"
+                android:background="#FFFFFF"
+                android:cursorVisible="true"
+                android:inputType="numberPassword"
+                android:textColor="#255BFA"
+                app:xp_borderColor="#255BFA"
+                app:xp_borderNoTextColor="#333"
+                app:xp_borderWidth="2dp"
+                app:xp_boxType="hollow"
+                app:xp_cursorColor="#255BFA"
+                app:xp_cursorDuration="500"
+                app:xp_cursorWidth="2dp"
+                app:xp_horizontalSpacing="10dp"
+                app:xp_maxNumber="6"
+                app:xp_radius="0dp"
+                app:xp_showCursor="true" />
+
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:background="#464547"
+                android:text="代码"
+                android:textColor="#FFEB3B"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

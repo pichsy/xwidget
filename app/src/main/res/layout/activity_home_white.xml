@@ -83,7 +83,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:xp_pressedScale="0.85">
 
             <com.pichs.xwidget.radiobutton.XRadioImageView
                 android:id="@+id/radio_home"
@@ -121,7 +122,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:xp_pressedScale="0.85">
 
             <com.pichs.xwidget.radiobutton.XRadioImageView
                 android:id="@+id/radio_tools"
@@ -158,7 +160,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:xp_pressedScale="0.85">
 
             <com.pichs.xwidget.radiobutton.XRadioImageView
                 android:id="@+id/radio_my"
@@ -188,7 +191,5 @@
                 app:xp_check_state_follow_parent="true"
                 app:xp_checkedTextColor="#5097FF" />
         </com.pichs.xwidget.radiobutton.XRadioCardLinearLayout>
-
     </com.pichs.xwidget.radiogroup.XRoundLinearRadioGroup>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

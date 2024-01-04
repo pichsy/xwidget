@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <attr name="xp_textPassword" format="boolean" />
-    <declare-styleable name="VerificationCodeEditText">
+    <declare-styleable name="XVerificationCodeEditText">
         <attr name="android:textColor" />
         <attr name="android:textSize" />
         <!--   最大数决定了验证码最大输入的位数     -->
-        <attr name="android:maxLength" />
+        <attr name="xp_maxNumber" />
         <!--   是否是密文显示     -->
         <attr name="xp_textPassword" />
         <!--   验证码的类型，下划线，实体，空心     -->

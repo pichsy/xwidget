@@ -25,7 +25,7 @@ import com.pichs.xwidget.view.XImageView;
 /**
  * 输入框 带密码和 清空按钮
  */
-public class InputLayout extends XCardLinearLayout {
+public class XInputLayout extends XCardLinearLayout {
 
     private XEditText mEditText;
     private XImageView mClearImageView;
@@ -69,15 +69,15 @@ public class InputLayout extends XCardLinearLayout {
     private CharSequence hintText = "";
     private int eyeIconColorFilter, clearIconColorFilter;
 
-    public InputLayout(Context context) {
+    public XInputLayout(Context context) {
         this(context, null);
     }
 
-    public InputLayout(Context context, AttributeSet attrs) {
+    public XInputLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public InputLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public XInputLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
     }
@@ -92,60 +92,60 @@ public class InputLayout extends XCardLinearLayout {
         clearIconWidth = XDisplayHelper.dp2px(context, 26);
         clearIconHeight = clearIconWidth;
 
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.InputLayout, defStyleAttr, 0);
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XInputLayout, defStyleAttr, 0);
         int indexCount = ta.getIndexCount();
 
         for (int i = 0; i < indexCount; i++) {
             int index = ta.getIndex(i);
-            if (index == R.styleable.InputLayout_xp_clearIconVisible) {
+            if (index == R.styleable.XInputLayout_xp_clearIconVisible) {
                 isClearIconShow = ta.getBoolean(index, false);
-            } else if (index == R.styleable.InputLayout_xp_eyeIconVisible) {
+            } else if (index == R.styleable.XInputLayout_xp_eyeIconVisible) {
                 isEyeIconShow = ta.getBoolean(index, false);
-            } else if (index == R.styleable.InputLayout_xp_textPassword) {
+            } else if (index == R.styleable.XInputLayout_xp_textPassword) {
                 isTextPassword = ta.getBoolean(index, false);
-            } else if (index == R.styleable.InputLayout_xp_clearDrawable) {
+            } else if (index == R.styleable.XInputLayout_xp_clearDrawable) {
                 mClearDrawable = ta.getDrawable(index);
-            } else if (index == R.styleable.InputLayout_xp_eyeOpenDrawable) {
+            } else if (index == R.styleable.XInputLayout_xp_eyeOpenDrawable) {
                 mEyeOpenDrawable = ta.getDrawable(index);
-            } else if (index == R.styleable.InputLayout_xp_eyeCloseDrawable) {
+            } else if (index == R.styleable.XInputLayout_xp_eyeCloseDrawable) {
                 mEyeCloseDrawable = ta.getDrawable(index);
-            } else if (index == R.styleable.InputLayout_xp_eyeIcon_padding) {
+            } else if (index == R.styleable.XInputLayout_xp_eyeIcon_padding) {
                 eyeIconPadding = ta.getDimensionPixelSize(index, eyeIconPadding);
-            } else if (index == R.styleable.InputLayout_xp_eyeIcon_width) {
+            } else if (index == R.styleable.XInputLayout_xp_eyeIcon_width) {
                 eyeIconWidth = ta.getDimensionPixelSize(index, eyeIconWidth);
-            } else if (index == R.styleable.InputLayout_xp_eyeIcon_height) {
+            } else if (index == R.styleable.XInputLayout_xp_eyeIcon_height) {
                 eyeIconHeight = ta.getDimensionPixelSize(index, eyeIconHeight);
-            } else if (index == R.styleable.InputLayout_xp_clearIcon_height) {
+            } else if (index == R.styleable.XInputLayout_xp_clearIcon_height) {
                 clearIconHeight = ta.getDimensionPixelSize(index, clearIconHeight);
-            } else if (index == R.styleable.InputLayout_xp_clearIcon_width) {
+            } else if (index == R.styleable.XInputLayout_xp_clearIcon_width) {
                 clearIconWidth = ta.getDimensionPixelSize(index, clearIconWidth);
-            } else if (index == R.styleable.InputLayout_xp_clearIcon_padding) {
+            } else if (index == R.styleable.XInputLayout_xp_clearIcon_padding) {
                 clearIconPadding = ta.getDimensionPixelSize(index, clearIconPadding);
-            } else if (index == R.styleable.InputLayout_android_text) {
+            } else if (index == R.styleable.XInputLayout_android_text) {
                 text = ta.getString(index);
-            } else if (index == R.styleable.InputLayout_android_textStyle) {
+            } else if (index == R.styleable.XInputLayout_android_textStyle) {
                 textStyle = ta.getInt(index, textStyle);
-            } else if (index == R.styleable.InputLayout_xp_eyeIconColorFilter) {
+            } else if (index == R.styleable.XInputLayout_xp_eyeIconColorFilter) {
                 eyeIconColorFilter = ta.getColor(index, 0);
-            } else if (index == R.styleable.InputLayout_xp_clearIconColorFilter) {
+            } else if (index == R.styleable.XInputLayout_xp_clearIconColorFilter) {
                 clearIconColorFilter = ta.getColor(index, 0);
-            } else if (index == R.styleable.InputLayout_android_hint) {
+            } else if (index == R.styleable.XInputLayout_android_hint) {
                 hintText = ta.getString(index);
-            } else if (index == R.styleable.InputLayout_android_textSize) {
+            } else if (index == R.styleable.XInputLayout_android_textSize) {
                 textSize = ta.getDimensionPixelSize(index, textSize);
-            } else if (index == R.styleable.InputLayout_android_textColorHint) {
+            } else if (index == R.styleable.XInputLayout_android_textColorHint) {
                 textHintColor = ta.getColor(index, textHintColor);
-            } else if (index == R.styleable.InputLayout_android_textColor) {
+            } else if (index == R.styleable.XInputLayout_android_textColor) {
                 textColor = ta.getColor(index, textColor);
-            } else if (index == R.styleable.InputLayout_android_maxLength) {
+            } else if (index == R.styleable.XInputLayout_android_maxLength) {
                 maxLength = ta.getInt(index, maxLength);
-            } else if (index == R.styleable.InputLayout_android_maxLines) {
+            } else if (index == R.styleable.XInputLayout_android_maxLines) {
                 maxLines = ta.getInt(index, maxLines);
-            } else if (index == R.styleable.InputLayout_xp_inputType_password) {
+            } else if (index == R.styleable.XInputLayout_xp_inputType_password) {
                 pwdInputType = ta.getInt(index, InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-            } else if (index == R.styleable.InputLayout_xp_inputType_normal) {
+            } else if (index == R.styleable.XInputLayout_xp_inputType_normal) {
                 norInputType = ta.getInt(index, InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_NORMAL);
-            } else if (index == R.styleable.InputLayout_xp_disableCopyAndPaste) {
+            } else if (index == R.styleable.XInputLayout_xp_disableCopyAndPaste) {
                 disableCopyAndPaste = ta.getBoolean(index, false);
             }
         }
@@ -175,19 +175,19 @@ public class InputLayout extends XCardLinearLayout {
         handleViewData();
     }
 
-    public InputLayout setClearIconColorFilter(int clearIconColorFilter) {
+    public XInputLayout setClearIconColorFilter(int clearIconColorFilter) {
         this.clearIconColorFilter = clearIconColorFilter;
         mClearImageView.setColorFilterOverride(clearIconColorFilter);
         return this;
     }
 
-    public InputLayout setEyeIconColorFilter(int eyeIconColorFilter) {
+    public XInputLayout setEyeIconColorFilter(int eyeIconColorFilter) {
         this.eyeIconColorFilter = eyeIconColorFilter;
         mEyeImageView.setColorFilterOverride(eyeIconColorFilter);
         return this;
     }
 
-    public InputLayout setTextStyle(int textStyle) {
+    public XInputLayout setTextStyle(int textStyle) {
         if (textStyle == 0 || textStyle == 1 || textStyle == 2) {
             this.textStyle = textStyle;
             mEditText.setTypeface(mEditText.getTypeface(), textStyle);
@@ -195,7 +195,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setHintTextColor(int textHintColor) {
+    public XInputLayout setHintTextColor(int textHintColor) {
         if (textHintColor != 0) {
             this.textHintColor = textHintColor;
             mEditText.setHintTextColor(textHintColor);
@@ -203,7 +203,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setTextColor(int color) {
+    public XInputLayout setTextColor(int color) {
         if (color != 0) {
             this.textColor = color;
             mEditText.setTextColor(textColor);
@@ -211,7 +211,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setTextSize(int textSize) {
+    public XInputLayout setTextSize(int textSize) {
         if (textSize != 0) {
             this.textSize = textSize;
             mEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
@@ -219,7 +219,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setHintText(CharSequence hintText) {
+    public XInputLayout setHintText(CharSequence hintText) {
         this.hintText = hintText;
         if (!TextUtils.isEmpty(hintText)) {
             mEditText.setHint(hintText);
@@ -239,7 +239,7 @@ public class InputLayout extends XCardLinearLayout {
     /**
      * 设置输入字符的个数最大不超过maxLength
      */
-    public InputLayout setMaxLength(int maxLength) {
+    public XInputLayout setMaxLength(int maxLength) {
         if (maxLength != 0) {
             this.maxLength = maxLength;
             mEditText.setFilters(getLengthFilters(maxLength));
@@ -247,7 +247,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setMaxLines(int maxLines) {
+    public XInputLayout setMaxLines(int maxLines) {
         if (maxLines < 1) {
             maxLines = 1;
         }
@@ -255,14 +255,14 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setClearDrawable(Drawable clearDrawable) {
+    public XInputLayout setClearDrawable(Drawable clearDrawable) {
         mClearDrawable = clearDrawable;
         mClearImageView.setImageDrawable(mClearDrawable);
         return this;
     }
 
 
-    public InputLayout setClearIconPadding(int clearIconPadding) {
+    public XInputLayout setClearIconPadding(int clearIconPadding) {
         this.clearIconPadding = clearIconPadding;
         if (mClearImageView != null) {
             mClearImageView.setPadding(clearIconPadding, clearIconPadding, clearIconPadding, clearIconPadding);
@@ -270,7 +270,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setClearIconSize(int width, int height) {
+    public XInputLayout setClearIconSize(int width, int height) {
         this.clearIconHeight = height;
         this.clearIconWidth = width;
         if (mClearImageView != null) {
@@ -284,14 +284,14 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setDisableCopyAndPaste(boolean disableCopyAndPaste) {
+    public XInputLayout setDisableCopyAndPaste(boolean disableCopyAndPaste) {
         this.disableCopyAndPaste = disableCopyAndPaste;
         mEditText.setDisableCopyAndPaste(this.disableCopyAndPaste);
         return this;
     }
 
 
-    public InputLayout setEyeIconSize(int width, int height) {
+    public XInputLayout setEyeIconSize(int width, int height) {
         this.eyeIconWidth = width;
         this.eyeIconHeight = height;
         if (mEyeImageView != null) {
@@ -305,7 +305,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setEyeIconPadding(int eyeIconPadding) {
+    public XInputLayout setEyeIconPadding(int eyeIconPadding) {
         this.eyeIconPadding = eyeIconPadding;
         if (mEyeImageView != null) {
             mEyeImageView.setPadding(eyeIconPadding, eyeIconPadding, eyeIconPadding, eyeIconPadding);
@@ -313,7 +313,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setEyeCloseDrawable(Drawable eyeCloseDrawable) {
+    public XInputLayout setEyeCloseDrawable(Drawable eyeCloseDrawable) {
         this.mEyeCloseDrawable = eyeCloseDrawable;
         if (isTextPassword) {
             mEyeImageView.setImageDrawable(mEyeCloseDrawable);
@@ -321,7 +321,7 @@ public class InputLayout extends XCardLinearLayout {
         return this;
     }
 
-    public InputLayout setEyeOpenDrawable(Drawable eyeOpenDrawable) {
+    public XInputLayout setEyeOpenDrawable(Drawable eyeOpenDrawable) {
         this.mEyeOpenDrawable = eyeOpenDrawable;
         if (!isTextPassword) {
             mEyeImageView.setImageDrawable(mEyeOpenDrawable);
@@ -330,7 +330,7 @@ public class InputLayout extends XCardLinearLayout {
     }
 
 
-    public InputLayout setText(CharSequence text) {
+    public XInputLayout setText(CharSequence text) {
         if (TextUtils.isEmpty(text)) {
             mEditText.setText("");
             this.text = "";

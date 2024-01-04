@@ -12,6 +12,7 @@ import com.pichs.app.xwidget.ui.inputlayout.InputLayoutActivity
 import com.pichs.app.xwidget.ui.nestedscroll.NestedScrollActivity
 import com.pichs.app.xwidget.ui.progress.ProgressActivity
 import com.pichs.app.xwidget.ui.radio.RadioActivity
+import com.pichs.app.xwidget.ui.rating.RatingActivity
 import com.pichs.app.xwidget.ui.round.RoundLayoutActivity
 import com.pichs.app.xwidget.ui.scale.ScaleAnimationActivity
 import com.pichs.app.xwidget.ui.shining.ShiningActivity
@@ -79,7 +80,7 @@ object JumpUtils {
 
             "rating" -> {
                 UiKit.getApplication().startActivitySafely(
-                    Intent(UiKit.getApplication(), RadioActivity::class.java)
+                    Intent(UiKit.getApplication(), RatingActivity::class.java)
                 )
             }
 

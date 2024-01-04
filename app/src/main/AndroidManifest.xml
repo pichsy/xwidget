@@ -26,6 +26,19 @@
         android:theme="@style/Theme.Xwidget"
         android:usesCleartextTraffic="true">
 
+        <!-- 华为 -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <!-- 小米 -->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.5" />
+
         <activity
             android:name=".home.HomeActivity"
             android:configChanges="screenLayout|screenSize|orientation"
@@ -121,6 +134,7 @@
             android:name=".tools.ToolsUsageActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false" />
+        <activity android:name=".settings.SettingsActivity" />
 
     </application>
 
