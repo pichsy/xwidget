@@ -94,7 +94,7 @@
             app:xp_shine_checked_color="#0195EB"
             app:xp_shine_count="10"
             app:xp_shine_enable_flashing="true"
-            app:xp_shine_icon_image="@drawable/ic_start"
+            app:xp_shine_icon_image="@drawable/ic_star"
             app:xp_shine_normal_color="#C71FEA"
             app:xp_shine_small_shine_color="#3CC63C" />
 
