@@ -35,12 +35,228 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#efefef">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <com.pichs.xwidget.roundview.XRoundFrameLayout
+                android:id="@+id/card_layout"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:xp_backgroundGradientEndColor="#fff"
+                app:xp_backgroundGradientOrientation="horizontal"
+                app:xp_backgroundGradientStartColor="#fff"
+                app:xp_borderColor="#0000"
+                app:xp_borderWidth="0dp"
+                app:xp_radius="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="布局圆角"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <SeekBar
+                    android:id="@+id/seek_bar_radius"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#DAF0F1"
+                    android:max="90"
+                    android:min="0"
+                    android:padding="5dp"
+                    android:progress="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="开始颜色"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <com.pichs.app.xwidget.widget.PickerColorView
+                    android:id="@+id/start_picker_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#DAF0F1"
+                    android:padding="5dp"
+                    app:indicatorColor="#99f"
+                    app:indicatorEnable="true"
+                    app:orientation="horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="结束颜色"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <com.pichs.app.xwidget.widget.PickerColorView
+                    android:id="@+id/end_picker_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#DAF0F1"
+                    android:padding="5dp"
+                    app:indicatorColor="#99f"
+                    app:indicatorEnable="true"
+                    app:orientation="horizontal" />
+            </LinearLayout>
+
+            <com.pichs.xwidget.radiogroup.XLinearRadioGroup
+                android:id="@+id/rg_direction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="渐变方向"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <com.pichs.xwidget.radiobutton.XRadioCardButton
+                    android:id="@+id/radio_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="#999"
+                    android:checked="true"
+                    android:padding="8dp"
+                    android:text="horizontal"
+                    android:textColor="#fff"
+                    app:xp_checkedBackground="#4C4CFA"
+                    app:xp_radius="8dp" />
+
+                <com.pichs.xwidget.radiobutton.XRadioCardButton
+                    android:id="@+id/radio_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="#999"
+                    android:padding="8dp"
+                    android:text="vertical"
+                    android:textColor="#fff"
+                    app:xp_checkedBackground="#4C4CFA"
+                    app:xp_radius="8dp" />
+
+                <com.pichs.xwidget.radiobutton.XRadioCardButton
+                    android:id="@+id/radio_tl_br"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="#999"
+                    android:padding="8dp"
+                    android:text="TL_BR"
+                    android:textColor="#fff"
+                    app:xp_checkedBackground="#4C4CFA"
+                    app:xp_radius="8dp" />
+
+                <com.pichs.xwidget.radiobutton.XRadioCardButton
+                    android:id="@+id/radio_bl_tr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="#999"
+                    android:padding="8dp"
+                    android:text="BL_TR"
+                    android:textColor="#fff"
+                    app:xp_checkedBackground="#4C4CFA"
+                    app:xp_radius="8dp" />
+
+            </com.pichs.xwidget.radiogroup.XLinearRadioGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="边框颜色"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <com.pichs.app.xwidget.widget.PickerColorView
+                    android:id="@+id/border_picker_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#DAF0F1"
+                    android:padding="5dp"
+                    app:indicatorColor="#99f"
+                    app:indicatorEnable="true"
+                    app:orientation="horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="边框宽度"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <SeekBar
+                    android:id="@+id/seek_bar_border_width"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#DAF0F1"
+                    android:max="8"
+                    android:min="0"
+                    android:padding="5dp"
+                    android:progress="0" />
+            </LinearLayout>
 
 
             <com.pichs.xwidget.view.XTextView

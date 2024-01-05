@@ -7,7 +7,6 @@ import android.view.View;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
-import com.pichs.xwidget.radiobutton.XRadioButton;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -37,6 +36,7 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
         isIgnoreRadioGroup = ta.getBoolean(R.styleable.XRadioItem_xp_ignore_radio_group, false);
         isCheckStateFollowParent = ta.getBoolean(R.styleable.XRadioItem_xp_check_state_follow_parent, false);
         isCheckedByClickEnable = ta.getBoolean(R.styleable.XRadioItem_xp_checked_by_click, false);
+        boolean ischecked = ta.getBoolean(R.styleable.XRadioItem_android_checked, false);
         ta.recycle();
         if (isIgnoreRadioGroup) {
             setCheckStateFollowParent(false);
@@ -48,6 +48,9 @@ public class XRadioItemHelper implements View.OnClickListener, XRadioButton {
             this.setOnClickListener(this);
         } else {
             this.setOnClickListener(null);
+        }
+        if (mOwner.get() instanceof XRadioButton) {
+            ((XRadioButton) mOwner.get()).setChecked(ischecked);
         }
     }
 

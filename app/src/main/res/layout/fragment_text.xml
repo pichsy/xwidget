@@ -43,6 +43,79 @@
             android:orientation="vertical">
 
             <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="修改XTextView的字体文件" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.pichs.xwidget.cardview.XCardButton
+                    android:id="@+id/tv_smielysans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="16dp"
+                    android:background="#047BFA"
+                    android:fontFamily="@font/smileysans"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="得意黑字体"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    app:xp_ignoreGlobalTypeface="true"
+                    app:xp_isRadiusAdjustBounds="true"
+                    app:xp_shadowElevation="3dp" />
+
+                <com.pichs.xwidget.cardview.XCardButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:id="@+id/tv_leihong"
+                    android:background="#047BFA"
+                    android:fontFamily="@font/leihong"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="雷鸿字体"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    app:xp_ignoreGlobalTypeface="true"
+                    app:xp_isRadiusAdjustBounds="true"
+                    app:xp_shadowElevation="3dp" />
+
+                <com.pichs.xwidget.cardview.XCardButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:id="@+id/tv_recovery"
+                    android:background="#047BFA"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:text="恢复默认"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    app:xp_isRadiusAdjustBounds="true"
+                    app:xp_shadowElevation="3dp" />
+
+
+            </LinearLayout>
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_ignore_global_typeface"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="忽略字体文件变化"
+                app:xp_ignoreGlobalTypeface="true"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.pichs.xwidget.view.XTextView
                 android:id="@+id/tv_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

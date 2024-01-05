@@ -1,13 +1,13 @@
 package com.pichs.app.xwidget;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.pichs.app.xwidget.databinding.ActivityMainBinding;
 import com.pichs.app.xwidget.ui.web.WebViewActivity;
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         btn.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
-            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "SmileySans.ttf");
+            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "font/smileysans.ttf");
             XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
         });
 

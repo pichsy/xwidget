@@ -99,7 +99,7 @@ class RadioFragment : BaseFragment<FragmentRadioBinding>() {
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="parent"
        app:xp_check_state_follow_parent="true"
-       app:xp_checked="true"
+       android:checked="true"
        app:xp_checked_by_click="true"
        app:xp_checked_src="#0B31F4"
        app:xp_ignore_radio_group="true"
@@ -191,7 +191,7 @@ class RadioFragment : BaseFragment<FragmentRadioBinding>() {
        android:layout_height="40dp"
        android:layout_marginTop="12dp"
        android:src="@drawable/ic_agree_unckecked"
-       app:xp_checked="true"
+       android:checked="true"
        app:xp_checked_src="@drawable/ic_agree_checked" />
 
 
@@ -200,7 +200,7 @@ class RadioFragment : BaseFragment<FragmentRadioBinding>() {
        android:layout_height="40dp"
        android:layout_marginTop="12dp"
        android:src="@drawable/ic_agree_unckecked"
-       app:xp_checked="true"
+       android:checked="true"
        app:xp_checked_src="@drawable/ic_agree_checked" />
 
    <com.pichs.xwidget.radiobutton.XRadioCardLinearLayout

@@ -858,7 +858,7 @@
 
     <declare-styleable name="XCheckBox">
         <attr name="android:src" />
-        <attr name="xp_checked" />
+        <attr name="android:checked" />
         <attr name="xp_clickable" />
         <attr name="xp_checked_src" />
         <attr name="xp_radius" />
@@ -873,7 +873,7 @@
 
     <declare-styleable name="XCheckedImageView">
         <attr name="android:src" />
-        <attr name="xp_checked" />
+        <attr name="android:checked" />
         <attr name="xp_checked_src" />
         <attr name="xp_radius" />
         <attr name="android:alpha" />

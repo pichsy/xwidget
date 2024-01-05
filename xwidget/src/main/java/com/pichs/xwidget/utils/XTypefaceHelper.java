@@ -1,11 +1,14 @@
 package com.pichs.xwidget.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.view.View;
 
+import androidx.annotation.FontRes;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.io.File;
 import java.util.Map;
@@ -43,7 +46,7 @@ public class XTypefaceHelper {
     private static Typeface mGlobalTypeface = null;
     // 配合KEY_TYPEFACE_FROM使用，来决定此值的价值。0：null/"",  1：assets路径, 2：文件路径， 3：系统字体(DEFAULT, BOLD, ITALIC)
     private static final String KEY_TYPEFACE_FILEPATH = "key_xw_xtf_cache_path";
-    // typeface的来源，0：系统默认。 1：assets路径, 2：文件路径， 3：系统字体(KEY_TYPEFACE_FILEPATH：DEFAULT, BOLD, ITALIC)
+    // typeface的来源，0：系统默认。 1：assets路径, 2：文件路径， 3：系统字体(KEY_TYPEFACE_FILEPATH：DEFAULT, BOLD, ITALIC), 4:font资源
     private static final String KEY_TYPEFACE_FROM = "key_xw_xtf_cache_file_from";
     /**
      * typeface类型。可针对三方字体进行加粗，斜体操作。
@@ -68,6 +71,9 @@ public class XTypefaceHelper {
     }
 
     public static void init(Context context, boolean isOpenTypeface) {
+        if (XTypefaceHelper.isOpenTypeface == isOpenTypeface) {
+            return;
+        }
         XTypefaceHelper.isOpenTypeface = isOpenTypeface;
         if (!isOpenTypeface) {
             return;
@@ -82,9 +88,19 @@ public class XTypefaceHelper {
                 mGlobalTypeface = Typeface.createFromFile(path);
             } else if (typefaceFrom == 3) {
                 mGlobalTypeface = getTypefaceFromName(path);
+            } else if (typefaceFrom == 4) {
+                mGlobalTypeface = getFont(context, path);
             }
         }
         setGlobalTypefaceStyle(context, style);
+    }
+
+    private static Typeface getFont(Context context, String fontName) {
+        try {
+            return ResourcesCompat.getFont(context, XIdsHelper.getFontResIdByName(context, fontName));
+        } catch (Resources.NotFoundException e) {
+            return null;
+        }
     }
 
     /**
@@ -148,7 +164,7 @@ public class XTypefaceHelper {
      * @param filePath 文件路径
      */
     public static void setGlobalTypefaceFromFile(Context context, String filePath) {
-        if (!isOpenTypeface){
+        if (!isOpenTypeface) {
             return;
         }
         File file = new File(filePath);
@@ -167,7 +183,7 @@ public class XTypefaceHelper {
      * @param file 文件
      */
     public static void setGlobalTypefaceFromFile(Context context, File file) {
-        if (!isOpenTypeface){
+        if (!isOpenTypeface) {
             return;
         }
         if (!file.exists()) {
@@ -182,11 +198,30 @@ public class XTypefaceHelper {
     /**
      * 设置全局字体。
      *
+     * @param fontRes 目录
+     */
+
+    public static void setGlobalTypefaceFromFontRes(Context context, @FontRes int fontRes) {
+        if (!isOpenTypeface) {
+            return;
+        }
+        if (fontRes == 0) {
+            return;
+        }
+        mGlobalTypeface = ResourcesCompat.getFont(context, fontRes);
+        XWidgetCache.getInstance(context).setString(KEY_TYPEFACE_FILEPATH, XIdsHelper.getResourceNameById(context, fontRes));
+        XWidgetCache.getInstance(context).setInt(KEY_TYPEFACE_FROM, 4);
+        post();
+    }
+
+    /**
+     * 设置全局字体。
+     *
      * @param context      上下文
      * @param typefaceName 字体assets路径
      */
     public static void setGlobalTypefaceFromAssets(Context context, String typefaceName) {
-        if (!isOpenTypeface){
+        if (!isOpenTypeface) {
             return;
         }
         if (TextUtils.isEmpty(typefaceName)) {

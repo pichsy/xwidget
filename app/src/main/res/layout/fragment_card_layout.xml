@@ -24,7 +24,7 @@
         <com.pichs.xwidget.view.XTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="输入框"
+            android:text="卡片布局"
             android:textColor="#333"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,9 +34,9 @@
     </com.pichs.xwidget.cardview.XCardConstraintLayout>
 
     <ScrollView
-        android:background="#efefef"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#efefef">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -136,6 +136,34 @@
                     android:padding="5dp"
                     android:progress="5" />
 
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="背景颜色"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <com.pichs.app.xwidget.widget.PickerColorView
+                    android:id="@+id/bg_picker_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="#DAF0F1"
+                    android:padding="5dp"
+                    app:indicatorColor="#99f"
+                    app:indicatorEnable="true"
+                    app:orientation="horizontal" />
             </LinearLayout>
 
             <com.pichs.xwidget.view.XTextView

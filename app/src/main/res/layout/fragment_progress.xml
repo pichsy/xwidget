@@ -24,7 +24,7 @@
         <com.pichs.xwidget.view.XTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="输入框"
+            android:text="进度条控件"
             android:textColor="#333"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"

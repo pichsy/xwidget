@@ -91,7 +91,7 @@ public class XSmoothCheckBox extends View implements Checkable, XIAlpha {
         mCheckedColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_checked, ContextCompat.getColor(context, R.color.xp_config_color_blue));
         mUnCheckedColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_unchecked, Color.WHITE);
         mStrokeWidth = array.getDimensionPixelSize(R.styleable.XSmoothCheckBox_xp_cbox_stroke_width, 0);
-        mChecked = array.getBoolean(R.styleable.XSmoothCheckBox_xp_checked, false);
+        mChecked = array.getBoolean(R.styleable.XSmoothCheckBox_android_checked, false);
         array.recycle();
 
         mFloorUnCheckedColor = mFloorColor;

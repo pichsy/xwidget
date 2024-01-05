@@ -84,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
-                app:xp_checked="true"
+                android:checked="true"
                 app:xp_checked_src="@drawable/ic_home_checked" />
 
             <com.pichs.xwidget.view.XTextView

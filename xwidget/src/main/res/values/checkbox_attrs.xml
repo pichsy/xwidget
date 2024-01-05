@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="xp_checked" format="boolean" />
     <attr name="xp_clickable" format="boolean" />
 
     <!--  SmoothCheckBox  -->
     <declare-styleable name="XSmoothCheckBox">
         <!-- 切换动画的持续时间，默认是300ms-->
-        <attr name="xp_checked" />
+        <attr name="android:checked" />
         <attr name="xp_cbox_duration" format="integer" />
         <!-- 未选中时边框宽度，默认是宽度的10分之一-->
         <attr name="xp_cbox_stroke_width" format="dimension" />

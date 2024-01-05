@@ -39,7 +39,7 @@ public class XCheckedImageView extends XCardImageView implements Checkable {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XCheckedImageView);
             this.checkedDrawable = ta.getDrawable(R.styleable.XCheckedImageView_xp_checked_src);
             this.normalDrawable = ta.getDrawable(R.styleable.XCheckedImageView_android_src);
-            this.isChecked = ta.getBoolean(R.styleable.XCheckedImageView_xp_checked, false);
+            this.isChecked = ta.getBoolean(R.styleable.XCheckedImageView_android_checked, false);
             ta.recycle();
         }
         super.setImageDrawable(this.isChecked ? this.checkedDrawable : this.normalDrawable);

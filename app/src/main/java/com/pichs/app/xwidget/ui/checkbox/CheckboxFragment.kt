@@ -51,7 +51,7 @@ class CheckboxFragment : BaseFragment<FragmentCheckboxBinding>() {
     android:layout_height="50dp"
     android:layout_marginStart="16dp"
     android:src="@drawable/ic_home_blue_unchecked"
-    app:xp_checked="true"
+    android:checked="true"
     app:xp_checked_src="@drawable/ic_home_blue_checked"
     app:xp_radius="10dp" />
 
@@ -76,7 +76,7 @@ android:padding="16dp">
     android:layout_height="50dp"
     android:layout_marginStart="16dp"
     android:src="@drawable/ic_my_unchecked"
-    app:xp_checked="true"
+    android:checked="true"
     app:xp_checked_src="@drawable/ic_my_checked"
     app:xp_radius="10dp" />
 

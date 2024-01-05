@@ -18,11 +18,6 @@ class ImageFragment : BaseFragment<FragmentImageBinding>() {
     private fun showCode() {
         binding.tvResult.text = """xml示例=>
             
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
 <com.pichs.xwidget.view.XTextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -57,6 +52,17 @@ class ImageFragment : BaseFragment<FragmentImageBinding>() {
         app:xp_shadowElevation="5dp" />
 
 
+    <com.pichs.xwidget.cardview.XCardImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:background="#fff"
+        android:src="@drawable/panda_logo"
+        app:xp_borderColor="#f00"
+        app:xp_borderWidth="3dp"
+        app:xp_isRadiusAdjustBounds="true"
+        app:xp_shadowElevation="0dp" />
 </LinearLayout>
 
 <com.pichs.xwidget.view.XTextView
@@ -72,39 +78,54 @@ class ImageFragment : BaseFragment<FragmentImageBinding>() {
     android:orientation="horizontal">
 
     <com.pichs.xwidget.roundview.XRoundImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:background="#fff"
         android:src="@drawable/panda_logo"
-        app:xp_radius="20dp" />
+        app:xp_radius="10dp" />
+
 
     <com.pichs.xwidget.roundview.XRoundImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:background="#fff"
         android:src="@drawable/panda_logo"
-        app:xp_radiusBottomLeft="20dp"
-        app:xp_radiusBottomRight="20dp"
-        app:xp_radiusTopLeft="0dp"
-        app:xp_radiusTopRight="0dp" />
+        app:xp_radiusBottomLeft="25dp"
+        app:xp_radiusBottomRight="25dp"
+        app:xp_radiusTopLeft="25dp"
+        app:xp_radiusTopRight="25dp" />
 
     <com.pichs.xwidget.roundview.XRoundImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="16dp"
         android:layout_marginStart="16dp"
         android:background="#fff"
         android:src="@drawable/panda_logo"
         app:xp_radiusBottomLeft="0dp"
-        app:xp_radiusBottomRight="20dp"
-        app:xp_radiusTopLeft="20dp"
+        app:xp_radiusBottomRight="10dp"
+        app:xp_radiusTopLeft="10dp"
+        app:xp_radiusTopRight="0dp" />
+
+
+    <com.pichs.xwidget.roundview.XRoundImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:background="#fff"
+        android:src="@drawable/panda_logo"
+        app:xp_borderColor="#f00"
+        app:xp_borderWidth="2dp"
+        app:xp_radiusBottomLeft="0dp"
+        app:xp_radiusBottomRight="10dp"
+        app:xp_radiusTopLeft="10dp"
         app:xp_radiusTopRight="0dp" />
 </LinearLayout>
-
 
 <com.pichs.xwidget.view.XTextView
     android:layout_width="wrap_content"
@@ -125,18 +146,6 @@ class ImageFragment : BaseFragment<FragmentImageBinding>() {
         android:layout_marginStart="16dp"
         android:src="@drawable/panda_logo" />
 
-</LinearLayout>
-
-<com.pichs.xwidget.view.XTextView
-    android:id="@+id/tv_result"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:layout_marginTop="60dp"
-    android:background="#464547"
-    android:text="代码"
-    android:textColor="#FFEB3B"
-    android:textSize="14sp" />
 </LinearLayout>
        
         

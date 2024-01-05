@@ -58,6 +58,21 @@ class CardLayoutFragment : BaseFragment<FragmentCardLayoutBinding>() {
             }
         })
 
+
+        binding.bgPickerColor.setOnColorPickerChangeListener(object : PickerColorView.OnColorPickerChangeListener {
+            override fun onColorChanged(view: PickerColorView?, color: Int) {
+                binding.cardLayout.setNormalBackgroundColor(color)
+                showCode()
+            }
+
+            override fun onStartTrackingTouch(picker: PickerColorView?) {
+            }
+
+            override fun onStopTrackingTouch(picker: PickerColorView?) {
+            }
+
+        })
+
         showCode()
     }
 
