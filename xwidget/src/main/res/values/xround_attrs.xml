@@ -200,6 +200,7 @@
     <declare-styleable name="XRoundButton">
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
+        <attr name="android:gravity" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
         <!--   按压按钮变大/小   -->

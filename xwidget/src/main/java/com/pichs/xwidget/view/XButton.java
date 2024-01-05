@@ -1,13 +1,16 @@
 package com.pichs.xwidget.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIBackground;
@@ -44,6 +47,13 @@ public class XButton extends AppCompatButton implements XIBackground, Checkable,
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        if (null != attrs || defStyleAttr != 0) {
+            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XButton, defStyleAttr, 0);
+            int gravity = ta.getInt(R.styleable.XButton_android_gravity, Gravity.CENTER);
+            ta.recycle();
+            // 设置gravity
+            setGravity(gravity);
+        }
     }
 
     @Override
@@ -321,7 +331,9 @@ public class XButton extends AppCompatButton implements XIBackground, Checkable,
     public void setOnPressedStateListener(OnPressedStateListener listener) {
         xAlphaHelper.setOnPressedStateListener(listener);
     }
+
     protected boolean mChecked = false;
+
     @Override
     public void setChecked(boolean checked) {
         if (mChecked != checked) {
@@ -340,9 +352,7 @@ public class XButton extends AppCompatButton implements XIBackground, Checkable,
         setChecked(!mChecked);
     }
 
-    private static final int[] CHECKED_STATE_SET = {
-            android.R.attr.state_checked
-    };
+    private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
 
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {

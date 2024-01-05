@@ -468,6 +468,7 @@
     <!--  背景颜色选择器  -->
     <declare-styleable name="XButton">
         <attr name="android:textColor" />
+        <attr name="android:gravity" />
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
         <attr name="xp_checkedTextColor" />

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.pichs.xwidget.cardview.XCardLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#fff"
+    android:orientation="vertical"
+    app:xp_radius="10dp"
+    app:xp_shadowElevation="5dp">
+
+    <com.pichs.app.xwidget.widget.colorpicker.XColorPickerView
+        android:id="@+id/picker_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp" />
+
+    <com.pichs.xwidget.cardview.XCardButton
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#058CF8"
+        android:text="确定"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        app:xp_isRadiusAdjustBounds="true"
+        app:xp_shadowElevation="3dp" />
+
+</com.pichs.xwidget.cardview.XCardLinearLayout>

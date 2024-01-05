@@ -20,6 +20,7 @@ import com.pichs.xwidget.cardview.XIRoundBackground;
 import com.pichs.xwidget.roundview.XCubeSidesHeight;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 /**
  * 圆角背景帮助类
@@ -371,23 +372,28 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
     private int[] dealWithColors(String backgroundColorString) {
         if (!TextUtils.isEmpty(backgroundColorString) && !TextUtils.isEmpty(backgroundColorString.trim())) {
-            try {
-                String[] cors = backgroundColorString.trim().split(",");
-                if (cors.length > 0) {
-                    int[] colors = new int[cors.length];
-                    for (int i = 0; i < cors.length; i++) {
-                        int color = XColorHelper.parseColor(cors[i]);
-                        colors[i] = color;
+            String[] cors = backgroundColorString.trim().split("[,，]");
+            if (cors.length > 0) {
+                ArrayList<Integer> colors = new ArrayList<>();
+                for (String cor : cors) {
+                    try {
+                        if (cor.trim().isEmpty()) {
+                            continue;
+                        }
+                        if (!XColorHelper.isColorStringFormat(cor.trim())) {
+                            continue;
+                        }
+                        int color = XColorHelper.parseColor(cor.trim());
+                        colors.add(color);
+                    } catch (RuntimeException e) {
+                        e.printStackTrace();
                     }
-                    return colors;
                 }
-            } catch (Exception e) {
-                throw new RuntimeException("gradientColors:" + backgroundColorString + " 格式不正确，请用《,》分割，并且检查一下颜色值格式\n ex:" + e);
+                return XColorHelper.toIntArray(colors);
             }
         }
         return null;
     }
-
 
     /**
      * 只要有一个设置了，就激活立方体,立体效果

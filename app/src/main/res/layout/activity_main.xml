@@ -328,7 +328,7 @@
             app:xp_radius="8dp"
             app:xp_textPassword="false" />
 
-        <com.pichs.xwidget.pressedscale.PressScaleLayout
+        <com.pichs.xwidget.pressedscale.XPressScaleFrameLayout
             android:layout_width="300dp"
             android:layout_height="100dp"
             android:background="#A7A7CF"
@@ -347,7 +347,7 @@
                 app:xp_backgroundGradientColors="#9f1,#42f"
                 app:xp_radius="8dp" />
 
-        </com.pichs.xwidget.pressedscale.PressScaleLayout>
+        </com.pichs.xwidget.pressedscale.XPressScaleFrameLayout>
 
         <Space
             android:layout_width="match_parent"

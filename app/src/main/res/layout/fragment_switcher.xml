@@ -1,6 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开关控件"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <com.pichs.xwidget.switcher.XSwitchButton
+                android:id="@+id/swb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:xp_swb_backgroundColor_switchOff="#999"
+                app:xp_swb_backgroundColor_switchOn="#02C83A"
+                app:xp_swb_thumbHeight="20dp"
+                app:xp_swb_thumbRangeRatio="2.5"
+                app:xp_swb_thumbWidth="20dp" />
+
+            <com.pichs.xwidget.switcher.XSwitchButton
+                android:id="@+id/swb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="true"
+                android:textColor="#fff"
+                app:xp_swb_backgroundColor_switchOff="#999"
+                app:xp_swb_backgroundColor_switchOn="#0756F4"
+                app:xp_swb_text_switchOff="打开"
+                app:xp_swb_text_switchOn="关闭"
+                app:xp_swb_thumbHeight="30dp"
+                app:xp_swb_thumbRangeRatio="2"
+                app:xp_swb_thumbWidth="80dp" />
+
+            <com.pichs.xwidget.switcher.XSwitchButton
+                android:id="@+id/swb3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:checked="true"
+                android:textColor="#fff"
+                app:xp_swb_backgroundColor_switchOff="#999"
+                app:xp_swb_backgroundColor_switchOn="#0756F4"
+                app:xp_swb_backgroundRadius="5dp"
+                app:xp_swb_text_switchOff="打开"
+                app:xp_swb_text_switchOn="关闭"
+                app:xp_swb_thumbHeight="30dp"
+                app:xp_swb_thumbRadius="5dp"
+                app:xp_swb_thumbRangeRatio="2"
+                app:xp_swb_thumbWidth="80dp" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:background="#464547"
+                android:text="代码"
+                android:textColor="#FFEB3B"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

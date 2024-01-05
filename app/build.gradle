@@ -140,5 +140,7 @@ dependencies {
     api 'io.github.scwang90:refresh-header-falsify:2.1.0'     //虚拟刷新头
     api 'io.github.scwang90:refresh-header-material:2.1.0'    //谷歌刷新头
 
+    // 颜色选择qu
+//    api 'com.github.shixiuwen:colorpicker:v1.0.5'
     implementation project(':xwidget')
 }

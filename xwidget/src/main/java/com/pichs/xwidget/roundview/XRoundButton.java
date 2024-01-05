@@ -1,13 +1,16 @@
 package com.pichs.xwidget.roundview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIRoundBackground;
@@ -45,11 +48,18 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
         backgroundHelper = new XRoundBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        if (null != attrs || defStyleAttr != 0) {
+            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XRoundButton, defStyleAttr, 0);
+            int gravity = ta.getInt(R.styleable.XRoundButton_android_gravity, Gravity.CENTER);
+            ta.recycle();
+            // 设置gravity
+            setGravity(gravity);
+        }
     }
 
-     @Override
+    @Override
     public void setNormalAlpha(float alpha) {
-       xAlphaHelper.setNormalAlpha(alpha);
+        xAlphaHelper.setNormalAlpha(alpha);
     }
 
     @Override
@@ -438,9 +448,7 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
         setChecked(!mChecked);
     }
 
-    private static final int[] CHECKED_STATE_SET = {
-            android.R.attr.state_checked
-    };
+    private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
 
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {
