@@ -54,7 +54,7 @@
                 android:orientation="vertical">
 
                 <com.pichs.xwidget.roundview.XRoundConstraintLayout
-                    android:id="@+id/cl_account_security"
+                    android:id="@+id/cl_main_page"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
@@ -68,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="账户安全"
+                        android:text="早期首页"
                         android:textColor="#333"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -415,6 +415,7 @@
         android:textColor="#fff"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:xp_isRadiusAdjustBounds="true" />
+        app:xp_isRadiusAdjustBounds="true"
+        app:xp_pressedAlpha="0.8" />
 
 </LinearLayout>

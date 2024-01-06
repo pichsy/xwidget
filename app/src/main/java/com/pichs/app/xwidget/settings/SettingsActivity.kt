@@ -1,6 +1,9 @@
 package com.pichs.app.xwidget.settings
 
+import android.content.Intent
 import com.hjq.toast.Toaster
+import com.pichs.app.xwidget.MainActivity
+import com.pichs.app.xwidget.aboutus.AboutUsActivity
 import com.pichs.app.xwidget.base.BaseActivity
 import com.pichs.app.xwidget.databinding.ActivitySettingsBinding
 import com.pichs.xbase.clickhelper.fastClick
@@ -16,9 +19,9 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
     }
 
     private fun initListeners() {
-        binding.clAccountSecurity.fastClick {
+        binding.clMainPage.fastClick {
             // 账号安全
-            Toaster.show("仅展示效果：账号安全")
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         binding.clFontSettings.fastClick {
@@ -32,8 +35,8 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
         }
 
         binding.clAbout.fastClick {
-            // 账号安全
-            Toaster.show("仅展示效果：关于")
+            // 关于我们
+            startActivity(Intent(this, AboutUsActivity::class.java))
         }
 
         binding.clFeedback.fastClick {

@@ -135,6 +135,7 @@
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false" />
         <activity android:name=".settings.SettingsActivity" />
+        <activity android:name=".aboutus.AboutUsActivity" />
 
     </application>
 
