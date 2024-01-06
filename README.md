@@ -111,6 +111,22 @@
 
 ## 升级日志
 
+
+### 5.0.0升级指南
+
+- 属性删除，采用系统属性`app:xp_checked` -> `android:checked`
+- 类删除，XCheckedTextView删除，使用任一XTextView，XCardTextView,XRoundTextView可替换。
+- 属性新增 xp_activated, 可属性设置activatedXXX系列属性 默认状态。xml中可实时预览。
+- 新增字体 可设置font目录中的全局字体，并保存，下次可生效。
+- shine系列控件新增属性：xp_shine_flashing_colors 可自定义闪动的颜色数组，颜色值逗号分割。
+- 修改XImageView系列继承自ImageView，而不是AppCompatImageView
+- XView系列全系增加android:checked属性，和 xp_activated属性
+- 修复XImageView的动态创建属性失效的问题。
+- 优化XRadioGroup系列，更多实用方式。
+- 完善demo，体验更好，更好的借鉴api，demo中直接展示代码。
+
+
+
 ### 4.1.0版本
 
 - XView系列，全系实现Checkable接口，xp_checke...系列属性全部生效
@@ -183,22 +199,6 @@
 
 - 示例效果
 - ![](./imgs/radio.gif)
-
-## 升级日志
-
-### 5.0.0升级指南
-
-- 属性删除，采用系统属性`app:xp_checked` -> `android:checked`
-- 类删除，XCheckedTextView删除，使用任一XTextView，XCardTextView,XRoundTextView可替换。
-- 属性新增 xp_activated, 可属性设置activatedXXX系列属性 默认状态。xml中可实时预览。
-- 新增字体 可设置font目录中的全局字体，并保存，下次可生效。
-- shine系列控件新增属性：xp_shine_flashing_colors 可自定义闪动的颜色数组，颜色值逗号分割。
-- 修改XImageView系列继承自ImageView，而不是AppCompatImageView
-- XView系列全系增加android:checked属性，和 xp_activated属性
-- 修复XImageView的动态创建属性失效的问题。
-- 优化XRadioGroup系列，更多实用方式。
-- 完善demo，体验更好，更好的借鉴api，demo中直接展示代码。
--
 
 ### 4.0.1版本
 
