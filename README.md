@@ -33,8 +33,9 @@
 
 - 属性删除，采用系统属性`app:xp_checked` -> `android:checked`
 - 类删除，XCheckedTextView删除，使用任一XTextView，XCardTextView,XRoundTextView可替换。
+- PressedScaleLayout->XPressScaleFrameLayout,且新增XPressScaleLinearLayout,XPressScaleConstraintLayout
 
-## 3.x升级到 4.x指南
+## 3.x升级到 4.x指南*
 
 - 全局搜索包名并替换 "com.pichs.common.widget." ->  "com.pichs.xwidget." 即可完成替换，非常的简单！
 - 示例：
@@ -111,7 +112,6 @@
 
 ## 升级日志
 
-
 ### 5.0.0升级指南
 
 - 属性删除，采用系统属性`app:xp_checked` -> `android:checked`
@@ -123,9 +123,8 @@
 - XView系列全系增加android:checked属性，和 xp_activated属性
 - 修复XImageView的动态创建属性失效的问题。
 - 优化XRadioGroup系列，更多实用方式。
+- 删除PressedScaleLayout，新增XPressScaleFrameLayout,且新增XPressScaleLinearLayout,XPressScaleConstraintLayout
 - 完善demo，体验更好，更好的借鉴api，demo中直接展示代码。
-
-
 
 ### 4.1.0版本
 
