@@ -73,6 +73,8 @@
             android:padding="10dp"
             android:text="打开字体变化"
             android:textColor="#00f"
+            app:xp_activated="true"
+            app:xp_activatedBackground="#f0f"
             app:xp_checkedBackground="#f00"
             app:xp_checkedTextColor="#fff" />
 

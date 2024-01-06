@@ -3,6 +3,7 @@ package com.pichs.xwidget.view;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
@@ -21,7 +22,7 @@ import com.pichs.xwidget.utils.XTextViewHelper;
 /**
  * TextView 自定义基类
  */
-public class XTextView extends AppCompatTextView implements XIBackground, Checkable, IChecked,XITextView, XIAlpha, IPressedStateHelper {
+public class XTextView extends AppCompatTextView implements XIBackground, Checkable, IChecked, XITextView, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -247,13 +248,13 @@ public class XTextView extends AppCompatTextView implements XIBackground, Checka
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
 
@@ -350,7 +351,7 @@ public class XTextView extends AppCompatTextView implements XIBackground, Checka
     }
 
     @Override
-    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 }

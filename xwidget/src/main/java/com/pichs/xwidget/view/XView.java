@@ -19,7 +19,7 @@ import com.pichs.xwidget.utils.XCheckableHelper;
 /**
  * XView
  */
-public class XView extends View implements XIBackground, Checkable, IChecked,XIAlpha,IPressedStateHelper {
+public class XView extends View implements XIBackground, Checkable, IChecked, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -209,13 +209,13 @@ public class XView extends View implements XIBackground, Checkable, IChecked,XIA
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
 
@@ -312,7 +312,7 @@ public class XView extends View implements XIBackground, Checkable, IChecked,XIA
     }
 
     @Override
-    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 }

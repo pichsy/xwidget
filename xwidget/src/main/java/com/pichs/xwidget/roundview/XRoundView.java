@@ -46,7 +46,7 @@ public class XRoundView extends View implements XIRoundBackground, Checkable, IC
 
 
     @Override
-    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 

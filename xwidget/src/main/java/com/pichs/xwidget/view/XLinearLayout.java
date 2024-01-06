@@ -3,6 +3,7 @@ package com.pichs.xwidget.view;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Checkable;
 import android.widget.LinearLayout;
 
@@ -75,6 +76,7 @@ public class XLinearLayout extends LinearLayout implements XIBackground, Checkab
     public void setScaleOnDisabled(float scaleRate) {
         xAlphaHelper.setScaleOnDisabled(scaleRate);
     }
+
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
@@ -310,7 +312,7 @@ public class XLinearLayout extends LinearLayout implements XIBackground, Checkab
     }
 
     @Override
-    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 }

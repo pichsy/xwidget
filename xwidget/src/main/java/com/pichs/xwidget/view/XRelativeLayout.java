@@ -3,6 +3,7 @@ package com.pichs.xwidget.view;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.Checkable;
 import android.widget.RelativeLayout;
 
@@ -19,7 +20,7 @@ import com.pichs.xwidget.utils.XCheckableHelper;
 /**
  * XRelativeLayout
  */
-public class XRelativeLayout  extends RelativeLayout  implements XIBackground, Checkable, IChecked, XIAlpha, IPressedStateHelper {
+public class XRelativeLayout extends RelativeLayout implements XIBackground, Checkable, IChecked, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -78,13 +79,13 @@ public class XRelativeLayout  extends RelativeLayout  implements XIBackground, C
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     @Override
@@ -218,7 +219,6 @@ public class XRelativeLayout  extends RelativeLayout  implements XIBackground, C
     }
 
 
-
     @Override
     public void setBackgroundGradientColors(int[] colors, @GradientOrientation int orientation) {
         backgroundHelper.setBackgroundGradientColors(colors, orientation);
@@ -312,7 +312,7 @@ public class XRelativeLayout  extends RelativeLayout  implements XIBackground, C
     }
 
     @Override
-    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 }

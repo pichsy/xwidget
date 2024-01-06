@@ -2,7 +2,7 @@ package com.pichs.xwidget.radiobutton;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.Checkable;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -27,7 +27,7 @@ public class XRadioRoundButton extends XRoundButton implements XRadioButton {
     }
 
     @Override
-    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
     }
 
     @Override

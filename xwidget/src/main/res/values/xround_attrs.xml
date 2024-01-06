@@ -199,6 +199,7 @@
 
     <declare-styleable name="XRoundButton">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
         <attr name="android:gravity" />
@@ -308,6 +309,7 @@
     </declare-styleable>
     <declare-styleable name="XRoundTextView">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
@@ -416,6 +418,7 @@
     </declare-styleable>
     <declare-styleable name="XRoundLinearLayout">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -517,6 +520,7 @@
     </declare-styleable>
     <declare-styleable name="XRoundConstraintLayout">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -619,6 +623,7 @@
     </declare-styleable>
     <declare-styleable name="XRoundFrameLayout">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -719,6 +724,7 @@
     </declare-styleable>
     <declare-styleable name="XRoundView">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -820,6 +826,7 @@
     </declare-styleable>
     <declare-styleable name="XRoundViewGroup">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -919,6 +926,7 @@
     </declare-styleable>
     <declare-styleable name="XRoundRelativeLayout">
         <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />

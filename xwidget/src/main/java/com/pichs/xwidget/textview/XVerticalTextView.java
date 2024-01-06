@@ -10,7 +10,7 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.text.TextPaint;
 import android.util.AttributeSet;
-import android.widget.Checkable;
+import android.view.View;
 import android.widget.TextView;
 
 import com.pichs.xwidget.view.XTextView;
@@ -44,7 +44,7 @@ public class XVerticalTextView extends XTextView {
     }
 
     @Override
-    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
         super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
@@ -173,7 +173,7 @@ public class XVerticalTextView extends XTextView {
             float curX = curLineX;
             float curY = getPaddingTop();
             int step;
-            for (int i = 0; i < chars.length; i+=step) {
+            for (int i = 0; i < chars.length; i += step) {
                 int codePoint = Character.codePointAt(chars, i);
                 step = Character.charCount(codePoint);
                 boolean needRotate = !isCJKCharacter(codePoint);
@@ -232,7 +232,7 @@ public class XVerticalTextView extends XTextView {
                 || ub == Character.UnicodeBlock.HIRAGANA //平假名
                 || ub == Character.UnicodeBlock.KATAKANA //片假名
                 || ub == Character.UnicodeBlock.KATAKANA_PHONETIC_EXTENSIONS
-                ) {
+        ) {
             return true;
         } else {
             return false;
