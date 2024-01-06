@@ -15,7 +15,7 @@
 
 ### 4.x 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:4.3.0'
+      implementation 'com.gitee.pichs:xwidget:5.0.0'
 
 ### 3.x 最新版本: [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
@@ -28,6 +28,11 @@
 - 控件包名改为 `com.pichs.xwidget.xxxx`
 
 ### 虽然是破坏性，但破坏性小，仍推荐升级到4.0及以上版本
+
+### 4.0.0升级指南到5.0.0
+
+- 属性删除，采用系统属性`app:xp_checked` -> `android:checked`
+- 类删除，XCheckedTextView删除，使用任一XTextView，XCardTextView,XRoundTextView可替换。
 
 ## 3.x升级到 4.x指南
 
@@ -178,6 +183,22 @@
 
 - 示例效果
 - ![](./imgs/radio.gif)
+
+## 升级日志
+
+### 5.0.0升级指南
+
+- 属性删除，采用系统属性`app:xp_checked` -> `android:checked`
+- 类删除，XCheckedTextView删除，使用任一XTextView，XCardTextView,XRoundTextView可替换。
+- 属性新增 xp_activated, 可属性设置activatedXXX系列属性 默认状态。xml中可实时预览。
+- 新增字体 可设置font目录中的全局字体，并保存，下次可生效。
+- shine系列控件新增属性：xp_shine_flashing_colors 可自定义闪动的颜色数组，颜色值逗号分割。
+- 修改XImageView系列继承自ImageView，而不是AppCompatImageView
+- XView系列全系增加android:checked属性，和 xp_activated属性
+- 修复XImageView的动态创建属性失效的问题。
+- 优化XRadioGroup系列，更多实用方式。
+- 完善demo，体验更好，更好的借鉴api，demo中直接展示代码。
+-
 
 ### 4.0.1版本
 
