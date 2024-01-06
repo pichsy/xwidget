@@ -24,22 +24,24 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewOutlineProvider;
+import android.widget.ImageView;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.widget.AppCompatImageView;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.utils.XAlphaHelper;
+import com.pichs.xwidget.utils.XBackgroundHelper;
 
 /**
  * 圆形图片，高性能版
  * 只支持圆形图片
  */
-public class XCircleImageView extends AppCompatImageView implements XIAlpha {
+@SuppressLint("AppCompatCustomView")
+public class XCircleImageView extends ImageView implements XIAlpha {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -101,13 +103,13 @@ public class XCircleImageView extends AppCompatImageView implements XIAlpha {
         mBorderWidth = a.getDimensionPixelSize(R.styleable.XCircleImageView_xp_borderWidth, DEFAULT_BORDER_WIDTH);
         mBorderColor = a.getColor(R.styleable.XCircleImageView_xp_borderColor, DEFAULT_BORDER_COLOR);
         mBorderOverlay = a.getBoolean(R.styleable.XCircleImageView_xp_borderOverlay, DEFAULT_BORDER_OVERLAY);
-        int colorFilter = a.getColor(R.styleable.XCircleImageView_xp_colorFilter, -1);
+        int colorFilter = a.getColor(R.styleable.XCircleImageView_xp_colorFilter, XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT);
         int colorFilterMode = a.getInt(R.styleable.XCircleImageView_xp_colorFilterMode, 1);
-        if (colorFilter == -1) {
+        if (colorFilter == XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT) {
             clearColorFilter();
         } else {
             mMode = getColorFilterMode(colorFilterMode);
-            setColorFilter(colorFilter, mMode);
+            setColorFilterOverride(colorFilter);
         }
 
         a.recycle();

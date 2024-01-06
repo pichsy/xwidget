@@ -17,9 +17,9 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatEditText;
 
 import com.pichs.xwidget.R;
-import com.pichs.xwidget.view.XEditText;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +28,7 @@ import java.util.TimerTask;
  * Created pichs
  * 验证码输入框，可带加载动画，只限线性有动画
  */
-public class XVerificationCodeEditText extends XEditText {
+public class XVerificationCodeEditText extends AppCompatEditText {
 
     private static final int TYPE_HOLLOW = 1;//空心
     private static final int TYPE_SOLID = 2;//实心

@@ -5,6 +5,7 @@ package com.pichs.xwidget.cardview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.widget.Checkable;
 
 import androidx.annotation.ColorInt;
 
@@ -33,6 +34,11 @@ public class XCardButton extends XButton implements XILayout {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         mLayoutHelper = new XLayoutHelper(context, attrs, defStyleAttr, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override

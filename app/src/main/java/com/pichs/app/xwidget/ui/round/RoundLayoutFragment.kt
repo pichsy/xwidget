@@ -11,11 +11,13 @@ import com.pichs.app.xwidget.widget.PickerColorView
 import com.pichs.app.xwidget.widget.PickerColorView.OnColorPickerChangeListener
 import com.pichs.xbase.kotlinext.dp
 import com.pichs.xwidget.cardview.GradientOrientation
+import com.pichs.xwidget.utils.XColorHelper
 
 class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
 
     private var startColor = 0
     private var endColor = 0
+    private var borderColor = 0
     private var orientation = 0
     override fun afterOnCreateView(rootView: View?) {
         binding.ivBack.click {
@@ -24,9 +26,11 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
         orientation = GradientOrientation.HORIZONTAL
         startColor = Color.WHITE
         endColor = Color.WHITE
+        borderColor = Color.TRANSPARENT
         binding.seekBarRadius.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.cardLayout.setRadius(progress.dp)
+                showCode()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -40,6 +44,7 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
             override fun onColorChanged(picker: PickerColorView?, color: Int) {
                 binding.cardLayout.setBackgroundGradientStartColor(color)
                 startColor = color
+                showCode()
             }
 
             override fun onStartTrackingTouch(picker: PickerColorView?) {
@@ -53,6 +58,7 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
             override fun onColorChanged(picker: PickerColorView?, color: Int) {
                 binding.cardLayout.setBackgroundGradientEndColor(color)
                 endColor = color
+                showCode()
             }
 
             override fun onStartTrackingTouch(picker: PickerColorView?) {
@@ -65,6 +71,8 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
         binding.borderPickerColor.setOnColorPickerChangeListener(object : OnColorPickerChangeListener {
             override fun onColorChanged(picker: PickerColorView?, color: Int) {
                 binding.cardLayout.setBorderColor(color)
+                borderColor = color
+                showCode()
             }
 
             override fun onStartTrackingTouch(picker: PickerColorView?) {
@@ -77,6 +85,7 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
         binding.seekBarBorderWidth.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.cardLayout.setBorderWidth(progress.dp)
+                showCode()
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -89,21 +98,27 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
         binding.rgDirection.setOnRadioCheckedListener { group, checkedView, isChecked, position ->
             when (checkedView) {
                 binding.radioHorizontal -> {
+                    orientation = GradientOrientation.HORIZONTAL
                     binding.cardLayout.setBackgroundGradient(startColor, endColor, GradientOrientation.HORIZONTAL)
                 }
 
                 binding.radioVertical -> {
+                    orientation = GradientOrientation.VERTICAL
                     binding.cardLayout.setBackgroundGradient(startColor, endColor, GradientOrientation.VERTICAL)
                 }
 
                 binding.radioBlTr -> {
+                    orientation = GradientOrientation.BL_TR
                     binding.cardLayout.setBackgroundGradient(startColor, endColor, GradientOrientation.BL_TR)
                 }
 
                 binding.radioTlBr -> {
+                    orientation = GradientOrientation.TL_BR
                     binding.cardLayout.setBackgroundGradient(startColor, endColor, GradientOrientation.TL_BR)
                 }
             }
+
+            showCode()
 
         }
 
@@ -112,6 +127,9 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
     }
 
     private fun showCode() {
+        val radius = binding.seekBarRadius.progress
+        val borderWidth = binding.seekBarBorderWidth.progress
+
         binding.tvResult.text = """xml示例=>
  .....
  
@@ -123,15 +141,26 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="30dp"
     android:layout_marginBottom="30dp"
-    app:xp_backgroundGradientEndColor="#fff"
-    app:xp_backgroundGradientOrientation="horizontal"
-    app:xp_backgroundGradientStartColor="#fff"
-    app:xp_borderColor="#0000"
-    app:xp_borderWidth="0dp"
-    app:xp_radius="10dp" />           
+    app:xp_backgroundGradientEndColor="${XColorHelper.colorToString(endColor)}"
+    app:xp_backgroundGradientOrientation="${getOrientationString(orientation)}"
+    app:xp_backgroundGradientStartColor="${XColorHelper.colorToString(startColor)}"
+    app:xp_borderColor="${XColorHelper.colorToString(borderColor)}"
+    app:xp_borderWidth="${borderWidth}dp"
+    app:xp_radius="${binding.seekBarRadius.progress}dp" />           
        
             
  .....
         """.trimIndent()
     }
+
+    private fun getOrientationString(orientation: Int): String {
+        return when (orientation) {
+            GradientOrientation.HORIZONTAL -> "horizontal"
+            GradientOrientation.VERTICAL -> "vertical"
+            GradientOrientation.BL_TR -> "BL_TR"
+            GradientOrientation.TL_BR -> "TL_BR"
+            else -> "horizontal"
+        }
+    }
+
 }

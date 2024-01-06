@@ -11,13 +11,15 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIBackground;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
 import com.pichs.xwidget.utils.XBackgroundHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 
 /**
  * XConstraintLayout
  */
-public class XConstraintLayout extends ConstraintLayout implements XIBackground, Checkable, XIAlpha, IPressedStateHelper {
+public class XConstraintLayout extends ConstraintLayout implements XIBackground, Checkable, IChecked, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
@@ -41,6 +43,7 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground,
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        initChecked(context, attrs, defStyleAttr, 0, this);
     }
 
     @Override
@@ -307,4 +310,8 @@ public class XConstraintLayout extends ConstraintLayout implements XIBackground,
         return drawableState;
     }
 
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
+    }
 }

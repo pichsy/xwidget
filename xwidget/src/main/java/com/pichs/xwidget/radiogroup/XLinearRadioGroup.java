@@ -3,6 +3,7 @@ package com.pichs.xwidget.radiogroup;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Checkable;
 
 import com.pichs.xwidget.view.XLinearLayout;
 
@@ -28,6 +29,11 @@ public class XLinearRadioGroup extends XLinearLayout implements XRadioGroup {
     public XLinearRadioGroup(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mRadioGroupHelper = new XRadioGroupHelper(context, attrs, defStyleAttr, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override

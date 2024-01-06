@@ -12,14 +12,16 @@ import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIBackground;
 import com.pichs.xwidget.cardview.XITextView;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
 import com.pichs.xwidget.utils.XBackgroundHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XTextViewHelper;
 
 /**
  * TextView 自定义基类
  */
-public class XTextView extends AppCompatTextView implements XIBackground, Checkable, XITextView, XIAlpha, IPressedStateHelper {
+public class XTextView extends AppCompatTextView implements XIBackground, Checkable, IChecked,XITextView, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -44,7 +46,7 @@ public class XTextView extends AppCompatTextView implements XIBackground, Checka
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
-
+        initChecked(context, attrs, defStyleAttr, 0, this);
     }
 
     @Override
@@ -345,5 +347,10 @@ public class XTextView extends AppCompatTextView implements XIBackground, Checka
             mergeDrawableStates(drawableState, CHECKED_STATE_SET);
         }
         return drawableState;
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 }

@@ -2,6 +2,7 @@ package com.pichs.xwidget.radiobutton;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 
@@ -23,6 +24,10 @@ public class XRadioRoundButton extends XRoundButton implements XRadioButton {
     public XRadioRoundButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mRadioItemHelper = new XRadioItemHelper(context, attrs, defStyleAttr, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
     }
 
     @Override

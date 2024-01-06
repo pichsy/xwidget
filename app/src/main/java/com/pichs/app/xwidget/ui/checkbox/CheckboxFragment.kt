@@ -12,7 +12,7 @@ class CheckboxFragment : BaseFragment<FragmentCheckboxBinding>() {
             activity?.finish()
         }
 
-        binding.ctv1.setOnClickListener {
+        binding.ctv1.click {
             binding.ctv1.toggle()
         }
 
@@ -34,14 +34,14 @@ class CheckboxFragment : BaseFragment<FragmentCheckboxBinding>() {
     android:orientation="horizontal"
     android:padding="16dp">
 
-<com.pichs.xwidget.view.XCheckedTextView
+<com.pichs.xwidget.view.XTextView
     android:id="@+id/ctv_1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#E4E4FD"
     android:checked="true"
     android:padding="8dp"
-    android:text="XCheckedImageView:不含点击事件\nXCheckedTextView:不包含点击事件"
+    android:text="XCheckedImageView:不含点击事件"
     android:textColor="#000"
     app:xp_checkedBackground="#6666F3" />
 

@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.os.Build;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.widget.Checkable;
 import android.widget.TextView;
 
 import com.pichs.xwidget.view.XTextView;
@@ -32,20 +33,19 @@ public class XVerticalTextView extends XTextView {
 
     public XVerticalTextView(Context context) {
         super(context);
-        init();
     }
 
     public XVerticalTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
     public XVerticalTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
     }
 
-    private void init() {
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @SuppressLint("DrawAllocation")

@@ -3,6 +3,7 @@ package com.pichs.xwidget.radiobutton;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 
@@ -24,6 +25,10 @@ public class XRadioRoundConstraintLayout extends XRoundConstraintLayout implemen
     public XRadioRoundConstraintLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mRadioItemHelper = new XRadioItemHelper(context, attrs, defStyleAttr, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
     }
 
     @Override

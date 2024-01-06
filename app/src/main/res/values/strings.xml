@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">xwidget</string>
+    <string name="app_name">XWidget</string>
 
     <declare-styleable name="ColorPickerView">
         <attr name="indicatorColor" format="color" /><!--指示点颜色-->

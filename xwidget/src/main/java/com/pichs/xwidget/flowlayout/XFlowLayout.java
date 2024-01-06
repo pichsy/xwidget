@@ -8,6 +8,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Checkable;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.view.XViewGroup;
@@ -82,6 +83,11 @@ public class XFlowLayout extends XViewGroup {
             setMaxNumber(maxNumber);
         }
         array.recycle();
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @SuppressLint("DrawAllocation")

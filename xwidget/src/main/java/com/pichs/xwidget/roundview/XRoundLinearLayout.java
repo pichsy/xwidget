@@ -11,26 +11,26 @@ import androidx.annotation.Nullable;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIRoundBackground;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XRoundBackgroundHelper;
 
 /**
  * XRoundLinearLayout
  */
-public class XRoundLinearLayout extends LinearLayout implements XIRoundBackground, Checkable, XIAlpha {
+public class XRoundLinearLayout extends LinearLayout implements XIRoundBackground, Checkable, IChecked, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
 
 
     public XRoundLinearLayout(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XRoundLinearLayout(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XRoundLinearLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -41,6 +41,12 @@ public class XRoundLinearLayout extends LinearLayout implements XIRoundBackgroun
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XRoundBackgroundHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        initChecked(context, attrs, defStyleAttr, 0, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override

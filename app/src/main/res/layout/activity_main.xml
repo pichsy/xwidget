@@ -68,9 +68,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="#F49595"
+            android:checked="true"
             android:minHeight="10dp"
             android:padding="10dp"
-            android:text="打开字体变化" />
+            android:text="打开字体变化"
+            android:textColor="#00f"
+            app:xp_checkedBackground="#f00"
+            app:xp_checkedTextColor="#fff" />
 
         <com.pichs.xwidget.view.XTextView
             android:id="@+id/tv3"
@@ -104,10 +108,10 @@
             android:layout_height="44dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
+            android:checked="true"
             android:src="#C8C8C9"
             app:xp_borderColor="#33f"
             app:xp_borderWidth="2dp"
-            android:checked="true"
             app:xp_checked_src="#00D90A"
             app:xp_clickable="true"
             app:xp_disabledAlpha=".3"
@@ -420,11 +424,11 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="60dp"
+                android:checked="true"
                 android:src="#999"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:xp_check_state_follow_parent="true"
-                android:checked="true"
                 app:xp_checked_by_click="true"
                 app:xp_checked_src="#0B31F4"
                 app:xp_ignore_radio_group="true"
@@ -477,8 +481,7 @@
                     android:textSize="10sp"
                     app:xp_check_state_follow_parent="false"
                     app:xp_checkedTextColor="#f00"
-                    app:xp_checked_by_click="true"
-                    />
+                    app:xp_checked_by_click="true" />
 
             </com.pichs.xwidget.radiobutton.XRadioCardLinearLayout>
 
@@ -515,8 +518,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_agree_unckecked"
                 android:checked="true"
+                android:src="@drawable/ic_agree_unckecked"
                 app:xp_checked_src="@drawable/ic_agree_checked" />
 
 
@@ -524,8 +527,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="12dp"
-                android:src="@drawable/ic_agree_unckecked"
                 android:checked="true"
+                android:src="@drawable/ic_agree_unckecked"
                 app:xp_checked_src="@drawable/ic_agree_checked" />
 
             <com.pichs.xwidget.radiobutton.XRadioCardLinearLayout

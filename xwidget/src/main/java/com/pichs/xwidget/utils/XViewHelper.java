@@ -67,7 +67,7 @@ public class XViewHelper {
 
     /**
      * 扩展点击区域的范围
-     *
+     * 注意：此方法有局限性，一个ViewGroup仅允许一个子控件设置
      * @param view       需要扩展的元素，此元素必需要有父级元素
      * @param expendSize 需要扩展的尺寸（以dp为单位的）
      */

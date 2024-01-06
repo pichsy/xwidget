@@ -12,27 +12,27 @@ import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIRoundBackground;
 import com.pichs.xwidget.cardview.XITextView;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XRoundBackgroundHelper;
 import com.pichs.xwidget.utils.XTextViewHelper;
 
 /**
  * XRoundTextView
  */
-public class XRoundTextView extends AppCompatTextView implements XIRoundBackground, Checkable, XITextView, XIAlpha {
+public class XRoundTextView extends AppCompatTextView implements XIRoundBackground, Checkable, IChecked, XITextView, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
     private XAlphaHelper xAlphaHelper;
 
     public XRoundTextView(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XRoundTextView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XRoundTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -44,6 +44,13 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
         backgroundHelper = new XRoundBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        initChecked(context, attrs, defStyleAttr, 0, this);
+    }
+
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override

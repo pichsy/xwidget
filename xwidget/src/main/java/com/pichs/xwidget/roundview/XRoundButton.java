@@ -15,14 +15,16 @@ import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIRoundBackground;
 import com.pichs.xwidget.cardview.XITextView;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XRoundBackgroundHelper;
 import com.pichs.xwidget.utils.XTextViewHelper;
 
 /**
  * XRoundButton 自定义基类
  */
-public class XRoundButton extends AppCompatButton implements XIRoundBackground, Checkable, XITextView, XIAlpha {
+public class XRoundButton extends AppCompatButton implements XIRoundBackground, Checkable, IChecked, XITextView, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
@@ -30,13 +32,11 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
 
 
     public XRoundButton(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XRoundButton(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XRoundButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -55,6 +55,7 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
             // 设置gravity
             setGravity(gravity);
         }
+        initChecked(context, attrs, defStyleAttr, 0, this);
     }
 
     @Override
@@ -457,5 +458,10 @@ public class XRoundButton extends AppCompatButton implements XIRoundBackground, 
             mergeDrawableStates(drawableState, CHECKED_STATE_SET);
         }
         return drawableState;
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 }

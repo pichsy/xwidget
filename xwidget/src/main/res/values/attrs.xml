@@ -179,6 +179,11 @@
         <enum name="add" value="16" />
         <enum name="overly" value="17" />
     </attr>
+
+    <declare-styleable name="XICheckable">
+        <attr name="android:checked" />
+    </declare-styleable>
+
     <!--  背景颜色选择器  -->
     <declare-styleable name="XIBackground">
         <!--    背景色渐变色，正常时显示    -->
@@ -285,6 +290,8 @@
 
     <!--  XLinearLayout  -->
     <declare-styleable name="XLinearLayout">
+        <attr name="android:checked" />
+
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -330,7 +337,7 @@
 
     <!--  XRelativeLayout  -->
     <declare-styleable name="XRelativeLayout">
-
+        <attr name="android:checked" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -376,6 +383,7 @@
 
     <!--  XFrameLayout  -->
     <declare-styleable name="XFrameLayout">
+        <attr name="android:checked" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -421,6 +429,7 @@
 
     <!--  XConstraintLayout  -->
     <declare-styleable name="XConstraintLayout">
+        <attr name="android:checked" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -467,6 +476,7 @@
 
     <!--  背景颜色选择器  -->
     <declare-styleable name="XButton">
+        <attr name="android:checked" />
         <attr name="android:textColor" />
         <attr name="android:gravity" />
         <attr name="xp_pressedTextColor" />
@@ -519,6 +529,7 @@
 
     <!--  XTextView  -->
     <declare-styleable name="XTextView">
+        <attr name="android:checked" />
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
@@ -574,7 +585,6 @@
     <!--  XEditText  -->
     <declare-styleable name="XEditText">
         <attr name="xp_disableCopyAndPaste" />
-
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
@@ -616,61 +626,11 @@
         <attr name="xp_disabledBackgroundOrientation" />
         <attr name="xp_disabledBackgroundGradientColors" />
 
-    </declare-styleable>
-
-    <!--  XCheckedTextView  -->
-    <declare-styleable name="XCheckedTextView">
-        <attr name="android:textColor" />
-        <attr name="xp_pressedTextColor" />
-        <attr name="xp_activatedTextColor" />
-        <attr name="xp_checkedTextColor" />
-        <attr name="xp_disabledTextColor" />
-        <attr name="xp_ignoreGlobalTypeface" />
-        <!--    背景色渐变色，正常时显示    -->
-        <attr name="android:background" />
-        <attr name="xp_backgroundGradientStartColor" />
-        <attr name="xp_backgroundGradientEndColor" />
-        <attr name="xp_backgroundGradientOrientation" />
-        <attr name="xp_backgroundGradientColors" />
-
-        <!--    按压时 背景色    -->
-        <attr name="xp_pressedBackground" />
-        <attr name="xp_pressedBackgroundStartColor" />
-        <attr name="xp_pressedBackgroundEndColor" />
-        <attr name="xp_pressedBackgroundOrientation" />
-        <attr name="xp_pressedBackgroundGradientColors" />
-
-        <!--   选中时 背景色     -->
-        <attr name="xp_checkedBackground" />
-        <attr name="xp_checkedBackgroundStartColor" />
-        <attr name="xp_checkedBackgroundEndColor" />
-        <attr name="xp_checkedBackgroundOrientation" />
-        <attr name="xp_checkedBackgroundGradientColors" />
-
-        <!--    活跃时 背景色    -->
-        <attr name="xp_activatedBackground" />
-        <attr name="xp_activatedBackgroundStartColor" />
-        <attr name="xp_activatedBackgroundEndColor" />
-        <attr name="xp_activatedBackgroundOrientation" />
-        <attr name="xp_activatedBackgroundGradientColors" />
-
-        <!--    不可用时 背景色    -->
-        <attr name="xp_disabledBackground" />
-        <attr name="xp_disabledBackgroundStartColor" />
-        <attr name="xp_disabledBackgroundEndColor" />
-        <attr name="xp_disabledBackgroundOrientation" />
-        <attr name="xp_disabledBackgroundGradientColors" />
-
-        <attr name="android:alpha" />
-        <attr name="xp_disabledAlpha" />
-        <attr name="xp_pressedAlpha" />
-        <!--   按压按钮变大/小   -->
-        <attr name="xp_pressedScale" />
-        <attr name="xp_disabledScale" />
     </declare-styleable>
 
     <!--  XView  -->
     <declare-styleable name="XView">
+        <attr name="android:checked" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -717,7 +677,7 @@
 
     <!--  XStatusBarView  -->
     <declare-styleable name="XStatusBarView">
-
+        <attr name="android:checked" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />
@@ -757,7 +717,7 @@
 
     <!--  XViewGroup  -->
     <declare-styleable name="XViewGroup">
-
+        <attr name="android:checked" />
         <!--    背景色渐变色，正常时显示    -->
         <attr name="android:background" />
         <attr name="xp_backgroundGradientStartColor" />

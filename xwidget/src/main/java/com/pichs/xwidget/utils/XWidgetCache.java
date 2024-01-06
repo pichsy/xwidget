@@ -39,16 +39,6 @@ public class XWidgetCache {
         return mInstance;
     }
 
-    public String getString(String key) {
-        if (mContextWeakReference.get() == null) {
-            return null;
-        }
-        if (mSP == null) {
-            mSP = mContextWeakReference.get().getSharedPreferences(_spName, 0);
-        }
-        return mSP.getString(key, null);
-    }
-
     public String getString(String key, String defaultValue) {
         if (mContextWeakReference.get() == null) {
             return defaultValue;

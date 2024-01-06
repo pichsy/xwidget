@@ -15,27 +15,27 @@ import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIBackground;
 import com.pichs.xwidget.cardview.XITextView;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
 import com.pichs.xwidget.utils.XBackgroundHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XTextViewHelper;
 
 /**
  * XButton
  */
-public class XButton extends AppCompatButton implements XIBackground, Checkable, XITextView, XIAlpha, IPressedStateHelper {
+public class XButton extends AppCompatButton implements XIBackground, Checkable, IChecked, XITextView, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
     private XAlphaHelper xAlphaHelper;
 
     public XButton(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XButton(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -54,6 +54,12 @@ public class XButton extends AppCompatButton implements XIBackground, Checkable,
             // 设置gravity
             setGravity(gravity);
         }
+        initChecked(context, attrs, defStyleAttr, 0, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, Checkable owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override
@@ -362,5 +368,6 @@ public class XButton extends AppCompatButton implements XIBackground, Checkable,
         }
         return drawableState;
     }
+
 }
 
