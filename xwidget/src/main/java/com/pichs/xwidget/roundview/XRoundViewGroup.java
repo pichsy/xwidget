@@ -3,33 +3,35 @@ package com.pichs.xwidget.roundview;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIRoundBackground;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XRoundBackgroundHelper;
 
 /**
  * XRoundViewGroup
  */
-public abstract class XRoundViewGroup extends ViewGroup implements XIRoundBackground, XIAlpha {
+public abstract class XRoundViewGroup extends ViewGroup implements XIRoundBackground, Checkable, IChecked, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
 
 
     public XRoundViewGroup(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XRoundViewGroup(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XRoundViewGroup(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -40,6 +42,13 @@ public abstract class XRoundViewGroup extends ViewGroup implements XIRoundBackgr
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XRoundBackgroundHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        initChecked(context, attrs, defStyleAttr, 0, this);
+    }
+
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override
@@ -312,6 +321,7 @@ public abstract class XRoundViewGroup extends ViewGroup implements XIRoundBackgr
 
     /**
      * 请使用： {@link #setCubeSidesGradientColors(int...)}
+     *
      * @param colors @Deprecated
      */
     @Deprecated
@@ -357,27 +367,60 @@ public abstract class XRoundViewGroup extends ViewGroup implements XIRoundBackgr
 
     @Override
     public void setCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setPressedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setPressedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setPressedCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setDisabledCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setDisabledCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setDisabledCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setCheckedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setCheckedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setCheckedCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setActivatedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setActivatedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setActivatedCubeSidesHeight(left, back, right, front);
+    }
+
+    protected boolean mChecked = false;
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {
+            android.R.attr.state_checked
+    };
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
     }
 }
 

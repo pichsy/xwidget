@@ -15,6 +15,7 @@ import com.pichs.xwidget.shinebutton.interpolator.Ease;
 import com.pichs.xwidget.shinebutton.interpolator.EasingInterpolator;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -34,8 +35,9 @@ public class ShineView extends View {
     private Paint mPaint2;
     private Paint mPaintSmall;
 
-    private int mColorCount = 10;
-    private static int[] sColorRandom = new int[10];
+    private int mColorCount = 0;
+
+    private ArrayList<Integer> mFlashingColors = new ArrayList<>();
 
     private int mShineCount;
     private float mSmallOffsetAngle;
@@ -43,8 +45,8 @@ public class ShineView extends View {
     private long mAnimDuration;
     private long mClickAnimDuration;
     private float mShineDistanceMultiple;
-    private int mSmallShineColor = sColorRandom[0];
-    private int mBigShineColor = sColorRandom[1];
+    private int mSmallShineColor = 0;
+    private int mBigShineColor = 0;
 
     private int mShineSize = 0;
 
@@ -165,6 +167,14 @@ public class ShineView extends View {
                 invalidate();
             }
         });
+        mShineAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                mRectF.set(0, 0, 0, 0);
+                mSmallRectF.set(0, 0, 0, 0);
+                invalidate();
+            }
+        });
         mShineAnimator.start();
         mClickAnimator.start();
     }
@@ -175,13 +185,13 @@ public class ShineView extends View {
         super.onDraw(canvas);
         for (int i = 0; i < mShineCount; i++) {
             if (mAllowRandomColor) {
-                mPaint.setColor(sColorRandom[Math.abs(mColorCount / 2 - i) >= mColorCount ? mColorCount - 1 : Math.abs(mColorCount / 2 - i)]);
+                mPaint.setColor(mFlashingColors.get(Math.abs(mColorCount / 2 - i) >= mColorCount ? mColorCount - 1 : Math.abs(mColorCount / 2 - i)));
             }
             canvas.drawArc(mRectF, 360f / mShineCount * i + 1 + ((mValue - 1) * mTurnAngle), 0.1f, false, getConfigPaint(mPaint));
         }
         for (int i = 0; i < mShineCount; i++) {
             if (mAllowRandomColor) {
-                mPaint.setColor(sColorRandom[Math.abs(mColorCount / 2 - i) >= mColorCount ? mColorCount - 1 : Math.abs(mColorCount / 2 - i)]);
+                mPaint.setColor(mFlashingColors.get(Math.abs(mColorCount / 2 - i) >= mColorCount ? mColorCount - 1 : Math.abs(mColorCount / 2 - i)));
             }
             canvas.drawArc(mSmallRectF, 360f / mShineCount * i + 1 - mSmallOffsetAngle + ((mValue - 1) * mTurnAngle), 0.1f, false, getConfigPaint(mPaintSmall));
         }
@@ -201,24 +211,16 @@ public class ShineView extends View {
 
     private Paint getConfigPaint(Paint paint) {
         if (mEnableFlashing) {
-            paint.setColor(sColorRandom[mRandom.nextInt(mColorCount - 1)]);
+            paint.setColor(mFlashingColors.get(mRandom.nextInt(mColorCount - 1)));
         }
         return paint;
     }
 
     public static class ShineParams {
         ShineParams() {
-            sColorRandom[0] = Color.parseColor("#FFFF99");
-            sColorRandom[1] = Color.parseColor("#FFCCCC");
-            sColorRandom[2] = Color.parseColor("#996699");
-            sColorRandom[3] = Color.parseColor("#FF6666");
-            sColorRandom[4] = Color.parseColor("#FFFF66");
-            sColorRandom[5] = Color.parseColor("#F44336");
-            sColorRandom[6] = Color.parseColor("#666666");
-            sColorRandom[7] = Color.parseColor("#CCCC00");
-            sColorRandom[8] = Color.parseColor("#666666");
-            sColorRandom[9] = Color.parseColor("#999933");
         }
+
+        public ArrayList<Integer> flashingColors = new ArrayList<>();
 
         public boolean allowRandomColor = false;
         public long animDuration = 1500;
@@ -245,12 +247,32 @@ public class ShineView extends View {
         mSmallShineColor = shineParams.smallShineColor;
         mBigShineColor = shineParams.bigShineColor;
         mShineSize = shineParams.shineSize;
-        if (mSmallShineColor == 0) {
-            mSmallShineColor = sColorRandom[6];
+        mFlashingColors.clear();
+        if (shineParams.flashingColors != null) {
+            mFlashingColors.addAll(shineParams.flashingColors);
         }
 
-        if (mBigShineColor == 0) {
-            mBigShineColor = shineButton.getColor();
+        if (mFlashingColors.isEmpty()) {
+            mFlashingColors.add(Color.parseColor("#FFFF99"));
+            mFlashingColors.add(Color.parseColor("#FFCCCC"));
+            mFlashingColors.add(Color.parseColor("#996699"));
+            mFlashingColors.add(Color.parseColor("#FF6666"));
+            mFlashingColors.add(Color.parseColor("#FFFF66"));
+            mFlashingColors.add(Color.parseColor("#F44336"));
+            mFlashingColors.add(Color.parseColor("#666666"));
+            mFlashingColors.add(Color.parseColor("#CCCC00"));
+            mFlashingColors.add(Color.parseColor("#666666"));
+            mFlashingColors.add(Color.parseColor("#999933"));
         }
+
+        mColorCount = mFlashingColors.size();
+
+//        if (mSmallShineColor == 0) {
+//            mSmallShineColor = shineButton.getNormalColor();
+//        }
+//
+//        if (mBigShineColor == 0) {
+//            mBigShineColor = shineButton.getColor();
+//        }
     }
 }

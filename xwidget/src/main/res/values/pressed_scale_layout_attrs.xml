@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="PressScaleLayout">
+    <attr name="xp_pressedScaleAnimDuration" format="integer" />
+    <attr name="xp_pressedScaleChildIds" format="string" />
+    <attr name="xp_pressedScaleJustFirst" format="boolean" />
+
+    <declare-styleable name="XPressScaleFrameLayout">
         <attr name="xp_pressedScale" />
-        <attr name="xp_pressedScaleAnimDuration" format="integer" />
+        <attr name="xp_pressedScaleAnimDuration" />
+        <attr name="xp_pressedScaleChildIds" />
+        <attr name="xp_pressedScaleJustFirst" />
+    </declare-styleable>
+
+    <declare-styleable name="XPressScaleLinearLayout">
+        <attr name="xp_pressedScale" />
+        <attr name="xp_pressedScaleAnimDuration" />
+        <attr name="xp_pressedScaleChildIds" />
+        <attr name="xp_pressedScaleJustFirst" />
+    </declare-styleable>
+
+    <declare-styleable name="XPressScaleConstraintLayout">
+        <attr name="xp_pressedScale" />
+        <attr name="xp_pressedScaleAnimDuration" />
+        <attr name="xp_pressedScaleChildIds" />
+        <attr name="xp_pressedScaleJustFirst" />
     </declare-styleable>
 
 </resources>

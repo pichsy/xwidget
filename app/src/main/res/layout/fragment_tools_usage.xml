@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.pichs.xwidget.roundview.XCircleImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_colorFilter="#000" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="卡片布局"
+            android:textColor="#000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.pichs.xwidget.view.XTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:selectAllOnFocus="true"
+        android:text="tv_result"
+        android:textColor="#6705EF"
+        android:textIsSelectable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout" />
+
+    <com.pichs.xwidget.cardview.XCardButton
+        android:id="@+id/tv_settings"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+        android:background="#7528FF"
+        android:text="设置"
+        android:textColor="#fff"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:xp_hideRadiusSide="right"
+        app:xp_radius="30dp" />
+
+
+    <com.pichs.xwidget.cardview.XCardFrameLayout
+        android:id="@+id/ll_menu"
+        android:layout_width="340dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="16dp"
+        android:background="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:xp_radius="16dp"
+        app:xp_shadowColor="#000"
+        app:xp_shadowElevation="8dp">
+
+        <com.pichs.xwidget.roundview.XRoundFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:xp_backgroundGradientEndColor="#9B9BFF"
+            app:xp_backgroundGradientOrientation="BL_TR"
+            app:xp_backgroundGradientStartColor="#E8FFFD">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.pichs.xwidget.roundview.XRoundConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <com.pichs.xwidget.radiogroup.XLinearRadioGroup
+                        android:id="@+id/layout_type_radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="26dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.pichs.xwidget.radiobutton.XRadioCardButton
+                            android:id="@+id/radio_type_card"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="#c1c1c1"
+                            android:checked="true"
+                            android:padding="10dp"
+                            android:text="XCard系列"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_tip"
+                            app:layout_constraintStart_toEndOf="@+id/tv_gradient_tip"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_tip"
+                            app:xp_checkedBackground="#4C4CFA"
+                            app:xp_radius="12dp" />
+
+                        <com.pichs.xwidget.radiobutton.XRadioCardButton
+                            android:id="@+id/radio_type_round"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="#c1c1c1"
+                            android:checked="true"
+                            android:padding="10dp"
+                            android:text="XRound系列"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_tip"
+                            app:layout_constraintStart_toEndOf="@+id/tv_gradient_tip"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_tip"
+                            app:xp_checkedBackground="#4C4CFA"
+                            app:xp_radius="12dp" />
+
+                        <com.pichs.xwidget.radiobutton.XRadioCardButton
+                            android:id="@+id/radio_type_normal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="#c1c1c1"
+                            android:checked="true"
+                            android:padding="10dp"
+                            android:text="XView系列"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_tip"
+                            app:layout_constraintStart_toEndOf="@+id/tv_gradient_tip"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_tip"
+                            app:xp_checkedBackground="#4C4CFA"
+                            app:xp_radius="12dp" />
+
+                    </com.pichs.xwidget.radiogroup.XLinearRadioGroup>
+
+                    <com.pichs.xwidget.view.XImageView
+                        android:id="@+id/close_menu"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_close_with_circle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:xp_colorFilter="#FFEB3B" />
+
+                    <com.pichs.xwidget.view.XTextView
+                        android:id="@+id/tv_radius_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="20dp"
+                        android:text="圆角"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_type_radio_group" />
+
+                    <com.pichs.xwidget.view.XEditText
+                        android:id="@+id/et_radius_left"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F6C7C7"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_radius_tip"
+                        app:layout_constraintStart_toEndOf="@+id/tv_radius_tip"
+                        app:layout_constraintTop_toTopOf="@+id/tv_radius_tip" />
+
+                    <com.pichs.xwidget.view.XEditText
+                        android:id="@+id/et_radius_top"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F6C7C7"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_radius_left"
+                        app:layout_constraintStart_toEndOf="@+id/et_radius_left"
+                        app:layout_constraintTop_toTopOf="@+id/et_radius_left" />
+
+                    <com.pichs.xwidget.view.XEditText
+                        android:id="@+id/et_radius_right"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F6C7C7"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_radius_top"
+                        app:layout_constraintStart_toEndOf="@+id/et_radius_top"
+                        app:layout_constraintTop_toTopOf="@+id/et_radius_top" />
+
+                    <com.pichs.xwidget.view.XEditText
+                        android:id="@+id/et_radius_bottom"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F6C7C7"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_radius_right"
+                        app:layout_constraintStart_toEndOf="@+id/et_radius_right"
+                        app:layout_constraintTop_toTopOf="@+id/et_radius_right" />
+
+                    <com.pichs.xwidget.view.XTextView
+                        android:id="@+id/tv_border_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="30dp"
+                        android:text="边框"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_radius_tip" />
+
+                    <com.pichs.xwidget.view.XEditText
+                        android:id="@+id/et_border_width"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F6C7C7"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_border_tip"
+                        app:layout_constraintStart_toEndOf="@+id/tv_border_tip"
+                        app:layout_constraintTop_toTopOf="@+id/tv_border_tip" />
+
+                    <com.pichs.app.xwidget.widget.PickerColorView
+                        android:id="@+id/border_picker_color"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="#DAF0F1"
+                        android:padding="5dp"
+                        app:indicatorColor="#99f"
+                        app:indicatorEnable="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/et_border_width"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/et_border_width"
+                        app:layout_constraintTop_toTopOf="@+id/et_border_width"
+                        app:orientation="horizontal" />
+
+                    <com.pichs.xwidget.radiogroup.XConstraintRadioGroup
+                        android:id="@+id/rg_direction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_border_tip">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_gradient_tip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="渐变"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.pichs.xwidget.radiobutton.XRadioCardButton
+                            android:id="@+id/radio_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="#c1c1c1"
+                            android:checked="true"
+                            android:padding="8dp"
+                            android:text="横向"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_tip"
+                            app:layout_constraintStart_toEndOf="@+id/tv_gradient_tip"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_tip"
+                            app:xp_checkedBackground="#4C4CFA"
+                            app:xp_radius="8dp" />
+
+                        <com.pichs.xwidget.radiobutton.XRadioCardButton
+                            android:id="@+id/radio_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="#c1c1c1"
+                            android:padding="8dp"
+                            android:text="竖向"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_tip"
+                            app:layout_constraintStart_toEndOf="@+id/radio_horizontal"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_tip"
+                            app:xp_checkedBackground="#4C4CFA"
+                            app:xp_radius="8dp" />
+
+                        <com.pichs.xwidget.radiobutton.XRadioCardButton
+                            android:id="@+id/radio_tl_br"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="#c1c1c1"
+                            android:padding="8dp"
+                            android:text="TL_BR"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_tip"
+                            app:layout_constraintStart_toEndOf="@+id/radio_vertical"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_tip"
+                            app:xp_checkedBackground="#4C4CFA"
+                            app:xp_radius="8dp" />
+
+                        <com.pichs.xwidget.radiobutton.XRadioCardButton
+                            android:id="@+id/radio_bl_tr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:background="#c1c1c1"
+                            android:padding="8dp"
+                            android:text="BL_TR"
+                            android:textColor="#fff"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_tip"
+                            app:layout_constraintStart_toEndOf="@+id/radio_tl_br"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_tip"
+                            app:xp_checkedBackground="#4C4CFA"
+                            app:xp_radius="8dp" />
+
+
+                        <com.pichs.xwidget.view.XTextView
+                            android:id="@+id/tv_gradient_color_tip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="渐变色"
+                            android:textColor="#000"
+                            android:textSize="15sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_gradient_tip" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_gradient"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="8dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gradient_color_tip"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/tv_gradient_color_tip"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gradient_color_tip"
+                            tools:itemCount="1" />
+
+                    </com.pichs.xwidget.radiogroup.XConstraintRadioGroup>
+
+
+                    <com.pichs.xwidget.view.XTextView
+                        android:id="@+id/tv_shadow_tip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="阴影"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rg_direction" />
+
+
+                    <com.pichs.xwidget.view.XEditText
+                        android:id="@+id/et_shadow_elevation"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="10dp"
+                        android:background="#F6C7C7"
+                        android:gravity="center"
+                        android:hint="0"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_shadow_tip"
+                        app:layout_constraintStart_toEndOf="@+id/tv_shadow_tip"
+                        app:layout_constraintTop_toTopOf="@+id/tv_shadow_tip" />
+
+
+                    <com.pichs.app.xwidget.widget.PickerColorView
+                        android:id="@+id/shadow_picker_color"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="#DAF0F1"
+                        android:padding="5dp"
+                        app:indicatorColor="#99f"
+                        app:indicatorEnable="true"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_shadow_tip"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/et_shadow_elevation"
+                        app:layout_constraintTop_toTopOf="@+id/tv_shadow_tip"
+                        app:orientation="horizontal" />
+
+
+                </com.pichs.xwidget.roundview.XRoundConstraintLayout>
+            </ScrollView>
+        </com.pichs.xwidget.roundview.XRoundFrameLayout>
+    </com.pichs.xwidget.cardview.XCardFrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

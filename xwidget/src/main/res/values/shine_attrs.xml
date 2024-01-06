@@ -36,6 +36,7 @@
         <attr name="xp_shine_small_shine_color" format="color" />
         <!-- 大发散点的颜色，默认是选中时的填充颜色 -->
         <attr name="xp_shine_big_shine_color" format="color" />
+        <attr name="xp_shine_flashing_colors" format="string" />
     </declare-styleable>
 
 </resources>

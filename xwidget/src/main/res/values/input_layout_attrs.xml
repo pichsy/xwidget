@@ -71,7 +71,7 @@
         <flag name="time" value="0x00000024" />
     </attr>
 
-    <declare-styleable name="InputLayout">
+    <declare-styleable name="XInputLayout">
         <attr name="xp_bottomDividerHeight" />
         <attr name="xp_bottomDividerColor" />
         <attr name="xp_clearIconVisible" format="boolean" />

@@ -15,8 +15,8 @@ import android.view.MotionEvent;
 import androidx.annotation.ColorInt;
 
 import com.pichs.xwidget.R;
-import com.pichs.xwidget.view.XImageView;
 import com.pichs.xwidget.utils.XLayoutHelper;
+import com.pichs.xwidget.view.XImageView;
 
 
 /**
@@ -47,13 +47,11 @@ public class XCardImageView extends XImageView implements XILayout {
     private int mDefStyleAttr = 0;
 
     public XCardImageView(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XCardImageView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XCardImageView(Context context, AttributeSet attrs, int defStyleAttr) {

@@ -198,8 +198,11 @@
     </declare-styleable>
 
     <declare-styleable name="XRoundButton">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
+        <attr name="android:gravity" />
         <attr name="xp_disabledAlpha" />
         <attr name="xp_pressedAlpha" />
         <!--   按压按钮变大/小   -->
@@ -305,7 +308,8 @@
 
     </declare-styleable>
     <declare-styleable name="XRoundTextView">
-
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:textColor" />
         <attr name="xp_pressedTextColor" />
         <attr name="xp_activatedTextColor" />
@@ -413,6 +417,8 @@
         <attr name="xp_disabledScale" />
     </declare-styleable>
     <declare-styleable name="XRoundLinearLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -513,6 +519,8 @@
         <attr name="xp_disabledScale" />
     </declare-styleable>
     <declare-styleable name="XRoundConstraintLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -614,6 +622,8 @@
         <attr name="xp_disabledScale" />
     </declare-styleable>
     <declare-styleable name="XRoundFrameLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -713,6 +723,8 @@
         <attr name="xp_disabledScale" />
     </declare-styleable>
     <declare-styleable name="XRoundView">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -813,6 +825,8 @@
 
     </declare-styleable>
     <declare-styleable name="XRoundViewGroup">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -911,6 +925,8 @@
         <attr name="xp_disabledScale" />
     </declare-styleable>
     <declare-styleable name="XRoundRelativeLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <!--   增加圆角     -->
         <attr name="xp_radius" />
         <attr name="xp_radiusTopLeft" />
@@ -1001,7 +1017,7 @@
         <attr name="xp_checkedCubeFrontHeight" />
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
-        <attr name="xp_disabledAlpha" />
+        <attr name="xp_disabledAlpha"  />
         <attr name="xp_pressedAlpha" />
         <!--   按压按钮变大/小   -->
         <attr name="xp_pressedScale" />

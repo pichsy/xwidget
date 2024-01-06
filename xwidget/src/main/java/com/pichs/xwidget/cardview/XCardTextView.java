@@ -5,6 +5,7 @@ package com.pichs.xwidget.cardview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.view.View;
 
 import androidx.annotation.ColorInt;
 
@@ -29,6 +30,11 @@ public class XCardTextView extends XTextView implements XILayout {
     public XCardTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {

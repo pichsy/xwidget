@@ -1,37 +1,42 @@
 package com.pichs.xwidget.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIBackground;
 import com.pichs.xwidget.cardview.XITextView;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
 import com.pichs.xwidget.utils.XBackgroundHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XTextViewHelper;
 
 /**
  * XButton
  */
-public class XButton extends AppCompatButton implements XIBackground, XITextView, XIAlpha, IPressedStateHelper {
+public class XButton extends AppCompatButton implements XIBackground, Checkable, IChecked, XITextView, XIAlpha, IPressedStateHelper {
 
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
     private XAlphaHelper xAlphaHelper;
 
     public XButton(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XButton(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XButton(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -43,19 +48,33 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        if (null != attrs || defStyleAttr != 0) {
+            TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XButton, defStyleAttr, 0);
+            int gravity = ta.getInt(R.styleable.XButton_android_gravity, Gravity.CENTER);
+            ta.recycle();
+            // 设置gravity
+            setGravity(gravity);
+        }
+        initChecked(context, attrs, defStyleAttr, 0, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
+
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -287,7 +306,7 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
 
     @Override
     public void setNormalAlpha(float alpha) {
-       xAlphaHelper.setNormalAlpha(alpha);
+        xAlphaHelper.setNormalAlpha(alpha);
     }
 
     @Override
@@ -319,5 +338,37 @@ public class XButton extends AppCompatButton implements XIBackground, XITextView
     public void setOnPressedStateListener(OnPressedStateListener listener) {
         xAlphaHelper.setOnPressedStateListener(listener);
     }
+
+    protected boolean mChecked = false;
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
+    }
+
 }
 

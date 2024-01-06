@@ -1,12 +1,12 @@
 package com.pichs.xwidget.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-
-import androidx.appcompat.widget.AppCompatImageView;
+import android.widget.ImageView;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
@@ -19,7 +19,8 @@ import com.pichs.xwidget.utils.XBackgroundHelper;
  * 可以属性自定义的ColorFilter的ImageView
  * 方便换肤，节省切图，降低apk体积
  */
-public class XImageView extends AppCompatImageView implements XIBackground, XIAlpha, IPressedStateHelper {
+@SuppressLint("AppCompatCustomView")
+public class XImageView extends ImageView implements XIBackground, XIAlpha, IPressedStateHelper {
     private XBackgroundHelper backgroundHelper;
     private XAlphaHelper xAlphaHelper;
 
@@ -102,9 +103,9 @@ public class XImageView extends AppCompatImageView implements XIBackground, XIAl
 
         if (attrs != null) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XImageView);
-            int colorFilter = ta.getColor(R.styleable.XImageView_xp_colorFilter, -1);
+            int colorFilter = ta.getColor(R.styleable.XImageView_xp_colorFilter, XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT);
             int colorFilterMode = ta.getInt(R.styleable.XImageView_xp_colorFilterMode, 1);
-            if (colorFilter == -1) {
+            if (colorFilter == XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT) {
                 clearColorFilter();
             } else {
                 mMode = getColorFilterMode(colorFilterMode);

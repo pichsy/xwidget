@@ -46,7 +46,7 @@ import com.pichs.xwidget.utils.XDisplayHelper;
  *
  * @since 2020-01-06 9:55
  */
-public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
+public class XSmoothCheckBox extends View implements Checkable, XIAlpha {
     private static final String KEY_INSTANCE_STATE = "InstanceState";
 
     private static final int COLOR_FLOOR_UNCHECKED = Color.parseColor("#DFDFDF");
@@ -91,7 +91,7 @@ public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
         mCheckedColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_checked, ContextCompat.getColor(context, R.color.xp_config_color_blue));
         mUnCheckedColor = array.getColor(R.styleable.XSmoothCheckBox_xp_cbox_color_unchecked, Color.WHITE);
         mStrokeWidth = array.getDimensionPixelSize(R.styleable.XSmoothCheckBox_xp_cbox_stroke_width, 0);
-        mChecked = array.getBoolean(R.styleable.XSmoothCheckBox_xp_checked, false);
+        mChecked = array.getBoolean(R.styleable.XSmoothCheckBox_android_checked, false);
         array.recycle();
 
         mFloorUnCheckedColor = mFloorColor;
@@ -174,8 +174,6 @@ public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
         invalidate();
     }
 
-
-
     @Override
     public boolean isChecked() {
         return mChecked;
@@ -184,6 +182,10 @@ public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
     @Override
     public void toggle() {
         this.setChecked(!isChecked());
+    }
+
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        this.mOnCheckedChangeListener = listener;
     }
 
     @Override
@@ -450,10 +452,6 @@ public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
         return Color.argb(currentA, currentR, currentG, currentB);
     }
 
-    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
-        mOnCheckedChangeListener = onCheckedChangeListener;
-    }
-
     @Override
     public void setNormalAlpha(float alpha) {
         xAlphaHelper.setNormalAlpha(alpha);
@@ -487,16 +485,12 @@ public class XSmoothCheckBox extends View implements Checkable , XIAlpha {
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
-    }
-
-    public interface OnCheckedChangeListener {
-        void onCheckedChanged(XSmoothCheckBox checkBox, boolean isChecked);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 }

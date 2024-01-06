@@ -5,6 +5,7 @@ package com.pichs.xwidget.cardview;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.view.View;
 
 import androidx.annotation.ColorInt;
 
@@ -19,13 +20,11 @@ public class XCardFrameLayout extends XFrameLayout implements XILayout {
     private XLayoutHelper mLayoutHelper;
 
     public XCardFrameLayout(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XCardFrameLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XCardFrameLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -35,6 +34,11 @@ public class XCardFrameLayout extends XFrameLayout implements XILayout {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         mLayoutHelper = new XLayoutHelper(context, attrs, defStyleAttr, this);
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
     }
 
     @Override

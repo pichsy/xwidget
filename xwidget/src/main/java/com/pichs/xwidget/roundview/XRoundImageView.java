@@ -3,27 +3,27 @@ package com.pichs.xwidget.roundview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.PorterDuff;
-import android.util.AttributeSet;
-
-import androidx.annotation.ColorInt;
-import androidx.annotation.DimenRes;
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.widget.AppCompatImageView;
-
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
+import android.util.AttributeSet;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DimenRes;
+import androidx.annotation.DrawableRes;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.utils.XAlphaHelper;
+import com.pichs.xwidget.utils.XBackgroundHelper;
 
 import java.util.TreeSet;
 
@@ -33,7 +33,7 @@ import java.util.TreeSet;
  * the oval is supported
  */
 @SuppressLint("AppCompatCustomView")
-public class XRoundImageView extends AppCompatImageView implements XIAlpha {
+public class XRoundImageView extends ImageView implements XIAlpha {
 
     public static final String TAG = "RoundedImageView";
     private static final String ANDROID_NAMESPACE = "http://schemas.android.com/apk/res/android";
@@ -73,7 +73,7 @@ public class XRoundImageView extends AppCompatImageView implements XIAlpha {
 
 
     public XRoundImageView(Context context) {
-        super(context);
+        this(context,null);
     }
 
     public XRoundImageView(Context context, AttributeSet attrs) {
@@ -151,9 +151,9 @@ public class XRoundImageView extends AppCompatImageView implements XIAlpha {
 
         mIsOval = a.getBoolean(R.styleable.XRoundImageView_xp_oval, false);
 
-        int colorFilter = a.getColor(R.styleable.XRoundImageView_xp_colorFilter, -1);
+        int colorFilter = a.getColor(R.styleable.XRoundImageView_xp_colorFilter, XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT);
         int colorFilterMode = a.getInt(R.styleable.XRoundImageView_xp_colorFilterMode, 1);
-        if (colorFilter == -1) {
+        if (colorFilter == XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT) {
             clearColorFilter();
         } else {
             mMode = getColorFilterMode(colorFilterMode);
@@ -171,9 +171,9 @@ public class XRoundImageView extends AppCompatImageView implements XIAlpha {
 
     }
 
-     @Override
+    @Override
     public void setNormalAlpha(float alpha) {
-       xAlphaHelper.setNormalAlpha(alpha);
+        xAlphaHelper.setNormalAlpha(alpha);
     }
 
     @Override
@@ -204,13 +204,13 @@ public class XRoundImageView extends AppCompatImageView implements XIAlpha {
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     public void setColorFilterOverride(int color) {

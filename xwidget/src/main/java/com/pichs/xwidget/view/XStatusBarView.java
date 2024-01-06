@@ -28,6 +28,11 @@ public class XStatusBarView extends XView {
         this(context, null);
     }
 
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
+    }
+
     /**
      * Compare to: {@link View#getDefaultSize(int, int)}
      * If mode is AT_MOST, return the child size instead of the parent size

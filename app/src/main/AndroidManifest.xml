@@ -1,27 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.pichs.app.xwidget">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
     <application
         android:name=".App"
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:extractNativeLibs="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Xwidget">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Xwidget"
+        android:usesCleartextTraffic="true">
+
+        <!-- 华为 -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <!-- 小米 -->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.5" />
+
+        <activity
+            android:name=".home.HomeActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TowActivity" />
-        <activity android:name=".WebViewActivity" />
+        <activity
+            android:name=".TowActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.web.WebViewActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.button.ButtonActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.card.CardLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.checkbox.CheckboxActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.edittext.EditTextActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.flow.FlowLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.image.ImageActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.inputlayout.InputLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.nestedscroll.NestedScrollActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.progress.ProgressActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.radio.RadioActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.rating.RatingActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.round.RoundLayoutActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.scale.ScaleAnimationActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.shining.ShiningActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.space.SpaceActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.switcher.SwitcherActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".ui.text.TextActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
+            android:name=".tools.ToolsUsageActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity android:name=".settings.SettingsActivity" />
+        <activity android:name=".aboutus.AboutUsActivity" />
+
     </application>
 
 </manifest>

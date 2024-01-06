@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.pichs.xwidget.roundview.XRoundView
+        android:id="@+id/view_top_avatar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/guideline_avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:xp_backgroundGradientColors="#94DDFA,#A6EFE9,#BEB8F6"
+        app:xp_backgroundGradientOrientation="horizontal"
+        app:xp_radiusBottomLeft="50dp"
+        app:xp_radiusBottomRight="50dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <com.pichs.xwidget.space.XSpace
+        android:id="@+id/top_space"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#BEB8F6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.pichs.xwidget.cardview.XCardImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="#fff"
+        android:scaleType="centerCrop"
+        android:src="@drawable/panda_logo"
+        app:layout_constraintStart_toStartOf="@+id/top_space"
+        app:layout_constraintTop_toBottomOf="@+id/top_space"
+        app:xp_isRadiusAdjustBounds="true"
+        app:xp_shadowAlpha="1"
+        app:xp_shadowColor="#000"
+        app:xp_shadowElevation="4dp" />
+
+
+    <com.pichs.xwidget.view.XTextView
+        android:id="@+id/tv_nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="小小怪"
+        android:textColor="#333"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+        app:layout_constraintStart_toEndOf="@+id/iv_avatar"
+        app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
+
+
+    <Space
+        android:id="@+id/guideline_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
+
+
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:id="@+id/cl_settings"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#fff"
+        app:layout_constraintTop_toBottomOf="@+id/view_top_avatar_bg"
+        app:xp_isRadiusAdjustBounds="true"
+        app:xp_pressedBackground="#f1f1f1"
+        app:xp_shadowElevation="3dp">
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="设置"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

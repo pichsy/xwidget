@@ -1,30 +1,35 @@
 package com.pichs.app.xwidget;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.pichs.app.xwidget.databinding.ActivityMainBinding;
+import com.pichs.app.xwidget.ui.web.WebViewActivity;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XCardButton;
 import com.pichs.xwidget.cardview.XCardConstraintLayout;
+import com.pichs.xwidget.checkbox.OnCheckedChangeListener;
 import com.pichs.xwidget.utils.XStatusBarHelper;
 import com.pichs.xwidget.utils.XTypefaceHelper;
 import com.pichs.xwidget.view.XButton;
 import com.pichs.xwidget.view.XTextView;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XStatusBarHelper.translucent(this);
         XStatusBarHelper.setStatusBarLightMode(this);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         changeTypeface();
         tripleColor();
         initColorfulBorder();
@@ -41,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
         tv.setOnPressedStateListener(isPressed -> {
             Toast.makeText(getApplicationContext(), "isPressed:" + isPressed, Toast.LENGTH_SHORT).show();
+        });
+
+        binding.cboxIgnore2.setIgnoreRadioGroup(false);
+
+        binding.cboxIgnore.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(View view, boolean isChecked) {
+                Toast.makeText(getApplicationContext(), "切换66：isChecked:" + isChecked, Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -68,14 +82,20 @@ public class MainActivity extends AppCompatActivity {
 
         btn.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
-            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "SmileySans.ttf");
+            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "font/smileysans.ttf");
             XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
         });
 
         XButton closeFont = findViewById(R.id.closeFont);
         XButton openFont = findViewById(R.id.openFont);
 
-        closeFont.setOnClickListener(v -> XTypefaceHelper.closeTypeface(this));
+        closeFont.setOnClickListener(v -> {
+            XTypefaceHelper.closeTypeface(this);
+
+            closeFont.setChecked(!closeFont.isChecked());
+
+        });
+
         openFont.setOnClickListener(v -> XTypefaceHelper.openTypeface(this));
     }
 

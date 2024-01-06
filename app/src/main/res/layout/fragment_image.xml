@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="图片控件"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="XCardImageView："
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.pichs.xwidget.cardview.XCardImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#fff"
+                    android:src="@drawable/panda_logo"
+                    app:xp_radius="10dp"
+                    app:xp_shadowElevation="5dp" />
+
+                <com.pichs.xwidget.cardview.XCardImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#fff"
+                    android:src="@drawable/panda_logo"
+                    app:xp_isRadiusAdjustBounds="true"
+                    app:xp_shadowElevation="5dp" />
+
+
+                <com.pichs.xwidget.cardview.XCardImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#fff"
+                    android:src="@drawable/panda_logo"
+                    app:xp_borderColor="#f00"
+                    app:xp_borderWidth="3dp"
+                    app:xp_isRadiusAdjustBounds="true"
+                    app:xp_shadowElevation="0dp" />
+            </LinearLayout>
+
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="XRoundImageView："
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.pichs.xwidget.roundview.XRoundImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#fff"
+                    android:src="@drawable/panda_logo"
+                    app:xp_radius="10dp" />
+
+                <com.pichs.xwidget.roundview.XRoundImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#fff"
+                    android:src="@drawable/panda_logo"
+                    app:xp_radiusBottomLeft="25dp"
+                    app:xp_radiusBottomRight="25dp"
+                    app:xp_radiusTopLeft="25dp"
+                    app:xp_radiusTopRight="25dp" />
+
+                <com.pichs.xwidget.roundview.XRoundImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#fff"
+                    android:src="@drawable/panda_logo"
+                    app:xp_radiusBottomLeft="0dp"
+                    app:xp_radiusBottomRight="10dp"
+                    app:xp_radiusTopLeft="10dp"
+                    app:xp_radiusTopRight="0dp" />
+
+
+                <com.pichs.xwidget.roundview.XRoundImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="#fff"
+                    android:src="@drawable/panda_logo"
+                    app:xp_borderColor="#f00"
+                    app:xp_borderWidth="2dp"
+                    app:xp_radiusBottomLeft="0dp"
+                    app:xp_radiusBottomRight="10dp"
+                    app:xp_radiusTopLeft="10dp"
+                    app:xp_radiusTopRight="0dp" />
+            </LinearLayout>
+
+
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="XCircleImageView："
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.pichs.xwidget.roundview.XCircleImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/panda_logo" />
+
+            </LinearLayout>
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_tips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="60dp"
+                android:text="所有组件都支持边框"
+                android:textColor="#F80B3A"
+                android:textSize="14sp" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="60dp"
+                android:background="#464547"
+                android:text="代码"
+                android:textColor="#FFEB3B"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

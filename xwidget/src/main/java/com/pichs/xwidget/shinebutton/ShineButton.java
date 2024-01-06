@@ -14,17 +14,21 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.animation.LinearInterpolator;
 import android.widget.Checkable;
+
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.pichs.xwidget.R;
+import com.pichs.xwidget.utils.XColorHelper;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 /**
  * 增强效果的按钮
- *
+ * <p>
  * ShineButton
+ *
  * @since 2020-01-06 13:16
  */
 public class ShineButton extends PorterShapeImageView implements Checkable {
@@ -67,6 +71,25 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         mShineParams.smallShineOffsetAngle = a.getFloat(R.styleable.ShineButton_xp_shine_small_shine_offset_angle, mShineParams.smallShineOffsetAngle);
         mShineParams.smallShineColor = a.getColor(R.styleable.ShineButton_xp_shine_small_shine_color, mShineParams.smallShineColor);
         mShineParams.bigShineColor = a.getColor(R.styleable.ShineButton_xp_shine_big_shine_color, mShineParams.bigShineColor);
+        String colors = a.getString(R.styleable.ShineButton_xp_shine_flashing_colors);
+
+        ArrayList<Integer> colorList = new ArrayList<>();
+        if (colors != null && !colors.trim().isEmpty()) {
+            String[] colorArr = colors.split("[,，]");
+            for (String colorStr : colorArr) {
+                try {
+                    if (colorStr.trim().isEmpty()) {
+                        continue;
+                    }
+                    int color = XColorHelper.parseColor(colorStr);
+                    colorList.add(color);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        mShineParams.flashingColors = colorList;
+
         a.recycle();
         setTintColor(mNormalColor);
 
@@ -107,6 +130,10 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         mNormalColor = normalColor;
         setTintColor(mNormalColor);
         return this;
+    }
+
+    public int getNormalColor() {
+        return mNormalColor;
     }
 
     public ShineButton setCheckedColor(int checkedColor) {

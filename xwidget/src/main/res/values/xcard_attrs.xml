@@ -2,6 +2,8 @@
 <resources>
 
     <declare-styleable name="XCardButton">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:maxWidth" />
         <attr name="android:maxHeight" />
         <attr name="android:minWidth" />
@@ -53,6 +55,8 @@
     </declare-styleable>
 
     <declare-styleable name="XCardTextView">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:maxWidth" />
         <attr name="android:maxHeight" />
         <attr name="android:minWidth" />
@@ -104,6 +108,8 @@
     </declare-styleable>
 
     <declare-styleable name="XCardConstraintLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:maxWidth" />
         <attr name="android:maxHeight" />
         <attr name="android:minWidth" />
@@ -155,6 +161,8 @@
     </declare-styleable>
 
     <declare-styleable name="XCardFrameLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:maxWidth" />
         <attr name="android:maxHeight" />
         <attr name="android:minWidth" />
@@ -206,6 +214,8 @@
     </declare-styleable>
 
     <declare-styleable name="XCardLinearLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:maxWidth" />
         <attr name="android:maxHeight" />
         <attr name="android:minWidth" />
@@ -257,6 +267,8 @@
     </declare-styleable>
 
     <declare-styleable name="XCardRelativeLayout">
+        <attr name="android:checked" />
+        <attr name="xp_activated" />
         <attr name="android:maxWidth" />
         <attr name="android:maxHeight" />
         <attr name="android:minWidth" />

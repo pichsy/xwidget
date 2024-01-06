@@ -10,12 +10,12 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.View;
 
 import androidx.annotation.IntDef;
 import androidx.core.view.ViewCompat;
 
 import com.pichs.xwidget.R;
-import com.pichs.xwidget.view.XView;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -30,7 +30,7 @@ import java.lang.annotation.RetentionPolicy;
  * <p>
  * XProgressBar
  */
-public class XProgressBar extends XView {
+public class XProgressBar extends View {
 
     public final static int TYPE_RECT = 0;
     public final static int TYPE_CIRCLE = 1;
@@ -45,7 +45,7 @@ public class XProgressBar extends XView {
     public @interface Type {
     }
 
-    public final static int TOTAL_DURATION = 1000;
+    public final static int TOTAL_DURATION = 500;
     public final static int DEFAULT_PROGRESS_COLOR = Color.BLUE;
     public final static int DEFAULT_BACKGROUND_COLOR = Color.GRAY;
     public final static int DEFAULT_TEXT_SIZE = 20;

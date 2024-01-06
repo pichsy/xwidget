@@ -14,6 +14,7 @@ import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIBackground;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 /**
  * 背景帮助类
@@ -157,18 +158,24 @@ public class XBackgroundHelper implements XIBackground {
 
     private int[] dealWithColors(String backgroundColorString) {
         if (!TextUtils.isEmpty(backgroundColorString) && !TextUtils.isEmpty(backgroundColorString.trim())) {
-            try {
-                String[] cors = backgroundColorString.trim().split(",");
-                if (cors.length > 0) {
-                    int[] colors = new int[cors.length];
-                    for (int i = 0; i < cors.length; i++) {
-                        int color = XColorHelper.parseColor(cors[i]);
-                        colors[i] = color;
+            String[] cors = backgroundColorString.trim().split("[,，]");
+            if (cors.length > 0) {
+                ArrayList<Integer> colors = new ArrayList<>();
+                for (String cor : cors) {
+                    try {
+                        if (cor.trim().isEmpty()) {
+                            continue;
+                        }
+                        if (!XColorHelper.isColorStringFormat(cor.trim())) {
+                            continue;
+                        }
+                        int color = XColorHelper.parseColor(cor.trim());
+                        colors.add(color);
+                    } catch (RuntimeException e) {
+                        e.printStackTrace();
                     }
-                    return colors;
                 }
-            } catch (Exception e) {
-                throw new RuntimeException("gradientColors:" + backgroundColorString + " 格式不正确，请用《,》分割，并且检查一下颜色值格式\n ex:" + e);
+                return XColorHelper.toIntArray(colors);
             }
         }
         return null;

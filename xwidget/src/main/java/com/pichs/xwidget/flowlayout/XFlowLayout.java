@@ -84,6 +84,11 @@ public class XFlowLayout extends XViewGroup {
         array.recycle();
     }
 
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        super.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
+    }
+
     @SuppressLint("DrawAllocation")
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

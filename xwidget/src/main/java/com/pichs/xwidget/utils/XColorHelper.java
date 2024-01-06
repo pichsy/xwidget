@@ -7,6 +7,9 @@ import android.graphics.Color;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Size;
 
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
 
 /**
  * 颜色帮助类
@@ -88,33 +91,49 @@ public class XColorHelper {
         if (colorString == null) {
             throw new RuntimeException("您设置的颜色值：为 null，请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb");
         }
-        if (!colorString.startsWith("#") && colorString.length() != 4 && colorString.length() != 5 && colorString.length() != 7 && colorString.length() != 9) {
+        if (colorString.trim().isEmpty()) {
+            throw new RuntimeException("您设置的颜色值：为空字符串，请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb");
+        }
+        if (!isColorStringFormat(colorString)) {
             throw new RuntimeException("您设置的颜色值：" + colorString + ": 颜色值格式不正确，请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb");
         }
         String colorFinal = colorString;
         if (colorString.length() == 4) {
-            colorFinal = "#" +
-                    colorString.charAt(1) +
-                    colorString.charAt(1) +
-                    colorString.charAt(2) +
-                    colorString.charAt(2) +
-                    colorString.charAt(3) +
-                    colorString.charAt(3);
+            colorFinal = "#" + colorString.charAt(1) + colorString.charAt(1) + colorString.charAt(2) + colorString.charAt(2) + colorString.charAt(3) + colorString.charAt(3);
         } else if (colorString.length() == 5) {
-            colorFinal = "#" +
-                    colorString.charAt(1) +
-                    colorString.charAt(1) +
-                    colorString.charAt(2) +
-                    colorString.charAt(2) +
-                    colorString.charAt(3) +
-                    colorString.charAt(3) +
-                    colorString.charAt(4) +
-                    colorString.charAt(4);
+            colorFinal = "#" + colorString.charAt(1) + colorString.charAt(1) + colorString.charAt(2) + colorString.charAt(2) + colorString.charAt(3) + colorString.charAt(3) + colorString.charAt(4) + colorString.charAt(4);
         }
         try {
             return Color.parseColor(colorFinal);
         } catch (Exception e) {
             throw new RuntimeException("最终装换的颜色值：" + colorFinal + " 颜色值格式不正确，请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb\n ex:" + e);
         }
+    }
+
+    private final static Pattern mColorPattern = Pattern.compile("^#([0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$");
+
+
+    /**
+     * 判断是否是颜色值
+     * 请用#开头，如#rgb,#argb,#rrggbb,#aarrggbb
+     *
+     * @param colorString 颜色值
+     * @return true 是颜色值
+     */
+    public static boolean isColorStringFormat(String colorString) {
+        if (colorString == null || colorString.trim().isEmpty()) {
+            return false;
+        }
+        return mColorPattern.matcher(colorString.trim()).matches();
+    }
+
+
+
+    public static int[] toIntArray(ArrayList<Integer> list) {
+        int[] ret = new int[list.size()];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i] = list.get(i);
+        }
+        return ret;
     }
 }

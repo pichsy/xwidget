@@ -3,6 +3,8 @@ package com.pichs.xwidget.roundview;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.Checkable;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -11,27 +13,27 @@ import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIAlpha;
 import com.pichs.xwidget.cardview.XIRoundBackground;
 import com.pichs.xwidget.cardview.XITextView;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XAlphaHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XRoundBackgroundHelper;
 import com.pichs.xwidget.utils.XTextViewHelper;
 
 /**
  * XRoundTextView
  */
-public class XRoundTextView extends AppCompatTextView implements XIRoundBackground, XITextView, XIAlpha {
+public class XRoundTextView extends AppCompatTextView implements XIRoundBackground, Checkable, IChecked, XITextView, XIAlpha {
 
     private XRoundBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
     private XAlphaHelper xAlphaHelper;
 
     public XRoundTextView(Context context) {
-        super(context);
-        init(context, null, 0);
+        this(context, null);
     }
 
     public XRoundTextView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        init(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public XRoundTextView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
@@ -43,11 +45,18 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
         backgroundHelper = new XRoundBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
         xAlphaHelper = new XAlphaHelper(context, attrs, defStyleAttr, this);
+        initChecked(context, attrs, defStyleAttr, 0, this);
     }
 
-     @Override
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
+    }
+
+    @Override
     public void setNormalAlpha(float alpha) {
-       xAlphaHelper.setNormalAlpha(alpha);
+        xAlphaHelper.setNormalAlpha(alpha);
     }
 
     @Override
@@ -78,13 +87,13 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
     @Override
     public void setPressed(boolean pressed) {
         super.setPressed(pressed);
-        xAlphaHelper.onPressedChanged(this,pressed);
+        xAlphaHelper.onPressedChanged(this, pressed);
     }
 
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
-        xAlphaHelper.onEnabledChanged(this,enabled);
+        xAlphaHelper.onEnabledChanged(this, enabled);
     }
 
     @Override
@@ -346,8 +355,10 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
     public int getDisabledBackgroundGradientOrientation() {
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
+
     /**
      * 请使用： {@link #setCubeSidesGradientColors(int...)}
+     *
      * @param colors @Deprecated
      */
     @Deprecated
@@ -393,27 +404,60 @@ public class XRoundTextView extends AppCompatTextView implements XIRoundBackgrou
 
     @Override
     public void setCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setPressedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setPressedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setPressedCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setDisabledCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setDisabledCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setDisabledCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setCheckedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setCheckedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setCheckedCubeSidesHeight(left, back, right, front);
     }
 
     @Override
     public void setActivatedCubeSidesHeight(int left, int back, int right, int front) {
-        backgroundHelper.setActivatedCubeSidesHeight(left,back,right,front);
+        backgroundHelper.setActivatedCubeSidesHeight(left, back, right, front);
+    }
+
+    private boolean mChecked = false;
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {
+            android.R.attr.state_checked
+    };
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
     }
 }
 
