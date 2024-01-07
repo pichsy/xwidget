@@ -126,14 +126,18 @@
             android:name=".ui.switcher.SwitcherActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false" />
+
         <activity
             android:name=".ui.text.TextActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false" />
+
         <activity
             android:name=".tools.ToolsUsageActivity"
             android:configChanges="screenLayout|screenSize|orientation"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".aboutus.AboutUsActivity" />
 

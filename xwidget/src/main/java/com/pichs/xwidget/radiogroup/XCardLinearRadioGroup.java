@@ -60,4 +60,20 @@ public class XCardLinearRadioGroup extends XCardLinearLayout implements XRadioGr
             mRadioGroupHelper.select(child);
         }
     }
+
+    @Override
+    public View getSelectedView() {
+        if (mRadioGroupHelper != null) {
+            return mRadioGroupHelper.getSelectedView();
+        }
+        return null;
+    }
+
+    @Override
+    public int getSelectedPosition() {
+        if (mRadioGroupHelper != null) {
+            return mRadioGroupHelper.getSelectedPosition();
+        }
+        return -1;
+    }
 }

@@ -1,6 +1,7 @@
 package com.pichs.app.xwidget.dialog
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import com.pichs.app.xwidget.R
 import com.pichs.app.xwidget.databinding.PopupColorPickerBinding
@@ -11,7 +12,7 @@ class ColorPickerPopup(context: Context?, private val onColorSelected: (Int) -> 
 
     private lateinit var binding: PopupColorPickerBinding
 
-    private var mCurrentSelectColor = 0
+    private var mCurrentSelectColor = Color.RED
 
     init {
         setContentView(R.layout.popup_color_picker)

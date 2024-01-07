@@ -21,6 +21,20 @@ public interface XRadioGroup {
     void select(View child);
 
     /**
+     * 获取选中的view
+     *
+     * @return view
+     */
+    View getSelectedView();
+
+    /**
+     * 获取选中的位置
+     *
+     * @return 位置
+     */
+    int getSelectedPosition();
+
+    /**
      * 选中监听
      *
      * @param onCheckedChangeListener onCheckedChangeListener

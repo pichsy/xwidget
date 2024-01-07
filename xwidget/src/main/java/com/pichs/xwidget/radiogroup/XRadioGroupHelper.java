@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pichs.xwidget.radiobutton.XRadioButton;
-import com.pichs.xwidget.radiogroup.OnRadioCheckedListener;
-import com.pichs.xwidget.radiogroup.XRadioGroup;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -139,5 +137,15 @@ public class XRadioGroupHelper implements XRadioGroup, View.OnClickListener {
         if (child instanceof XRadioButton && mXCheckBoxList.contains(child)) {
             onClick(child);
         }
+    }
+
+    @Override
+    public View getSelectedView() {
+        return mCheckedView;
+    }
+
+    @Override
+    public int getSelectedPosition() {
+        return indexOf(mCheckedView);
     }
 }

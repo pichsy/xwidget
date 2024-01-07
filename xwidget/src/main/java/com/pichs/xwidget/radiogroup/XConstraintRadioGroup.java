@@ -16,6 +16,7 @@ public class XConstraintRadioGroup extends XConstraintLayout implements XRadioGr
             mRadioGroupHelper.setOnRadioCheckedListener(onRadioCheckedListener);
         }
     }
+
     public XConstraintRadioGroup(Context context) {
         this(context, null);
     }
@@ -57,5 +58,21 @@ public class XConstraintRadioGroup extends XConstraintLayout implements XRadioGr
         if (mRadioGroupHelper != null) {
             mRadioGroupHelper.select(child);
         }
+    }
+
+    @Override
+    public View getSelectedView() {
+        if (mRadioGroupHelper != null) {
+            return mRadioGroupHelper.getSelectedView();
+        }
+        return null;
+    }
+
+    @Override
+    public int getSelectedPosition() {
+        if (mRadioGroupHelper != null) {
+            return mRadioGroupHelper.getSelectedPosition();
+        }
+        return -1;
     }
 }

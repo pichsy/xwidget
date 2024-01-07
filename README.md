@@ -13,9 +13,12 @@
 
 新版仓库移至mavenCenter
 
-### 4.x 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
+### 5.x 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
       implementation 'com.gitee.pichs:xwidget:5.0.0'
+
+
+
 
 ### 3.x 最新版本: [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
@@ -23,32 +26,34 @@
 
 ### 3.2.5版本源码请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget/tree/3.2.5/)
 
-### 4.x为 小破坏性升级 ，仓库移至mavenCenter
 
-- 控件包名改为 `com.pichs.xwidget.xxxx`
 
-### 虽然是破坏性，但破坏性小，仍推荐升级到4.0及以上版本
 
-### 4.0.0升级指南到5.0.0
+### 升级指南到5.0.0
 
 - 属性删除，采用系统属性`app:xp_checked` -> `android:checked`
 - 类删除，XCheckedTextView删除，使用任一XTextView，XCardTextView,XRoundTextView可替换。
 - PressedScaleLayout->XPressScaleFrameLayout,且新增XPressScaleLinearLayout,XPressScaleConstraintLayout
+- XRadioGroupxxx 系列优化，增加选中，和获取当前选中的子控件，或者位置。
 
-## 3.x升级到 4.x指南*
+
+
+## 3.x升级到 5.x指南*
 
 - 全局搜索包名并替换 "com.pichs.common.widget." ->  "com.pichs.xwidget." 即可完成替换，非常的简单！
 - 示例：
 - ![](./imgs/uplibs.png)
 
-## 最好用基础组件库，超级轻量级。
+## 非常好用基础组件库，超简单，快速。
 
-- 特色杜绝属性冲突，属性完美复用，属性前缀 ‘xp_’ ,简短快速。
+- 特色杜绝属性冲突，系统属性尽量复用，属性前缀 ‘xp_’ ,简短快速。
 
 - 圆角，外阴影，圆头跟随高度宽度，渐变色背景->双色渐变：top->bottom，left->right,TL->BR, BL->TR
 
 - 按压效果，仍然支持渐变，圆角等。 支持按压透明变化，disabled透明变化。
-
+- 
+- checked效果，activated效果，支持属性状态预览。
+- 
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
 - 更多功能可查看demo，或者体验Apk

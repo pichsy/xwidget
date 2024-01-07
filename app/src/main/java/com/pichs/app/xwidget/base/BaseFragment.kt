@@ -10,5 +10,4 @@ abstract class BaseFragment<ViewBinder : ViewBinding> : BindingFragment<ViewBind
         super.beforeOnCreateView(savedInstanceState)
     }
 
-
 }

@@ -523,14 +523,20 @@ public class PickerColorView extends View {
          *
          * @param picker ColorPickerView
          */
-        void onStartTrackingTouch(PickerColorView picker);
+        default void onStartTrackingTouch(PickerColorView picker) {
+        }
+
+        ;
 
         /**
          * 停止颜色选取
          *
          * @param picker ColorPickerView
          */
-        void onStopTrackingTouch(PickerColorView picker);
+        default void onStopTrackingTouch(PickerColorView picker) {
+        }
+
+        ;
     }
 
 

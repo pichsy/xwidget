@@ -81,8 +81,9 @@ public class MainActivity extends AppCompatActivity {
         XCardButton btn = findViewById(R.id.btn1);
 
         btn.setOnClickListener(v -> {
+            XTypefaceHelper.openTypeface(this);
             Toast.makeText(getApplicationContext(), "color:" + color, Toast.LENGTH_SHORT).show();
-            XTypefaceHelper.setGlobalTypefaceFromAssets(getApplicationContext(), "font/smileysans.ttf");
+            XTypefaceHelper.setGlobalTypefaceFromFontRes(getApplicationContext(), R.font.smileysans);
             XTypefaceHelper.setGlobalTypefaceStyle(getApplicationContext(), XTypefaceHelper.NONE);
         });
 

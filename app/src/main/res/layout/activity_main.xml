@@ -59,6 +59,8 @@
             android:padding="10dp"
             android:text="关闭字体变化"
             android:textColor="#f00"
+            app:xp_backgroundGradientColors="#F49595,#F49595"
+            app:xp_backgroundGradientOrientation="horizontal"
             app:xp_checkedBackground="#00f"
             app:xp_checkedTextColor="#fff" />
 
@@ -214,8 +216,11 @@
             app:xp_pressedAlpha=".8"
             app:xp_pressedBackgroundGradientColors="#0ff,#0f0"
             app:xp_pressedCubeFrontHeight="2dp"
-            app:xp_pressedCubeSidesGradientColors="#081"
-            app:xp_radius="25dp" />
+            app:xp_radiusTopLeft="25dp"
+            app:xp_radiusTopRight="25dp"
+            app:xp_radiusBottomLeft="25dp"
+            app:xp_radiusBottomRight="25dp"
+            app:xp_pressedCubeSidesGradientColors="#081"/>
 
         <com.pichs.xwidget.roundview.XRoundTextView
             android:layout_width="100dp"

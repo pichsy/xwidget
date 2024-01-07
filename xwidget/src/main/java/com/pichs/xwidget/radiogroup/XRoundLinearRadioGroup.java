@@ -17,6 +17,7 @@ public class XRoundLinearRadioGroup extends XRoundLinearLayout implements XRadio
             mRadioGroupHelper.setOnRadioCheckedListener(onRadioCheckedListener);
         }
     }
+
     public XRoundLinearRadioGroup(Context context) {
         this(context, null);
     }
@@ -58,5 +59,21 @@ public class XRoundLinearRadioGroup extends XRoundLinearLayout implements XRadio
         if (mRadioGroupHelper != null) {
             mRadioGroupHelper.select(child);
         }
+    }
+
+    @Override
+    public View getSelectedView() {
+        if (mRadioGroupHelper != null) {
+            return mRadioGroupHelper.getSelectedView();
+        }
+        return null;
+    }
+
+    @Override
+    public int getSelectedPosition() {
+        if (mRadioGroupHelper != null) {
+            return mRadioGroupHelper.getSelectedPosition();
+        }
+        return -1;
     }
 }
