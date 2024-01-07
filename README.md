@@ -17,17 +17,15 @@
 
       implementation 'com.gitee.pichs:xwidget:5.0.0'
 
-
-
-
 ### 3.x 最新版本: [![](https://jitpack.io/v/com.gitee.pichs/xwidget.svg)](https://jitpack.io/#com.gitee.pichs/xwidget)
 
       implementation 'com.gitee.pichs:xwidget:3.2.5'
 
 ### 3.2.5版本源码请移步gitee地址 [https://gitee.com/pichs/xwidget](https://gitee.com/pichs/xwidget/tree/3.2.5/)
 
+### 先看效果
 
-
+- [效果](./imgs/all.gif)
 
 ### 升级指南到5.0.0
 
@@ -35,8 +33,6 @@
 - 类删除，XCheckedTextView删除，使用任一XTextView，XCardTextView,XRoundTextView可替换。
 - PressedScaleLayout->XPressScaleFrameLayout,且新增XPressScaleLinearLayout,XPressScaleConstraintLayout
 - XRadioGroupxxx 系列优化，增加选中，和获取当前选中的子控件，或者位置。
-
-
 
 ## 3.x升级到 5.x指南*
 
@@ -51,9 +47,9 @@
 - 圆角，外阴影，圆头跟随高度宽度，渐变色背景->双色渐变：top->bottom，left->right,TL->BR, BL->TR
 
 - 按压效果，仍然支持渐变，圆角等。 支持按压透明变化，disabled透明变化。
-- 
+-
 - checked效果，activated效果，支持属性状态预览。
-- 
+-
 - 致力于快速开发基础控件，省去大量写xml文件的时间。效果实时可预览。
 
 - 更多功能可查看demo，或者体验Apk
