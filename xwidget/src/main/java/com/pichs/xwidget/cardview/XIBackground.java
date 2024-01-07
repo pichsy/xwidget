@@ -14,7 +14,7 @@ public interface XIBackground {
     /**
      * 正常的背景色，渐变会代替它
      *
-     * @param drawable
+     * @param drawable drawable
      */
     void setNormalBackground(Drawable drawable);
 
@@ -132,7 +132,7 @@ public interface XIBackground {
     /**
      * 动态改变背景系列颜色值
      *
-     * @param color
+     * @param color 颜色值
      */
     void setNormalBackgroundColor(@ColorInt int color);
 
