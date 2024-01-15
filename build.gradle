@@ -17,16 +17,15 @@ plugins {
 
 // 计算versionCode的值
 static Integer calculateVersionCode(String vn) {
-    try {
-        String[] splits = vn.split('\\.')
-        println("分割VersionName:" + splits)
-        long w = Integer.parseInt(splits[0]) * 10000
-        long b = Integer.parseInt(splits[1]) * 100
-        long g = Integer.parseInt(splits[2])
-        return w + b + g
-    } catch (Exception e) {
-        return 10000
+    String[] splits = vn.split('\\.')
+    println("分割VersionName:" + splits)
+    long w = Integer.parseInt(splits[0]) * 10000
+    long b = Integer.parseInt(splits[1]) * 100
+    long g = Integer.parseInt(splits[2])
+    if (b > 9900 || g > 99) {
+        throw new Exception("版本号不符合规范: eg: 1.99.99 后两位必须为99以内数。")
     }
+    return w + b + g
 }
 
 ext {
