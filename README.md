@@ -1,6 +1,6 @@
 # 碉堡了的基础组件库
 
-用心创造快乐！
+**用心创造快乐！**
 
 ### 好用的很，直接上车！
 
@@ -16,7 +16,15 @@
       implementation 'com.gitee.pichs:xwidget:5.0.0'
 
 
-### 先看效果
+<br/>
+
+## 一、 ∆!∆老版本升级指南 (点击下面链接)
+-  [老版本升级指南.md](./老版本升级指南.md)
+
+
+<br/>
+
+## 二、先看效果（最新版本）
 - 首页底部导航时XLinearRadioGroup+XRadioCardLinearLayout+XRadioImageView+XRadioCardButton实现。
 - <img src='imgs/home.jpg' width='300px'>
 
@@ -45,6 +53,8 @@
 - 占位控件 XSpace, XStatusBarSpace, XStatusBarView
 - <img src='imgs/xspace.jpg' width='300px'>
 
+
+
 <br/>
 
 ## 非常好用基础组件库，超简单，快速。
@@ -61,17 +71,18 @@
 
 - 更多功能可查看demo，或者体验Apk
 
-## 下载体验
+## Demo.apk下载体验
 
 [下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/app-release.apk)
 
-### 持续维护，已更新四年了。持续增强更有用的功能，简单而强大。
+## 持续维护，已持续更新四年。持续增强更有用的功能，简单，稳定，强大。
 
-- 如果用起来不爽，大胆进言，我会尽力满足你的需求。
+- 用起来不爽，多提点bug，尽力满足你的需求。
 
-#### 使用示例去 demo中的xml中探索吧。
+### 使用示例去 demo中的xml中探索吧。
+ -  [下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/app-release.apk)
 
-- 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
+### 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
 
 1. 在Application中初始化
 
@@ -100,13 +111,28 @@
    
    ```
 
+
+### 其他功能介绍，未完待续......
+
+
+## 属性说明
+ **记住一个原则，系统有的属性，先去尝试用。找不到或无效，再使用 `xp_` 代码提示。**
+
+- 大部分属性都会复用系统原有属性，并且作为控件的默认属性。
+-  android:background="#fff"
+- android:color="#333"
+
+
+<br/>
+<br/>
 ## 代码混淆
 
     版本混淆规则
     -keep class com.pichs.xwidget.**{ *; }
 
   
-
+<br/>
+<br/>
 ## 升级日志
 
 ### 5.0.0
@@ -188,11 +214,6 @@
 
 - 示例效果
 - ![](./imgs/radio.gif)
-
-
-
-### 属性说明
-- 大部分属性都会复用系统原有属性，并且作为控件的默认属性。
 
 
 ## 更新计划
