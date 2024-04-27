@@ -13,12 +13,12 @@
 
 ### 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:5.0.0'
+      implementation 'com.gitee.pichs:xwidget:5.1.0'
 
 
 <br/>
 
-## 一、 ∆!∆老版本升级指南 (点击下面链接)
+## 一、 ∆!∆ 老版本升级指南 (点击下面链接)
 -  [老版本升级指南.md](./老版本升级指南.md)
 
 
@@ -134,6 +134,11 @@
 <br/>
 <br/>
 ## 升级日志
+
+### 5.1.0
+- 增加XRoundEditText
+- 增加XCardEditText
+- 修复XEditText background属性不设置 其他背景失效问题
 
 ### 5.0.0
 

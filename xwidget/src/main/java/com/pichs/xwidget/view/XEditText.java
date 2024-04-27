@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.Checkable;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,14 +15,16 @@ import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
 import com.pichs.xwidget.cardview.XIBackground;
 import com.pichs.xwidget.cardview.XITextView;
+import com.pichs.xwidget.checkbox.IChecked;
 import com.pichs.xwidget.utils.XBackgroundHelper;
+import com.pichs.xwidget.utils.XCheckableHelper;
 import com.pichs.xwidget.utils.XEditTextHelper;
 import com.pichs.xwidget.utils.XTextViewHelper;
 
 /**
  * XEditText
  */
-public class XEditText extends AppCompatEditText implements XIBackground, XITextView {
+public class XEditText extends AppCompatEditText implements XIBackground, XITextView, IChecked, Checkable {
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
     private boolean disableCopyAndPaste = false;
@@ -43,6 +47,7 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
+        initChecked(context, attrs, defStyleAttr, 0, this);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XEditText, defStyleAttr, 0);
         disableCopyAndPaste = ta.getBoolean(R.styleable.XEditText_xp_disableCopyAndPaste, false);
         ta.recycle();
@@ -285,4 +290,42 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
         return backgroundHelper.getDisabledBackgroundGradientOrientation();
     }
 
+
+    private boolean mChecked = false;
+
+    @Override
+    public void setChecked(boolean checked) {
+        if (mChecked != checked) {
+            mChecked = checked;
+            refreshDrawableState();
+        }
+    }
+
+    @Override
+    public boolean isChecked() {
+        return mChecked;
+    }
+
+    @Override
+    public void toggle() {
+        setChecked(!mChecked);
+    }
+
+    private static final int[] CHECKED_STATE_SET = {
+            android.R.attr.state_checked
+    };
+
+    @Override
+    protected int[] onCreateDrawableState(int extraSpace) {
+        final int[] drawableState = super.onCreateDrawableState(extraSpace + 1);
+        if (isChecked()) {
+            mergeDrawableStates(drawableState, CHECKED_STATE_SET);
+        }
+        return drawableState;
+    }
+
+    @Override
+    public void initChecked(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes, View owner) {
+        XCheckableHelper.initChecked(context, attrs, defStyleAttr, defStyleRes, owner);
+    }
 }

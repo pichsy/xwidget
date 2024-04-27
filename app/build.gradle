@@ -129,8 +129,11 @@ dependencies {
     // 消息总线通信
     api 'io.github.jeremyliao:live-event-bus-x:1.8.0'
 
-    // 基础brv
-    api "io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.2"
+    // brv
+    api "com.github.liangjingkanji:BRV:1.5.8"
+
+    // BRVAH
+    api("io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.4")
 
     api 'com.github.getActivity:Toaster:12.6'
     // 下拉上拉

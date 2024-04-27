@@ -1,7 +1,6 @@
 package com.pichs.app.xwidget
 
 import android.app.Application
-import android.widget.Toast
 import com.hjq.toast.Toaster
 import com.pichs.xbase.cache.BaseMMKVHelper
 import com.pichs.xbase.utils.UiKit
@@ -17,5 +16,6 @@ class App : Application() {
         XTypefaceHelper.init(this, true)
         XLog.init(XLog.getConfig().setLogEnable(true))
         Toaster.init(this)
+
     }
 }

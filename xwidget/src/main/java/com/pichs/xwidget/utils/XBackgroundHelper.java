@@ -5,9 +5,12 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.pichs.xwidget.R;
 import com.pichs.xwidget.cardview.GradientOrientation;
@@ -15,6 +18,7 @@ import com.pichs.xwidget.cardview.XIBackground;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 背景帮助类
@@ -83,6 +87,7 @@ public class XBackgroundHelper implements XIBackground {
             checkedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_checkedBackground);
             disabledBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_disabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_activatedBackground);
+            Log.w("XBackgroundHelper", this.mOwner.get() + ":backgroundTmp:" + backgroundTmp);
 
             // 渐变
             bgStartColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientStartColor, bgStartColor);
@@ -112,6 +117,10 @@ public class XBackgroundHelper implements XIBackground {
             checkedBackgroundColors = dealWithColors(checkedBackgroundColorString);
             disabledBackgroundColors = dealWithColors(disabledBackgroundColorString);
 
+            Log.w("XBackgroundHelper", this.mOwner.get() + ":bgStartColor:" + bgStartColor + " bgEndColor:" + bgEndColor + " bgColorOrientation:" + bgColorOrientation);
+
+            Log.w("XBackgroundHelper", this.mOwner.get() + ":backgroundColors:" + Arrays.toString(backgroundColors));
+
             background = getFinalDrawable(
                     backgroundTmp,
                     bgStartColor,
@@ -119,6 +128,9 @@ public class XBackgroundHelper implements XIBackground {
                     backgroundColors,
                     bgColorOrientation
             );
+
+            Log.w("XBackgroundHelper", this.mOwner.get() + "final:background:" + background);
+
 
             pressedBackground = getFinalDrawable(
                     pressedBackgroundTmp,
@@ -182,9 +194,20 @@ public class XBackgroundHelper implements XIBackground {
     }
 
     private Drawable getFinalDrawable(Drawable bg, int startColor, int endColor, int[] gradientColors, int orientation) {
-        if (bg != null && !(bg instanceof ColorDrawable) && !(bg instanceof GradientDrawable)) {
-            return bg;
+        if (bg != null) {
+            if (this.mOwner.get() instanceof EditText) {
+                // 对于EditText，检查bg不是ColorDrawable、GradientDrawable和InsetDrawable
+                if (!(bg instanceof ColorDrawable) && !(bg instanceof GradientDrawable) && !(bg instanceof InsetDrawable)) {
+                    return bg;
+                }
+            } else {
+                // 对于非EditText，检查bg不是ColorDrawable和GradientDrawable
+                if (!(bg instanceof ColorDrawable) && !(bg instanceof GradientDrawable)) {
+                    return bg;
+                }
+            }
         }
+
         XGradientHelper.GradientDrawableBuilder builder = new XGradientHelper.GradientDrawableBuilder();
         if (startColor != DEFAULT_COLOR_TRANSPARENT && endColor != DEFAULT_COLOR_TRANSPARENT) {
             GradientDrawable.Orientation ot;
@@ -237,6 +260,7 @@ public class XBackgroundHelper implements XIBackground {
             builder.setFillColor(gradientColors[0]);
             return builder.build();
         }
+        Log.d("XBackgroundHelper", this.mOwner.get() + ":结果：bg:" + bg);
         return bg;
     }
 

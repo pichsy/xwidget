@@ -21,6 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:xp_pressedScale="0.92" />
 
+
         <com.pichs.xwidget.view.XTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,6 +32,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
     </com.pichs.xwidget.cardview.XCardConstraintLayout>
 
     <ScrollView
@@ -49,12 +52,58 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:background="#8BC34A"
-                android:cursorVisible="true"
-                android:padding="16dp"
-                android:text="我是输入框"
+                android:layout_marginBottom="16dp"
+                android:padding="12dp"
+                android:text="我是输入框 XEditText"
                 android:textCursorDrawable="@drawable/cursor_drawable"
+                android:textSize="12sp"
+                app:xp_backgroundGradientEndColor="#f99"
+                app:xp_backgroundGradientStartColor="#99f"
                 app:xp_disableCopyAndPaste="true" />
+
+            <com.pichs.xwidget.roundview.XRoundEditText
+                android:id="@+id/et_round_input"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="#f00"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                app:xp_backgroundGradientStartColor="#99f"
+                app:xp_backgroundGradientEndColor="#f99"
+                app:xp_backgroundGradientOrientation="vertical"
+                app:xp_cubeFrontHeight="3dp"
+                app:xp_cubeSidesGradientColors="#DA4444"
+                android:text="你好XRoundEditText"
+                android:textColor="#000"
+                app:xp_radius="30dp" />
+
+            <com.pichs.xwidget.cardview.XCardEditText
+                android:id="@+id/et_card_input"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="16dp"
+                android:background="#ff0"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:text="你好XCardEditText"
+                android:textColor="#000"
+                app:xp_backgroundGradientEndColor="#f99"
+                app:xp_backgroundGradientOrientation="horizontal"
+                app:xp_backgroundGradientStartColor="#99f"
+                app:xp_radius="30dp"
+                app:xp_shadowElevation="5dp" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="下面是XVerificationCodeEditText"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <com.pichs.xwidget.edittext.XVerificationCodeEditText
                 android:id="@+id/verificationCodeEditText"
@@ -62,12 +111,13 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="26dp"
-                android:layout_marginTop="26dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="26dp"
                 android:background="#FFFFFF"
                 android:cursorVisible="true"
                 android:inputType="numberPassword"
                 android:textColor="#255BFA"
+                android:visibility="gone"
                 app:xp_borderColor="#255BFA"
                 app:xp_borderErrorColor="#EF067E"
                 app:xp_borderLoadingColor="#FFC107"
@@ -95,6 +145,7 @@
                 android:cursorVisible="true"
                 android:inputType="numberPassword"
                 android:textColor="#fff"
+                android:visibility="gone"
                 app:xp_blockColor="#28CBE8"
                 app:xp_boxType="solid"
                 app:xp_cursorColor="#99f"
@@ -119,6 +170,7 @@
                 android:cursorVisible="true"
                 android:inputType="numberPassword"
                 android:textColor="#255BFA"
+                android:visibility="gone"
                 app:xp_borderColor="#255BFA"
                 app:xp_borderNoTextColor="#333"
                 app:xp_borderWidth="2dp"
@@ -141,11 +193,6 @@
                 android:text="代码"
                 android:textColor="#FFEB3B"
                 android:textSize="14sp" />
-
-
         </LinearLayout>
-
     </ScrollView>
-
-
 </LinearLayout>
