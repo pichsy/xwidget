@@ -15,16 +15,16 @@
 
       implementation 'com.gitee.pichs:xwidget:5.1.0'
 
-
 <br/>
 
 ## 一、 ∆!∆ 老版本升级指南 (点击下面链接)
--  [老版本升级指南.md](./老版本升级指南.md)
 
+- [老版本升级指南.md](./老版本升级指南.md)
 
 <br/>
 
 ## 二、先看效果（最新版本）
+
 - 首页底部导航时XLinearRadioGroup+XRadioCardLinearLayout+XRadioImageView+XRadioCardButton实现。
 - <img src='imgs/home.jpg' width='300px'>
 
@@ -53,8 +53,6 @@
 - 占位控件 XSpace, XStatusBarSpace, XStatusBarView
 - <img src='imgs/xspace.jpg' width='300px'>
 
-
-
 <br/>
 
 ## 非常好用基础组件库，超简单，快速。
@@ -80,7 +78,8 @@
 - 用起来不爽，多提点bug，尽力满足你的需求。
 
 ### 使用示例去 demo中的xml中探索吧。
- -  [下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/app-release.apk)
+
+- [下载体验](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/app-release.apk)
 
 ### 注意：凡是继承自xwidget的基础类的textview都可以实现字体变更
 
@@ -111,17 +110,15 @@
    
    ```
 
-
 ### 其他功能介绍，未完待续......
 
-
 ## 属性说明
- **记住一个原则，系统有的属性，先去尝试用。找不到或无效，再使用 `xp_` 代码提示。**
+
+**记住一个原则，系统有的属性，先去尝试用。找不到或无效，再使用 `xp_` 代码提示。**
 
 - 大部分属性都会复用系统原有属性，并且作为控件的默认属性。
--  android:background="#fff"
+- android:background="#fff"
 - android:color="#333"
-
 
 <br/>
 <br/>
@@ -130,15 +127,26 @@
     版本混淆规则
     -keep class com.pichs.xwidget.**{ *; }
 
-  
 <br/>
 <br/>
 ## 升级日志
 
 ### 5.1.0
-- 增加XRoundEditText
-- 增加XCardEditText
+
+- 增加XRoundEditText 用法和XRound...系列相同
+- 增加XCardEditText 用法和XCard...系列相同
 - 修复XEditText background属性不设置 其他背景失效问题
+- 修复XEditText 全系新增 游标样式设置 `xp_textCursorColor, xp_textCursorWidth, xp_textCursorRadius` 可以在xml中设置，已兼容低版本。
+  <br/>
+
+     ```xml
+          <com.pichs.xwidget.view.XEditText
+                    ....
+                    app:xp_disableCopyAndPaste="true"
+                    app:xp_textCursorColor="#F00"
+                    app:xp_textCursorRadius="3dp"
+                    app:xp_textCursorWidth="5dp" />    
+      ```
 
 ### 5.0.0
 
@@ -157,6 +165,7 @@
 - 增加XRadio...子控件系列 属性 xp_ignore_radio_group ,添加此属性可以忽略父控件的单选组效果，即不参与单选组的单选效果。
 
 - 使用手册：
+
 1. X...RadioGroup系列 都是继承自'父View'控件属性方式完全一致，只是增加了单选组效果，其他属性完全一致。
 2. XRadio...系列 都是继承自原'子View'控件属性方式完全一致，只是增加了单选组效果，其他属性完全一致。
 3. XRadio...系列 可以单独使用，效果和继承的控件一致且效果一样
@@ -220,9 +229,9 @@
 - 示例效果
 - ![](./imgs/radio.gif)
 
-
 ## 更新计划
 
 - 已全部完成
+
 1. ~~优化 cube属性，使其更加全能，增加更多立体按钮效果，包括凹陷按钮效果~~ 💯✔️
 2. ~~增加 X...RadioGroup, 直属子类可用XRadio...子控件，并且其他布局随意添加不参加单选，只做辅助显示。~~  💯✔️

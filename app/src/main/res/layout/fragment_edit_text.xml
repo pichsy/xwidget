@@ -23,6 +23,7 @@
 
 
         <com.pichs.xwidget.view.XTextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="输入框"
@@ -55,11 +56,13 @@
                 android:layout_marginBottom="16dp"
                 android:padding="12dp"
                 android:text="我是输入框 XEditText"
-                android:textCursorDrawable="@drawable/cursor_drawable"
                 android:textSize="12sp"
                 app:xp_backgroundGradientEndColor="#f99"
                 app:xp_backgroundGradientStartColor="#99f"
-                app:xp_disableCopyAndPaste="true" />
+                app:xp_disableCopyAndPaste="true"
+                app:xp_textCursorColor="#0ff"
+                app:xp_textCursorRadius="3dp"
+                app:xp_textCursorWidth="5dp" />
 
             <com.pichs.xwidget.roundview.XRoundEditText
                 android:id="@+id/et_round_input"
@@ -70,13 +73,17 @@
                 android:background="#f00"
                 android:gravity="center_vertical"
                 android:paddingStart="12dp"
-                app:xp_backgroundGradientStartColor="#99f"
-                app:xp_backgroundGradientEndColor="#f99"
-                app:xp_backgroundGradientOrientation="vertical"
-                app:xp_cubeFrontHeight="3dp"
-                app:xp_cubeSidesGradientColors="#DA4444"
                 android:text="你好XRoundEditText"
                 android:textColor="#000"
+                app:xp_backgroundGradientEndColor="#f99"
+                app:xp_backgroundGradientOrientation="vertical"
+                app:xp_backgroundGradientStartColor="#99f"
+                app:xp_cubeFrontHeight="3dp"
+
+                app:xp_textCursorColor="#f0f"
+                app:xp_textCursorRadius="2dp"
+                app:xp_textCursorWidth="8dp"
+                app:xp_cubeSidesGradientColors="#DA4444"
                 app:xp_radius="30dp" />
 
             <com.pichs.xwidget.cardview.XCardEditText
@@ -93,6 +100,9 @@
                 app:xp_backgroundGradientOrientation="horizontal"
                 app:xp_backgroundGradientStartColor="#99f"
                 app:xp_radius="30dp"
+                app:xp_textCursorColor="#107EDD"
+                app:xp_textCursorRadius="0dp"
+                app:xp_textCursorWidth="2dp"
                 app:xp_shadowElevation="5dp" />
 
             <com.pichs.xwidget.view.XTextView

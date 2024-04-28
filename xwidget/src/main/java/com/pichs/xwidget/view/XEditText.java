@@ -28,6 +28,10 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
     private XBackgroundHelper backgroundHelper;
     private XTextViewHelper textViewHelper;
     private boolean disableCopyAndPaste = false;
+    private int textCursorColor = XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT;
+    private int textCursorRadius = 0;
+    private int textCursorWidth = 5;
+
 
     public XEditText(@NonNull Context context) {
         super(context);
@@ -43,16 +47,27 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
         init(context, attrs, defStyleAttr);
     }
 
-
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         backgroundHelper = new XBackgroundHelper(context, attrs, defStyleAttr, this);
         textViewHelper = new XTextViewHelper(context, attrs, defStyleAttr, this);
         initChecked(context, attrs, defStyleAttr, 0, this);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.XEditText, defStyleAttr, 0);
         disableCopyAndPaste = ta.getBoolean(R.styleable.XEditText_xp_disableCopyAndPaste, false);
+        textCursorColor = ta.getColor(R.styleable.XEditText_xp_textCursorColor, XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT);
+        textCursorRadius = ta.getDimensionPixelSize(R.styleable.XEditText_xp_textCursorRadius, 0);
+        textCursorWidth = ta.getDimensionPixelSize(R.styleable.XEditText_xp_textCursorWidth, 5);
         ta.recycle();
         if (disableCopyAndPaste) {
             XEditTextHelper.disableCopyAndPaste(this);
+        }
+        if (textCursorWidth < 0) {
+            textCursorWidth = 0;
+        }
+        if (textCursorRadius < 0) {
+            textCursorRadius = 0;
+        }
+        if (textCursorColor != XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT) {
+            XEditTextHelper.setCursorDrawable(this, textCursorColor, textCursorWidth, textCursorRadius);
         }
     }
 
@@ -70,6 +85,40 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
             return true;
         }
         return super.onTextContextMenuItem(id);
+    }
+
+    public void setTextCursorColor(int color) {
+        this.textCursorColor = color;
+        XEditTextHelper.setCursorDrawable(this, textCursorColor, textCursorWidth, textCursorRadius);
+    }
+
+    public void setTextCursorRadius(int radius) {
+        this.textCursorRadius = radius;
+        XEditTextHelper.setCursorDrawable(this, textCursorColor, textCursorWidth, textCursorRadius);
+    }
+
+    public void setTextCursorWidth(int width) {
+        this.textCursorWidth = width;
+        XEditTextHelper.setCursorDrawable(this, textCursorColor, textCursorWidth, textCursorRadius);
+    }
+
+    public void setTextCursor(int color, int width, int radius) {
+        this.textCursorColor = color;
+        this.textCursorWidth = width;
+        this.textCursorRadius = radius;
+        XEditTextHelper.setCursorDrawable(this, textCursorColor, textCursorWidth, textCursorRadius);
+    }
+
+    public int getTextCursorColor() {
+        return textCursorColor;
+    }
+
+    public int getTextCursorRadius() {
+        return textCursorRadius;
+    }
+
+    public int getTextCursorWidth() {
+        return textCursorWidth;
     }
 
     @Override
@@ -311,9 +360,7 @@ public class XEditText extends AppCompatEditText implements XIBackground, XIText
         setChecked(!mChecked);
     }
 
-    private static final int[] CHECKED_STATE_SET = {
-            android.R.attr.state_checked
-    };
+    private static final int[] CHECKED_STATE_SET = {android.R.attr.state_checked};
 
     @Override
     protected int[] onCreateDrawableState(int extraSpace) {

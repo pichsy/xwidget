@@ -589,10 +589,16 @@
 
     <!--  禁用复制和粘贴  -->
     <attr name="xp_disableCopyAndPaste" format="boolean" />
+    <attr name="xp_textCursorColor" format="color" />
+    <attr name="xp_textCursorWidth" format="dimension|reference" />
+    <attr name="xp_textCursorRadius" format="dimension|reference" />
 
     <!--  XEditText  -->
     <declare-styleable name="XEditText">
         <attr name="xp_disableCopyAndPaste" />
+        <attr name="xp_textCursorColor" />
+        <attr name="xp_textCursorWidth" />
+        <attr name="xp_textCursorRadius" />
         <attr name="android:checked" />
         <attr name="xp_activated" />
         <attr name="android:textColor" />

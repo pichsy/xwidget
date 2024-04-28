@@ -31,6 +31,10 @@ class EditTextFragment : BaseFragment<FragmentEditTextBinding>() {
             }
         })
 
+        binding.etInput.setOnFocusChangeListener { v, hasFocus ->
+
+        }
+
 
         showCode()
     }

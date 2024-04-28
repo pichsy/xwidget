@@ -419,6 +419,9 @@
 
     <declare-styleable name="XRoundEditText">
         <attr name="xp_disableCopyAndPaste" />
+        <attr name="xp_textCursorColor" />
+        <attr name="xp_textCursorWidth" />
+        <attr name="xp_textCursorRadius" />
         <attr name="android:textColor" />
         <attr name="android:checked" />
         <attr name="xp_activated" />

@@ -25,16 +25,7 @@ public class XGradientHelper {
     /**
      * 定义状态
      */
-    @IntDef({
-            State.state_pressed,
-            State.state_checked,
-            State.state_enabled,
-            State.state_selected,
-            State.state_activated,
-            State.state_hovered,
-            State.state_checkable,
-            State.state_focused,
-    })
+    @IntDef({State.state_pressed, State.state_checked, State.state_enabled, State.state_selected, State.state_activated, State.state_hovered, State.state_checkable, State.state_focused,})
     @Retention(RetentionPolicy.SOURCE)
     public @interface State {
         int state_pressed = android.R.attr.state_pressed;
@@ -246,6 +237,9 @@ public class XGradientHelper {
         GradientDrawable.Orientation orientation = GradientDrawable.Orientation.LEFT_RIGHT;
         int[] gradientColors;
 
+        int width = -1;
+        int height = -1;
+
         public GradientDrawableBuilder setRadius(int radius) {
             this.radius = Math.max(radius, 0);
             return this;
@@ -296,11 +290,14 @@ public class XGradientHelper {
             return this;
         }
 
+        public GradientDrawableBuilder setSize(int width, int height) {
+            this.width = width;
+            this.height = height;
+            return this;
+        }
+
         public GradientDrawable build() {
-            return getDrawable(
-                    radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
-                    fillColor, strokeWidth, strokeColor, orientation, gradientColors
-            );
+            return getDrawable(radius, width, height, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, fillColor, strokeWidth, strokeColor, orientation, gradientColors);
         }
 
     }
@@ -317,12 +314,24 @@ public class XGradientHelper {
      * @return GradientDrawable
      */
     public static GradientDrawable getDrawable(int radius, @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor) {
-        return new GradientDrawableBuilder()
-                .setRadius(radius)
-                .setFillColor(fillColor)
-                .setStrokeWidth(strokeWidth)
-                .setStrokeColor(strokeColor)
-                .build();
+        return new GradientDrawableBuilder().setRadius(radius).setFillColor(fillColor).setStrokeWidth(strokeWidth).setStrokeColor(strokeColor).build();
+    }
+
+    /**
+     * 获取Drawable
+     * 数值必须都为正数才有效
+     * shape 只支持默认，rectangle
+     *
+     * @param radius      圆角
+     * @param width       宽 默认 -1
+     * @param height      高 默认 -1
+     * @param fillColor   填充色
+     * @param strokeWidth 边框宽
+     * @param strokeColor 边框颜色
+     * @return GradientDrawable
+     */
+    public static GradientDrawable getDrawable(int radius, int width, int height, @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor) {
+        return new GradientDrawableBuilder().setRadius(radius).setFillColor(fillColor).setStrokeWidth(strokeWidth).setStrokeColor(strokeColor).setSize(width, height).build();
     }
 
 
@@ -330,25 +339,69 @@ public class XGradientHelper {
      * 设置渐变色，默认水平方向渐变
      * 不带边框
      *
-     * @param radius         圆角大小 px
-     * @param gradientColors 渐变数组，从左到右渐变
+     * @param radius              圆角大小 px
+     * @param gradientOrientation 渐变方向
+     * @param gradientColors      渐变数组，从左到右渐变
      * @return GradientDrawable
      * GradientDrawable.Orientation.LEFT_RIGHT
      * {@link GradientDrawable.Orientation#LEFT_RIGHT}
      */
     public static GradientDrawable getGradientDrawable(int radius, GradientDrawable.Orientation gradientOrientation, @ColorInt int[] gradientColors) {
-        return new GradientDrawableBuilder()
-                .setRadius(radius)
-                .setOrientation(gradientOrientation)
-                .setGradientColors(gradientColors)
-                .build();
+        return new GradientDrawableBuilder().setRadius(radius).setOrientation(gradientOrientation).setGradientColors(gradientColors).build();
     }
 
     /**
+     * 设置渐变色，默认水平方向渐变
+     * 不带边框
+     *
+     * @param radius              圆角大小 px
+     * @param width               宽 默认 -1
+     * @param height              高 默认 -1
+     * @param gradientOrientation 渐变方向
+     * @param gradientColors      渐变数组，从左到右渐变
+     * @return GradientDrawable
+     * GradientDrawable.Orientation.LEFT_RIGHT
+     * {@link GradientDrawable.Orientation#LEFT_RIGHT}
+     * 增加宽高参数
+     */
+
+    public static GradientDrawable getGradientDrawable(int radius, int width, int height, GradientDrawable.Orientation gradientOrientation, @ColorInt int[] gradientColors) {
+        return new GradientDrawableBuilder().setRadius(radius).setOrientation(gradientOrientation).setGradientColors(gradientColors).setSize(width, height).build();
+    }
+
+
+    /**
+     * 设置渐变色，默认水平方向渐变,带边框
+     * 不带边框
+     *
+     * @param radius            圆角大小 px
+     * @param gradientColors    渐变数组，从左到右渐变
+     * @param strokeWidth       边框宽
+     * @param strokeColor       边框颜色
+     * @param fillColor         背景填充色      （优先使用gradientColors）没有会使用fillColor (优先级低)
+     * @param gradientColors    渐变色数组，仅支持2个色，3个及上不行，不会渐变，只会分割色  (优先级高)
+     * @param orientation       渐变方向
+     * @param topLeftRadius     左上角圆角大小 （优先级高） (0->radius)
+     * @param topRightRadius    右上角圆角大小 （优先级高） (0->radius)
+     * @param bottomLeftRadius  左下角圆角大小 （优先级高） (0->radius)
+     * @param bottomRightRadius 右下角圆角大小 （优先级高） (0->radius)
+     * @return GradientDrawable
+     * GradientDrawable.Orientation.LEFT_RIGHT
+     * {@link GradientDrawable.Orientation#LEFT_RIGHT}
+     */
+    public static GradientDrawable getDrawable(int radius, int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius, @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor, GradientDrawable.Orientation orientation, @ColorInt int... gradientColors) {
+        return getDrawable(radius, -1, -1, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, fillColor, strokeWidth, strokeColor, orientation, gradientColors);
+    }
+
+
+    /**
+     * 仅限xwidget内部使用，外部尽量别用，因为这个方法太好用了
      * shape 只支持默认，rectangle
      * 渐变只支持线性渐变，其他的用xml定义更舒服
      *
      * @param radius            圆角
+     * @param width             宽 默认 -1
+     * @param height            高 默认 -1
      * @param fillColor         填充色
      * @param strokeWidth       边框宽
      * @param strokeColor       边框颜色
@@ -360,21 +413,11 @@ public class XGradientHelper {
      * @param gradientColors    渐变色
      * @return GradientDrawable
      */
-    public static GradientDrawable getDrawable(int radius, int topLeftRadius, int topRightRadius,
-                                               int bottomLeftRadius, int bottomRightRadius,
-                                               @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor,
-
-
-                                               GradientDrawable.Orientation orientation, @ColorInt int... gradientColors) {
+    public static GradientDrawable getDrawable(int radius, int width, int height, int topLeftRadius, int topRightRadius, int bottomLeftRadius, int bottomRightRadius, @ColorInt int fillColor, int strokeWidth, @ColorInt int strokeColor, GradientDrawable.Orientation orientation, @ColorInt int... gradientColors) {
         GradientDrawable gradientDrawable = new GradientDrawable();
         // 有先使用单独设置圆角
         if (topLeftRadius > 0 || topRightRadius > 0 || bottomLeftRadius > 0 || bottomRightRadius > 0) {
-            float[] radii = {
-                    topLeftRadius, topLeftRadius,
-                    topRightRadius, topRightRadius,
-                    bottomRightRadius, bottomRightRadius,
-                    bottomLeftRadius, bottomLeftRadius
-            };
+            float[] radii = {topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius};
             gradientDrawable.setCornerRadii(radii);
         } else if (radius > 0) {
             gradientDrawable.setCornerRadius(radius);
@@ -392,6 +435,7 @@ public class XGradientHelper {
         } else {
             gradientDrawable.setColor(fillColor);
         }
+        gradientDrawable.setSize(width, height);
         return gradientDrawable;
     }
 

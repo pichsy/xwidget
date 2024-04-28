@@ -1,6 +1,8 @@
 package com.pichs.xwidget.utils;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -84,4 +86,63 @@ public class XEditTextHelper {
             e.printStackTrace();
         }
     }
+
+
+    /**
+     * 设置光标的样式
+     *
+     * @param editText 编辑框
+     * @param color    颜色
+     * @param width    宽度
+     * @param radius   圆角
+     */
+    public static void setCursorDrawable(EditText editText, int color, int width, int radius) {
+        try {
+            if (editText == null) {
+                return;
+            }
+            Drawable drawable = XGradientHelper.getDrawable(radius, width, -1, color, 0, 0);
+            setCursorDrawable(editText, drawable);
+        } catch (final Throwable throwable) {
+            // nothing to do
+        }
+    }
+
+
+    /**
+     * 设置光标的 drawable
+     *
+     * @param editText 编辑框
+     * @param drawable 光标的drawable
+     */
+    public static void setCursorDrawable(EditText editText, Drawable drawable) {
+        try {
+            if (editText == null) {
+                return;
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                editText.setTextCursorDrawable(drawable);
+            } else {
+                Field fCursorDrawableRes = TextView.class.getDeclaredField("mCursorDrawableRes");
+                fCursorDrawableRes.setAccessible(true);
+                // 将fCursorDrawableRes设置为0
+                fCursorDrawableRes.set(editText, 0);
+                @SuppressLint("BlockedPrivateApi") Field eCursorDrawable = TextView.class.getDeclaredField("mCursorDrawable");
+                eCursorDrawable.setAccessible(true);
+                eCursorDrawable.set(editText, drawable);
+
+                Field fEditor = TextView.class.getDeclaredField("mEditor");
+                fEditor.setAccessible(true);
+
+                Object editor = fEditor.get(editText);
+                Class<?> clazz = editor.getClass();
+                Field fCursorDrawable = clazz.getDeclaredField("mDrawableForCursor");
+                fCursorDrawable.setAccessible(true);
+                fCursorDrawable.set(editor, drawable);
+            }
+        } catch (final Throwable throwable) {
+            // nothing to do
+        }
+    }
+
 }
