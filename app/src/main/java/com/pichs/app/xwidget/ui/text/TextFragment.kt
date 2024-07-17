@@ -6,7 +6,7 @@ import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.databinding.FragmentTextBinding
 import com.pichs.app.xwidget.ktext.click
 import com.pichs.xbase.utils.UiKit
-import com.pichs.xbase.utils.XLog
+import com.pichs.xbase.xlog.XLog
 import com.pichs.xwidget.utils.XIdsHelper
 import com.pichs.xwidget.utils.XTypefaceHelper
 

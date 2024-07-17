@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import com.chad.library.adapter4.BaseQuickAdapter
 import com.chad.library.adapter4.QuickAdapterHelper
 import com.chad.library.adapter4.viewholder.QuickViewHolder
-import com.pichs.app.xwidget.MainActivity
+import com.drake.brv.utils.grid
 import com.pichs.app.xwidget.R
 import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.bean.HomeBean
 import com.pichs.app.xwidget.databinding.FragmentHomeBinding
 import com.pichs.app.xwidget.databinding.ItemHomeListWhiteBinding
 import com.pichs.app.xwidget.utils.JumpUtils
-import com.pichs.xbase.kotlinext.grid
 import com.pichs.xbase.kotlinext.setItemAnimatorDisable
 import com.pichs.xbase.utils.bounceHeaderFooter
 import com.pichs.xbase.viewholder.ViewBindingHolder

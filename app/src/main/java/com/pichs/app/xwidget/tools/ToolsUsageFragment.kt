@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter4.BaseQuickAdapter
+import com.drake.brv.utils.linear
 import com.pichs.app.xwidget.R
 import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.bean.ColorBean
@@ -20,7 +21,6 @@ import com.pichs.app.xwidget.ktext.click
 import com.pichs.xbase.kotlinext.dp
 import com.pichs.xbase.kotlinext.gone
 import com.pichs.xbase.kotlinext.invisible
-import com.pichs.xbase.kotlinext.linear
 import com.pichs.xbase.kotlinext.setItemAnimatorDisable
 import com.pichs.xbase.kotlinext.show
 import com.pichs.xbase.viewholder.ViewBindingHolder

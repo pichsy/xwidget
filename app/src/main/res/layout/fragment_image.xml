@@ -146,10 +146,11 @@
                     android:src="@drawable/panda_logo"
                     app:xp_borderColor="#f00"
                     app:xp_borderWidth="2dp"
-                    app:xp_radiusBottomLeft="0dp"
+                    app:xp_radiusBottomLeft="5dp"
                     app:xp_radiusBottomRight="10dp"
-                    app:xp_radiusTopLeft="10dp"
-                    app:xp_radiusTopRight="0dp" />
+                    app:xp_radiusTopLeft="15dp"
+                    app:xp_radiusTopRight="20dp" />
+
             </LinearLayout>
 
 

@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="XOvalImageView">
+        <attr name="xp_borderColor" />
+        <attr name="xp_borderWidth" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+
+    <!-- 圆角图片 -->
+    <!--  XRoundImageView 和XIRoundBackground 不共用，但功能一致  -->
+    <declare-styleable name="XRoundImageView">
+        <attr name="xp_radius" />
+        <attr name="xp_radiusTopLeft" />
+        <attr name="xp_radiusTopRight" />
+        <attr name="xp_radiusBottomLeft" />
+        <attr name="xp_radiusBottomRight" />
+        <attr name="xp_borderColor" />
+        <attr name="xp_borderWidth" />
+        <attr name="xp_colorFilter" />
+        <attr name="xp_colorFilterMode" />
+        <attr name="xp_scaleType" format="enum">
+            <!-- Scale using the image matrix when drawing. See
+                 {@link android.widget.ImageView#setImageMatrix(Matrix)}. -->
+            <enum name="matrix" value="0" />
+            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#FILL}. -->
+            <enum name="fitXY" value="1" />
+            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#START}. -->
+            <enum name="fitStart" value="2" />
+            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#CENTER}. -->
+            <enum name="fitCenter" value="3" />
+            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#END}. -->
+            <enum name="fitEnd" value="4" />
+            <!-- Center the image in the view, but perform no scaling. -->
+            <enum name="center" value="5" />
+            <!-- Scale the image uniformly (maintain the image's aspect ratio) so both dimensions
+                 (width and height) of the image will be equal to or larger than the corresponding
+                 dimension of the view (minus padding). The image is then centered in the view. -->
+            <enum name="centerCrop" value="6" />
+            <!-- Scale the image uniformly (maintain the image's aspect ratio) so that both
+                 dimensions (width and height) of the image will be equal to or less than the
+                 corresponding dimension of the view (minus padding). The image is then centered in
+                 the view. -->
+            <enum name="centerInside" value="7" />
+        </attr>
+        <!--   描边与图片间距     -->
+        <attr name="xp_borderImageSpacing" format="dimension" />
+
+        <!--   按压透明度变化     -->
+        <attr name="android:alpha" />
+        <attr name="xp_disabledAlpha" />
+        <attr name="xp_pressedAlpha" />
+        <!--   按压按钮变大/小   -->
+        <attr name="xp_pressedScale" />
+        <attr name="xp_disabledScale" />
+    </declare-styleable>
+
     <!--**********************************************
     *                  XRoundButton               *
     ***********************************************-->
@@ -173,29 +227,7 @@
         <attr name="xp_pressedScale" />
         <attr name="xp_disabledScale" />
     </declare-styleable>
-    <!--  XRoundImageView 和XIRoundBackground 不共用，但功能一致  -->
-    <declare-styleable name="XRoundImageView">
-        <attr name="android:scaleType" />
-        <attr name="android:layout_width" />
-        <attr name="android:layout_height" />
-        <attr name="xp_borderColor" />
-        <attr name="xp_borderWidth" />
-        <attr name="xp_radius" />
-        <attr name="xp_radiusTopLeft" />
-        <attr name="xp_radiusTopRight" />
-        <attr name="xp_radiusBottomLeft" />
-        <attr name="xp_radiusBottomRight" />
-        <attr name="xp_oval" format="boolean" />
-        <attr name="xp_colorFilter" />
-        <attr name="xp_colorFilterMode" />
-        <!--   按压透明度变化     -->
-        <attr name="android:alpha" />
-        <attr name="xp_disabledAlpha" />
-        <attr name="xp_pressedAlpha" />
-        <!--   按压按钮变大/小   -->
-        <attr name="xp_pressedScale" />
-        <attr name="xp_disabledScale" />
-    </declare-styleable>
+
 
     <declare-styleable name="XRoundButton">
         <attr name="android:checked" />

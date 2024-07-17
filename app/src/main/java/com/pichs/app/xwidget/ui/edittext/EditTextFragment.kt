@@ -5,7 +5,7 @@ import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.databinding.FragmentEditTextBinding
 import com.pichs.app.xwidget.ktext.click
 import com.pichs.xbase.utils.ThreadUtils
-import com.pichs.xbase.utils.XLog
+import com.pichs.xbase.xlog.XLog
 import com.pichs.xwidget.edittext.XVerificationCodeEditText
 
 class EditTextFragment : BaseFragment<FragmentEditTextBinding>() {

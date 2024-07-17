@@ -13,7 +13,7 @@
 
 ### 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:5.1.0'
+      implementation 'com.gitee.pichs:xwidget:5.2.0'
 
 <br/>
 
@@ -130,6 +130,12 @@
 <br/>
 <br/>
 ## 升级日志
+
+### 5.2.0
+
+- 增加XOvalImageView 椭圆形图片控件
+- 修改XRoundImageView 为圆形图片控件，四个角可任意设置大小。去除XRoundImageView的oval属性，拆分为单独的XOvalImageView控件
+
 
 ### 5.1.0
 

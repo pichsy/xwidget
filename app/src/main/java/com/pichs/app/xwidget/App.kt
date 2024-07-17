@@ -4,7 +4,7 @@ import android.app.Application
 import com.hjq.toast.Toaster
 import com.pichs.xbase.cache.BaseMMKVHelper
 import com.pichs.xbase.utils.UiKit
-import com.pichs.xbase.utils.XLog
+import com.pichs.xbase.xlog.XLog
 import com.pichs.xwidget.utils.XTypefaceHelper
 
 class App : Application() {
@@ -14,7 +14,7 @@ class App : Application() {
         UiKit.init(this)
         BaseMMKVHelper.init(this)
         XTypefaceHelper.init(this, true)
-        XLog.init(XLog.getConfig().setLogEnable(true))
+        XLog.init(this)
         Toaster.init(this)
 
     }

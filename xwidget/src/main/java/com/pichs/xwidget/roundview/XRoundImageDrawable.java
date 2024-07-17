@@ -470,6 +470,7 @@ public class XRoundImageDrawable extends Drawable {
     public XRoundImageDrawable setCornerRadius(float topLeft, float topRight, float bottomRight,
                                                float bottomLeft) {
         TreeSet<Float> radiusSet = new TreeSet<>();
+        Log.d("离离原上谱", "1111====topLeft:" + topLeft + " topRight:" + topRight + " bottomRight:" + bottomRight + " bottomLeft:" + bottomLeft);
         if (topLeft > 0) {
             radiusSet.add(topLeft);
             mCornersRounded[Corner.TOP_LEFT] = true;
@@ -499,6 +500,9 @@ public class XRoundImageDrawable extends Drawable {
         } else {
             mCornerRadius = 0f;
         }
+
+        Log.d("离离原上谱", "1111====mCornerRadius:" + mCornerRadius + "mCornersRounded:" + mCornersRounded[0] + " " + mCornersRounded[1] + " " + mCornersRounded[2] + " " + mCornersRounded[3]);
+
         return this;
     }
 

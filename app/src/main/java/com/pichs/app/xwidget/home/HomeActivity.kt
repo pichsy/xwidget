@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.pichs.app.xwidget.base.BaseActivity
 import com.pichs.app.xwidget.databinding.ActivityHomeWhiteBinding
-import com.pichs.xbase.utils.XLog
+import com.pichs.xbase.xlog.XLog
 
 class HomeActivity : BaseActivity<ActivityHomeWhiteBinding>() {
 

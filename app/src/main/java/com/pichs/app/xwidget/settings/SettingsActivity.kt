@@ -19,6 +19,11 @@ class SettingsActivity : BaseActivity<ActivitySettingsBinding>() {
     }
 
     private fun initListeners() {
+
+        binding.ivBack.fastClick {
+            finish()
+        }
+
         binding.clMainPage.fastClick {
             // 账号安全
             startActivity(Intent(this, MainActivity::class.java))

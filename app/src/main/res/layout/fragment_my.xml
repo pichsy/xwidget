@@ -87,34 +87,55 @@
 
     </com.pichs.xwidget.cardview.XCardConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_test_show"
+    <com.pichs.xwidget.roundview.XRoundImageView
+        android:id="@+id/iv_round_view"
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="36dp"
-        android:background="#f0f"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:gravity="center"
-        android:text="测试"
-        android:visibility="gone"
+        android:src="@drawable/panda_logo"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_settings" />
+        app:layout_constraintTop_toBottomOf="@+id/cl_settings"
+        app:xp_borderColor="#F44336"
+        app:xp_borderWidth="10dp"
+        app:xp_radius="10dp" />
 
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/tv_test"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+    <com.pichs.xwidget.roundview.XRoundImageView
+        android:id="@+id/iv_round_view2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="36dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:gravity="center"
-        android:text="测试"
-        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/panda_logo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_test_show" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_round_view"
+        app:xp_borderColor="#213FE2"
+        app:xp_borderWidth="6dp"
+        app:xp_radius="20dp"
+        app:xp_scaleType="fitStart" />
+
+    <com.pichs.xwidget.roundview.XOvalImageView
+        android:id="@+id/tv_test_view"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/panda_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_round_view2"
+        app:xp_borderColor="#ff0"
+        app:xp_borderWidth="3dp" />
+
+    <!--
+
+            app:xp_radiusBottomLeft="30dp"
+            app:xp_radiusBottomRight="40dp"
+            app:xp_radiusTopLeft="10dp"
+            app:xp_radiusTopRight="20dp"
+
+    -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
