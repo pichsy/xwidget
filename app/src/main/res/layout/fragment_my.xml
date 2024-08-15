@@ -113,8 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_round_view"
         app:xp_borderColor="#213FE2"
         app:xp_borderWidth="6dp"
-        app:xp_radius="20dp"
-        app:xp_scaleType="fitStart" />
+        app:xp_radius="20dp" />
 
     <com.pichs.xwidget.roundview.XOvalImageView
         android:id="@+id/tv_test_view"

@@ -2,8 +2,11 @@ package com.pichs.xwidget.utils;
 
 import static com.pichs.xwidget.utils.XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Path;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
@@ -28,6 +31,10 @@ import java.util.ArrayList;
 public class XRoundBackgroundHelper implements XIRoundBackground {
 
     private final WeakReference<View> mOwner;
+    private final Path mClipPath = new Path();
+    private int mWidth;
+    private int mHeight;
+
     private Drawable background;
     private Drawable pressedBackground;
     private Drawable checkedBackground;
@@ -369,6 +376,38 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             setBackgroundSelector();
         }
     }
+
+
+    // imageView专属
+    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        mWidth = View.MeasureSpec.getSize(widthMeasureSpec);
+        mHeight = View.MeasureSpec.getSize(heightMeasureSpec);
+    }
+
+    // imageView专属
+    @SuppressLint("DrawAllocation")
+    public void onDraw(Canvas canvas) {
+        mClipPath.reset();
+        float[] radii;
+        if (radius <= 0) {
+            radii = new float[]{
+                    topLeftRadius, topLeftRadius,
+                    topRightRadius, topRightRadius,
+                    bottomRightRadius, bottomRightRadius,
+                    bottomLeftRadius, bottomLeftRadius
+            };
+        } else {
+            radii = new float[]{
+                    radius, radius,
+                    radius, radius,
+                    radius, radius,
+                    radius, radius
+            };
+        }
+        mClipPath.addRoundRect(0f, 0f, mWidth, mHeight, radii, Path.Direction.CW);
+        canvas.clipPath(mClipPath);
+    }
+
 
     private int[] dealWithColors(String backgroundColorString) {
         if (!TextUtils.isEmpty(backgroundColorString) && !TextUtils.isEmpty(backgroundColorString.trim())) {

@@ -136,23 +136,19 @@
                     app:xp_radiusTopLeft="10dp"
                     app:xp_radiusTopRight="0dp" />
 
-
                 <com.pichs.xwidget.roundview.XRoundImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     android:layout_marginStart="16dp"
-                    android:background="#fff"
+                    android:background="#04DB4C"
                     android:src="@drawable/panda_logo"
-                    app:xp_borderColor="#f00"
-                    app:xp_borderWidth="2dp"
-                    app:xp_radiusBottomLeft="5dp"
-                    app:xp_radiusBottomRight="10dp"
-                    app:xp_radiusTopLeft="15dp"
-                    app:xp_radiusTopRight="20dp" />
+                    app:xp_cubeFrontHeight="3dp"
+                    app:xp_cubeSidesGradientColors="#06AD6A"
+                    app:xp_pressedCubeFrontHeight="1dp"
+                    app:xp_radiusTopLeft="10dp" />
 
             </LinearLayout>
-
 
             <com.pichs.xwidget.view.XTextView
                 android:layout_width="wrap_content"

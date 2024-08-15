@@ -19,32 +19,6 @@
         <attr name="xp_borderWidth" />
         <attr name="xp_colorFilter" />
         <attr name="xp_colorFilterMode" />
-        <attr name="xp_scaleType" format="enum">
-            <!-- Scale using the image matrix when drawing. See
-                 {@link android.widget.ImageView#setImageMatrix(Matrix)}. -->
-            <enum name="matrix" value="0" />
-            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#FILL}. -->
-            <enum name="fitXY" value="1" />
-            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#START}. -->
-            <enum name="fitStart" value="2" />
-            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#CENTER}. -->
-            <enum name="fitCenter" value="3" />
-            <!-- Scale the image using {@link android.graphics.Matrix.ScaleToFit#END}. -->
-            <enum name="fitEnd" value="4" />
-            <!-- Center the image in the view, but perform no scaling. -->
-            <enum name="center" value="5" />
-            <!-- Scale the image uniformly (maintain the image's aspect ratio) so both dimensions
-                 (width and height) of the image will be equal to or larger than the corresponding
-                 dimension of the view (minus padding). The image is then centered in the view. -->
-            <enum name="centerCrop" value="6" />
-            <!-- Scale the image uniformly (maintain the image's aspect ratio) so that both
-                 dimensions (width and height) of the image will be equal to or less than the
-                 corresponding dimension of the view (minus padding). The image is then centered in
-                 the view. -->
-            <enum name="centerInside" value="7" />
-        </attr>
-        <!--   描边与图片间距     -->
-        <attr name="xp_borderImageSpacing" format="dimension" />
 
         <!--   按压透明度变化     -->
         <attr name="android:alpha" />
@@ -53,6 +27,88 @@
         <!--   按压按钮变大/小   -->
         <attr name="xp_pressedScale" />
         <attr name="xp_disabledScale" />
+
+        <!--    状态边框色    -->
+        <attr name="xp_pressedBorderColor" />
+        <attr name="xp_checkedBorderColor" />
+        <attr name="xp_activatedBorderColor" />
+        <attr name="xp_disabledBorderColor" />
+
+        <!--    背景色渐变色，正常时显示    -->
+        <attr name="android:background" />
+        <attr name="xp_backgroundGradientStartColor" />
+        <attr name="xp_backgroundGradientEndColor" />
+        <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundGradientColors" />
+
+        <!--    按压时 背景色    -->
+        <attr name="xp_pressedBackground" />
+        <attr name="xp_pressedBackgroundStartColor" />
+        <attr name="xp_pressedBackgroundEndColor" />
+        <attr name="xp_pressedBackgroundOrientation" />
+        <attr name="xp_pressedBackgroundGradientColors" />
+
+        <!--   选中时 背景色     -->
+        <attr name="xp_checkedBackground" />
+        <attr name="xp_checkedBackgroundStartColor" />
+        <attr name="xp_checkedBackgroundEndColor" />
+        <attr name="xp_checkedBackgroundOrientation" />
+        <attr name="xp_checkedBackgroundGradientColors" />
+
+        <!--    活跃时 背景色    -->
+        <attr name="xp_activatedBackground" />
+        <attr name="xp_activatedBackgroundStartColor" />
+        <attr name="xp_activatedBackgroundEndColor" />
+        <attr name="xp_activatedBackgroundOrientation" />
+        <attr name="xp_activatedBackgroundGradientColors" />
+
+        <!--    不可用时 背景色    -->
+        <attr name="xp_disabledBackground" />
+        <attr name="xp_disabledBackgroundStartColor" />
+        <attr name="xp_disabledBackgroundEndColor" />
+        <attr name="xp_disabledBackgroundOrientation" />
+        <attr name="xp_disabledBackgroundGradientColors" />
+
+        <!--    立体按钮属性    -->
+        <attr name="xp_cubeFrontGradientColors" />
+
+        <attr name="xp_cubeSidesBorderColor" />
+        <attr name="xp_cubeSidesBorderWidth" />
+        <attr name="xp_cubeFrontHeight" />
+
+        <attr name="xp_cubeSidesGradientColors" />
+        <attr name="xp_cubeRightHeight" />
+        <attr name="xp_cubeLeftHeight" />
+        <attr name="xp_cubeBackHeight" />
+
+        <attr name="xp_pressedCubeBackHeight" />
+        <attr name="xp_pressedCubeLeftHeight" />
+        <attr name="xp_pressedCubeRightHeight" />
+
+        <attr name="xp_disabledCubeRightHeight" />
+        <attr name="xp_disabledCubeLeftHeight" />
+        <attr name="xp_disabledCubeBackHeight" />
+
+        <attr name="xp_activatedCubeRightHeight" />
+        <attr name="xp_activatedCubeLeftHeight" />
+        <attr name="xp_activatedCubeBackHeight" />
+
+        <attr name="xp_checkedCubeRightHeight" />
+        <attr name="xp_checkedCubeLeftHeight" />
+        <attr name="xp_checkedCubeBackHeight" />
+
+        <attr name="xp_pressedCubeSidesGradientColors" />
+        <attr name="xp_pressedCubeFrontHeight" />
+
+        <attr name="xp_disabledCubeSidesGradientColors" />
+        <attr name="xp_disabledCubeFrontHeight" />
+
+        <attr name="xp_activatedCubeSidesGradientColors" />
+        <attr name="xp_activatedCubeFrontHeight" />
+
+        <attr name="xp_checkedCubeSidesGradientColors" />
+        <attr name="xp_checkedCubeFrontHeight" />
+
     </declare-styleable>
 
     <!--**********************************************
