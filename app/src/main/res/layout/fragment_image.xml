@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="XRoundImageView："
+                android:text="XRoundImageView：\n(边框是背景上的，图片如果全覆盖不透明，则看不到)"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -141,12 +141,15 @@
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     android:layout_marginStart="16dp"
-                    android:background="#04DB4C"
-                    android:src="@drawable/panda_logo"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_home_list_space"
+                    app:xp_backgroundGradientEndColor="#FD9C08"
+                    app:xp_backgroundGradientOrientation="vertical"
+                    app:xp_backgroundGradientStartColor="#FAFF55"
                     app:xp_cubeFrontHeight="3dp"
-                    app:xp_cubeSidesGradientColors="#06AD6A"
+                    app:xp_cubeSidesGradientColors="#EB8F08"
                     app:xp_pressedCubeFrontHeight="1dp"
-                    app:xp_radiusTopLeft="10dp" />
+                    app:xp_radius="10dp" />
 
             </LinearLayout>
 
