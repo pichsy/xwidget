@@ -16,7 +16,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:xp_borderColor="#F00"
-        app:xp_borderWidth="5dp"
+        app:xp_borderWidth="15dp"
+        android:scaleType="centerInside"
+        app:xp_showBorderOnlyBeforeL="true"
+        app:xp_selectedBorderColor="#0000"
+        app:xp_selectedBorderWidth="15dp"
         app:xp_isRadiusAdjustBounds="true" />
 
 

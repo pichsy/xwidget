@@ -17,9 +17,9 @@ class TestActivity : AppCompatActivity() {
         var isSelected = true
         binding.cardImg.setOnClickListener {
             if (isSelected) {
-                binding.cardImg.borderColor = Color.RED
+                binding.cardImg.isSelected = false
             } else {
-                binding.cardImg.borderColor = Color.TRANSPARENT
+                binding.cardImg.isSelected = true
             }
             isSelected = !isSelected
         }
