@@ -1,5 +1,7 @@
 package com.pichs.xwidget.roundview;
 
+import static com.pichs.xwidget.utils.XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT;
+
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -41,7 +43,7 @@ public class XRoundImageDrawable extends Drawable {
 
 
     public static final String TAG = "XRoundImageDrawable";
-    public static final int DEFAULT_BORDER_COLOR = Color.BLACK;
+    public static final int DEFAULT_BORDER_COLOR = DEFAULT_COLOR_TRANSPARENT;
 
     private final RectF mBounds = new RectF();
     private final RectF mDrawableRect = new RectF();

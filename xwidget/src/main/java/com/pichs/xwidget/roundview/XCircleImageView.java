@@ -1,5 +1,7 @@
 package com.pichs.xwidget.roundview;
 
+import static com.pichs.xwidget.utils.XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -49,7 +51,7 @@ public class XCircleImageView extends ImageView implements XIAlpha {
     private static final int COLORDRAWABLE_DIMENSION = 2;
 
     private static final int DEFAULT_BORDER_WIDTH = 0;
-    private static final int DEFAULT_BORDER_COLOR = Color.BLACK;
+    private static final int DEFAULT_BORDER_COLOR = DEFAULT_COLOR_TRANSPARENT;
     private static final int DEFAULT_CIRCLE_BACKGROUND_COLOR = Color.TRANSPARENT;
     private static final int DEFAULT_IMAGE_ALPHA = 255;
     private static final boolean DEFAULT_BORDER_OVERLAY = false;
@@ -103,9 +105,9 @@ public class XCircleImageView extends ImageView implements XIAlpha {
         mBorderWidth = a.getDimensionPixelSize(R.styleable.XCircleImageView_xp_borderWidth, DEFAULT_BORDER_WIDTH);
         mBorderColor = a.getColor(R.styleable.XCircleImageView_xp_borderColor, DEFAULT_BORDER_COLOR);
         mBorderOverlay = a.getBoolean(R.styleable.XCircleImageView_xp_borderOverlay, DEFAULT_BORDER_OVERLAY);
-        int colorFilter = a.getColor(R.styleable.XCircleImageView_xp_colorFilter, XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT);
+        int colorFilter = a.getColor(R.styleable.XCircleImageView_xp_colorFilter, DEFAULT_COLOR_TRANSPARENT);
         int colorFilterMode = a.getInt(R.styleable.XCircleImageView_xp_colorFilterMode, 1);
-        if (colorFilter == XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT) {
+        if (colorFilter == DEFAULT_COLOR_TRANSPARENT) {
             clearColorFilter();
         } else {
             mMode = getColorFilterMode(colorFilterMode);

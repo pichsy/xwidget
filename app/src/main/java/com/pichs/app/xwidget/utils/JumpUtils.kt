@@ -26,7 +26,7 @@ import com.pichs.xbase.utils.UiKit
 object JumpUtils {
 
     fun jump2(tag: String) {
-        Toaster.show("跳转：tag:$tag")
+//        Toaster.show("跳转：tag:$tag")
         when (tag) {
             "button" -> {
                 UiKit.getApplication().startActivitySafely(

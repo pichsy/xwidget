@@ -55,6 +55,10 @@
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false" />
         <activity
+            android:name=".TestActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+        <activity
             android:name=".ui.web.WebViewActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false" />

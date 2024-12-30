@@ -22,7 +22,7 @@ class HomeActivity : BaseActivity<ActivityHomeWhiteBinding>() {
         checkBottomItem(0)
         binding.radioBottomBar.select(0)
         binding.radioBottomBar.setOnRadioCheckedListener { group, checkedView, isChecked, position ->
-            Toast.makeText(this, "选中${checkedView.id}:$isChecked,position:${position}", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "选中${checkedView.id}:$isChecked,position:${position}", Toast.LENGTH_SHORT).show()
             XLog.d("initBottomBar：选中${checkedView.id}:$isChecked,position:${position}")
             when (checkedView.id) {
                 binding.llRadioHome.id -> {

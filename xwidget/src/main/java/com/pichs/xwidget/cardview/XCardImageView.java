@@ -2,6 +2,8 @@
 
 package com.pichs.xwidget.cardview;
 
+import static com.pichs.xwidget.utils.XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -10,6 +12,7 @@ import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import androidx.annotation.ColorInt;
@@ -26,7 +29,7 @@ import com.pichs.xwidget.view.XImageView;
  * XCardImageView
  */
 public class XCardImageView extends XImageView implements XILayout {
-    private static final int DEFAULT_BORDER_COLOR = Color.GRAY;
+    private static final int DEFAULT_BORDER_COLOR = DEFAULT_COLOR_TRANSPARENT;
 
     private XLayoutHelper mLayoutHelper;
     private boolean mIsCircle = false;
@@ -70,7 +73,7 @@ public class XCardImageView extends XImageView implements XILayout {
         mSelectedBorderWidth = array.getDimensionPixelSize(
                 R.styleable.XCardImageView_xp_selectedBorderWidth, mBorderWidth);
         mSelectedBorderColor = array.getColor(
-                R.styleable.XCardImageView_xp_selectedBorderColor, mBorderColor);
+                R.styleable.XCardImageView_xp_selectedBorderColor, DEFAULT_BORDER_COLOR);
         mSelectedMaskColor = array.getColor(
                 R.styleable.XCardImageView_xp_selectedMaskColor, Color.TRANSPARENT);
         if (mSelectedMaskColor != Color.TRANSPARENT) {
@@ -84,6 +87,7 @@ public class XCardImageView extends XImageView implements XILayout {
             setRadius(array.getDimensionPixelSize(
                     R.styleable.XCardImageView_xp_radius, 0));
         }
+
         array.recycle();
     }
 
@@ -447,6 +451,7 @@ public class XCardImageView extends XImageView implements XILayout {
             int borderColor = mIsSelected ? mSelectedBorderColor : mBorderColor;
             mLayoutHelper.setBorderWidth(borderWidth);
             mLayoutHelper.setBorderColor(borderColor);
+            Log.d("XCardImageView333", "setSelected: " + selected+ " borderWidth: " + borderWidth + " borderColor: " + borderColor);
             invalidate();
         }
     }
@@ -482,24 +487,24 @@ public class XCardImageView extends XImageView implements XILayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        mIsInOnTouchEvent = true;
-        if (!this.isClickable()) {
-            this.setSelected(false);
-            return super.onTouchEvent(event);
-        } else if (mIsTouchSelectModeEnabled) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    this.setSelected(true);
-                    break;
-                case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_SCROLL:
-                case MotionEvent.ACTION_OUTSIDE:
-                case MotionEvent.ACTION_CANCEL:
-                    this.setSelected(false);
-                    break;
-            }
-        }
-        mIsInOnTouchEvent = false;
+//        mIsInOnTouchEvent = true;
+//        if (!this.isClickable()) {
+//            this.setSelected(false);
+//            return super.onTouchEvent(event);
+//        } else if (mIsTouchSelectModeEnabled) {
+//            switch (event.getAction()) {
+//                case MotionEvent.ACTION_DOWN:
+//                    this.setSelected(true);
+//                    break;
+//                case MotionEvent.ACTION_UP:
+//                case MotionEvent.ACTION_SCROLL:
+//                case MotionEvent.ACTION_OUTSIDE:
+//                case MotionEvent.ACTION_CANCEL:
+//                    this.setSelected(false);
+//                    break;
+//            }
+//        }
+//        mIsInOnTouchEvent = false;
         return super.onTouchEvent(event);
     }
 
