@@ -13,7 +13,7 @@
 
 ### 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:5.4.0'
+      implementation 'com.gitee.pichs:xwidget:5.4.1'
 
 <br/>
 
@@ -130,6 +130,10 @@
 <br/>
 <br/>
 ## 升级日志
+
+### 5.4.1
+- 优化一些属性设置问题
+- 去除log日志
 
 ### 5.3.0
 - 修改XRoundImageView为XRound系列效果，原来原角ImageView建议使用XCardImageView
