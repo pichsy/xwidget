@@ -451,7 +451,6 @@ public class XCardImageView extends XImageView implements XILayout {
             int borderColor = mIsSelected ? mSelectedBorderColor : mBorderColor;
             mLayoutHelper.setBorderWidth(borderWidth);
             mLayoutHelper.setBorderColor(borderColor);
-            Log.d("XCardImageView333", "setSelected: " + selected+ " borderWidth: " + borderWidth + " borderColor: " + borderColor);
             invalidate();
         }
     }

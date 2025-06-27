@@ -5,7 +5,6 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -87,9 +86,6 @@ public class XPressScaleConstraintLayout extends ConstraintLayout {
                 }
             }
         }
-
-        Log.d("XPressScaleLinearLayout", "init: getChildCount():" + getChildCount());
-
     }
 
 

@@ -8,7 +8,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.InsetDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -87,8 +86,6 @@ public class XBackgroundHelper implements XIBackground {
             checkedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_checkedBackground);
             disabledBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_disabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIBackground_xp_activatedBackground);
-            Log.w("XBackgroundHelper", this.mOwner.get() + ":backgroundTmp:" + backgroundTmp);
-
             // 渐变
             bgStartColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientStartColor, bgStartColor);
             bgEndColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientEndColor, bgEndColor);
@@ -116,11 +113,6 @@ public class XBackgroundHelper implements XIBackground {
             activatedBackgroundColors = dealWithColors(activatedBackgroundColorString);
             checkedBackgroundColors = dealWithColors(checkedBackgroundColorString);
             disabledBackgroundColors = dealWithColors(disabledBackgroundColorString);
-
-            Log.w("XBackgroundHelper", this.mOwner.get() + ":bgStartColor:" + bgStartColor + " bgEndColor:" + bgEndColor + " bgColorOrientation:" + bgColorOrientation);
-
-            Log.w("XBackgroundHelper", this.mOwner.get() + ":backgroundColors:" + Arrays.toString(backgroundColors));
-
             background = getFinalDrawable(
                     backgroundTmp,
                     bgStartColor,
@@ -128,9 +120,6 @@ public class XBackgroundHelper implements XIBackground {
                     backgroundColors,
                     bgColorOrientation
             );
-
-            Log.w("XBackgroundHelper", this.mOwner.get() + "final:background:" + background);
-
 
             pressedBackground = getFinalDrawable(
                     pressedBackgroundTmp,
@@ -260,7 +249,6 @@ public class XBackgroundHelper implements XIBackground {
             builder.setFillColor(gradientColors[0]);
             return builder.build();
         }
-        Log.d("XBackgroundHelper", this.mOwner.get() + ":结果：bg:" + bg);
         return bg;
     }
 

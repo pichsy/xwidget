@@ -86,9 +86,6 @@ public class XPressScaleLinearLayout extends LinearLayout {
                 }
             }
         }
-
-        Log.d("XPressScaleLinearLayout", "init: getChildCount():" + getChildCount());
-
     }
 
 

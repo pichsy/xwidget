@@ -1068,10 +1068,8 @@ public class XRatingBar extends View {
      */
     private float normalizeRating(float rating) {
         if (rating < 0) {
-            Log.w("XRatingBar", String.format("Assigned rating is less than 0 (%f < 0), I will set it to exactly 0", rating));
             return 0;
         } else if (rating > starCount) {
-            Log.w("XRatingBar", String.format("Assigned rating is greater than numberOfStars (%f > %d), I will set it to exactly numberOfStars", rating, starCount));
             return starCount;
         } else {
             return rating;

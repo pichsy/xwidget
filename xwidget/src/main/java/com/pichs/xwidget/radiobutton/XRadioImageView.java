@@ -41,13 +41,11 @@ public class XRadioImageView extends XCheckedImageView implements XRadioButton {
 
     @Override
     public void setChecked(boolean checked) {
-        Log.d("XWidget", "XRadioItemHelper XRadioImageView：setChecked: checked:" + checked);
         if (isChecked() == checked) {
             return;
         }
         super.setChecked(checked);
         if (mRadioItemHelper != null) {
-            Log.d("XWidget", "XRadioItemHelper XRadioImageView--mRadioItemHelper：setChecked: checked:" + checked);
             mRadioItemHelper.setChecked(checked);
         }
     }

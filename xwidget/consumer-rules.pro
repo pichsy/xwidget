@@ -1,1 +1,1 @@
--keep class com.pichs.common.**{*;}
+-keep class com.pichs.xwidget.**{*;}

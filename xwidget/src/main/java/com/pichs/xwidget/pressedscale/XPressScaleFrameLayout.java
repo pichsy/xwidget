@@ -5,7 +5,6 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -86,9 +85,6 @@ public class XPressScaleFrameLayout extends FrameLayout {
                 }
             }
         }
-
-        Log.d("XPressScaleLinearLayout", "init: getChildCount():" + getChildCount());
-
     }
 
 

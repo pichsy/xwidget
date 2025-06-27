@@ -50,9 +50,7 @@ public class XNotchHelper {
                 }
             }
         } catch (ClassNotFoundException e) {
-            Log.i(TAG, "hasNotchInVivo ClassNotFoundException");
         } catch (Exception e) {
-            Log.e(TAG, "hasNotchInVivo Exception");
         }
         return ret;
     }
@@ -66,11 +64,8 @@ public class XNotchHelper {
             Method get = HwNotchSizeUtil.getMethod("hasNotchInScreen");
             hasNotch = (boolean) get.invoke(HwNotchSizeUtil);
         } catch (ClassNotFoundException e) {
-            Log.i(TAG, "hasNotchInHuawei ClassNotFoundException");
         } catch (NoSuchMethodException e) {
-            Log.e(TAG, "hasNotchInHuawei NoSuchMethodException");
         } catch (Exception e) {
-            Log.e(TAG, "hasNotchInHuawei Exception");
         }
         return hasNotch;
     }
@@ -397,11 +392,8 @@ public class XNotchHelper {
                 Method get = HwNotchSizeUtil.getMethod("getNotchSize");
                 sNotchSizeInHawei = (int[]) get.invoke(HwNotchSizeUtil);
             } catch (ClassNotFoundException e) {
-                Log.e(TAG, "getNotchSizeInHuawei ClassNotFoundException");
             } catch (NoSuchMethodException e) {
-                Log.e(TAG, "getNotchSizeInHuawei NoSuchMethodException");
             } catch (Exception e) {
-                Log.e(TAG, "getNotchSizeInHuawei Exception");
             }
 
         }

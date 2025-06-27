@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.Checkable;
 
@@ -49,7 +48,6 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
             this.mCanClick = ta.getBoolean(R.styleable.XCheckBox_xp_clickable, true);
             ta.recycle();
         }
-        Log.d("XCheckBox", "mClickable: " + mCanClick);
         super.setImageDrawable(isChecked ? this.checkedDrawable : normalDrawable);
         super.setClickable(true);
         super.setOnClickListener(this);
@@ -184,7 +182,6 @@ public class XCheckBox extends XCardImageView implements Checkable, View.OnClick
      */
     @Override
     public void onClick(View v) {
-        Log.d("XCheckBox", "mCanClick: " + mCanClick);
         if (this.mCanClick) {
             toggle();
         }
