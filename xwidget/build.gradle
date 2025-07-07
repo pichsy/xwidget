@@ -40,7 +40,7 @@ dependencies {
 }
 
 
-task javadoc(type: Javadoc) {
+tasks.register('javadoc', Javadoc) {
     options.encoding "UTF-8"
     options.charSet 'UTF-8'
     source = android.sourceSets.main.java.srcDirs
@@ -52,7 +52,8 @@ task javadoc(type: Javadoc) {
     failOnError = false
 }
 
-task androidJavadocsJar(type: Jar, dependsOn: javadoc) {
+tasks.register('androidJavadocsJar', Jar) {
+    dependsOn javadoc
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
