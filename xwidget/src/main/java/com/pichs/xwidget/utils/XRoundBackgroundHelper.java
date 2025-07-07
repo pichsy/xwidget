@@ -244,6 +244,12 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
             // 立体属性
             cubeSidesColors = dealWithColors(cubeSidesColorString);
+
+            // 角度控制, 数量压制，人多力量大。 独立设置圆角属性优先级高于 整体圆角设置。
+            if (topLeftRadius > 0 || topRightRadius > 0 || bottomLeftRadius > 0 || bottomRightRadius > 0) {
+                radius = 0;
+            }
+
             // 立方体侧面的背景色
             cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                     cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
@@ -389,7 +395,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     public void onDraw(Canvas canvas) {
         mClipPath.reset();
         float[] radii;
-        if (radius <= 0) {
+        if (topLeftRadius > 0 || topRightRadius > 0 || bottomRightRadius > 0 || bottomLeftRadius > 0) {
             radii = new float[]{
                     topLeftRadius, topLeftRadius,
                     topRightRadius, topRightRadius,
@@ -648,6 +654,12 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @Override
     public void setRadius(int radius) {
         this.radius = radius;
+
+        this.topLeftRadius = 0;
+        this.topRightRadius = 0;
+        this.bottomLeftRadius = 0;
+        this.bottomRightRadius = 0;
+
         cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
         background = getFinalLayerDrawable(
@@ -730,6 +742,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
         this.topRightRadius = topRightRadius;
         this.bottomLeftRadius = bottomLeftRadius;
         this.bottomRightRadius = bottomRightRadius;
+        this.radius = 0;
         cubeSidesBackground = getGradientDrawable(radius, topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius,
                 cubeSidesColors, cubeSidesBorderColor, cubeSidesBorderWidth, bgColorOrientation);
         background = getFinalLayerDrawable(

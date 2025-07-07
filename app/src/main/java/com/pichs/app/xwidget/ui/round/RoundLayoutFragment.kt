@@ -10,6 +10,7 @@ import com.pichs.app.xwidget.ktext.click
 import com.pichs.app.xwidget.widget.PickerColorView
 import com.pichs.app.xwidget.widget.PickerColorView.OnColorPickerChangeListener
 import com.pichs.xbase.kotlinext.dp
+import com.pichs.xbase.xlog.XLog
 import com.pichs.xwidget.cardview.GradientOrientation
 import com.pichs.xwidget.utils.XColorHelper
 
@@ -48,6 +49,8 @@ class RoundLayoutFragment : BaseFragment<FragmentRoundLayoutBinding>() {
             }
 
             override fun onStartTrackingTouch(picker: PickerColorView?) {
+                // 打印日志
+
             }
 
             override fun onStopTrackingTouch(picker: PickerColorView?) {

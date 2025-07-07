@@ -12,8 +12,8 @@ android {
         minSdk 21
         //noinspection ExpiredTargetSdkVersion
         targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 560
+        versionName "5.6.0"
         consumerProguardFiles 'proguard-rules.pro'
     }
 

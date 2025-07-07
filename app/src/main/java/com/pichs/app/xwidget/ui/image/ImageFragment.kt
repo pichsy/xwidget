@@ -1,15 +1,42 @@
 package com.pichs.app.xwidget.ui.image
 
+import android.graphics.Color
 import android.view.View
+import android.widget.Toast
 import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.databinding.FragmentImageBinding
 import com.pichs.app.xwidget.ktext.click
 
 class ImageFragment : BaseFragment<FragmentImageBinding>() {
 
+    private var isChanged = false
     override fun afterOnCreateView(rootView: View?) {
         binding.ivBack.click {
             activity?.finish()
+        }
+
+
+        binding.ivCircle.click {
+            isChanged = !isChanged
+
+            if (isChanged) {
+                Toast.makeText(context, "XCircleImageVie, 编角 30", Toast.LENGTH_SHORT).show()
+                binding.ivCircle.setRadius(
+                    30, 30, 0, 0
+                )
+            } else {
+                Toast.makeText(context, "XCircleImageVie, 编角 0", Toast.LENGTH_SHORT).show()
+                binding.ivCircle.setRadius(0)
+            }
+
+        }
+
+        binding.ivRocket.click {
+            Toast.makeText(context, "XRoundImageView, 编角", Toast.LENGTH_SHORT).show()
+            binding.ivRocket.setNormalBackgroundColor(Color.TRANSPARENT)
+            binding.ivRocket.setRadius(
+                30, 30, 0, 0
+            )
         }
 
         showCode()

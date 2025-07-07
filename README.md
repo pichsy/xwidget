@@ -131,19 +131,28 @@
 <br/>
 ## 升级日志
 
+### 5.6.0
+
+- 优化 XRound系列设置 setRadius(10), setRadius(10,0,0,10). 两参和四参的 设置方式，谁最后设置谁生效。更符合动态设置代码习惯。
+- 属性设置 xp_radius, 和 xp_radiusTopLeft... 四个角的设置方式，xp_radiusTopLeft四个角的属性设置 优先级高于 xp_radius。不建议混用。
+
+### 5.5.0
+- 修复一些不常用组件的bug，不一一列举了。
+
+
 ### 5.4.1
+
 - 优化一些属性设置问题
 - 去除log日志
 
 ### 5.3.0
-- 修改XRoundImageView为XRound系列效果，原来原角ImageView建议使用XCardImageView
 
+- 修改XRoundImageView为XRound系列效果，原来原角ImageView建议使用XCardImageView
 
 ### 5.2.0
 
 - 增加XOvalImageView 椭圆形图片控件
 - 修改XRoundImageView 为圆形图片控件，四个角可任意设置大小。去除XRoundImageView的oval属性，拆分为单独的XOvalImageView控件
-
 
 ### 5.1.0
 

@@ -104,11 +104,12 @@
                 android:orientation="horizontal">
 
                 <com.pichs.xwidget.roundview.XRoundImageView
+                    android:id="@+id/iv_circle"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:background="#ff0"
                     android:layout_margin="16dp"
                     android:layout_marginStart="16dp"
-                    android:background="#fff"
                     android:src="@drawable/panda_logo"
                     app:xp_radius="10dp" />
 
@@ -117,7 +118,6 @@
                     android:layout_height="50dp"
                     android:layout_margin="16dp"
                     android:layout_marginStart="16dp"
-                    android:background="#fff"
                     android:src="@drawable/panda_logo"
                     app:xp_radiusBottomLeft="25dp"
                     app:xp_radiusBottomRight="25dp"
@@ -139,6 +139,7 @@
                 <com.pichs.xwidget.roundview.XRoundImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:id="@+id/iv_rocket"
                     android:layout_margin="16dp"
                     android:layout_marginStart="16dp"
                     android:padding="10dp"

@@ -419,7 +419,7 @@ public class XGradientHelper {
         if (topLeftRadius > 0 || topRightRadius > 0 || bottomLeftRadius > 0 || bottomRightRadius > 0) {
             float[] radii = {topLeftRadius, topLeftRadius, topRightRadius, topRightRadius, bottomRightRadius, bottomRightRadius, bottomLeftRadius, bottomLeftRadius};
             gradientDrawable.setCornerRadii(radii);
-        } else if (radius > 0) {
+        } else {
             gradientDrawable.setCornerRadius(radius);
         }
         if (strokeColor != DEFAULT_COLOR_TRANSPARENT && strokeWidth > 0) {
