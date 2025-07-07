@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XStatusBarHelper.translucent(this);
-        XStatusBarHelper.setStatusBarLightMode(this);
+        XStatusBarHelper.setStatusBarFontBlackColor(this);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         changeTypeface();
