@@ -146,6 +146,9 @@
 
 
 ## 升级日志
+### 5.6.3
+- 优化XNavigationBarUtils 获取导航栏高度方法。
+
 ### 5.6.2
 - 修改XDisplayHelper获取导航栏高度方法。（横条，和 三键）
 - 增加XNavigationBarUtils 适配导航条。
