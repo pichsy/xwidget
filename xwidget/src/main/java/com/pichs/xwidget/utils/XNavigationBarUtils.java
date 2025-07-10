@@ -16,10 +16,22 @@ public class XNavigationBarUtils {
     }
 
     /**
+     * 判断是否有导航栏
+     * 这个判断必须放在 UI加载完毕以后。
+     * 建议：
+     * ViewCompat.setOnApplyWindowInsetsListener(window.decorView, (v, insets) -> {
+     * isNavigationBarVisible(this);
+     * });
+     */
+    public static boolean isNavigationBarVisible(Activity activity) {
+        return isGestureBarVisible(activity);
+    }
+
+    /**
      * 获取手势导航条高度
      * 这个判断必须放在 UI加载完毕以后。
      * 建议：ViewCompat.setOnApplyWindowInsetsListener(window.decorView, (v, insets) -> {
-     *     isGestureBarVisible(this);
+     * isGestureBarVisible(this);
      * });
      */
     public static boolean isGestureBarVisible(Activity activity) {
@@ -74,7 +86,10 @@ public class XNavigationBarUtils {
                 return insets.getInsets(WindowInsets.Type.navigationBars()).bottom;
             }
         } else {
-            WindowInsets insets = activity.getWindow().getDecorView().getRootWindowInsets();
+            WindowInsets insets = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                insets = activity.getWindow().getDecorView().getRootWindowInsets();
+            }
             if (insets != null) {
                 return insets.getStableInsetBottom();
             }
