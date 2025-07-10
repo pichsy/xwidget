@@ -15,7 +15,7 @@
 
 ### 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:5.6.1'
+      implementation 'com.gitee.pichs:xwidget:5.6.2'
 
 <br/>
 
@@ -146,6 +146,10 @@
 
 
 ## 升级日志
+### 5.6.2
+- 修改XDisplayHelper获取导航栏高度方法。（横条，和 三键）
+- 增加XNavigationBarUtils 适配导航条。
+
 ### 5.6.1
  - XStatusBarHelper 适配 最新的Android版本。方便 沉浸式状态栏设置方法。设置状态栏字体 黑/白
 
