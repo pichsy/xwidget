@@ -1,7 +1,6 @@
 package com.pichs.xwidget.utils;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -12,7 +11,6 @@ import android.view.Window;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
 
-import androidx.annotation.ColorInt;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -340,7 +338,14 @@ public class XStatusBarHelper {
      * 获取导航键的高度
      *
      * @return height
+     *
+     * @deprecated 此方法已过时，有些情况下获取不准，比如横条导航栏。
+     * * <p>
+     * 建议使用 {@link XNavigationBarUtils#getNavigationBarHeight(Activity)} 方法获取导航栏高度。
+     * or {@link #getNavigationHeight(Activity)} 方法获取导航栏高度。
+     * <p>
      */
+    @Deprecated
     public static int getNavigationHeight() {
         // 小米4没有nav bar, 而 navigation_bar_height 有值
         Resources res = Resources.getSystem();
@@ -351,6 +356,16 @@ public class XStatusBarHelper {
             height = res.getDimensionPixelSize(resourceId);
         }
         return height;
+    }
+
+
+    /**
+     * 获取导航键的高度
+     *
+     * @return height
+     */
+    public static int getNavigationHeight(Activity activity) {
+        return XNavigationBarUtils.getNavigationBarHeight(activity);
     }
 
 }

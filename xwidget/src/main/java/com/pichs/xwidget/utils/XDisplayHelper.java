@@ -86,12 +86,10 @@ public class XDisplayHelper {
         } else {
             Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
             DisplayMetrics displayMetrics = new DisplayMetrics();
-            @SuppressWarnings("rawtypes")
-            Class c;
+            @SuppressWarnings("rawtypes") Class c;
             try {
                 c = Class.forName("android.view.Display");
-                @SuppressWarnings("unchecked")
-                Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+                @SuppressWarnings("unchecked") Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
                 method.invoke(display, displayMetrics);
                 return displayMetrics.widthPixels;
             } catch (Exception e) {
@@ -112,12 +110,10 @@ public class XDisplayHelper {
         } else {
             Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
             DisplayMetrics displayMetrics = new DisplayMetrics();
-            @SuppressWarnings("rawtypes")
-            Class c;
+            @SuppressWarnings("rawtypes") Class c;
             try {
                 c = Class.forName("android.view.Display");
-                @SuppressWarnings("unchecked")
-                Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
+                @SuppressWarnings("unchecked") Method method = c.getMethod("getRealMetrics", DisplayMetrics.class);
                 method.invoke(display, displayMetrics);
                 return displayMetrics.heightPixels;
             } catch (Exception e) {
@@ -137,12 +133,10 @@ public class XDisplayHelper {
             return getScreenWidth(context);
         } else {
             Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-            @SuppressWarnings("rawtypes")
-            Class c;
+            @SuppressWarnings("rawtypes") Class c;
             try {
                 c = Class.forName("android.view.Display");
-                @SuppressWarnings("unchecked")
-                Method method = c.getMethod("getPhysicalHeight");
+                @SuppressWarnings("unchecked") Method method = c.getMethod("getPhysicalHeight");
                 return (int) method.invoke(display);
             } catch (Exception e) {
                 return getRealScreenHeight(context);
@@ -161,12 +155,10 @@ public class XDisplayHelper {
             return getScreenHeight(context);
         } else {
             Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-            @SuppressWarnings("rawtypes")
-            Class c;
+            @SuppressWarnings("rawtypes") Class c;
             try {
                 c = Class.forName("android.view.Display");
-                @SuppressWarnings("unchecked")
-                Method method = c.getMethod("getPhysicalWidth");
+                @SuppressWarnings("unchecked") Method method = c.getMethod("getPhysicalWidth");
                 return (int) method.invoke(display);
             } catch (Exception e) {
                 return getRealScreenWidth(context);
@@ -176,6 +168,7 @@ public class XDisplayHelper {
 
     /**
      * 获取屏幕的真实宽高
+     *
      * @param context Context
      * @return int[0] 宽，int[1] 高
      */
@@ -313,8 +306,7 @@ public class XDisplayHelper {
         int actionBarHeight = 0;
         TypedValue tv = new TypedValue();
         if (context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true)) {
-            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data,
-                    context.getResources().getDisplayMetrics());
+            actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
         }
         return actionBarHeight;
     }
@@ -326,7 +318,7 @@ public class XDisplayHelper {
      * @return
      */
     public static int getStatusBarHeight(Context context) {
-       return XStatusBarHelper.getStatusBarHeight(context);
+        return XStatusBarHelper.getStatusBarHeight(context);
     }
 
     /**
@@ -335,9 +327,25 @@ public class XDisplayHelper {
      * @param context context上下文
      * @return Int
      * @see #getNavMenuHeight(Context)
+     * 不精准，不建议使用，请使用 {@link #getNavigationBarHeight(Activity)} 或 {@link #getNavMenuHeight(Context)}
      */
+    @Deprecated
     public static int getNavigationBarHeight(Context context) {
+        if (context instanceof Activity) {
+            return XNavigationBarUtils.getNavigationBarHeight((Activity) context);
+        }
         return getNavMenuHeight(context);
+    }
+
+    /**
+     * 获取导航栏高度，即返回键，Home键 那个 bar 的高度
+     *
+     * @param activity Activity上下文
+     * @return Int
+     * @see #getNavMenuHeight(Context)
+     */
+    public static int getNavigationBarHeight(Activity activity) {
+        return XNavigationBarUtils.getNavigationBarHeight(activity);
     }
 
     /**
@@ -346,7 +354,7 @@ public class XDisplayHelper {
      * @param context context上下文
      * @return Int
      */
-    private static int getNavMenuHeight(Context context) {
+    public static int getNavMenuHeight(Context context) {
         if (!isNavMenuExist(context)) {
             return 0;
         }
@@ -371,8 +379,7 @@ public class XDisplayHelper {
     public static final boolean hasCamera(Context context) {
         if (sHasCamera == null) {
             PackageManager pckMgr = context.getPackageManager();
-            boolean flag = pckMgr
-                    .hasSystemFeature("android.hardware.camera.front");
+            boolean flag = pckMgr.hasSystemFeature("android.hardware.camera.front");
             boolean flag1 = pckMgr.hasSystemFeature("android.hardware.camera");
             boolean flag2;
             flag2 = flag || flag1;
@@ -390,12 +397,10 @@ public class XDisplayHelper {
     @SuppressWarnings("SimplifiableIfStatement")
     public static boolean hasHardwareMenuKey(Context context) {
         boolean flag;
-        if (Build.VERSION.SDK_INT < 11)
-            flag = true;
+        if (Build.VERSION.SDK_INT < 11) flag = true;
         else if (Build.VERSION.SDK_INT >= 14) {
             flag = ViewConfiguration.get(context).hasPermanentMenuKey();
-        } else
-            flag = false;
+        } else flag = false;
         return flag;
     }
 
@@ -419,10 +424,8 @@ public class XDisplayHelper {
      */
     public static boolean isPackageExist(Context context, String pckName) {
         try {
-            PackageInfo pckInfo = context.getPackageManager()
-                    .getPackageInfo(pckName, 0);
-            if (pckInfo != null)
-                return true;
+            PackageInfo pckInfo = context.getPackageManager().getPackageInfo(pckName, 0);
+            if (pckInfo != null) return true;
         } catch (PackageManager.NameNotFoundException ignored) {
         }
         return false;
@@ -434,8 +437,7 @@ public class XDisplayHelper {
      * @return
      */
     public static boolean isSdcardReady() {
-        return Environment.MEDIA_MOUNTED.equals(Environment
-                .getExternalStorageState());
+        return Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState());
     }
 
     /**
@@ -453,9 +455,7 @@ public class XDisplayHelper {
             //noinspection deprecation
             sysLocale = config.locale;
         }
-        return sysLocale.getLanguage()
-                + "-"
-                + sysLocale.getCountry();
+        return sysLocale.getLanguage() + "-" + sysLocale.getCountry();
     }
 
     /**
@@ -584,10 +584,5 @@ public class XDisplayHelper {
         // 1: 隐藏显示区域
         int result = Settings.Secure.getInt(context.getContentResolver(), HUAWAI_DISPLAY_NOTCH_STATUS, 0);
         return result == 0;
-    }
-
-    @TargetApi(17)
-    public static boolean xiaomiIsNotchSetToShowInSetting(Context context) {
-        return Settings.Global.getInt(context.getContentResolver(), XIAOMI_DISPLAY_NOTCH_STATUS, 0) == 0;
     }
 }
