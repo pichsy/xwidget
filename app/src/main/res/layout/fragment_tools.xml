@@ -30,18 +30,15 @@
         app:xp_shadowElevation="5dp" />
 
     <com.pichs.xwidget.radiobutton.XRadioRoundButton
+        android:id="@+id/tv_btn_active"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:id="@+id/tv_btn_active"
         android:layout_gravity="center_horizontal"
-        android:background="#05B30C"
         android:text="激活状态"
-        android:visibility="gone"
         android:textColor="#fff"
         android:textSize="16sp"
-        app:xp_activated="true"
-        app:xp_activatedBackground="#8005B30C"
-        app:xp_activatedTextColor="#80ffffff"
+        app:xp_backgroundStartColor="#9D36BD"
+        app:xp_backgroundEndColor="#1E07ED"
         app:xp_pressedAlpha="0.5"
         app:xp_radius="8dp" />
 

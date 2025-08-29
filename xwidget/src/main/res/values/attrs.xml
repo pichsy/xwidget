@@ -45,11 +45,11 @@
 
     <!--  给背景设置渐变色  -->
     <attr name="xp_backgroundGradientColors" format="string" />
-    <!-- 废弃了xp_backgroundStartColor代替 {@deprecated use  xp_backgroundStartColor instead} -->
+    <!-- 废弃了 {@deprecated use  xp_backgroundStartColor instead} -->
     <attr name="xp_backgroundGradientStartColor" format="color|reference" />
-    <!-- 废弃了xp_backgroundEndColor代替 {@deprecated use  xp_backgroundEndColor instead} -->
+    <!-- 废弃了 {@deprecated use  xp_backgroundEndColor instead} -->
     <attr name="xp_backgroundGradientEndColor" format="color|reference" />
-    <!-- xp_backgroundOrientation {@deprecated use  xp_backgroundOrientation instead} -->
+    <!-- 废弃了 {@deprecated use  xp_backgroundOrientation instead} -->
     <attr name="xp_backgroundGradientOrientation" format="enum">
         <!--    从左到右    -->
         <enum name="horizontal" value="0" />
@@ -60,9 +60,11 @@
         <!--    左下到右上    -->
         <enum name="BL_TR" value="3" />
     </attr>
-
+    <!--  使用这个属性代替了xp_backgroundGradientStartColor  -->
     <attr name="xp_backgroundStartColor" format="color|reference" />
+    <!--  使用这个属性代替了  xp_backgroundGradientEndColor -->
     <attr name="xp_backgroundEndColor" format="color|reference" />
+    <!--  使用这个属性代替了 xp_backgroundGradientOrientation  -->
     <attr name="xp_backgroundOrientation" format="enum">
         <!--    从左到右    -->
         <enum name="horizontal" value="0" />

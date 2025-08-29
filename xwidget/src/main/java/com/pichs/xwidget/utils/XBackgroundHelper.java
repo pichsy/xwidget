@@ -99,8 +99,6 @@ public class XBackgroundHelper implements XIBackground {
                 bgEndColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientEndColor, bgEndColor);
             }
 
-            bgEndColor = ta.getColor(R.styleable.XIBackground_xp_backgroundGradientEndColor, bgEndColor);
-
             if (ta.hasValue(R.styleable.XIBackground_xp_backgroundOrientation)) {
                 bgColorOrientation = ta.getInt(R.styleable.XIBackground_xp_backgroundOrientation, GradientOrientation.HORIZONTAL);
             } else {
