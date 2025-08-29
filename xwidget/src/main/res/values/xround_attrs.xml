@@ -40,7 +40,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -197,7 +199,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -326,7 +330,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -428,7 +434,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -542,7 +550,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -645,7 +655,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -747,7 +759,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -850,7 +864,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -951,7 +967,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -1053,7 +1071,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />
@@ -1153,7 +1173,9 @@
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
         <attr name="xp_backgroundGradientColors" />
-
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <!--    按压时 背景色    -->
         <attr name="xp_pressedBackground" />
         <attr name="xp_pressedBackgroundStartColor" />

@@ -246,6 +246,7 @@
             android:background="#6EAEA9"
             android:clickable="true"
             android:gravity="center"
+            android:singleLine="true"
             android:text="按压放大"
             android:textColor="#333"
             android:textSize="11sp"

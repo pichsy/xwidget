@@ -174,9 +174,31 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
             disabledBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_disabledBackground);
             activatedBackgroundTmp = ta.getDrawable(R.styleable.XIRoundBackground_xp_activatedBackground);
             // 渐变
-            bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, bgStartColor);
+//            bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, bgStartColor);
+//            bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientEndColor, bgEndColor);
+//            bgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_backgroundGradientOrientation, GradientOrientation.HORIZONTAL);
+
+            // 渐变
+            if (ta.hasValue(R.styleable.XIRoundBackground_xp_backgroundStartColor)) {
+                bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundStartColor, bgStartColor);
+            } else {
+                bgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientStartColor, bgStartColor);
+            }
+
+            if (ta.hasValue(R.styleable.XIRoundBackground_xp_backgroundEndColor)) {
+                bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundEndColor, bgEndColor);
+            } else {
+                bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientEndColor, bgEndColor);
+            }
+
             bgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_backgroundGradientEndColor, bgEndColor);
-            bgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_backgroundGradientOrientation, GradientOrientation.HORIZONTAL);
+
+            if (ta.hasValue(R.styleable.XIRoundBackground_xp_backgroundOrientation)) {
+                bgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_backgroundOrientation, GradientOrientation.HORIZONTAL);
+            } else {
+                bgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_backgroundGradientOrientation, GradientOrientation.HORIZONTAL);
+            }
+
             pressedBgStartColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundStartColor, pressedBgStartColor);
             pressedBgEndColor = ta.getColor(R.styleable.XIRoundBackground_xp_pressedBackgroundEndColor, pressedBgEndColor);
             pressedBgColorOrientation = ta.getInt(R.styleable.XIRoundBackground_xp_pressedBackgroundOrientation, bgColorOrientation);

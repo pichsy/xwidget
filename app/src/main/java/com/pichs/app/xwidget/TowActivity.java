@@ -77,21 +77,11 @@ public class TowActivity extends AppCompatActivity {
 
 
         int matchParent = ViewGroup.LayoutParams.MATCH_PARENT;
+
+
         CoordinatorLayout.LayoutParams topLp = new CoordinatorLayout.LayoutParams(matchParent, matchParent);
         topLp.setBehavior(new XNestedTopAreaBehavior(this));
         nestedScrollLayout.setTopAreaView(topRecyclerView, topLp);
-
-//        QMUIContinuousNestedBottomRecyclerView bottomRecyclerView = new QMUIContinuousNestedBottomRecyclerView(this);
-//        CoordinatorLayout.LayoutParams bottomLp = new CoordinatorLayout.LayoutParams(matchParent, matchParent);
-//        nestedScrollLayout.setBottomAreaView(bottomRecyclerView,bottomLp);
-//
-//        bottomRecyclerView.setLayoutManager(new LinearLayoutManager(this) {
-//            @Override
-//            public RecyclerView.LayoutParams generateDefaultLayoutParams() {
-//                return new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-//                        ViewGroup.LayoutParams.WRAP_CONTENT);
-//            }
-//        });
 
         NestedBottomView bottomView = new NestedBottomView(this);
         CoordinatorLayout.LayoutParams bottomLp = new CoordinatorLayout.LayoutParams(matchParent, matchParent);

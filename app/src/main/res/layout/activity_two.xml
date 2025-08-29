@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".TowActivity">
 
-
     <com.pichs.xwidget.nestedscroll.XNestedScrollLayout
         android:layout_width="match_parent"
         android:id="@+id/nested_scroll_layout"

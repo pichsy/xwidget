@@ -427,6 +427,9 @@
         <attr name="xp_backgroundGradientStartColor" />
         <attr name="xp_backgroundGradientEndColor" />
         <attr name="xp_backgroundGradientOrientation" />
+        <attr name="xp_backgroundStartColor" />
+        <attr name="xp_backgroundEndColor" />
+        <attr name="xp_backgroundOrientation" />
         <attr name="xp_borderGradientEndColor" />
         <attr name="xp_borderGradientStartColor" />
         <attr name="xp_borderGradientOrientation" />
