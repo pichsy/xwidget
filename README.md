@@ -149,7 +149,6 @@
 ### 5.7.0
 - 增加属性xp_backgroundStartColor, xp_backgroundEndColor, xp_backgroundOrientation,属性，可代替 xp_backgroundGradientStartColor, xp_backgroundGradientEndColor, xp_backgroundGradientOrientation属性，功能完全一致，建议使用新的属性。
 
-
 ### 5.6.3
 - 优化XNavigationBarUtils 获取导航栏高度方法。
 
