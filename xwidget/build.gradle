@@ -40,23 +40,23 @@ dependencies {
 }
 
 
-//tasks.register('javadoc', Javadoc) {
-//    options.encoding "UTF-8"
-//    options.charSet 'UTF-8'
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//    options.links("http://docs.oracle.com/javase/7/docs/api/");
-//    options.linksOffline "http://d.android.com/reference", "${android.sdkDirectory}/docs/reference"
-//    exclude '**/BuildConfig.java'
-//    exclude '**/R.java'
-//    failOnError = false
-//}
-//
-//tasks.register('androidJavadocsJar', Jar) {
-//    dependsOn javadoc
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
+tasks.register('javadoc', Javadoc) {
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.links("http://docs.oracle.com/javase/7/docs/api/");
+    options.linksOffline "http://d.android.com/reference", "${android.sdkDirectory}/docs/reference"
+    exclude '**/BuildConfig.java'
+    exclude '**/R.java'
+    failOnError = false
+}
 
-// 此写法可忽略文件夹层级带来的影响
-//apply from: "${rootProject.rootDir}/maven.gradle"
+tasks.register('androidJavadocsJar', Jar) {
+    dependsOn javadoc
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+ //此写法可忽略文件夹层级带来的影响
+apply from: "${rootProject.rootDir}/maven.gradle"
