@@ -10,6 +10,9 @@
 
     <com.pichs.xwidget.scroll.XViewPager2RecyclerView
         android:id="@+id/recycler_view"
+        android:clipToPadding="false"
+        android:paddingTop="48dp"
+        android:paddingBottom="52dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>

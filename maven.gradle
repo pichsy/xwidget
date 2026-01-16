@@ -26,7 +26,7 @@ tasks.register('generateSourcesJar', Jar) {
     from "${projectDir}/src/main/java"
     exclude "**/R.class"
     exclude "**/BuildConfig.class"
-    classifier 'sources'
+    archiveClassifier.set('sources')
 }
 
 def artifactFilePath = "${buildDir}/${PUBLISH_FILE_NAME}"
@@ -91,16 +91,15 @@ publishing {
         }
     }
     repositories {
-        // The repository to publish to, Sonatype/MavenCentral
         maven {
-
             url = layout.buildDirectory.dir('staging-deploy')
-
-
-            // This is an arbitrary name, you may also use "mavencentral" or
-            // any other name that's descriptive for you
+        }
+        // The repository to publish to, Sonatype/MavenCentral
+//        maven {
+//            // This is an arbitrary name, you may also use "mavencentral" or
+//            // any other name that's descriptive for you
 //            name = PUBLISH_NAME
-
+//
 //            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
 //            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
 //            // You only need this if you want to publish snapshots, otherwise just set the URL
@@ -112,11 +111,11 @@ publishing {
 //                username ossrhUsername
 //                password ossrhPassword
 //            }
-        }
+//        }
     }
+
 }
 
 signing {
     sign publishing.publications
 }
-

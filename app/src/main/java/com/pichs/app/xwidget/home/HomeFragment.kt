@@ -1,13 +1,8 @@
 package com.pichs.app.xwidget.home
 
-import android.content.Context
-import android.content.Intent
 import android.view.View
-import android.view.ViewGroup
-import com.chad.library.adapter4.BaseQuickAdapter
-import com.chad.library.adapter4.QuickAdapterHelper
-import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.drake.brv.utils.grid
+import com.drake.brv.utils.setup
 import com.pichs.app.xwidget.R
 import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.bean.HomeBean
@@ -16,7 +11,6 @@ import com.pichs.app.xwidget.databinding.ItemHomeListWhiteBinding
 import com.pichs.app.xwidget.utils.JumpUtils
 import com.pichs.xbase.kotlinext.setItemAnimatorDisable
 import com.pichs.xbase.utils.bounceHeaderFooter
-import com.pichs.xbase.viewholder.ViewBindingHolder
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
@@ -49,44 +43,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun initView() {
-
-        val adapter = object : BaseQuickAdapter<HomeBean, ViewBindingHolder<ItemHomeListWhiteBinding>>(mData) {
-
-            override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): ViewBindingHolder<ItemHomeListWhiteBinding> {
-                return ViewBindingHolder(ItemHomeListWhiteBinding.inflate(layoutInflater, parent, false))
-            }
-
-            override fun onBindViewHolder(holder: ViewBindingHolder<ItemHomeListWhiteBinding>, position: Int, item: HomeBean?) {
-                holder.viewBinder.ivIcon.setImageResource(item?.icon ?: 0)
-                holder.viewBinder.tvText.text = item?.title ?: ""
-                holder.viewBinder.root.setOnClickListener {
+        binding.recyclerView.grid(3).setItemAnimatorDisable().setup {
+            addType<HomeBean>(R.layout.item_home_list_white)
+            onBind {
+                // 可以在这里处理头尾布局的逻辑
+                val item = getModel<HomeBean>()
+                val itemBinding = getBinding<ItemHomeListWhiteBinding>()
+                itemBinding.ivIcon.setImageResource(item?.icon ?: 0)
+                itemBinding.tvText.text = item?.title ?: ""
+                itemBinding.root.setOnClickListener {
                     JumpUtils.jump2(item?.tag ?: "")
                 }
             }
-        }
-
-        binding.recyclerView.grid(3).setItemAnimatorDisable().adapter = createHelper(adapter).adapter
+        }.models = mData
 
         binding.refreshLayout.bounceHeaderFooter()
-    }
-
-
-    private fun createHelper(adapter: BaseQuickAdapter<*, *>): QuickAdapterHelper {
-        return QuickAdapterHelper.Builder(adapter).build().addBeforeAdapter(object : BaseQuickAdapter<String, QuickViewHolder>(arrayListOf("", "", "")) {
-                override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: String?) {
-                }
-
-                override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): QuickViewHolder {
-                    return QuickViewHolder(layoutInflater.inflate(R.layout.item_home_list_white_header, parent, false))
-                }
-            }).addAfterAdapter(object : BaseQuickAdapter<String, QuickViewHolder>(arrayListOf("", "", "")) {
-                override fun onBindViewHolder(holder: QuickViewHolder, position: Int, item: String?) {
-                }
-
-                override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): QuickViewHolder {
-                    return QuickViewHolder(layoutInflater.inflate(R.layout.item_home_list_white_footer, parent, false))
-                }
-            })
     }
 
 }

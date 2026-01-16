@@ -2,15 +2,13 @@ package com.pichs.app.xwidget.tools
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
-import com.chad.library.adapter4.BaseQuickAdapter
 import com.drake.brv.utils.linear
+import com.drake.brv.utils.setup
 import com.pichs.app.xwidget.R
 import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.bean.ColorBean
@@ -23,7 +21,6 @@ import com.pichs.xbase.kotlinext.gone
 import com.pichs.xbase.kotlinext.invisible
 import com.pichs.xbase.kotlinext.setItemAnimatorDisable
 import com.pichs.xbase.kotlinext.show
-import com.pichs.xbase.viewholder.ViewBindingHolder
 import com.pichs.xwidget.cardview.GradientOrientation
 import com.pichs.xwidget.cardview.XCardButton
 import com.pichs.xwidget.cardview.XILayout
@@ -117,46 +114,44 @@ class ToolsUsageFragment : BaseFragment<FragmentToolsUsageBinding>() {
 
     private fun initGradientColorRecyclerView() {
         gradientColors.add(ColorBean(XBackgroundHelper.DEFAULT_COLOR_TRANSPARENT, "add"))
-        binding.colorRecyclerView.linear(RecyclerView.HORIZONTAL).setItemAnimatorDisable().adapter =
-            object : BaseQuickAdapter<ColorBean, ViewBindingHolder<ItemColorRecyclerViewBinding>>(gradientColors) {
-                override fun onCreateViewHolder(context: Context, parent: ViewGroup, viewType: Int): ViewBindingHolder<ItemColorRecyclerViewBinding> {
-                    return ViewBindingHolder(ItemColorRecyclerViewBinding.inflate(layoutInflater, parent, false))
+        binding.colorRecyclerView.linear(RecyclerView.HORIZONTAL).setItemAnimatorDisable().setup {
+            addType<ColorBean>(R.layout.item_color_recycler_view)
+            onBind {
+
+                val item = getModel<ColorBean>()
+                val itemBinding = getBinding<ItemColorRecyclerViewBinding>()
+                if (item?.type == "color") {
+                    itemBinding.ivDelete.show()
+                    itemBinding.viewColor.setImageDrawable(ColorDrawable(item?.color ?: 0))
+                } else {
+                    itemBinding.ivDelete.gone()
+                    itemBinding.viewColor.setImageResource(R.drawable.ic_add_color)
                 }
 
-                override fun onBindViewHolder(holder: ViewBindingHolder<ItemColorRecyclerViewBinding>, position: Int, item: ColorBean?) {
+                itemBinding.viewColor.click {
                     if (item?.type == "color") {
-                        holder.viewBinder.ivDelete.show()
-                        holder.viewBinder.viewColor.setImageDrawable(ColorDrawable(item?.color ?: 0))
+                        ColorPickerPopup(context) {
+                            gradientColors[position].color = it
+                            notifyDataSetChanged()
+                            refreshLayout()
+                        }.showPopupWindow()
                     } else {
-                        holder.viewBinder.ivDelete.gone()
-                        holder.viewBinder.viewColor.setImageResource(R.drawable.ic_add_color)
+                        // 选择一种颜色，添加进去
+                        ColorPickerPopup(context) {
+                            gradientColors.add(gradientColors.size - 1, ColorBean(it, "color"))
+                            notifyDataSetChanged()
+                            refreshLayout()
+                        }.showPopupWindow()
                     }
+                }
 
-                    holder.viewBinder.viewColor.click {
-                        if (item?.type == "color") {
-                            ColorPickerPopup(context) {
-                                gradientColors[position].color = it
-                                notifyDataSetChanged()
-                                refreshLayout()
-                            }.showPopupWindow()
-                        } else {
-                            // 选择一种颜色，添加进去
-                            ColorPickerPopup(context) {
-                                gradientColors.add(gradientColors.size - 1, ColorBean(it, "color"))
-                                notifyDataSetChanged()
-                                refreshLayout()
-                            }.showPopupWindow()
-                        }
-                    }
-
-                    holder.viewBinder.ivDelete.click {
-                        gradientColors.remove(item)
-                        notifyDataSetChanged()
-                        refreshLayout()
-                    }
+                itemBinding.ivDelete.click {
+                    gradientColors.remove(item)
+                    notifyDataSetChanged()
+                    refreshLayout()
                 }
             }
-
+        }
     }
 
     private fun initColorChooser() {
