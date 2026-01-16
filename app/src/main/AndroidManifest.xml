@@ -137,6 +137,11 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.wheelview.WheelViewActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false" />
+
+        <activity
             android:name=".tools.ToolsUsageActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false"

@@ -20,6 +20,7 @@ import com.pichs.app.xwidget.ui.space.SpaceActivity
 import com.pichs.app.xwidget.ui.switcher.SwitcherActivity
 import com.pichs.app.xwidget.ui.text.TextActivity
 import com.pichs.app.xwidget.ui.web.WebViewActivity
+import com.pichs.app.xwidget.ui.wheelview.WheelViewActivity
 import com.pichs.xbase.kotlinext.startActivitySafely
 import com.pichs.xbase.utils.UiKit
 
@@ -135,6 +136,12 @@ object JumpUtils {
             "nested_scroll" -> {
                 UiKit.getApplication().startActivitySafely(
                     Intent(UiKit.getApplication(), NestedScrollActivity::class.java)
+                )
+            }
+
+            "wheelview" -> {
+                UiKit.getApplication().startActivitySafely(
+                    Intent(UiKit.getApplication(), WheelViewActivity::class.java)
                 )
             }
         }

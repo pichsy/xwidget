@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WheelView 滚轮选择器"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- 示例1：垂直滚轮 - 3D效果 -->
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="示例1：垂直3D滚轮（选择城市）"
+                android:textColor="#333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.pichs.xwidget.wheel.WheelView
+                android:id="@+id/wheel_view_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:wheelOrientation="vertical"
+                app:wheelItemCount="3"
+                app:wheelItemSize="50dp"
+                app:wheelGravity="center"
+                app:wheelTextSize="18sp"
+                app:wheelTextColor="#999999"
+                app:wheelTextCenterColor="#FF5722"
+                app:wheelGradient="true"
+                app:wheelDividerSize="1dp"
+                app:wheelDividerColor="#FF5722" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#F5F5F5"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="请滑动选择城市"
+                android:textColor="#666"
+                android:textSize="14sp" />
+
+            <!-- 分割线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="#E0E0E0" />
+
+            <!-- 示例2：垂直滚轮 - 线性效果 -->
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="示例2：垂直线性滚轮（选择星期）"
+                android:textColor="#333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.pichs.xwidget.wheel.WheelView
+                android:id="@+id/wheel_view_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:wheelOrientation="vertical"
+                app:wheelItemCount="2"
+                app:wheelItemSize="45dp"
+                app:wheelGravity="center"
+                app:wheelTextSize="16sp"
+                app:wheelTextColor="#AAAAAA"
+                app:wheelTextCenterColor="#2196F3"
+                app:wheelGradient="true"
+                app:wheelDividerSize="2dp"
+                app:wheelDividerColor="#2196F3" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#F5F5F5"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="请滑动选择星期"
+                android:textColor="#666"
+                android:textSize="14sp" />
+
+            <!-- 分割线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="#E0E0E0" />
+
+            <!-- 示例3：水平滚轮 - 3D效果 -->
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="示例3：水平3D滚轮（选择时间）"
+                android:textColor="#333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.pichs.xwidget.wheel.WheelView
+                android:id="@+id/wheel_view_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:wheelOrientation="horizontal"
+                app:wheelItemCount="3"
+                app:wheelItemSize="80dp"
+                app:wheelTextSize="16sp"
+                app:wheelTextColor="#CCCCCC"
+                app:wheelTextCenterColor="#4CAF50"
+                app:wheelGradient="true"
+                app:wheelDividerSize="1dp"
+                app:wheelDividerColor="#4CAF50" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#F5F5F5"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="请滑动选择时间"
+                android:textColor="#666"
+                android:textSize="14sp" />
+
+            <!-- 分割线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="#E0E0E0" />
+
+            <!-- 示例4：数字选择器 -->
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="示例4：数字选择器（1-100）"
+                android:textColor="#333"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.pichs.xwidget.wheel.WheelView
+                android:id="@+id/wheel_view_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:wheelOrientation="vertical"
+                app:wheelItemCount="4"
+                app:wheelItemSize="40dp"
+                app:wheelGravity="center"
+                app:wheelTextSize="20sp"
+                app:wheelTextColor="#DDDDDD"
+                app:wheelTextCenterColor="#9C27B0"
+                app:wheelGradient="true"
+                app:wheelDividerSize="1dp"
+                app:wheelDividerColor="#9C27B0"
+                app:wheelDividerPadding="0dp" />
+
+            <com.pichs.xwidget.view.XTextView
+                android:id="@+id/tv_result_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="#F5F5F5"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="请滑动选择数字"
+                android:textColor="#666"
+                android:textSize="14sp" />
+
+            <!-- 操作按钮 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <com.pichs.xwidget.roundview.XRoundButton
+                    android:id="@+id/btn_get_value"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="获取所有值"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    app:xp_backgroundGradientColors="#2196F3,#1976D2"
+                    app:xp_backgroundGradientOrientation="vertical"
+                    app:xp_radius="8dp" />
+
+                <com.pichs.xwidget.roundview.XRoundButton
+                    android:id="@+id/btn_set_value"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="设置默认值"
+                    android:textColor="#fff"
+                    android:textSize="16sp"
+                    app:xp_backgroundGradientColors="#4CAF50,#388E3C"
+                    app:xp_backgroundGradientOrientation="vertical"
+                    app:xp_radius="8dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

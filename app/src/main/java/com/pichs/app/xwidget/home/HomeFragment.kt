@@ -40,6 +40,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mData.add(HomeBean(R.drawable.ic_home_list_scale_layout, "缩放动画布局", "scale_layout"))
         mData.add(HomeBean(R.drawable.ic_home_list_webview, "XWebView", "xwebview"))
         mData.add(HomeBean(R.drawable.ic_home_list_nested_scroll, "顺滑滚动", "nested_scroll"))
+        mData.add(HomeBean(R.drawable.ic_home_list_rating, "滚轮选择器", "wheelview"))
     }
 
     private fun initView() {
