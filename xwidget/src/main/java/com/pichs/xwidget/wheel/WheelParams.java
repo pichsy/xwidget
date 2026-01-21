@@ -27,20 +27,24 @@ public final class WheelParams {
      */
     public static final int VERTICAL = 1;
     public static final int HORIZONTAL = 0;
-    @IntDef({HORIZONTAL, VERTICAL})
+
+    @IntDef({ HORIZONTAL, VERTICAL })
     @Retention(RetentionPolicy.SOURCE)
     public @interface Orientation {
     }
+
     /**
      * 垂直布局时的靠左,居中,靠右立体效果
      */
     public static final int CENTER = 0;
     public static final int LEFT = 1;
     public static final int RIGHT = 2;
-    @IntDef({CENTER, LEFT, RIGHT})
+
+    @IntDef({ CENTER, LEFT, RIGHT })
     @Retention(RetentionPolicy.SOURCE)
     public @interface Gravity {
     }
+
     /**
      * 一些默认参数大小
      */
@@ -59,31 +63,35 @@ public final class WheelParams {
         return (int) (sp * fontDensity + 0.5f);
     }
 
-    //布局方向
+    // 布局方向
     public final @Orientation int orientation;
-    //item数量
+    // item数量
     public final int itemCount;
-    //item大小
+    // item大小
     public final int itemSize;
-    //对齐方式
+    // 对齐方式
     public final @Gravity int gravity;
-    //item文字大小, 如果中心文字大小需要调整可以用Canvas缩放
+    // item文字大小, 如果中心文字大小需要调整可以用Canvas缩放
     public final float textSize;
-    //item文字颜色
+    // item文字颜色
     public final @ColorInt int textColor;
-    //中心文字颜色
+    // 中心文字颜色
     public final @ColorInt int textCenterColor;
-    //分割线大小
+    // 分割线大小
     public final int dividerSize;
-    //分割线颜色
+    // 分割线颜色
     public final @ColorInt int dividerColor;
-    //透明度渐变
+    // 透明度渐变
     public final boolean gradient;
-    //分割线填充值默认为0, 分割线矩阵大小为itemSize + dividerPadding
+    // 分割线填充值默认为0, 分割线矩阵大小为itemSize + dividerPadding
     public final int dividerPadding;
-    //实际显示在界面上的itemCount
+    // 选中文字是否加粗
+    public final boolean textSelectedBold;
+    // 未选中文字是否加粗
+    public final boolean textNormalBold;
+    // 实际显示在界面上的itemCount
     private int showItemCount;
-    //ItemShowOrder
+    // ItemShowOrder
     private ItemShowOrder itemShowOrder;
 
     private WheelParams(Builder builder) {
@@ -98,6 +106,8 @@ public final class WheelParams {
         this.dividerSize = builder.dividerSize;
         this.dividerColor = builder.dividerColor;
         this.dividerPadding = builder.dividerPadding;
+        this.textSelectedBold = builder.textSelectedBold;
+        this.textNormalBold = builder.textNormalBold;
         this.showItemCount = itemCount;
     }
 
@@ -109,7 +119,8 @@ public final class WheelParams {
         return showItemCount;
     }
 
-    @RecyclerView.Orientation public int getLayoutOrientation() {
+    @RecyclerView.Orientation
+    public int getLayoutOrientation() {
         return orientation == VERTICAL ? LinearLayoutManager.VERTICAL : LinearLayoutManager.HORIZONTAL;
     }
 
@@ -118,8 +129,9 @@ public final class WheelParams {
     }
 
     int getTotalItemSize() {
-        if (itemShowOrder != null) return itemShowOrder.getTotalItemSize(showItemCount, itemSize);
-        //中间项 + 上下itemCount
+        if (itemShowOrder != null)
+            return itemShowOrder.getTotalItemSize(showItemCount, itemSize);
+        // 中间项 + 上下itemCount
         return (showItemCount * 2 + 1) * itemSize;
     }
 
@@ -139,28 +151,37 @@ public final class WheelParams {
     }
 
     public final static class Builder {
-        //布局方向
-        @Orientation int orientation = VERTICAL;
-        //item数量
+        // 布局方向
+        @Orientation
+        int orientation = VERTICAL;
+        // item数量
         int itemCount = DEF_ITEM_COUNT;
-        //item大小
+        // item大小
         int itemSize = DEF_ITEM_SIZE;
-        //对齐方式
-        @Gravity int gravity = CENTER;
-        //item文字大小, 如果中心文字大小需要调整可以用Canvas缩放
+        // 对齐方式
+        @Gravity
+        int gravity = CENTER;
+        // item文字大小, 如果中心文字大小需要调整可以用Canvas缩放
         float textSize = DEF_TEXT_SIZE;
-        //item文字颜色
-        @ColorInt int textColor = Color.BLACK;
-        //中心文字颜色
-        @ColorInt int textCenterColor = Color.RED;
-        //透明度渐变
+        // item文字颜色
+        @ColorInt
+        int textColor = Color.BLACK;
+        // 中心文字颜色
+        @ColorInt
+        int textCenterColor = Color.RED;
+        // 透明度渐变
         boolean gradient = true;
-        //分割线大小
+        // 分割线大小
         int dividerSize = DEF_DIVIDER_SIZE;
-        //分割线颜色
-        @ColorInt int dividerColor = Color.RED;
-        //分割线填充值默认为0, 分割线矩阵大小为itemSize + dividerPadding
+        // 分割线颜色
+        @ColorInt
+        int dividerColor = Color.RED;
+        // 分割线填充值默认为0, 分割线矩阵大小为itemSize + dividerPadding
         int dividerPadding = 0;
+        // 选中文字是否加粗
+        boolean textSelectedBold = false;
+        // 未选中文字是否加粗
+        boolean textNormalBold = false;
 
         public Builder() {
         }
@@ -177,22 +198,26 @@ public final class WheelParams {
             this.dividerColor = params.dividerColor;
             this.gradient = params.gradient;
             this.dividerPadding = params.dividerPadding;
+            this.textSelectedBold = params.textSelectedBold;
+            this.textNormalBold = params.textNormalBold;
         }
 
         Builder(Context context, AttributeSet attrs) {
             if (attrs != null) {
-                TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WheelView);
-                orientation = a.getInt(R.styleable.WheelView_wheelOrientation, orientation);
-                itemCount = a.getInt(R.styleable.WheelView_wheelItemCount, itemCount);
-                itemSize = a.getDimensionPixelSize(R.styleable.WheelView_wheelItemSize, itemSize);
-                gravity = a.getInt(R.styleable.WheelView_wheelGravity, gravity);
-                textSize = a.getDimension(R.styleable.WheelView_wheelTextSize, textSize);
-                textColor = a.getColor(R.styleable.WheelView_wheelTextColor, textColor);
-                textCenterColor = a.getColor(R.styleable.WheelView_wheelTextCenterColor, textCenterColor);
-                gradient = a.getBoolean(R.styleable.WheelView_wheelGradient, gradient);
-                dividerColor = a.getColor(R.styleable.WheelView_wheelDividerColor, dividerColor);
-                dividerSize = a.getDimensionPixelOffset(R.styleable.WheelView_wheelDividerSize, dividerSize);
-                dividerPadding = a.getDimensionPixelSize(R.styleable.WheelView_wheelDividerPadding, dividerPadding);
+                TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XWheelView);
+                orientation = a.getInt(R.styleable.XWheelView_xp_wheelOrientation, orientation);
+                itemCount = a.getInt(R.styleable.XWheelView_xp_wheelItemCount, itemCount);
+                itemSize = a.getDimensionPixelSize(R.styleable.XWheelView_xp_wheelItemSize, itemSize);
+                gravity = a.getInt(R.styleable.XWheelView_xp_wheelGravity, gravity);
+                textSize = a.getDimension(R.styleable.XWheelView_xp_wheelTextSize, textSize);
+                textColor = a.getColor(R.styleable.XWheelView_xp_wheelTextColor, textColor);
+                textCenterColor = a.getColor(R.styleable.XWheelView_xp_wheelTextCenterColor, textCenterColor);
+                gradient = a.getBoolean(R.styleable.XWheelView_xp_wheelGradient, gradient);
+                dividerColor = a.getColor(R.styleable.XWheelView_xp_wheelDividerColor, dividerColor);
+                dividerSize = a.getDimensionPixelOffset(R.styleable.XWheelView_xp_wheelDividerSize, dividerSize);
+                dividerPadding = a.getDimensionPixelSize(R.styleable.XWheelView_xp_wheelDividerPadding, dividerPadding);
+                textSelectedBold = a.getBoolean(R.styleable.XWheelView_xp_wheelTextSelectedBold, textSelectedBold);
+                textNormalBold = a.getBoolean(R.styleable.XWheelView_xp_wheelTextNormalBold, textNormalBold);
                 a.recycle();
             }
         }
@@ -252,11 +277,25 @@ public final class WheelParams {
             return this;
         }
 
+        public Builder setTextSelectedBold(boolean textSelectedBold) {
+            this.textSelectedBold = textSelectedBold;
+            return this;
+        }
+
+        public Builder setTextNormalBold(boolean textNormalBold) {
+            this.textNormalBold = textNormalBold;
+            return this;
+        }
+
         public WheelParams build() {
-            if (itemCount <= 0) itemCount = DEF_ITEM_COUNT;
-            if (itemSize <= 0) itemSize = DEF_ITEM_SIZE;
-            if (textSize <= 0) textSize = DEF_TEXT_SIZE;
-            if (dividerSize <= 0) dividerSize = DEF_DIVIDER_SIZE;
+            if (itemCount <= 0)
+                itemCount = DEF_ITEM_COUNT;
+            if (itemSize <= 0)
+                itemSize = DEF_ITEM_SIZE;
+            if (textSize <= 0)
+                textSize = DEF_TEXT_SIZE;
+            if (dividerSize <= 0)
+                dividerSize = DEF_DIVIDER_SIZE;
             return new WheelParams(this);
         }
     }

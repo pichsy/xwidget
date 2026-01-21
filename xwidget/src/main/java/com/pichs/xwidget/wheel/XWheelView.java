@@ -25,62 +25,60 @@ import java.util.List;
 
 /**
  * 真正的3D WheelView, 内部核心类 {@link DrawManager}, {@link WheelParams}
- * Created by you on 2017/3/20.
- * 作QQ:86207610
  */
-public final class WheelView extends ViewGroup {
-    //无效的位置
+public final class XWheelView extends ViewGroup {
+    // 无效的位置
     public static final int IDLE_POSITION = -1;
-    //没有指定宽或高时的默认大小
+    // 没有指定宽或高时的默认大小
     private static final int DEF_SIZE = WheelParams.dp2px(128);
-    //WheelView相关参数
+    // WheelView相关参数
     private WheelParams mWheelParams;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
 
-    //绘制器管理
+    // 绘制器管理
     private DrawManager mDrawManager;
-    //RecyclerView adapter
+    // RecyclerView adapter
     private WheelAdapter mWheelAdapter;
-    //WheelView Adapter
+    // WheelView Adapter
     private Adapter mAdapter;
     private WheelViewObserver mObserver;
-    //滑动监听用于selectedIndex回调
+    // 滑动监听用于selectedIndex回调
     private OnScrollListener mScrollListener;
 
-    //当前选中的项
+    // 当前选中的项
     private int mSelectedPosition = IDLE_POSITION;
-    //itemSelected
+    // itemSelected
     private List<OnItemSelectedListener> mSelectedListeners;
-    //WheelView是否已经附着到窗体中
+    // WheelView是否已经附着到窗体中
     private boolean hasAttachedToWindow = false;
 
-    //当前ViewGroup测量的矩阵与子控件要显示的矩阵
+    // 当前ViewGroup测量的矩阵与子控件要显示的矩阵
     private final Rect mContainerRect = new Rect();
     private final Rect mChildRect = new Rect();
 
-    public WheelView(@NonNull Context context) {
+    public XWheelView(@NonNull Context context) {
         super(context);
         initialize(context, null);
     }
 
-    public WheelView(@NonNull Context context, @NonNull WheelParams params) {
+    public XWheelView(@NonNull Context context, @NonNull WheelParams params) {
         this(context, params, new WheelDrawManager(), new SimpleItemPainter());
     }
 
-    //用代码生成控件
-    public WheelView(@NonNull Context context, @NonNull WheelParams params,
-                     @NonNull DrawManager drawManager, @NonNull ItemPainter painter) {
+    // 用代码生成控件
+    public XWheelView(@NonNull Context context, @NonNull WheelParams params,
+            @NonNull DrawManager drawManager, @NonNull ItemPainter painter) {
         super(context);
         initialize(context, params, drawManager, painter);
     }
 
-    public WheelView(@NonNull Context context, AttributeSet attrs) {
+    public XWheelView(@NonNull Context context, AttributeSet attrs) {
         super(context, attrs);
         initialize(context, attrs);
     }
 
-    public WheelView(@NonNull Context context, AttributeSet attrs, int defStyleAttr) {
+    public XWheelView(@NonNull Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialize(context, attrs);
     }
@@ -95,10 +93,12 @@ public final class WheelView extends ViewGroup {
         mRecyclerView = new RecyclerView(context);
         mRecyclerView.setId(ViewCompat.generateViewId());
         mRecyclerView.setHasFixedSize(true);
+        // 禁用边缘滚动效果
+        mRecyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
         mLayoutManager = new LinearLayoutManager(context, mWheelParams.getLayoutOrientation(), false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        //让滑动结束时都能定到中心位置
+        // 让滑动结束时都能定到中心位置
         new LinearSnapHelper().attachToRecyclerView(mRecyclerView);
 
         mWheelAdapter = new WheelAdapter(mWheelParams);
@@ -113,22 +113,22 @@ public final class WheelView extends ViewGroup {
 
     @Override
     public void addView(View child, int index, LayoutParams params) {
-        throw new UnsupportedOperationException("addView(View...) is not supported in WheelView");
+        throw new UnsupportedOperationException("addView(View...) is not supported in XWheelView");
     }
 
     @Override
     public void removeView(View child) {
-        throw new UnsupportedOperationException("removeView(View) is not supported in WheelView");
+        throw new UnsupportedOperationException("removeView(View) is not supported in XWheelView");
     }
 
     @Override
     public void removeViewAt(int index) {
-        throw new UnsupportedOperationException("removeViewAt(int) is not supported in WheelView");
+        throw new UnsupportedOperationException("removeViewAt(int) is not supported in XWheelView");
     }
 
     @Override
     public void removeAllViews() {
-        throw new UnsupportedOperationException("removeAllViews() is not supported in WheelView");
+        throw new UnsupportedOperationException("removeAllViews() is not supported in XWheelView");
     }
 
     @Override
@@ -139,7 +139,7 @@ public final class WheelView extends ViewGroup {
         LayoutParams childParams = mRecyclerView.getLayoutParams();
         LayoutParams layoutParams = getLayoutParams();
         if (mWheelParams.isVertical()) {
-            //非精准测量给默认值且不是linearlayout的layout_weight或者ConstraintLayout等之类的权重布局
+            // 非精准测量给默认值且不是linearlayout的layout_weight或者ConstraintLayout等之类的权重布局
             if (MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.EXACTLY
                     && (layoutParams != null && layoutParams.width != 0)) {
                 childParams.width = Math.max(DEF_SIZE, getSuggestedMinimumWidth() - paddingLeftRight);
@@ -201,7 +201,8 @@ public final class WheelView extends ViewGroup {
      * 分发selected事件监听
      */
     private void dispatchOnSelectIndexChanged(int index) {
-        if (mSelectedPosition == index) return;
+        if (mSelectedPosition == index)
+            return;
         mSelectedPosition = index;
         if (mSelectedListeners != null) {
             for (OnItemSelectedListener listener : mSelectedListeners) {
@@ -266,7 +267,7 @@ public final class WheelView extends ViewGroup {
         mWheelAdapter.notifyDataSetChanged();
     }
 
-    //设置item绘制器
+    // 设置item绘制器
     public void setItemPainter(@NonNull ItemPainter painter) {
         mDrawManager.setItemPainter(painter);
         invalidate();
@@ -280,7 +281,8 @@ public final class WheelView extends ViewGroup {
     }
 
     public void addOnItemSelectedListener(OnItemSelectedListener listener) {
-        if (mSelectedListeners == null) mSelectedListeners = new ArrayList<>();
+        if (mSelectedListeners == null)
+            mSelectedListeners = new ArrayList<>();
         mSelectedListeners.add(listener);
     }
 
@@ -314,14 +316,14 @@ public final class WheelView extends ViewGroup {
         return mAdapter;
     }
 
-    /** -------------------------- inner class --------------------------*/
+    /** -------------------------- inner class -------------------------- */
 
     /**
      * Item selected
      */
     public interface OnItemSelectedListener {
 
-        void onItemSelected(WheelView wheelView, int index);
+        void onItemSelected(XWheelView wheelView, int index);
     }
 
     /**
@@ -350,7 +352,8 @@ public final class WheelView extends ViewGroup {
 
         public abstract int getItemCount();
 
-        @NonNull public abstract String getItem(int position);
+        @NonNull
+        public abstract String getItem(int position);
     }
 
     /**
@@ -374,8 +377,10 @@ public final class WheelView extends ViewGroup {
     private class OnScrollListener extends RecyclerView.OnScrollListener {
         @Override
         public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-            if (newState != RecyclerView.SCROLL_STATE_IDLE) return;
-            if (mDrawManager.centerItemPosition == IDLE_POSITION) return;
+            if (newState != RecyclerView.SCROLL_STATE_IDLE)
+                return;
+            if (mDrawManager.centerItemPosition == IDLE_POSITION)
+                return;
             dispatchOnSelectIndexChanged(mDrawManager.centerItemPosition);
         }
     }
@@ -395,15 +400,15 @@ public final class WheelView extends ViewGroup {
             return wheelParams;
         }
 
-        //画item
+        // 画item
         protected void drawItem(@NonNull Canvas c, @NonNull Rect itemRect, int alpha, @NonNull String item) {
         }
 
-        //画中心item
+        // 画中心item
         protected void drawCenterItem(@NonNull Canvas c, @NonNull Rect itemRect, int alpha, @NonNull String item) {
         }
 
-        //画分割线
+        // 画分割线
         protected void drawDivider(@NonNull Canvas c, @NonNull Rect parentRect) {
         }
     }
@@ -413,15 +418,15 @@ public final class WheelView extends ViewGroup {
      * 不旋转处理的管理类{@link LinearDrawManager}, Wheel效果的{@link WheelDrawManager}
      */
     public static abstract class DrawManager extends RecyclerView.ItemDecoration {
-        //Wheel相关参数
+        // Wheel相关参数
         WheelParams wheelParams;
-        //Item绘制器
+        // Item绘制器
         ItemPainter itemPainter;
-        //整个WheelView的显示区域
+        // 整个WheelView的显示区域
         final Rect wvRect = new Rect();
-        //item显示区域
+        // item显示区域
         final Rect itemRect = new Rect();
-        //中心位置
+        // 中心位置
         int centerItemPosition = IDLE_POSITION;
 
         @CallSuper
@@ -459,19 +464,23 @@ public final class WheelView extends ViewGroup {
 
         @Override
         public final void getItemOffsets(@NonNull Rect outRect, @NonNull View view,
-                                   @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+                @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         }
 
         @Override
-        public final void onDrawOver(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+        public final void onDrawOver(@NonNull Canvas c, @NonNull RecyclerView parent,
+                @NonNull RecyclerView.State state) {
         }
 
         @Override
         public void onDraw(@NonNull Canvas c, @NonNull RecyclerView rv, @NonNull RecyclerView.State state) {
-            if (wheelParams == null || itemPainter == null) return;
-            if (rv.getLayoutManager() == null || !(rv.getAdapter() instanceof WheelAdapter)) return;
+            if (wheelParams == null || itemPainter == null)
+                return;
+            if (rv.getLayoutManager() == null || !(rv.getAdapter() instanceof WheelAdapter))
+                return;
             int wheelCount = rv.getLayoutManager().getItemCount() - wheelParams.getShowItemCount() * 2;
-            if (wheelCount <= 0) return;
+            if (wheelCount <= 0)
+                return;
             WheelAdapter adapter = (WheelAdapter) rv.getAdapter();
             wvRect.set(rv.getPaddingLeft(), rv.getPaddingTop(),
                     rv.getWidth() - rv.getPaddingRight(), rv.getHeight() - rv.getPaddingBottom());
@@ -480,7 +489,7 @@ public final class WheelView extends ViewGroup {
                 View itemView = rv.getChildAt(i);
                 int adapterPosition = rv.getChildAdapterPosition(itemView) - wheelParams.getShowItemCount();
                 if (adapterPosition < 0 || adapterPosition >= wheelCount) {
-                    continue; //itemCount为空白项,不考虑 || 超过列表的也是空白项
+                    continue; // itemCount为空白项,不考虑 || 超过列表的也是空白项
                 }
                 itemRect.set(itemView.getLeft(), itemView.getTop(), itemView.getRight(), itemView.getBottom());
                 decorationItem(c, itemRect, adapterPosition, adapter.getItem(adapterPosition));
@@ -488,32 +497,33 @@ public final class WheelView extends ViewGroup {
             decorationOver(c, wvRect);
         }
 
-        //不处理
+        // 不处理
         protected WheelParams.ItemShowOrder getShowOrder() {
             return null;
         }
 
-        //Canvas预装饰
+        // Canvas预装饰
         protected void preDecoration(@NonNull Canvas c, @NonNull Rect parentRect) {
             centerItemPosition = IDLE_POSITION;
         }
 
-        //画item时的画笔装饰
-        protected abstract void decorationItem(@NonNull Canvas c, @NonNull Rect itemRect, int position, @NonNull String item);
+        // 画item时的画笔装饰
+        protected abstract void decorationItem(@NonNull Canvas c, @NonNull Rect itemRect, int position,
+                @NonNull String item);
 
-        //画完item时的画笔装饰
+        // 画完item时的画笔装饰
         protected void decorationOver(@NonNull Canvas c, @NonNull Rect parentRect) {
             itemPainter.drawDivider(c, parentRect);
         }
     }
 
-    //RecyclerView实际显示的adapter
+    // RecyclerView实际显示的adapter
     static class WheelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-        //wheel params
+        // wheel params
         final WheelParams wheelParams;
-        //wheel adapter
+        // wheel adapter
         Adapter adapter = null;
-        //ItemCount为null时重新计算,亦防止重复计算
+        // ItemCount为null时重新计算,亦防止重复计算
         Integer itemCounts;
 
         public WheelAdapter(WheelParams wheelParams) {
@@ -550,8 +560,10 @@ public final class WheelView extends ViewGroup {
         public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         }
 
-        @NonNull private String getItem(int position) {
-            if (adapter != null) return adapter.getItem(position);
+        @NonNull
+        private String getItem(int position) {
+            if (adapter != null)
+                return adapter.getItem(position);
             return "";
         }
     }
@@ -560,11 +572,11 @@ public final class WheelView extends ViewGroup {
      * 常用绘制器, 亦可重写此类
      */
     public static class SimpleItemPainter extends ItemPainter {
-        //text画笔
+        // text画笔
         private final Paint textPaint = new TextPaint();
-        //分割线Paint
+        // 分割线Paint
         private final Paint dividerPaint = new Paint();
-        //画文本居中时文本画笔的中心位置, 画居中文字时
+        // 画文本居中时文本画笔的中心位置, 画居中文字时
         private float textFontCenter;
 
         @Override
@@ -585,14 +597,22 @@ public final class WheelView extends ViewGroup {
         protected void drawItem(@NonNull Canvas c, @NonNull Rect itemRect, int alpha, @NonNull String item) {
             textPaint.setColor(wheelParams.textColor);
             textPaint.setAlpha(alpha);
+            // 设置未选中文字加粗
+            textPaint.setFakeBoldText(wheelParams.textNormalBold);
             c.drawText(item, itemRect.exactCenterX(), itemRect.exactCenterY() - textFontCenter, textPaint);
+            // 恢复字体样式
+            textPaint.setFakeBoldText(false);
         }
 
         @Override
         protected void drawCenterItem(@NonNull Canvas c, @NonNull Rect itemRect, int alpha, @NonNull String item) {
             textPaint.setColor(wheelParams.textCenterColor);
             textPaint.setAlpha(alpha);
+            // 设置选中文字加粗
+            textPaint.setFakeBoldText(wheelParams.textSelectedBold);
             c.drawText(item, itemRect.exactCenterX(), itemRect.exactCenterY() - textFontCenter, textPaint);
+            // 恢复字体样式
+            textPaint.setFakeBoldText(false);
         }
 
         @Override

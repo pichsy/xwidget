@@ -5,7 +5,7 @@ import com.hjq.toast.Toaster
 import com.pichs.app.xwidget.base.BaseFragment
 import com.pichs.app.xwidget.databinding.FragmentWheelviewBinding
 import com.pichs.app.xwidget.ktext.click
-import com.pichs.xwidget.wheel.WheelView
+import com.pichs.xwidget.wheel.XWheelView
 
 class WheelViewFragment : BaseFragment<FragmentWheelviewBinding>() {
     
@@ -20,7 +20,7 @@ class WheelViewFragment : BaseFragment<FragmentWheelviewBinding>() {
     private fun setupWheelViews() {
         // 示例1：垂直滚轮 - 3D效果
         val cities = arrayOf("北京", "上海", "广州", "深圳", "杭州", "成都", "重庆", "南京", "武汉", "西安")
-        binding.wheelView1.setAdapter(object : WheelView.Adapter() {
+        binding.wheelView1.setAdapter(object : XWheelView.Adapter() {
             override fun getItemCount(): Int = cities.size
             override fun getItem(position: Int): String = cities[position]
         })
@@ -30,7 +30,7 @@ class WheelViewFragment : BaseFragment<FragmentWheelviewBinding>() {
         
         // 示例2：垂直滚轮 - 线性效果
         val weekdays = arrayOf("周一", "周二", "周三", "周四", "周五", "周六", "周日")
-        binding.wheelView2.setAdapter(object : WheelView.Adapter() {
+        binding.wheelView2.setAdapter(object : XWheelView.Adapter() {
             override fun getItemCount(): Int = weekdays.size
             override fun getItem(position: Int): String = weekdays[position]
         })
@@ -40,7 +40,7 @@ class WheelViewFragment : BaseFragment<FragmentWheelviewBinding>() {
         
         // 示例3：水平滚轮 - 3D效果
         val hours = Array(24) { String.format("%02d:00", it) }
-        binding.wheelView3.setAdapter(object : WheelView.Adapter() {
+        binding.wheelView3.setAdapter(object : XWheelView.Adapter() {
             override fun getItemCount(): Int = hours.size
             override fun getItem(position: Int): String = hours[position]
         })
@@ -50,7 +50,7 @@ class WheelViewFragment : BaseFragment<FragmentWheelviewBinding>() {
         
         // 示例4：数字选择器
         val numbers = Array(100) { (it + 1).toString() }
-        binding.wheelView4.setAdapter(object : WheelView.Adapter() {
+        binding.wheelView4.setAdapter(object : XWheelView.Adapter() {
             override fun getItemCount(): Int = numbers.size
             override fun getItem(position: Int): String = numbers[position]
         })

@@ -91,7 +91,7 @@ android {
     applicationVariants.all {
         outputs.all {
             if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
-                this.outputFileName = "应用市场-${versionName}-${versionCode}-${releaseTime()}-${name}.apk"
+                this.outputFileName = "xwidget-${versionName}-${versionCode}-${releaseTime()}-${name}.apk"
             }
         }
     }

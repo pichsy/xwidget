@@ -53,21 +53,22 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <com.pichs.xwidget.wheel.WheelView
+            <com.pichs.xwidget.wheel.XWheelView
                 android:id="@+id/wheel_view_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:wheelOrientation="vertical"
-                app:wheelItemCount="3"
-                app:wheelItemSize="50dp"
-                app:wheelGravity="center"
-                app:wheelTextSize="18sp"
-                app:wheelTextColor="#999999"
-                app:wheelTextCenterColor="#FF5722"
-                app:wheelGradient="true"
-                app:wheelDividerSize="1dp"
-                app:wheelDividerColor="#FF5722" />
+                app:xp_wheelOrientation="vertical"
+                app:xp_wheelItemCount="3"
+                app:xp_wheelItemSize="50dp"
+                app:xp_wheelGravity="center"
+                app:xp_wheelTextSize="18sp"
+                app:xp_wheelTextColor="#999999"
+                app:xp_wheelTextCenterColor="#FF5722"
+                app:xp_wheelTextSelectedBold="true"
+                app:xp_wheelGradient="true"
+                app:xp_wheelDividerSize="1dp"
+                app:xp_wheelDividerColor="#FF5722" />
 
             <com.pichs.xwidget.view.XTextView
                 android:id="@+id/tv_result_1"
@@ -99,21 +100,23 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <com.pichs.xwidget.wheel.WheelView
+            <com.pichs.xwidget.wheel.XWheelView
                 android:id="@+id/wheel_view_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:wheelOrientation="vertical"
-                app:wheelItemCount="2"
-                app:wheelItemSize="45dp"
-                app:wheelGravity="center"
-                app:wheelTextSize="16sp"
-                app:wheelTextColor="#AAAAAA"
-                app:wheelTextCenterColor="#2196F3"
-                app:wheelGradient="true"
-                app:wheelDividerSize="2dp"
-                app:wheelDividerColor="#2196F3" />
+                app:xp_wheelOrientation="vertical"
+                app:xp_wheelItemCount="2"
+                app:xp_wheelItemSize="45dp"
+                app:xp_wheelGravity="center"
+                app:xp_wheelTextSize="16sp"
+                app:xp_wheelTextColor="#AAAAAA"
+                app:xp_wheelTextCenterColor="#2196F3"
+                app:xp_wheelTextSelectedBold="true"
+                app:xp_wheelTextNormalBold="false"
+                app:xp_wheelGradient="true"
+                app:xp_wheelDividerSize="2dp"
+                app:xp_wheelDividerColor="#2196F3" />
 
             <com.pichs.xwidget.view.XTextView
                 android:id="@+id/tv_result_2"
@@ -145,20 +148,22 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <com.pichs.xwidget.wheel.WheelView
+            <com.pichs.xwidget.wheel.XWheelView
                 android:id="@+id/wheel_view_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:wheelOrientation="horizontal"
-                app:wheelItemCount="3"
-                app:wheelItemSize="80dp"
-                app:wheelTextSize="16sp"
-                app:wheelTextColor="#CCCCCC"
-                app:wheelTextCenterColor="#4CAF50"
-                app:wheelGradient="true"
-                app:wheelDividerSize="1dp"
-                app:wheelDividerColor="#4CAF50" />
+                app:xp_wheelOrientation="horizontal"
+                app:xp_wheelItemCount="3"
+                app:xp_wheelItemSize="80dp"
+                app:xp_wheelTextSize="16sp"
+                app:xp_wheelTextColor="#CCCCCC"
+                app:xp_wheelTextCenterColor="#4CAF50"
+                app:xp_wheelTextSelectedBold="true"
+                app:xp_wheelTextNormalBold="true"
+                app:xp_wheelGradient="true"
+                app:xp_wheelDividerSize="1dp"
+                app:xp_wheelDividerColor="#4CAF50" />
 
             <com.pichs.xwidget.view.XTextView
                 android:id="@+id/tv_result_3"
@@ -190,22 +195,24 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <com.pichs.xwidget.wheel.WheelView
+            <com.pichs.xwidget.wheel.XWheelView
                 android:id="@+id/wheel_view_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                app:wheelOrientation="vertical"
-                app:wheelItemCount="4"
-                app:wheelItemSize="40dp"
-                app:wheelGravity="center"
-                app:wheelTextSize="20sp"
-                app:wheelTextColor="#DDDDDD"
-                app:wheelTextCenterColor="#9C27B0"
-                app:wheelGradient="true"
-                app:wheelDividerSize="1dp"
-                app:wheelDividerColor="#9C27B0"
-                app:wheelDividerPadding="0dp" />
+                app:xp_wheelOrientation="vertical"
+                app:xp_wheelItemCount="4"
+                app:xp_wheelItemSize="40dp"
+                app:xp_wheelGravity="center"
+                app:xp_wheelTextSize="20sp"
+                app:xp_wheelTextColor="#DDDDDD"
+                app:xp_wheelTextCenterColor="#9C27B0"
+                app:xp_wheelTextSelectedBold="false"
+                app:xp_wheelTextNormalBold="true"
+                app:xp_wheelGradient="true"
+                app:xp_wheelDividerSize="1dp"
+                app:xp_wheelDividerColor="#9C27B0"
+                app:xp_wheelDividerPadding="0dp" />
 
             <com.pichs.xwidget.view.XTextView
                 android:id="@+id/tv_result_4"

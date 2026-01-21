@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
  * Created by you on 2017/3/20.
  * 作QQ:86207610
  */
-public class WheelDrawManager extends WheelView.DrawManager {
+public class WheelDrawManager extends XWheelView.DrawManager {
     /**
      * 保留2个相素让RecyclerView的顶部和底部可以多预画一个item, {@link WheelItemShowOrder}
      */
@@ -80,7 +80,7 @@ public class WheelDrawManager extends WheelView.DrawManager {
         //Log.d("you", "drawVerticalItem degree " + rotateDegreeX);
         //计算中心item, 优先最靠近中心区域的为中心点
         boolean isCenterItem = false;
-        if (centerItemPosition == WheelView.IDLE_POSITION) {
+        if (centerItemPosition == XWheelView.IDLE_POSITION) {
             isCenterItem = Math.abs(scrollOffY) <= centerItemScrollOff;
             if (isCenterItem) {
                 centerItemPosition = position;
@@ -139,7 +139,7 @@ public class WheelDrawManager extends WheelView.DrawManager {
         //Log.d("you", "drawHorizontalItem degree " + rotateDegreeY);
 
         boolean isCenterItem = false;
-        if (centerItemPosition == WheelView.IDLE_POSITION) {
+        if (centerItemPosition == XWheelView.IDLE_POSITION) {
             isCenterItem = Math.abs(scrollOffX) <= centerItemScrollOff;
             if (isCenterItem) {
                 centerItemPosition = position;

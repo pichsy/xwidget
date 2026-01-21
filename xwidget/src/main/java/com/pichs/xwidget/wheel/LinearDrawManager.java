@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
  * Created by you on 2017/3/20.
  * 作QQ:86207610
  */
-public class LinearDrawManager extends WheelView.DrawManager {
+public class LinearDrawManager extends XWheelView.DrawManager {
 
     //用于计算item偏移值对应的alpha值
     private float maxCenterScrollOff;
@@ -42,7 +42,7 @@ public class LinearDrawManager extends WheelView.DrawManager {
 
         //中心计算
         boolean isCenterItem = false;
-        if (centerItemPosition == WheelView.IDLE_POSITION) {
+        if (centerItemPosition == XWheelView.IDLE_POSITION) {
             isCenterItem = Math.abs(scrollOff) <= centerItemScrollOff;
             if (isCenterItem) {
                 centerItemPosition = position;
