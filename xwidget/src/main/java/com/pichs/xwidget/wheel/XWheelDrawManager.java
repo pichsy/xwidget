@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
  * Created by you on 2017/3/20.
  * 作QQ:86207610
  */
-public class WheelDrawManager extends XWheelView.DrawManager {
+public class XWheelDrawManager extends XWheelView.DrawManager {
     /**
      * 保留2个相素让RecyclerView的顶部和底部可以多预画一个item, {@link WheelItemShowOrder}
      */
@@ -31,13 +31,13 @@ public class WheelDrawManager extends XWheelView.DrawManager {
 
     final WheelItemShowOrder itemShowOrder = new WheelItemShowOrder();
 
-    public WheelDrawManager() {
+    public XWheelDrawManager() {
         camera = new Camera();
         matrix = new Matrix();
     }
 
     @Override
-    protected void setWheelParams(@NonNull WheelParams params) {
+    protected void setWheelParams(@NonNull XWheelParams params) {
         super.setWheelParams(params);
         this.itemDegree = 180.f / (params.itemCount * 2 + 1);
         this.wheelRadio = (float) ((params.itemSize / 2.f) / Math.tan(Math.toRadians(itemDegree / 2.f)));
@@ -54,7 +54,7 @@ public class WheelDrawManager extends XWheelView.DrawManager {
     }
 
     @Override
-    protected WheelParams.ItemShowOrder getShowOrder() {
+    protected XWheelParams.ItemShowOrder getShowOrder() {
         return itemShowOrder;
     }
 
@@ -101,9 +101,9 @@ public class WheelDrawManager extends XWheelView.DrawManager {
 
         //根据对齐方式,计算出垂直布局时X轴移动的位置
         float translateX = wvRect.exactCenterX();
-        if (wheelParams.gravity == WheelParams.LEFT) {
+        if (wheelParams.gravity == XWheelParams.LEFT) {
             translateX *= 1 + DEF_SCALE;
-        } else if (wheelParams.gravity == WheelParams.RIGHT) {
+        } else if (wheelParams.gravity == XWheelParams.RIGHT) {
             translateX *= 1 - DEF_SCALE;
         }
         matrix.preTranslate(-translateX, -itemCenterY);
@@ -179,7 +179,7 @@ public class WheelDrawManager extends XWheelView.DrawManager {
         return (int) (255 * al);
     }
 
-    static class WheelItemShowOrder implements WheelParams.ItemShowOrder {
+    static class WheelItemShowOrder implements XWheelParams.ItemShowOrder {
         //通过计算,在item3个或者以上的时候,旋转后的WheelView高度会比实际高度小一个item的大小
         //计算方式可以详见博客中的原理图,计算出三角形的腰长即为半径
         //item在6个或者以上时,旋转后的高度会相差大于2, 因此3-5个时的效果最好,不会留过多的空白区域

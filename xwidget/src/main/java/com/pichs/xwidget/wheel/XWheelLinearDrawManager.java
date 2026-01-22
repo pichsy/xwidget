@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
  * Created by you on 2017/3/20.
  * 作QQ:86207610
  */
-public class LinearDrawManager extends XWheelView.DrawManager {
+public class XWheelLinearDrawManager extends XWheelView.DrawManager {
 
     //用于计算item偏移值对应的alpha值
     private float maxCenterScrollOff;
@@ -18,7 +18,7 @@ public class LinearDrawManager extends XWheelView.DrawManager {
     float centerItemScrollOff;
 
     @Override
-    protected void setWheelParams(@NonNull WheelParams params) {
+    protected void setWheelParams(@NonNull XWheelParams params) {
         super.setWheelParams(params);
         maxCenterScrollOff = (params.getShowItemCount() + 1) * params.itemSize;
         centerItemScrollOff = params.itemSize / 2.f;

@@ -24,15 +24,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 真正的3D WheelView, 内部核心类 {@link DrawManager}, {@link WheelParams}
+ * 真正的3D WheelView, 内部核心类 {@link DrawManager}, {@link XWheelParams}
  */
 public final class XWheelView extends ViewGroup {
     // 无效的位置
     public static final int IDLE_POSITION = -1;
     // 没有指定宽或高时的默认大小
-    private static final int DEF_SIZE = WheelParams.dp2px(128);
+    private static final int DEF_SIZE = XWheelParams.dp2px(128);
     // WheelView相关参数
-    private WheelParams mWheelParams;
+    private XWheelParams mWheelParams;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;
 
@@ -62,12 +62,12 @@ public final class XWheelView extends ViewGroup {
         initialize(context, null);
     }
 
-    public XWheelView(@NonNull Context context, @NonNull WheelParams params) {
-        this(context, params, new WheelDrawManager(), new SimpleItemPainter());
+    public XWheelView(@NonNull Context context, @NonNull XWheelParams params) {
+        this(context, params, new XWheelDrawManager(), new SimpleItemPainter());
     }
 
     // 用代码生成控件
-    public XWheelView(@NonNull Context context, @NonNull WheelParams params,
+    public XWheelView(@NonNull Context context, @NonNull XWheelParams params,
             @NonNull DrawManager drawManager, @NonNull ItemPainter painter) {
         super(context);
         initialize(context, params, drawManager, painter);
@@ -84,11 +84,11 @@ public final class XWheelView extends ViewGroup {
     }
 
     private void initialize(@NonNull Context context, AttributeSet attrs) {
-        WheelParams params = new WheelParams.Builder(context, attrs).build();
-        initialize(context, params, new WheelDrawManager(), new SimpleItemPainter());
+        XWheelParams params = new XWheelParams.Builder(context, attrs).build();
+        initialize(context, params, new XWheelDrawManager(), new SimpleItemPainter());
     }
 
-    private void initialize(Context context, WheelParams params, DrawManager drawManager, ItemPainter painter) {
+    private void initialize(Context context, XWheelParams params, DrawManager drawManager, ItemPainter painter) {
         this.mWheelParams = params;
         mRecyclerView = new RecyclerView(context);
         mRecyclerView.setId(ViewCompat.generateViewId());
@@ -234,9 +234,9 @@ public final class XWheelView extends ViewGroup {
     /**
      * 设置params, 用于代码生成WheelView时
      *
-     * @param wheelParams 新的参数 详见{@link WheelParams.Builder}
+     * @param wheelParams 新的参数 详见{@link XWheelParams.Builder}
      */
-    public void setWheelParams(@NonNull WheelParams wheelParams) {
+    public void setWheelParams(@NonNull XWheelParams wheelParams) {
         mRecyclerView.removeItemDecoration(mDrawManager);
         mWheelParams = wheelParams;
         mDrawManager.setWheelParams(mWheelParams);
@@ -297,7 +297,7 @@ public final class XWheelView extends ViewGroup {
     }
 
     @NonNull
-    public WheelParams getWheelParams() {
+    public XWheelParams getWheelParams() {
         return mWheelParams;
     }
 
@@ -389,14 +389,14 @@ public final class XWheelView extends ViewGroup {
      * Item绘制器
      */
     public static class ItemPainter {
-        WheelParams wheelParams;
+        XWheelParams wheelParams;
 
         @CallSuper
-        protected void setWheelParams(@NonNull WheelParams params) {
+        protected void setWheelParams(@NonNull XWheelParams params) {
             this.wheelParams = params;
         }
 
-        protected final WheelParams getWheelParams() {
+        protected final XWheelParams getWheelParams() {
             return wheelParams;
         }
 
@@ -415,11 +415,11 @@ public final class XWheelView extends ViewGroup {
 
     /**
      * 绘制器管理, 亦可重写此类实现想要的效果
-     * 不旋转处理的管理类{@link LinearDrawManager}, Wheel效果的{@link WheelDrawManager}
+     * 不旋转处理的管理类{@link XWheelLinearDrawManager}, Wheel效果的{@link XWheelDrawManager}
      */
     public static abstract class DrawManager extends RecyclerView.ItemDecoration {
         // Wheel相关参数
-        WheelParams wheelParams;
+        XWheelParams wheelParams;
         // Item绘制器
         ItemPainter itemPainter;
         // 整个WheelView的显示区域
@@ -430,7 +430,7 @@ public final class XWheelView extends ViewGroup {
         int centerItemPosition = IDLE_POSITION;
 
         @CallSuper
-        protected void setWheelParams(@NonNull WheelParams params) {
+        protected void setWheelParams(@NonNull XWheelParams params) {
             params.setItemShowOrder(getShowOrder());
             this.wheelParams = params;
             if (itemPainter != null) {
@@ -446,7 +446,7 @@ public final class XWheelView extends ViewGroup {
             this.itemPainter = itemPainter;
         }
 
-        public final WheelParams getWheelParams() {
+        public final XWheelParams getWheelParams() {
             return wheelParams;
         }
 
@@ -498,7 +498,7 @@ public final class XWheelView extends ViewGroup {
         }
 
         // 不处理
-        protected WheelParams.ItemShowOrder getShowOrder() {
+        protected XWheelParams.ItemShowOrder getShowOrder() {
             return null;
         }
 
@@ -520,13 +520,13 @@ public final class XWheelView extends ViewGroup {
     // RecyclerView实际显示的adapter
     static class WheelAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         // wheel params
-        final WheelParams wheelParams;
+        final XWheelParams wheelParams;
         // wheel adapter
         Adapter adapter = null;
         // ItemCount为null时重新计算,亦防止重复计算
         Integer itemCounts;
 
-        public WheelAdapter(WheelParams wheelParams) {
+        public WheelAdapter(XWheelParams wheelParams) {
             this.wheelParams = wheelParams;
         }
 
@@ -580,7 +580,7 @@ public final class XWheelView extends ViewGroup {
         private float textFontCenter;
 
         @Override
-        protected void setWheelParams(@NonNull WheelParams params) {
+        protected void setWheelParams(@NonNull XWheelParams params) {
             super.setWheelParams(params);
             textPaint.setAntiAlias(true);
             textPaint.setTextAlign(Paint.Align.CENTER);

@@ -21,7 +21,7 @@ import java.lang.annotation.RetentionPolicy;
  * Created by you on 2017/3/20.
  * 作QQ:86207610
  */
-public final class WheelParams {
+public final class XWheelParams {
     /**
      * 垂直与水平布局两种状态
      */
@@ -94,7 +94,7 @@ public final class WheelParams {
     // ItemShowOrder
     private ItemShowOrder itemShowOrder;
 
-    private WheelParams(Builder builder) {
+    private XWheelParams(Builder builder) {
         this.orientation = builder.orientation;
         this.itemCount = builder.itemCount;
         this.itemSize = builder.itemSize;
@@ -186,7 +186,7 @@ public final class WheelParams {
         public Builder() {
         }
 
-        private Builder(WheelParams params) {
+        private Builder(XWheelParams params) {
             this.orientation = params.orientation;
             this.itemCount = params.itemCount;
             this.itemSize = params.itemSize;
@@ -287,7 +287,7 @@ public final class WheelParams {
             return this;
         }
 
-        public WheelParams build() {
+        public XWheelParams build() {
             if (itemCount <= 0)
                 itemCount = DEF_ITEM_COUNT;
             if (itemSize <= 0)
@@ -296,7 +296,7 @@ public final class WheelParams {
                 textSize = DEF_TEXT_SIZE;
             if (dividerSize <= 0)
                 dividerSize = DEF_DIVIDER_SIZE;
-            return new WheelParams(this);
+            return new XWheelParams(this);
         }
     }
 
