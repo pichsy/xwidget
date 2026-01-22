@@ -7,8 +7,6 @@ import androidx.annotation.NonNull;
 
 /**
  * 线性Canvas装饰类, 不处理旋转, 可只处理alpha
- * Created by you on 2017/3/20.
- * 作QQ:86207610
  */
 public class XWheelLinearDrawManager extends XWheelView.DrawManager {
 

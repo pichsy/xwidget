@@ -9,8 +9,6 @@ import androidx.annotation.NonNull;
 
 /**
  * 3D滚轮旋转Canvas处理类
- * Created by you on 2017/3/20.
- * 作QQ:86207610
  */
 public class XWheelDrawManager extends XWheelView.DrawManager {
     /**

@@ -18,8 +18,6 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * WheelView 相关参数类属性
- * Created by you on 2017/3/20.
- * 作QQ:86207610
  */
 public final class XWheelParams {
     /**

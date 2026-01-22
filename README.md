@@ -15,7 +15,7 @@
 
 ### 最新版本:[![](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)](https://img.shields.io/maven-central/v/com.gitee.pichs/xwidget)
 
-      implementation 'com.gitee.pichs:xwidget:5.7.0'
+      implementation 'com.gitee.pichs:xwidget:5.8.0'
 
 <br/>
 
