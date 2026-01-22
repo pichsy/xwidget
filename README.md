@@ -37,7 +37,7 @@ implementation 'com.gitee.pichs:xwidget:5.8.0'
 
 > **🔴 关键规则：XRound 和 XCard 系列控件使用渐变/边框前必须设置背景！**
 
-在使用 **XRound 系列**（XRoundButton、XRoundConstraintLayout 等）和 **XCard 系列**（XCardConstraintLayout、XCardLinearLayout 等）时，如果要设置渐变背景或边框效果，**必须先设置 `android:background` 属性**（即使是透明色也要设置）！
+在使用 **XRound 系列**（XRoundButton、XRoundConstraintLayout 等）和 **XCard 系列**（XCardConstraintLayout、XCardLinearLayout 等）时，如果要设置渐变背景或边框效果，**必须先设置 `android:background` 属性**（即使是透明色也要设置）！,因为背景是基于GradientDrawable实现的，如果背景没有设置，那么渐变和边框效果将无法显示。 不设置背景时不生成GradientDrawable对象，以便于降低内存消耗。
 
 ```xml
 <!-- ❌ 错误示例 - 渐变和边框不会显示 -->
