@@ -44,7 +44,6 @@ implementation 'com.gitee.pichs:xwidget:5.8.0'
 <com.pichs.xwidget.roundview.XRoundButton
     android:text="按钮"
     app:xp_radius="8dp"
-    app:xp_backgroundGradientColors="#FF6B6B,#4ECDC4"
     app:xp_borderColor="#E0E0E0"
     app:xp_borderWidth="1dp" />
 
@@ -53,7 +52,6 @@ implementation 'com.gitee.pichs:xwidget:5.8.0'
     android:text="按钮"
     android:background="@android:color/transparent"
     app:xp_radius="8dp"
-    app:xp_backgroundGradientColors="#FF6B6B,#4ECDC4"
     app:xp_borderColor="#E0E0E0"
     app:xp_borderWidth="1dp" />
 ```
