@@ -130,7 +130,7 @@ public class XDisplayHelper {
      */
     public static int getPhysicalHeight(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return getScreenWidth(context);
+            return getScreenHeight(context);
         } else {
             Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
             @SuppressWarnings("rawtypes") Class c;
@@ -152,7 +152,7 @@ public class XDisplayHelper {
      */
     public static int getPhysicalWidth(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return getScreenHeight(context);
+            return getScreenWidth(context);
         } else {
             Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
             @SuppressWarnings("rawtypes") Class c;
