@@ -498,7 +498,7 @@ public class XVerificationCodeEditText extends AppCompatEditText {
                     }
                 }
             } else if (type == TYPE_HOLLOW) {
-                if (i == 0 || i == maxLength) {
+                if (i == 0) {
                     continue;
                 }
                 canvas.drawLine(boxRectF.left, boxRectF.top, boxRectF.left, boxRectF.bottom, borderPaint);
