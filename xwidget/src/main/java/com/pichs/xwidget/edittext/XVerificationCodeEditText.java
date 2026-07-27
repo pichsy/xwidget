@@ -46,6 +46,7 @@ public class XVerificationCodeEditText extends AppCompatEditText {
 
     private RectF borderRectF;
     private RectF boxRectF;//小方块、小矩形
+    private final char[] mCharBuffer = new char[1]; // 复用 char 缓冲，避免 drawText 时创建 String
 
     private int width;//可绘制宽度
     private int height;//可绘制高度
@@ -528,9 +529,10 @@ public class XVerificationCodeEditText extends AppCompatEditText {
 
     private void drawText(Canvas canvas, CharSequence charSequence) {
         for (int i = 0; i < charSequence.length(); i++) {
+            mCharBuffer[0] = charSequence.charAt(i);
             int startX = spacing * (i + 1) + boxWidth * i;
             int startY = 0;
-            int baseX = (int) (startX + boxWidth / 2 - textPaint.measureText(String.valueOf(charSequence.charAt(i))) / 2);
+            int baseX = (int) (startX + boxWidth / 2 - textPaint.measureText(mCharBuffer, 0, 1) / 2);
             int baseY = (int) (startY + boxHeight / 2 - (textPaint.descent() + textPaint.ascent()) / 2);
             int centerX = startX + boxWidth / 2;
             int centerY = startY + boxHeight / 2;
@@ -538,7 +540,7 @@ public class XVerificationCodeEditText extends AppCompatEditText {
             if (password)
                 canvas.drawCircle(centerX, centerY, radius, textPaint);
             else
-                canvas.drawText(String.valueOf(charSequence.charAt(i)), baseX, baseY, textPaint);
+                canvas.drawText(mCharBuffer, 0, 1, baseX, baseY, textPaint);
         }
 
     }
