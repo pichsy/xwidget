@@ -108,6 +108,11 @@ public class XLayoutHelper implements XILayout {
     int mBorderGradientOrientation = GradientOrientation.HORIZONTAL;
     private LinearGradient mLinearGradient;
 
+    // 缓存 OutlineProvider，避免每帧创建新对象
+    private ViewOutlineProvider mOutlineProvider;
+    // 标记 outline 参数是否已变脏，需要重建
+    private boolean mOutlineDirty = true;
+
 
     public XLayoutHelper(Context context, AttributeSet attrs, int defAttr, View owner) {
         this(context, attrs, defAttr, 0, owner);
@@ -483,7 +488,54 @@ public class XLayoutHelper implements XILayout {
             }
 
             setShadowColorInner(mShadowColor);
-            owner.setOutlineProvider(new ViewOutlineProvider() {
+            ensureOutlineProviderCreated();
+            owner.setOutlineProvider(mOutlineProvider);
+            owner.setClipToOutline(mRadius > 0);
+
+        }
+        if (isRefresh) {
+            owner.invalidate();
+        }
+    }
+
+    /**
+     * 仅更新 outline 和 elevation，不触发 invalidate（在 draw 流程内调用）。
+     */
+    private void applyOutlineAndShadow() {
+        final View owner = mOwner.get();
+        if (owner == null) {
+            return;
+        }
+        // 更新 mRadiusArray
+        if (mRadius > 0) {
+            if (mHideRadiusSide == HIDE_RADIUS_SIDE_TOP) {
+                mRadiusArray = new float[]{0, 0, 0, 0, mRadius, mRadius, mRadius, mRadius};
+            } else if (mHideRadiusSide == HIDE_RADIUS_SIDE_RIGHT) {
+                mRadiusArray = new float[]{mRadius, mRadius, 0, 0, 0, 0, mRadius, mRadius};
+            } else if (mHideRadiusSide == HIDE_RADIUS_SIDE_BOTTOM) {
+                mRadiusArray = new float[]{mRadius, mRadius, mRadius, mRadius, 0, 0, 0, 0};
+            } else if (mHideRadiusSide == HIDE_RADIUS_SIDE_LEFT) {
+                mRadiusArray = new float[]{0, 0, mRadius, mRadius, mRadius, mRadius, 0, 0};
+            } else {
+                mRadiusArray = null;
+            }
+        }
+        if (useFeature()) {
+            if (mShadowElevation == 0 || isRadiusWithSideHidden()) {
+                owner.setElevation(0);
+            } else {
+                owner.setElevation(mShadowElevation);
+            }
+            setShadowColorInner(mShadowColor);
+            ensureOutlineProviderCreated();
+            owner.setOutlineProvider(mOutlineProvider);
+            owner.setClipToOutline(mRadius > 0);
+        }
+    }
+
+    private void ensureOutlineProviderCreated() {
+        if (mOutlineProvider == null) {
+            mOutlineProvider = new ViewOutlineProvider() {
                 @Override
                 @TargetApi(21)
                 public void getOutline(View view, Outline outline) {
@@ -518,7 +570,6 @@ public class XLayoutHelper implements XILayout {
 
                     float shadowAlpha = mShadowAlpha;
                     if (mShadowElevation == 0) {
-                        // outline.setAlpha will work even if shadowElevation == 0
                         shadowAlpha = 1f;
                     }
 
@@ -532,12 +583,7 @@ public class XLayoutHelper implements XILayout {
                                 right, bottom, mRadius);
                     }
                 }
-            });
-            owner.setClipToOutline(mRadius > 0);
-
-        }
-        if (isRefresh) {
-            owner.invalidate();
+            };
         }
     }
 
@@ -682,9 +728,9 @@ public class XLayoutHelper implements XILayout {
             if (size > mHeightLimit) {
                 int mode = View.MeasureSpec.getMode(heightMeasureSpec);
                 if (mode == View.MeasureSpec.AT_MOST) {
-                    heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(mWidthLimit, View.MeasureSpec.AT_MOST);
+                    heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(mHeightLimit, View.MeasureSpec.AT_MOST);
                 } else {
-                    heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(mWidthLimit, View.MeasureSpec.EXACTLY);
+                    heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(mHeightLimit, View.MeasureSpec.EXACTLY);
                 }
             }
         }
@@ -792,16 +838,22 @@ public class XLayoutHelper implements XILayout {
         if (owner == null) {
             return;
         }
-        mWidth = owner.getMeasuredWidth();
-        mHeight = owner.getMeasuredHeight();
-        if (mHeight > 0 && mWidth > 0) {
-            if (isRadiusAdjustBounds) {
-                mRadius = Math.min(mHeight, mWidth) / 2;
-            } else {
-                mRadius = Math.min(mRadius, Math.min(mHeight, mWidth) / 2);
+        // 仅在 View 尺寸变化时才重新计算 radius 和更新 outline/elevation，
+        // 避免每帧创建 ViewOutlineProvider 和无效的 invalidate
+        int newWidth = owner.getMeasuredWidth();
+        int newHeight = owner.getMeasuredHeight();
+        if (newWidth != mWidth || newHeight != mHeight) {
+            mWidth = newWidth;
+            mHeight = newHeight;
+            if (mHeight > 0 && mWidth > 0) {
+                if (isRadiusAdjustBounds) {
+                    mRadius = Math.min(mHeight, mWidth) / 2;
+                } else {
+                    mRadius = Math.min(mRadius, Math.min(mHeight, mWidth) / 2);
+                }
             }
+            applyOutlineAndShadow();
         }
-        setRadiusAndShadow();
         boolean needCheckFakeOuterNormalDraw = mRadius > 0 && !useFeature() && mOuterNormalColor != 0;
         boolean needDrawBorder = mBorderWidth > 0 && (mBorderColor != 0 || (mBorderGradientStartColor != 0 && mBorderGradientEndColor != 0));
         if (!needCheckFakeOuterNormalDraw && !needDrawBorder) {
