@@ -1698,7 +1698,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
     @Override
     public void setCheckedCubeSidesHeight(@IntRange(from = 0) int left, @IntRange(from = 0) int back, @IntRange(from = 0) int right, @IntRange(from = 0) int front) {
-        if (this.checkedCubeFrontHeight == left && checkedCubeBackHeight == back && checkedCubeRightHeight == right && checkedCubeLeftHeight == left) {
+        if (this.checkedCubeFrontHeight == front && checkedCubeBackHeight == back && checkedCubeRightHeight == right && checkedCubeLeftHeight == left) {
             return;
         }
         this.checkedCubeFrontHeight = front;

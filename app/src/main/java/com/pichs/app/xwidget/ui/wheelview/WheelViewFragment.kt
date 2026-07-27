@@ -44,6 +44,7 @@ class WheelViewFragment : BaseFragment<FragmentWheelviewBinding>() {
             override fun getItemCount(): Int = hours.size
             override fun getItem(position: Int): String = hours[position]
         })
+
         binding.wheelView3.addOnItemSelectedListener { _, index ->
             binding.tvResult3.text = "选中时间：${hours[index]}"
         }

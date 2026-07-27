@@ -207,7 +207,7 @@ public class XAlphaHelper implements XIAlpha, IPressedStateHelper {
     @Override
     public void setScaleOnDisabled(float scaleRate) {
         this.mDisabledScale = scaleRate;
-        isChangeScaleOnDisable = mDisabledScale != scaleRate;
+        isChangeScaleOnDisable = mNormalScale != scaleRate;
         View target = mOwner.get();
         if (target != null) {
             onEnabledChanged(target, target.isEnabled());
