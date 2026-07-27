@@ -32,6 +32,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
 
     private final WeakReference<View> mOwner;
     private final Path mClipPath = new Path();
+    private final float[] mRadii = new float[8];
     private int mWidth;
     private int mHeight;
 
@@ -395,6 +396,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                     finalActivatedBgDrawable, activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
             );
             setBackgroundSelector();
+            updateRadii();
         }
     }
 
@@ -406,27 +408,21 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     }
 
     // imageView专属
-    @SuppressLint("DrawAllocation")
     public void onDraw(Canvas canvas) {
         mClipPath.reset();
-        float[] radii;
-        if (topLeftRadius > 0 || topRightRadius > 0 || bottomRightRadius > 0 || bottomLeftRadius > 0) {
-            radii = new float[]{
-                    topLeftRadius, topLeftRadius,
-                    topRightRadius, topRightRadius,
-                    bottomRightRadius, bottomRightRadius,
-                    bottomLeftRadius, bottomLeftRadius
-            };
-        } else {
-            radii = new float[]{
-                    radius, radius,
-                    radius, radius,
-                    radius, radius,
-                    radius, radius
-            };
-        }
-        mClipPath.addRoundRect(0f, 0f, mWidth, mHeight, radii, Path.Direction.CW);
+        mClipPath.addRoundRect(0f, 0f, mWidth, mHeight, mRadii, Path.Direction.CW);
         canvas.clipPath(mClipPath);
+    }
+
+    private void updateRadii() {
+        if (topLeftRadius > 0 || topRightRadius > 0 || bottomRightRadius > 0 || bottomLeftRadius > 0) {
+            mRadii[0] = mRadii[1] = topLeftRadius;
+            mRadii[2] = mRadii[3] = topRightRadius;
+            mRadii[4] = mRadii[5] = bottomRightRadius;
+            mRadii[6] = mRadii[7] = bottomLeftRadius;
+        } else {
+            for (int i = 0; i < 8; i++) mRadii[i] = radius;
+        }
     }
 
 
@@ -669,7 +665,6 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
     @Override
     public void setRadius(int radius) {
         this.radius = radius;
-
         this.topLeftRadius = 0;
         this.topRightRadius = 0;
         this.bottomLeftRadius = 0;
@@ -749,6 +744,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
+        updateRadii();
     }
 
     @Override
@@ -833,6 +829,7 @@ public class XRoundBackgroundHelper implements XIRoundBackground {
                 activatedCubeSidesBackground, activatedCubeLeftHeight, activatedCubeBackHeight, activatedCubeRightHeight, activatedCubeFrontHeight
         );
         setBackgroundSelector();
+        updateRadii();
     }
 
     @Override

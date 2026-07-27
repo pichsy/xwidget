@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical">
+
+    <com.pichs.xwidget.cardview.XCardConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FFFFFF">
+
+        <com.pichs.xwidget.view.XImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:xp_pressedScale="0.92" />
+
+        <com.pichs.xwidget.view.XTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码输入框"
+            android:textColor="#333"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="32dp">
+
+            <!-- 下划线样式 -->
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="下划线样式（underline）"
+                android:textColor="#666"
+                android:textSize="13sp" />
+
+            <com.pichs.xwidget.cardview.XCardConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="#FFFFFF"
+                android:padding="20dp"
+                app:xp_radius="12dp">
+
+                <com.pichs.xwidget.edittext.XVerificationCodeEditText
+                    android:id="@+id/vc_underline"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="number"
+                    android:textColor="#255BFA"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:xp_borderColor="#255BFA"
+                    app:xp_borderErrorColor="#EF067E"
+                    app:xp_borderLoadingColor="#FFC107"
+                    app:xp_borderNoTextColor="#CCCCCC"
+                    app:xp_borderWidth="2dp"
+                    app:xp_boxType="underline"
+                    app:xp_cursorColor="#255BFA"
+                    app:xp_cursorDuration="600"
+                    app:xp_cursorWidth="2dp"
+                    app:xp_horizontalSpacing="12dp"
+                    app:xp_maxNumber="6"
+                    app:xp_showCursor="true" />
+
+                <com.pichs.xwidget.view.XTextView
+                    android:id="@+id/tv_status_underline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="请输入6位验证码"
+                    android:textColor="#999"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@id/vc_underline"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+            <!-- 实心方块样式 -->
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="实心方块样式（solid）"
+                android:textColor="#666"
+                android:textSize="13sp" />
+
+            <com.pichs.xwidget.cardview.XCardConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="#FFFFFF"
+                android:padding="20dp"
+                app:xp_radius="12dp">
+
+                <com.pichs.xwidget.edittext.XVerificationCodeEditText
+                    android:id="@+id/vc_solid"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="number"
+                    android:textColor="#FFFFFF"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:xp_blockColor="#5B6BE8"
+                    app:xp_boxType="solid"
+                    app:xp_cursorColor="#FFFFFF"
+                    app:xp_cursorDuration="600"
+                    app:xp_cursorWidth="2dp"
+                    app:xp_horizontalSpacing="8dp"
+                    app:xp_maxNumber="6"
+                    app:xp_radius="8dp"
+                    app:xp_showCursor="true" />
+
+                <com.pichs.xwidget.view.XTextView
+                    android:id="@+id/tv_status_solid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="请输入6位验证码"
+                    android:textColor="#999"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@id/vc_solid"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+            <!-- 空心方框样式 -->
+            <com.pichs.xwidget.view.XTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="空心方框样式（hollow）"
+                android:textColor="#666"
+                android:textSize="13sp" />
+
+            <com.pichs.xwidget.cardview.XCardConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:background="#FFFFFF"
+                android:padding="20dp"
+                app:xp_radius="12dp">
+
+                <com.pichs.xwidget.edittext.XVerificationCodeEditText
+                    android:id="@+id/vc_hollow"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@android:color/transparent"
+                    android:inputType="numberPassword"
+                    android:textColor="#333333"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:xp_borderColor="#5B6BE8"
+                    app:xp_borderNoTextColor="#CCCCCC"
+                    app:xp_borderWidth="1.5dp"
+                    app:xp_boxType="hollow"
+                    app:xp_cursorColor="#5B6BE8"
+                    app:xp_cursorDuration="600"
+                    app:xp_cursorWidth="2dp"
+                    app:xp_maxNumber="6"
+                    app:xp_radius="8dp"
+                    app:xp_showCursor="true"
+                    app:xp_textPassword="true" />
+
+                <com.pichs.xwidget.view.XTextView
+                    android:id="@+id/tv_status_hollow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="请输入6位密码（●显示）"
+                    android:textColor="#999"
+                    android:textSize="12sp"
+                    app:layout_constraintTop_toBottomOf="@id/vc_hollow"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </com.pichs.xwidget.cardview.XCardConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

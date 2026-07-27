@@ -58,7 +58,7 @@ public class XWidgetCache {
         }
         SharedPreferences.Editor editor = mSP.edit();
         editor.putString(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     public void setInt(String key, int value) {
@@ -70,7 +70,7 @@ public class XWidgetCache {
         }
         SharedPreferences.Editor editor = mSP.edit();
         editor.putInt(key, value);
-        editor.commit();
+        editor.apply();
     }
 
     public int getInt(String key, int defaultValue) {

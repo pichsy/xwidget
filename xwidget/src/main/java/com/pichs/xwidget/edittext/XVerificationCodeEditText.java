@@ -202,21 +202,14 @@ public class XVerificationCodeEditText extends AppCompatEditText {
 
     public void setBorderColor(int borderColor) {
         this.borderColor = borderColor;
-        borderPaint = new Paint();
-        borderPaint.setAntiAlias(true);
+        this.borderColorTemp = borderColor;
         borderPaint.setColor(borderColor);
-        borderPaint.setStyle(Paint.Style.STROKE);
-        borderPaint.setStrokeWidth(borderWidth);
         invalidate();
     }
 
     public void setBorderNoTextColor(int borderNoTextColor) {
         this.borderNoTextColor = borderNoTextColor;
-        borderNoTextPaint = new Paint();
-        borderNoTextPaint.setAntiAlias(true);
         borderNoTextPaint.setColor(borderNoTextColor);
-        borderNoTextPaint.setStyle(Paint.Style.STROKE);
-        borderNoTextPaint.setStrokeWidth(borderWidth);
         invalidate();
     }
 
@@ -330,19 +323,9 @@ public class XVerificationCodeEditText extends AppCompatEditText {
                     break;
                 case 1:
                     if (isLoading) {
-                        // 动画中
-                        borderPaint = new Paint();
-                        borderPaint.setAntiAlias(true);
-                        borderPaint.setColor(borderColor);
-                        borderPaint.setStyle(Paint.Style.STROKE);
-                        borderPaint.setStrokeWidth(borderWidth);
+                        // 动画中，只更新会变化的属性，不 new Paint
+                        borderPaint.setColor(borderColor); // borderColor 此时是 borderLoadingColor
                         borderPaint.setAlpha(alpha);
-
-                        borderLoadingPaint = new Paint();
-                        borderLoadingPaint.setAntiAlias(true);
-                        borderLoadingPaint.setColor(borderColor);
-                        borderLoadingPaint.setStyle(Paint.Style.STROKE);
-                        borderLoadingPaint.setStrokeWidth(borderWidth);
                         borderLoadingPaint.setAlpha(alphaBounce);
                         postInvalidate();
 
@@ -499,13 +482,10 @@ public class XVerificationCodeEditText extends AppCompatEditText {
     protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
         super.onTextChanged(text, start, lengthBefore, lengthAfter);
         contentText = text;
-        if (!isLoading) {
+        if (!isLoading && borderPaint != null) {
             this.borderColor = borderColorTemp;
-            borderPaint = new Paint();
-            borderPaint.setAntiAlias(true);
             borderPaint.setColor(borderColor);
-            borderPaint.setStyle(Paint.Style.STROKE);
-            borderPaint.setStrokeWidth(borderWidth);
+            borderPaint.setAlpha(255);
         }
         invalidate();
         if (textChangedListener != null) {

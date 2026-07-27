@@ -142,6 +142,12 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.verificationcode.VerificationCodeActivity"
+            android:configChanges="screenLayout|screenSize|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name=".tools.ToolsUsageActivity"
             android:configChanges="screenLayout|screenSize|orientation"
             android:exported="false"

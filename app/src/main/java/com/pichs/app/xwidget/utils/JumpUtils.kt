@@ -20,6 +20,7 @@ import com.pichs.app.xwidget.ui.space.SpaceActivity
 import com.pichs.app.xwidget.ui.switcher.SwitcherActivity
 import com.pichs.app.xwidget.ui.text.TextActivity
 import com.pichs.app.xwidget.ui.web.WebViewActivity
+import com.pichs.app.xwidget.ui.verificationcode.VerificationCodeActivity
 import com.pichs.app.xwidget.ui.wheelview.WheelViewActivity
 import com.pichs.xbase.kotlinext.startActivitySafely
 import com.pichs.xbase.utils.UiKit
@@ -142,6 +143,12 @@ object JumpUtils {
             "wheelview" -> {
                 UiKit.getApplication().startActivitySafely(
                     Intent(UiKit.getApplication(), WheelViewActivity::class.java)
+                )
+            }
+
+            "verification_code" -> {
+                UiKit.getApplication().startActivitySafely(
+                    Intent(UiKit.getApplication(), VerificationCodeActivity::class.java)
                 )
             }
         }
