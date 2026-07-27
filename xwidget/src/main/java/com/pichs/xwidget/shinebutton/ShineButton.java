@@ -109,7 +109,10 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
     }
 
     public void fitFragment(Fragment fragment) {
-        initWindow(fragment.getActivity());
+        Activity activity = fragment.getActivity();
+        if (activity != null) {
+            initWindow(activity);
+        }
     }
 
     public int getColor() {
