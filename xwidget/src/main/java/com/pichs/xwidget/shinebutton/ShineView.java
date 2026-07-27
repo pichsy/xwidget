@@ -210,8 +210,8 @@ public class ShineView extends View {
     }
 
     private Paint getConfigPaint(Paint paint) {
-        if (mEnableFlashing) {
-            paint.setColor(mFlashingColors.get(mRandom.nextInt(mColorCount - 1)));
+        if (mEnableFlashing && mColorCount > 0) {
+            paint.setColor(mFlashingColors.get(mRandom.nextInt(mColorCount)));
         }
         return paint;
     }

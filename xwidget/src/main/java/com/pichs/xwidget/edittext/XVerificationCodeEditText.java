@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.view.ActionMode;
@@ -17,12 +18,7 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatEditText;
-
-import com.pichs.xwidget.R;
-
-import java.util.Timer;
-import java.util.TimerTask;
+import androidx.appcompat.widget.AppCompatEditText;import com.pichs.xwidget.R;
 
 /**
  * Created pichs
@@ -76,14 +72,8 @@ public class XVerificationCodeEditText extends AppCompatEditText {
     private int borderColorTemp;// 有文字下划线颜色，缓存
     private int borderErrorColor;// 加载失败下划线颜色
 
-    private boolean isCursorShowing;
-
     private CharSequence contentText;
-
     private TextChangedListener textChangedListener;
-
-    private Timer timer;
-    private TimerTask timerTask;
 
     private boolean isLoading = false;
 
@@ -293,15 +283,6 @@ public class XVerificationCodeEditText extends AppCompatEditText {
         if (type == TYPE_HOLLOW){
             spacing = 0;
         }
-
-        timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                isCursorShowing = !isCursorShowing;
-                postInvalidate();
-            }
-        };
-        timer = new Timer();
     }
 
 
@@ -458,19 +439,24 @@ public class XVerificationCodeEditText extends AppCompatEditText {
     }
 
     /**
-     * 绘制光标
-     *
-     * @param canvas
+     * 绘制光标（基于时间计算，无需外部状态）
      */
     private void drawCursor(Canvas canvas) {
-        if (!isCursorShowing && showCursor && contentText.length() < maxLength && hasFocus()) {
-            int cursorPosition = contentText.length() + 1;
-            int startX = spacing * cursorPosition + boxWidth * (cursorPosition - 1) + boxWidth / 2;
-            int startY = boxHeight / 4;
-            int endX = startX;
-            int endY = boxHeight - boxHeight / 4;
-            canvas.drawLine(startX, startY, endX, endY, cursorPaint);
+        if (!showCursor || !hasFocus() || contentText.length() >= maxLength) return;
+
+        long time = SystemClock.uptimeMillis();
+        boolean shouldShow = (time / cursorDuration) % 2 == 0;
+        if (!shouldShow) {
+            postInvalidateDelayed(cursorDuration - (time % cursorDuration));
+            return;
         }
+
+        int cursorPosition = contentText.length() + 1;
+        int startX = spacing * cursorPosition + boxWidth * (cursorPosition - 1) + boxWidth / 2;
+        int startY = boxHeight / 4;
+        int endY = boxHeight - boxHeight / 4;
+        canvas.drawLine(startX, startY, startX, endY, cursorPaint);
+        postInvalidateDelayed(cursorDuration - (time % cursorDuration));
     }
 
     private void drawRect(Canvas canvas) {
@@ -535,14 +521,12 @@ public class XVerificationCodeEditText extends AppCompatEditText {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        //cursorFlashTime为光标闪动的间隔时间
-        timer.scheduleAtFixedRate(timerTask, 0, cursorDuration);
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        timer.cancel();
+        removeCallbacks(null);
     }
 
     @Override
