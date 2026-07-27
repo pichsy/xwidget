@@ -60,17 +60,17 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ShineButton);
         mNormalColor = a.getColor(R.styleable.ShineButton_xp_shine_normal_color, Color.LTGRAY);
         mCheckedColor = a.getColor(R.styleable.ShineButton_xp_shine_checked_color, Color.BLUE);
-        mShineParams.allowRandomColor = a.getBoolean(R.styleable.ShineButton_xp_shine_allow_random_color, false);
-        mShineParams.animDuration = a.getInteger(R.styleable.ShineButton_xp_shine_animation_duration, (int) mShineParams.animDuration);
-        mShineParams.clickAnimDuration = a.getInteger(R.styleable.ShineButton_xp_shine_click_animation_duration, (int) mShineParams.clickAnimDuration);
-        mShineParams.enableFlashing = a.getBoolean(R.styleable.ShineButton_xp_shine_enable_flashing, false);
-        mShineParams.shineDistanceMultiple = a.getFloat(R.styleable.ShineButton_xp_shine_distance_multiple, mShineParams.shineDistanceMultiple);
-        mShineParams.shineCount = a.getInteger(R.styleable.ShineButton_xp_shine_count, mShineParams.shineCount);
-        mShineParams.shineSize = a.getDimensionPixelSize(R.styleable.ShineButton_xp_shine_size, mShineParams.shineSize);
-        mShineParams.shineTurnAngle = a.getFloat(R.styleable.ShineButton_xp_shine_turn_angle, mShineParams.shineTurnAngle);
-        mShineParams.smallShineOffsetAngle = a.getFloat(R.styleable.ShineButton_xp_shine_small_shine_offset_angle, mShineParams.smallShineOffsetAngle);
-        mShineParams.smallShineColor = a.getColor(R.styleable.ShineButton_xp_shine_small_shine_color, mShineParams.smallShineColor);
-        mShineParams.bigShineColor = a.getColor(R.styleable.ShineButton_xp_shine_big_shine_color, mShineParams.bigShineColor);
+        mShineParams.setAllowRandomColor(a.getBoolean(R.styleable.ShineButton_xp_shine_allow_random_color, false));
+        mShineParams.setAnimDuration(a.getInteger(R.styleable.ShineButton_xp_shine_animation_duration, (int) mShineParams.getAnimDuration()));
+        mShineParams.setClickAnimDuration(a.getInteger(R.styleable.ShineButton_xp_shine_click_animation_duration, (int) mShineParams.getClickAnimDuration()));
+        mShineParams.setEnableFlashing(a.getBoolean(R.styleable.ShineButton_xp_shine_enable_flashing, false));
+        mShineParams.setShineDistanceMultiple(a.getFloat(R.styleable.ShineButton_xp_shine_distance_multiple, mShineParams.getShineDistanceMultiple()));
+        mShineParams.setShineCount(a.getInteger(R.styleable.ShineButton_xp_shine_count, mShineParams.getShineCount()));
+        mShineParams.setShineSize(a.getDimensionPixelSize(R.styleable.ShineButton_xp_shine_size, mShineParams.getShineSize()));
+        mShineParams.setShineTurnAngle(a.getFloat(R.styleable.ShineButton_xp_shine_turn_angle, mShineParams.getShineTurnAngle()));
+        mShineParams.setSmallShineOffsetAngle(a.getFloat(R.styleable.ShineButton_xp_shine_small_shine_offset_angle, mShineParams.getSmallShineOffsetAngle()));
+        mShineParams.setSmallShineColor(a.getColor(R.styleable.ShineButton_xp_shine_small_shine_color, mShineParams.getSmallShineColor()));
+        mShineParams.setBigShineColor(a.getColor(R.styleable.ShineButton_xp_shine_big_shine_color, mShineParams.getBigShineColor()));
         String colors = a.getString(R.styleable.ShineButton_xp_shine_flashing_colors);
 
         ArrayList<Integer> colorList = new ArrayList<>();
@@ -88,7 +88,7 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
                 }
             }
         }
-        mShineParams.flashingColors = colorList;
+        mShineParams.setFlashingColors(colorList);
 
         a.recycle();
         setTintColor(mNormalColor);
@@ -188,57 +188,57 @@ public class ShineButton extends PorterShapeImageView implements Checkable {
     }
 
     public ShineButton setAllowRandomColor(boolean allowRandomColor) {
-        mShineParams.allowRandomColor = allowRandomColor;
+        mShineParams.setAllowRandomColor(allowRandomColor);
         return this;
     }
 
     public ShineButton setAnimDuration(int durationMs) {
-        mShineParams.animDuration = durationMs;
+        mShineParams.setAnimDuration(durationMs);
         return this;
     }
 
     public ShineButton setBigShineColor(int color) {
-        mShineParams.bigShineColor = color;
+        mShineParams.setBigShineColor(color);
         return this;
     }
 
     public ShineButton setClickAnimDuration(int durationMs) {
-        mShineParams.clickAnimDuration = durationMs;
+        mShineParams.setClickAnimDuration(durationMs);
         return this;
     }
 
     public ShineButton enableFlashing(boolean enable) {
-        mShineParams.enableFlashing = enable;
+        mShineParams.setEnableFlashing(enable);
         return this;
     }
 
     public ShineButton setShineCount(int count) {
-        mShineParams.shineCount = count;
+        mShineParams.setShineCount(count);
         return this;
     }
 
     public ShineButton setShineDistanceMultiple(float multiple) {
-        mShineParams.shineDistanceMultiple = multiple;
+        mShineParams.setShineDistanceMultiple(multiple);
         return this;
     }
 
     public ShineButton setShineTurnAngle(float angle) {
-        mShineParams.shineTurnAngle = angle;
+        mShineParams.setShineTurnAngle(angle);
         return this;
     }
 
     public ShineButton setSmallShineColor(int color) {
-        mShineParams.smallShineColor = color;
+        mShineParams.setSmallShineColor(color);
         return this;
     }
 
     public ShineButton setSmallShineOffAngle(float angle) {
-        mShineParams.smallShineOffsetAngle = angle;
+        mShineParams.setSmallShineOffsetAngle(angle);
         return this;
     }
 
     public ShineButton setShineSize(int size) {
-        mShineParams.shineSize = size;
+        mShineParams.setShineSize(size);
         return this;
     }
 
