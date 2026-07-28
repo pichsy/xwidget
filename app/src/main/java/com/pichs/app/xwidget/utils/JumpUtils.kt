@@ -1,6 +1,7 @@
 package com.pichs.app.xwidget.utils
 
 import android.content.Intent
+import androidx.core.content.ContextCompat.startActivity
 import com.hjq.toast.Toaster
 import com.pichs.app.xwidget.ui.button.ButtonActivity
 import com.pichs.app.xwidget.ui.card.CardLayoutActivity
