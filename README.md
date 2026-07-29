@@ -28,7 +28,7 @@ XWidget 是一个专业的 Android 基础组件库，致力于快速开发基础
 在项目的 `build.gradle` 中添加：
 
 ```gradle
-implementation 'com.gitee.pichs:xwidget:5.8.0'
+implementation 'com.gitee.pichs:xwidget:5.8.1'
 ```
 
 ---
