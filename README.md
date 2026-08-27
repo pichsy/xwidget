@@ -418,10 +418,22 @@ XTypefaceHelper.closeTypeface(context)
 [点击下载 Demo APK](https://github.com/pichsy/xwidget/tree/github-xwidget/app/release/app-release.apk)
 
 ---
-
 ## 🔄 版本历史
 
-### v5.8.0 - 当前版本
+## [5.8.1] - 2026-07-29
+
+### 性能优化 ⚡
+- **XCard 系列绘制性能优化**：`XLayoutHelper.dispatchRoundBorderDraw` 不再每帧调用 `setRadiusAndShadow`，ViewOutlineProvider 缓存复用只创建一次，elevation / clipToOutline 仅在 View 尺寸变化时更新，移除 draw 内部的 `invalidate()` 调用，彻底消除每帧无效重建
+
+### 修复 🐛
+- **修复 `android:maxHeight` 无效的 bug**：`XLayoutHelper.getMeasuredHeightSpec()` 中误将 `mWidthLimit` 用于高度限制，导致 `android:maxHeight` 属性始终以宽度值限制高度
+- **修复 `XCardButton` 缺少 `super.dispatchDraw()` 调用**：与其他 XCard 系列控件行为对齐，修复滚动渐变边缘等系统绘制失效的问题
+- **ShineButton 修复**
+- **验证码输入框（XVerificationCodeEditText）优化**：顺滑滚动体验改善
+
+---
+
+### v5.8.0
 - 新增 XWheelView 滚轮选择器组件
 - 支持 3D 旋转效果和线性效果
 - 优化性能和稳定性
